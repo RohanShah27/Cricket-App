@@ -1,0 +1,80 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.main {
+  width: 90%;
+  margin: 50px auto;
+  text-align: center;
+  display: grid;
+  grid-template-rows: 100px 100px repeat(3, 200px);
+  grid-template-columns: 300px repeat(3, 2fr);
+  grid-gap: 10px;
+}
+img {
+  border-radius: 8px;
+}
+
+.navigation {
+  border-radius: 8px;
+  grid-column: 1/ -1;
+}
+.image-container {
+  border-radius: 8px;
+  grid-row: 2/4;
+  overflow-x: hidden;
+  /* overflow-y: scroll; */
+}
+.div2::-webkit-scrollbar {
+  display: none;
+}
+.div2:hover::-webkit-scrollbar {
+  display: scroll;
+}
+.playerdetails {
+  border-radius: 8px;
+  grid-row: 2/4;
+  grid-column: 2/-1;
+}
+.personalinfo {
+  border-radius: 8px;
+  grid-row: 4/6;
+  grid-column: 1/2;
+}
+.playerstats {
+  border-radius: 8px;
+  grid-column: 2/-1;
+  grid-row: 4/6;
+}
+
+.graphs {
+  border-radius: 8px;
+  height: auto;
+  grid-column: 1/-1;
+  grid-row: 6/8;
+}
+.footer {
+  grid-row: 8/9;
+  grid-column: 1/-1;
+  height: 60px;
+}
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(30px, 1fr));
+  background-color: #fff;
+  max-width: 800px;
+  border: 1px solid white;
+  margin: 50px auto auto auto;
+}
+
+.row {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(50px, 1fr));
+}
+
+.box {
+  padding: 15px;
+  font-size: 16px;
+  border-bottom: 1px solid white;
+}
