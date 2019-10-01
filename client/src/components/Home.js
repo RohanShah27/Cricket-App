@@ -2,8 +2,11 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import "../index.css";
 import dhoni from "../DHONI.png";
+import india from "../assests/india.jpg";
+import pakistan from "../assests/pakistan.jpg";
 import { getHeadlines, getHeadline } from "../actions/Headlines";
 import { getFixtures } from "../actions/Fixtures";
+import { getRecentMatches } from "../actions/matchAction";
 import Navigation from "./Navigation";
 
 export class Home extends Component {
@@ -14,6 +17,7 @@ export class Home extends Component {
     this.props.getHeadline();
     this.props.getHeadlines();
     this.props.getFixtures();
+    this.props.getRecentMatches();
   }
   render() {
     return (
@@ -42,7 +46,7 @@ export class Home extends Component {
                 <h2 className="news-header">India's Tour of WestIndies</h2>
                 <div col-content>
                   <figure>
-                    <img src={dhoni} />
+                    <img className="imgforheadline" src={dhoni} />
                   </figure>
                   <figcaption>
                     <span className="newsTitle">
@@ -98,6 +102,30 @@ export class Home extends Component {
             </div> */}
           </div>
         </div>{" "}
+        <div className="match-container">
+          <div className="testimonials">
+            {this.props.match.map(match => (
+              <div className="card">
+                <div className="parent">
+                  <div className="first">
+                    <img className="imgformatch" src={india} />
+                    <p>{match.team_name1}</p>
+                    <p>250/5 (50.0)</p>
+                  </div>
+                  <div className="second">
+                    <button className="buttonformatch">View</button>
+                  </div>
+                  <div className="third">
+                    <img className="imgformatch" src={pakistan} />
+
+                    <p>{match.team_name2}</p>
+                    <p>224/6 (50.0)</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     );
   }
@@ -105,9 +133,10 @@ export class Home extends Component {
 const mapStateToProps = state => ({
   headlines: state.headlinesReducer.headlines,
   headline: state.headlinesReducer.headline,
-  fixtures: state.fixturesReducer.fixtures
+  fixtures: state.fixturesReducer.fixtures,
+  match: state.matchReducer.match
 });
 export default connect(
   mapStateToProps,
-  { getHeadlines, getFixtures, getHeadline }
+  { getHeadlines, getFixtures, getHeadline, getRecentMatches }
 )(Home);
