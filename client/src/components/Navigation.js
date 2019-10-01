@@ -14,6 +14,10 @@ export default class Navigation extends Component {
     playerName: "",
     menSelected: true
   };
+  removeToken = () => {
+    localStorage.removeItem("token");
+    this.render();
+  };
   changeState = () => {
     this.setState({
       menSelected: false
@@ -107,6 +111,15 @@ export default class Navigation extends Component {
                 </Link>
               </button>
             </form>
+          </li>
+          <li>
+            {localStorage.getItem("token") ? (
+              <a onClick={this.removeToken}>Logout</a>
+            ) : (
+              <a>
+                <Link to="/login">Admin?</Link>
+              </a>
+            )}
           </li>
         </ol>
       </div>
