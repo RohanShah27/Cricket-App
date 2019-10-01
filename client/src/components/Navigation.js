@@ -1,40 +1,96 @@
 import React, { Component } from "react";
 import {} from "../actions/Players";
 import "../styles/navbar.css";
-import { searchPlayer } from "../actions/Players";
-import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 export default class Navigation extends Component {
   constructor(props) {
-    // super(props) -> its parents and all of its parents properties
     super(props);
-    // this.searchForPlayer = this.searchForPlayer.bind(this);
+    this.changeState = this.changeState.bind(this);
+    this.menState = this.menState.bind(this);
   }
+
   state = {
-    playerName: ""
+    playerName: "",
+    menSelected: true
+  };
+  changeState = () => {
+    this.setState({
+      menSelected: false
+    });
+  };
+  menState = () => {
+    this.setState({
+      menSelected: true
+    });
   };
   OnChange = event => {
     this.setState({ [event.target.name]: event.target.value });
   };
 
   render() {
+    console.log(this.props);
     return (
       <div className="container">
-        <h3 className="heading">
-          <a>Crickstrait</a>
-          <a className="options">Men</a>
-          <a className="options">Women</a>
+        <h3 className="nav-heading">
+          <a>
+            <Link to={"/"}>Crickstrait</Link>
+          </a>
+          {this.state.menSelected == true ? (
+            <a className="options" onClick={this.menState}>
+              Men
+            </a>
+          ) : (
+            <a
+              className="options"
+              onClick={this.menState}
+              style={{ color: "#c2c2c2" }}
+            >
+              Men
+            </a>
+          )}
+          {this.state.menSelected == true ? (
+            <a
+              className="options"
+              onClick={this.changeState}
+              style={{ color: "#c2c2c2" }}
+            >
+              Women
+            </a>
+          ) : (
+            <a className="options" onClick={this.changeState}>
+              Women
+            </a>
+          )}
         </h3>
 
         <ol className="main-menu">
           <li>
-            <a>Teams</a>
+            {this.state.menSelected == true ? (
+              <a>
+                <Link to="/teams">Teams</Link>
+              </a>
+            ) : (
+              <a>
+                <Link to="/teams">Teams</Link>
+              </a>
+            )}
           </li>
           <li>
-            <a>Top Players</a>
+            {this.state.menSelected == true ? (
+              <a>
+                <Link to="/rankings">Rankings</Link>
+              </a>
+            ) : (
+              <a>
+                <Link to="/rankings">Rankings</Link>
+              </a>
+            )}
           </li>
           <li>
-            <a>Series</a>
+            <a>
+              <Link to="/series">Series</Link>
+            </a>
           </li>
           <li>
             <form>
@@ -45,16 +101,10 @@ export default class Navigation extends Component {
                 onChange={this.OnChange}
                 value={this.state.playerName}
               />
-              <button
-                type="submit"
-                onClick={() => {
-                  this.props.history.push(
-                    "/playerprofile",
-                    this.state.playerName
-                  );
-                }}
-              >
-                <i class="fa fa-search"></i>
+              <button>
+                <Link to={"/playerprofile/" + this.state.playerName}>
+                  <i class="fa fa-search"></i>
+                </Link>
               </button>
             </form>
           </li>
