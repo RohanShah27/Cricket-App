@@ -115,7 +115,7 @@ const mapStateToProps = state => ({
   headlines: state.headlinesReducer.headlines,
   headline: state.headlinesReducer.headline,
   fixtures: state.fixturesReducer.fixtures,
-  match: state.matchReducer.match
+  match: state.matchReducers.match
 });
 export default connect(
   mapStateToProps,

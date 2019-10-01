@@ -189,7 +189,9 @@ figcaption {
   color: #f39c12;
   border: 1px solid #f39c12;
   border-radius: 8px;
+  height: 20px;
   outline: none;
+  cursor: pointer;
 }
 
 .buttonformatch:hover {

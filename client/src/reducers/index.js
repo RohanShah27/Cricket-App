@@ -16,5 +16,5 @@ export default combineReducers({
   headlinesReducer: headlines,
   fixturesReducer: fixtures,
   playerReducer: player,
-  matchReducer: match
+  matchReducers: match
 });

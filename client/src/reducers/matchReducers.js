@@ -1,4 +1,4 @@
-import { GET_RECENT_MATCHES } from "../actions/Types";
+import { GET_RECENT_MATCHES, GET_MATCHESBYTYPE } from "../actions/Types";
 
 const initialState = {
   match: []
@@ -12,6 +12,11 @@ export default function(state = initialState, action) {
         match: action.payload
       };
 
+    case GET_MATCHESBYTYPE:
+      return {
+        ...state,
+        match: action.payload
+      };
     default:
       return state;
   }
