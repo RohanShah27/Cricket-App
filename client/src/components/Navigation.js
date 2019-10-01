@@ -105,11 +105,11 @@ export default class Navigation extends Component {
                 onChange={this.OnChange}
                 value={this.state.playerName}
               />
-              <button>
-                <Link to={"/playerprofile/" + this.state.playerName}>
-                  <i class="fa fa-search"></i>
-                </Link>
-              </button>
+              {/* <button> */}
+              <Link to={"/playerprofile/" + this.state.playerName}>
+                <i class="fa fa-search"></i>
+              </Link>
+              {/* </button> */}
             </form>
           </li>
           <li>

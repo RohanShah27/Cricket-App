@@ -6,19 +6,28 @@ import { searchPlayer } from "../actions/Players";
 import virat from "../virat-kohli.png";
 
 export class PlayerProfile extends Component {
-  constructor(props) {
-    // super(props) -> its parents and all of its parents properties
-    super(props);
-    // this.searchForPlayer = this.searchForPlayer.bind(this);
-  }
+  // constructor(props) {
+  //   // super(props) -> its parents and all of its parents properties
+  //   super(props);
+  //   // this.searchForPlayer = this.searchForPlayer.bind(this);
+  // }
+  state = {
+    playerName: this.props.match.params.playerName
+  };
   componentDidMount() {
-    console.log(this.props);
+    this.getPlayerDetails();
+  }
+  componentWillReceiveProps(nextProps) {
+    //condition
+    this.getPlayerDetails();
+    this.setState({ playerName: this.props.match.params.playerName });
+  }
+  getPlayerDetails = () => {
     let player = {
-      playerName: this.props.match.params.playerName
+      playerName: this.state.playerName
     };
     this.props.searchPlayer(player);
-    console.log(this.props);
-  }
+  };
   render() {
     console.log(this.props.player[0].batting_style);
     return (
