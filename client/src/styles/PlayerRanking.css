@@ -1,0 +1,106 @@
+@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css);
+@import url(https://fonts.googleapis.com/css?family=Work+Sans);
+
+* {
+  font-family: Work Sans, sans-serif;
+}
+::-webkit-scrollbar {
+  display: none;
+}
+
+.navbar {
+  border: 1px solid #c2c2c2;
+  overflow: hidden;
+  background-color: #f39c12;
+}
+
+.navbar p {
+  float: left;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 2px 20px;
+  text-decoration: none;
+}
+
+.subnav {
+  float: left;
+  overflow: hidden;
+}
+
+.subnav .subnavbtn {
+  font-size: 16px;
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.navbar p:hover,
+.subnav:hover .subnavbtn {
+  background-color: #232834;
+}
+
+.subnav-content {
+  display: none;
+  position: absolute;
+  left: 0;
+  height: 50px;
+
+  background-color: #232834;
+  width: 100%;
+  z-index: 1;
+}
+
+.subnav-content p {
+  float: left;
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+}
+.rankining-content-header {
+  margin-top: 50px;
+  text-align: center;
+}
+.subnav-content p:hover {
+  color: #f39c12;
+}
+
+.subnav:hover .subnav-content {
+  display: block;
+}
+
+.rankingplayerIcon {
+  height: 30px;
+}
+
+.rankings-wrapper {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(30px, 1fr));
+  background-color: #fff;
+  max-width: 800px;
+  border: 1px solid white;
+  margin: 50px auto auto auto;
+}
+
+.rankings-row {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(50px, 1fr));
+}
+
+.rankings-box {
+  padding: 15px;
+  font-size: 16px;
+}
+
+.rankings-row:nth-child(even) {
+  background-color: #c2c2c2;
+}
+
+.rankings-row:nth-child(1) {
+  background: #c2c2c2;
+}

@@ -1,62 +1,19 @@
+@import url(https://fonts.googleapis.com/css?family=Work+Sans);
 * {
   margin: 0;
   padding: 0;
+  font-family: Work Sans, sans-serif;
 }
-.main {
-  width: 90%;
-  margin: 50px auto;
-  text-align: center;
-  display: grid;
-  grid-template-rows: 100px 100px repeat(3, 200px);
-  grid-template-columns: 300px repeat(3, 2fr);
-  grid-gap: 10px;
-}
-img {
+
+.profile-img {
   border-radius: 8px;
+  height: 200px;
+  width: 200px;
 }
 
 .navigation {
   border-radius: 8px;
   grid-column: 1/ -1;
-}
-.image-container {
-  border-radius: 8px;
-  grid-row: 2/4;
-  overflow-x: hidden;
-  /* overflow-y: scroll; */
-}
-.div2::-webkit-scrollbar {
-  display: none;
-}
-.div2:hover::-webkit-scrollbar {
-  display: scroll;
-}
-.playerdetails {
-  border-radius: 8px;
-  grid-row: 2/4;
-  grid-column: 2/-1;
-}
-.personalinfo {
-  border-radius: 8px;
-  grid-row: 4/6;
-  grid-column: 1/2;
-}
-.playerstats {
-  border-radius: 8px;
-  grid-column: 2/-1;
-  grid-row: 4/6;
-}
-
-.graphs {
-  border-radius: 8px;
-  height: auto;
-  grid-column: 1/-1;
-  grid-row: 6/8;
-}
-.footer {
-  grid-row: 8/9;
-  grid-column: 1/-1;
-  height: 60px;
 }
 .wrapper {
   display: grid;
@@ -67,14 +24,94 @@ img {
   margin: 50px auto auto auto;
 }
 
-.row {
+.stats-row {
   grid-column: 1 / -1;
   display: grid;
   grid-template-columns: repeat(4, minmax(50px, 1fr));
 }
 
-.box {
+.profile-box {
   padding: 15px;
   font-size: 16px;
-  border-bottom: 1px solid white;
+}
+.flex-container {
+  display: flex;
+  align-items: stretch;
+  /* background-color: #f1f1f1; */
+}
+.flex-container h1 {
+  padding-top: 20px;
+  padding-left: 20px;
+}
+.flex-container h5 {
+  padding-top: 20px;
+  padding-left: 20px;
+}
+.profile {
+  padding-left: 20px;
+  line-height: 25px;
+  font-size: 18px;
+}
+.flex-container > div {
+  background-color: white;
+  width: 100px;
+  margin: 10px;
+  text-align: left;
+  line-height: 45px;
+  font-size: 20px;
+}
+/* Column container */
+.row {
+  display: flex;
+  padding: 5px;
+  padding-top: 50px;
+}
+
+/* Create two unequal columns that sits next to each other */
+/* Sidebar/left column */
+.side {
+  flex: 30%;
+  border: 1px solid #c2c2c2;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px 0px #c2c2c2;
+}
+.side h2 {
+  border-radius: 8px;
+
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background: #f39c12;
+  color: white;
+}
+.side p {
+  text-align: justify;
+  padding: 20px;
+  padding-left: 5px;
+  /* padding-bottom: 5px; */
+}
+.side p:nth-child(odd) {
+  background: #f1f1f1;
+}
+
+/* Main column */
+.main {
+  margin-left: 20px;
+  border: 1px solid #c2c2c2;
+  border-radius: 8px;
+  text-align: center;
+  flex: 70%;
+  box-shadow: 0px 4px 6px 0px #c2c2c2;
+}
+.main h2 {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background: #f39c12;
+  color: white;
+  border-radius: 8px;
+}
+.main-section {
+  width: 90%;
+  margin: 0 50px;
+  margin-top: 40px;
 }

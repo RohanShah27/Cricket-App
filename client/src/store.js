@@ -1,19 +1,27 @@
+//This module creates a redux store
 import { createStore, applyMiddleware, compose } from "redux";
-
 import thunk from "redux-thunk";
+
+//Gets the root reducer from the below module to create the store
 import rootReducer from "./reducers";
 
+//The initial state is initialized as an empty object
 const initialState = {};
-//think will give all redducer actions to the middleware object
+
 const middleware = [thunk];
-// will give access to the extension
-//   //We do this to check if chrome has the redux extension or not if not then it installs the devtoolextension in chrome
 const composeEnhancers =
   typeof window === "object" && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
     ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
-        // Specify extension’s options like name, actionsBlacklist, actionsCreators, serialize...
+        //Specify extension's options like name, actionsBlacklist, actionCreators,
       })
     : compose;
-const enhancer = composeEnhancers(applyMiddleware(...middleware));
+
+const enhancer = composeEnhancers(
+  applyMiddleware(...middleware)
+  //other store enhancers if any
+);
+
+//Create a redux store and export it
 const store = createStore(rootReducer, initialState, enhancer);
+
 export default store;
