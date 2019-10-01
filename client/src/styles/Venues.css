@@ -1,0 +1,67 @@
+.venueSection {
+  background-color: #484848;
+  height: 255px;
+  margin: 0px;
+}
+.venueHeading {
+  font-family: sans-serif;
+  color: #ffffff;
+  padding-top: 30px;
+  padding-left: 20px;
+  font-size: 36px;
+}
+.venue-image {
+  width: 100px;
+  height: 100px;
+  margin-left: 70px;
+  margin-top: 25px;
+  margin-bottom: 50px;
+  border-radius: 50%;
+}
+.venue-image:hover {
+  background: #ffffff;
+  transform: scale(1.5);
+}
+.groundImages {
+  margin-left: 60px;
+  margin-top: 70px;
+  /* border: 1px solid black; */
+  width: 450px;
+  height: 250px;
+}
+.groundCard {
+  margin-left: 40px;
+
+  width: 450px;
+}
+.middle {
+  transition: 0.5s ease;
+  opacity: 0;
+  position: relative;
+  /* left:20%; top:80%; */
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+.groundCard:hover .groundImages {
+  opacity: 0.3;
+}
+.groundCard:hover .middle {
+  opacity: 1;
+}
+.grid-container {
+  display: inline-grid;
+  grid-template-columns: auto auto auto;
+}
+.countryHeading {
+  float: right;
+  margin-right: 74%;
+  margin-top: 55px;
+  font-size: 36px;
+}
+.groundName {
+  margin-left: 170px;
+}
+span {
+  /* margin-right:20%; */
+}

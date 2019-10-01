@@ -22,7 +22,6 @@ export class Home extends Component {
     console.log(this.props);
     return (
       <div>
-        {/* <Navigation /> */}
         <div className="home-flex-container">
           <div className="site">
             <div className="fixtures ">

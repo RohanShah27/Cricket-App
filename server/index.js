@@ -1,4 +1,7 @@
 const express = require("express");
+const playersRanking = require("./routes/api/playerRanking");
+const venues = require("./routes/api/Venues");
+const team = require("./routes/api/Team");
 const headlines = require("./routes/api/headlines");
 const fixtures = require("./routes/api/fixtures");
 const players = require("./routes/api/players");
@@ -21,6 +24,9 @@ app.use("/api/fixtures/", fixtures);
 app.use("/api/players/", players);
 // Make route for Matches
 app.use("/api/matches/", matches);
+app.use("/api/playerRanking/", playersRanking);
+app.use("/api/venues", venues);
+app.use("/api/team", team);
 const port = process.env.port || 5000;
-app.listen(port, () => console.log(`Server is listening on port : ${port}`));
+app.listen(port, () => console.log(`Server is listening on port ${port}`));
 module.exports = app;
