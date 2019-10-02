@@ -23,12 +23,11 @@ export const login = (user, history) => dispatch => {
     .then(res => {
       console.log(res.data.data);
       localStorage.setItem("token", res.data.data);
-      history.push("/player");
+      history.push("/");
       dispatch({
         type: LOGIN
       });
       console.log(res.data);
-      alert("Login successful");
       // history.push("/displayusers");
     })
     .catch(err => {

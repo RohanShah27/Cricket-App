@@ -16,7 +16,7 @@ export default class Navigation extends Component {
   };
   removeToken = () => {
     localStorage.removeItem("token");
-    this.render();
+    this.forceUpdate();
   };
   changeState = () => {
     this.setState({

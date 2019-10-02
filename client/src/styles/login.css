@@ -17,6 +17,10 @@
   color: white;
 }
 
+::placeholder {
+  color: #f39c12;
+}
+
 .loginheader {
   font-size: 30px;
   text-transform: uppercase;
