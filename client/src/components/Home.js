@@ -17,7 +17,6 @@ export class Home extends Component {
     this.props.getHeadline();
     this.props.getHeadlines();
     this.props.getFixtures();
-    this.props.getRecentMatches();
   }
   render() {
     console.log(this.props);
@@ -46,11 +45,7 @@ export class Home extends Component {
                 <h2 className="news-header">India's Tour of WestIndies</h2>
                 <div col-content>
                   <figure>
-<<<<<<< HEAD
-                    <img className="imgforheadline" src={dhoni} />
-=======
                     <img src={dhoni} className="homeimg" />
->>>>>>> fa09f744048db92ee090de8500d16eb87cd52cb4
                   </figure>
                   <figcaption>
                     <span className="newsTitle">
@@ -112,30 +107,6 @@ export class Home extends Component {
             </div>
           </div>
         </div>{" "}
-        <div className="match-container">
-          <div className="testimonials">
-            {this.props.match.map(match => (
-              <div className="card">
-                <div className="parent">
-                  <div className="first">
-                    <img className="imgformatch" src={india} />
-                    <p>{match.team_name1}</p>
-                    <p>250/5 (50.0)</p>
-                  </div>
-                  <div className="second">
-                    <button className="buttonformatch">View</button>
-                  </div>
-                  <div className="third">
-                    <img className="imgformatch" src={pakistan} />
-
-                    <p>{match.team_name2}</p>
-                    <p>224/6 (50.0)</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
       </div>
     );
   }
@@ -144,13 +115,9 @@ const mapStateToProps = state => ({
   headlines: state.headlinesReducer.headlines,
   headline: state.headlinesReducer.headline,
   fixtures: state.fixturesReducer.fixtures,
-  match: state.matchReducer.match
+  match: state.matchReducers.match
 });
 export default connect(
   mapStateToProps,
-<<<<<<< HEAD
-  { getHeadlines, getFixtures, getHeadline, getRecentMatches }
-=======
   { getHeadlines, getFixtures, getHeadline, getMatchesRecentMatches }
->>>>>>> fa09f744048db92ee090de8500d16eb87cd52cb4
 )(Home);

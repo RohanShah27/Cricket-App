@@ -6,7 +6,7 @@ import team from "./Team";
 import headlines from "./headlinesReducer";
 import fixtures from "./fixturesReducer";
 import player from "./playersReducer";
-import match from "./matchReducer";
+import match from "./matchReducers";
 
 export default combineReducers({
   playerRankingReducer: players,
@@ -16,5 +16,5 @@ export default combineReducers({
   headlinesReducer: headlines,
   fixturesReducer: fixtures,
   playerReducer: player,
-  matchReducer: match
+  matchReducers: match
 });
