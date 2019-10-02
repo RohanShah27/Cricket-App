@@ -35,7 +35,7 @@ export class PlayerProfile extends Component {
         <div className="main-section">
           <div className="flex-container">
             <div style={{ flexGrow: 1 }}>
-              <img src={virat}></img>
+              <img src={virat} />
             </div>
             <div style={{ flexGrow: 8 }}>
               <h1>{this.props.player[0].player_name}</h1>
