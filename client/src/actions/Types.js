@@ -13,3 +13,9 @@ export const GET_FIXTURES = "GET_FIXTURES";
 export const SEARCH_PLAYER = "SEARCH_PLAYER";
 export const GET_RECENT_MATCHES = "GET_RECENT_MATCHES";
 export const GET_MATCHESBYTYPE = "GET_MATCHESBYTYPE";
+
+export const LOGIN = "LOGIN";
+export const ADD_PLAYERS = "ADD_PLAYERS";
+export const ADD_PLAYERS_TYPE = "ADD_PLAYERS_TYPE";
+
+export const GET_USERS = "GET_USERS";
