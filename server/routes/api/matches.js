@@ -29,4 +29,33 @@ router.get("/getrecent", async (req, res) => {
     });
   }
 });
+
+router.post("/getbytype", async (req, res) => {
+  const type = req.body.type;
+  console.log(type);
+  try {
+    const result = await db.any(
+      "SELECT * FROM match where match_type = '" + type + "'; "
+    );
+    if (!result) {
+      res.status(404).json({
+        statusCode: 404,
+        message: "Cannot find match with the specified type",
+        data: null
+      });
+    }
+    res.status(200).json({
+      status: 200,
+      data: result,
+      message: "Retrieved all matches successfully"
+    });
+  } catch (err) {
+    res.status(400).json({
+      status: 400,
+      message: "Server Error",
+      data: null
+    });
+  }
+});
+
 module.exports = router;

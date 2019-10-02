@@ -1,0 +1,193 @@
+@import url(https://fonts.googleapis.com/css?family=Work+Sans);
+
+::-webkit-scrollbar {
+  display: none;
+}
+body {
+  margin: 0;
+  padding: 0;
+  background-color: white;
+  font-family: "Work Sans";
+  width: 100%;
+  height: 100%;
+}
+
+.match-tab1,
+.match-tab2,
+.match-tab3 {
+  font-family: "Work Sans";
+}
+
+/* #header {
+  margin: 0;
+  padding: 20px;
+  text-align: initial;
+  background: #f39c12;
+  color: white;
+  font-size: 25px;
+  font-style: #ffffff;
+} */
+
+.match-pc-tab input,
+.match-pc-tab section > div {
+  display: none;
+}
+
+#match-tab1:checked ~ section .match-tab1,
+#match-tab2:checked ~ section .match-tab1,
+#match-tab3:checked ~ section .match-tab1 {
+  display: block;
+}
+.match-tab1 {
+}
+
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
+}
+
+.match-pc-tab {
+  width: 100%;
+  margin: 0 auto;
+  margin-top: 5%;
+}
+
+.match-pc-tab ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.match-pc-tab ul li label {
+  float: left;
+  padding: 15px 25px;
+  border: 1px solid black;
+  border-bottom: 0;
+}
+
+.match-pc-tab ul li label:hover {
+  background-color: #f39c12;
+  color: white;
+}
+
+/* .pc-tab ul li label:active {
+  background-color: black;
+} */
+
+.match-pc-tab ul li:not(:last-child) label {
+  border-right-width: 0;
+}
+
+.match-pc-tab section {
+  clear: both;
+}
+
+.match-pc-tab section .match-tab1,
+.match-pc-tab section .match-tab2,
+.match-pc-tab section .match-tab3 {
+  padding: 20px;
+  width: 100%;
+  height: 100vh;
+  overflow: auto;
+  border: 1px solid black;
+  border-left-color: white;
+  border-right-color: white;
+  border-bottom-color: white;
+}
+
+.match-pc-tab section div h2 {
+  margin: 0;
+}
+
+/* when on that tab */
+#match-tab1:checked ~ nav .match-tab1 label,
+#match-tab2:checked ~ nav .match-tab2 label,
+#match-tab3:checked ~ nav .match-tab3 label {
+  position: relative;
+}
+
+#match-tab1:checked ~ nav .match-tab1 label:after,
+#match-tab2:checked ~ nav .match-tab2 label:after,
+#match-tab3:checked ~ nav .match-tab3 label:after {
+  content: "";
+  display: block;
+  position: absolute;
+  height: 2px;
+  width: 100%;
+  left: 0;
+  bottom: -1px;
+}
+
+.match-testimonials {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-gap: 25px;
+}
+
+.match-testimonials .match-card {
+  position: relative;
+  height: 180px;
+  width: 400px;
+  margin: 0 auto;
+  box-shadow: 0px 4px 6px 0px #c2c2c2;
+  text-align: center;
+  border: 1px solid black;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.match-active-option {
+  color: white;
+  background: #f39c12;
+}
+
+.match-parent {
+  display: flex;
+  flex-direction: row;
+}
+
+.match-third {
+  padding-top: 70px;
+  padding-left: 10px;
+}
+
+.match-first {
+  padding-top: 30px;
+  padding-left: 10px;
+}
+
+.match-second {
+  padding-top: 30px;
+  padding-left: 15px;
+}
+
+.match-testimonials .match-card .layer {
+  z-index: 1;
+  position: absolute;
+  top: calc(100% - 2px);
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: 0.5s;
+}
+
+.match-testimonials .match-card .content {
+  z-index: 2;
+}
+
+.match-img {
+  height: 70px;
+  border-radius: 50%;
+}
+
+.match-testimonials .match-card .content .details h2 {
+  font-size: 18px;
+  color: #fff;
+}
+/* p {
+  word-break: break-all;
+} */
+
+.match-p {
+  font-size: 14px;
+}

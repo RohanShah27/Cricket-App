@@ -17,14 +17,17 @@
   margin-bottom: 3px;
   font-size: 16px;
   padding-bottom: 5px;
+  padding-top: 5px;
 }
 .home-p span {
   display: block;
 }
 .fixtures-header {
   margin: 0;
-  padding: 15px 15px 0;
-  color: #f39c12;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background: #f39c12;
+  color: white;
   font-size: 18px;
   line-height: 21px;
   text-align: center;
@@ -39,16 +42,22 @@ figure {
 }
 
 .news-header {
+  padding-top: 10px;
+
   font-size: 18px;
-  color: #f39c12;
+  background: #f39c12;
+  color: white;
   padding-bottom: 10px;
   text-align: center;
   margin-bottom: 0px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
 }
 .home-ul {
   padding-inline-start: 2px;
 }
 .home-li {
+  padding-top: 5px;
   list-style: none;
   padding-bottom: 5px;
 
@@ -62,6 +71,7 @@ figure {
 .home-hr {
   border-color: #f39c12;
   margin-bottom: 3px;
+  margin-top: 3px;
 }
 
 .home-flex-container {
@@ -189,7 +199,9 @@ figcaption {
   color: #f39c12;
   border: 1px solid #f39c12;
   border-radius: 8px;
+  height: 20px;
   outline: none;
+  cursor: pointer;
 }
 
 .buttonformatch:hover {

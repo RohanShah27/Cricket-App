@@ -7,6 +7,8 @@ import Home from "./components/Home";
 import PlayerProfile from "./components/PlayerProfile";
 import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
+import Match from "./components/Match";
+import Login from "./components/Login";
 
 function App() {
   return (
@@ -22,6 +24,8 @@ function App() {
         <Route exact path="/venues" component={Venues}></Route>
         <Route exact path="/teams" component={Team}></Route>
         <Route exact path="/rankings" component={PlayerRanking}></Route>
+        <Route exact path="/series" component={Match}></Route>
+        <Route exact path="/login" component={Login}></Route>
         <Footer />
       </div>
     </Router>
