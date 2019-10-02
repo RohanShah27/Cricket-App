@@ -6,11 +6,11 @@ import { searchPlayer } from "../actions/Players";
 import virat from "../virat-kohli.png";
 
 export class PlayerProfile extends Component {
-  // constructor(props) {
-  //   // super(props) -> its parents and all of its parents properties
-  //   super(props);
-  //   // this.searchForPlayer = this.searchForPlayer.bind(this);
-  // }
+  constructor(props) {
+    // super(props) -> its parents and all of its parents properties
+    super(props);
+    // this.searchForPlayer = this.searchForPlayer.bind(this);
+  }
   state = {
     playerName: this.props.match.params.playerName
   };
@@ -18,7 +18,6 @@ export class PlayerProfile extends Component {
     this.getPlayerDetails();
   }
   componentWillReceiveProps(nextProps) {
-    //condition
     this.getPlayerDetails();
     this.setState({ playerName: this.props.match.params.playerName });
   }
@@ -35,7 +34,7 @@ export class PlayerProfile extends Component {
         <div className="main-section">
           <div className="flex-container">
             <div style={{ flexGrow: 1 }}>
-              <img src={virat} />
+              <img className="profile-img" src={virat}></img>
             </div>
             <div style={{ flexGrow: 8 }}>
               <h1>{this.props.player[0].player_name}</h1>

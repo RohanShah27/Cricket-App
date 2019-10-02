@@ -1,16 +1,15 @@
 /* Nav bar Css */
-@import url(https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css);
 *::-webkit-scrollbar {
   display: none;
 }
-a {
+.nav-container a {
   color: white;
   padding: 10px;
   text-decoration: none;
   display: inline-block;
   transition: 0.5s;
 }
-.container {
+.nav-container {
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -19,12 +18,12 @@ a {
   box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.5);
   height: 60px;
 }
-.main-menu {
+.nav-main-menu {
   display: flex;
   flex-direction: row;
   align-items: center;
 }
-.main-menu > li {
+.nav-main-menu > li {
   float: left;
   margin-right: auto;
   padding-right: 10px;
@@ -33,10 +32,10 @@ a {
   position: relative;
   list-style-type: none;
 }
-.main-menu li a {
+.nav-main-menu li a {
   font-size: 16px;
 }
-.main-menu > li:hover > a {
+.nav-main-menu > li:hover > a {
   border-bottom: 2px solid white;
 }
 .nav-heading {
@@ -47,14 +46,14 @@ a {
 .nav-heading a {
   padding-top: 8px;
 }
-input {
+.nav-input {
   border: none;
   font-size: 12px;
   padding: 6px;
   margin-top: 10px;
   border-radius: 2px;
 }
-button {
+.nav-button {
   float: right;
   padding: 6px 10px;
   color: white;
@@ -63,13 +62,13 @@ button {
   border: none;
   cursor: pointer;
 }
-.options {
+.nav-options {
   margin-top: 10px;
   font-size: 12px;
   cursor: pointer;
 }
 @media (max-width: 720px) {
-  .main-menu {
+  .nav-main-menu {
     display: none;
     position: absolute;
     top: 50px;
@@ -86,7 +85,7 @@ button {
       opacity: 1;
     }
   }
-  .main-menu > li {
+  .nav-main-menu > li {
     float: none;
   }
 }

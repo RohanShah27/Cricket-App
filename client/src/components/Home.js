@@ -22,7 +22,6 @@ export class Home extends Component {
     console.log(this.props);
     return (
       <div>
-        {/* <Navigation /> */}
         <div className="home-flex-container">
           <div className="site">
             <div className="fixtures ">
@@ -116,7 +115,7 @@ const mapStateToProps = state => ({
   headlines: state.headlinesReducer.headlines,
   headline: state.headlinesReducer.headline,
   fixtures: state.fixturesReducer.fixtures,
-  match: state.matchReducer.match
+  match: state.matchReducers.match
 });
 export default connect(
   mapStateToProps,

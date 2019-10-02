@@ -16,7 +16,7 @@ export default class Navigation extends Component {
   };
   removeToken = () => {
     localStorage.removeItem("token");
-    this.render();
+    this.forceUpdate();
   };
   changeState = () => {
     this.setState({
@@ -35,18 +35,18 @@ export default class Navigation extends Component {
   render() {
     console.log(this.props);
     return (
-      <div className="container">
+      <div className="nav-container">
         <h3 className="nav-heading">
           <a>
             <Link to={"/"}>Crickstrait</Link>
           </a>
           {this.state.menSelected == true ? (
-            <a className="options" onClick={this.menState}>
+            <a className="nav-options" onClick={this.menState}>
               Men
             </a>
           ) : (
             <a
-              className="options"
+              className="nav-options"
               onClick={this.menState}
               style={{ color: "#c2c2c2" }}
             >
@@ -55,20 +55,20 @@ export default class Navigation extends Component {
           )}
           {this.state.menSelected == true ? (
             <a
-              className="options"
+              className="nav-options"
               onClick={this.changeState}
               style={{ color: "#c2c2c2" }}
             >
               Women
             </a>
           ) : (
-            <a className="options" onClick={this.changeState}>
+            <a className="nav-options" onClick={this.changeState}>
               Women
             </a>
           )}
         </h3>
 
-        <ol className="main-menu">
+        <ol className="nav-main-menu">
           <li>
             {this.state.menSelected == true ? (
               <a>
@@ -99,17 +99,18 @@ export default class Navigation extends Component {
           <li>
             <form>
               <input
+                className="nav-input"
                 type="text"
                 placeholder="eg: Virat Kohli"
                 name="playerName"
                 onChange={this.OnChange}
                 value={this.state.playerName}
               />
-              {/* <button> */}
-              <Link to={"/playerprofile/" + this.state.playerName}>
-                <i class="fa fa-search"></i>
-              </Link>
-              {/* </button> */}
+              <button className="nav-button">
+                <Link to={"/playerprofile/" + this.state.playerName}>
+                  <i class="fa fa-search"></i>
+                </Link>
+              </button>
             </form>
           </li>
           <li>
