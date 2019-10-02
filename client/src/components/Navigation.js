@@ -113,9 +113,19 @@ export default class Navigation extends Component {
               </button>
             </form>
           </li>
+          {localStorage.getItem("token") ? (
+            <li>
+              <Link to="/createPlayer">
+                <a>Admin</a>
+              </Link>
+            </li>
+          ) : null}
           <li>
             {localStorage.getItem("token") ? (
-              <a onClick={this.removeToken}>Logout</a>
+              <Link to="/">
+                {" "}
+                <a onClick={this.removeToken}>Logout</a>
+              </Link>
             ) : (
               <a>
                 <Link to="/login">Admin?</Link>
