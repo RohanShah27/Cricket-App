@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const pg = require("pg-promise")();
 const db = pg("postgres://postgres:123456@192.168.0.63:5432/crickstrait");
+//assigning a new playertype(i.e Batsman,Bowler,All Rounder)
 router.post("/new", async (req, res) => {
   player = {
     player_role: req.body.player_role
@@ -14,7 +15,7 @@ router.post("/new", async (req, res) => {
     message: "Inserted Player_role Successfully"
   });
 });
-
+//get all roles of the player in the database
 router.get("/all", async (req, res) => {
   const result = await db.any("select * from player_role");
   res.status(200).json({

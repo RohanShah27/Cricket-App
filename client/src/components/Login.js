@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { login } from "../actions/user";
+import { login } from "../actions/User";
 
 import { connect } from "react-redux";
 import "../styles/login.css";
@@ -8,27 +8,33 @@ export class Login extends Component {
     super(props);
     this.onLogin = this.onLogin.bind(this);
   }
+  //values to be taken in the current component
   state = {
     email: "",
     password: ""
   };
 
   OnChange = event => {
+    //state change when the user inputs in the inputbox
     this.setState({ [event.target.name]: event.target.value });
   };
   componentDidMount() {
     if (localStorage.getItem("token")) {
       this.props.history.push("/");
+      console.log(this.props);
     }
   }
 
   onLogin(e) {
+    //does not allow login values should be shown on the searchbar
     e.preventDefault();
     let user = {
       email: this.state.email,
       password: this.state.password
     };
+    //login function in actions/user
     this.props.login(user, this.props.history);
+    //set current state
     this.setState({
       email: "",
       password: ""
@@ -36,6 +42,7 @@ export class Login extends Component {
   }
 
   render() {
+    console.log(this.props)
     return (
       <div>
         <div></div>
@@ -58,6 +65,7 @@ export class Login extends Component {
               onChange={this.OnChange}
               value={this.state.password}
             />
+            {this.props.error ? <><p>{this.props.error}</p></> : null}
             <button
               onChange={this.onChange}
               onClick={this.onLogin}
@@ -73,10 +81,12 @@ export class Login extends Component {
 }
 
 const mapStateToProps = state => ({
-  users: state.userReducer.users
+  users: state.userReducer.users,
+  error: state.userReducer.error
 });
 
 export default connect(
   mapStateToProps,
+  //call to login function
   { login }
 )(Login);

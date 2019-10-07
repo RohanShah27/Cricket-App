@@ -11,13 +11,15 @@ const playerType = require("./routes/api/playerType");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const app = express();
+const logger = require("morgan");
 app.use(cors());
-app.use(bodyParser.json());
 app.use(
   bodyParser.urlencoded({
     extended: false
   })
 );
+app.use(logger("common"));
+app.use(bodyParser.json());
 // Make route for Headlines
 app.use("/api/headlines/", headlines);
 // Make route for Fixtures
@@ -26,11 +28,16 @@ app.use("/api/fixtures/", fixtures);
 app.use("/api/players/", players);
 // Make route for Matches
 app.use("/api/matches/", matches);
+//Make route for playersRanking
 app.use("/api/playerRanking/", playersRanking);
 app.use("/api/venues", venues);
 app.use("/api/team", team);
+//Make route for admin 
 app.use("/api/user/", user);
+//make route for player_role
 app.use("/api/playertype/", playerType);
+
+
 const port = process.env.port || 5000;
 app.listen(port, () => console.log(`Server is listening on port ${port}`));
 module.exports = app;

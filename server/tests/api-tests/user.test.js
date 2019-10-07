@@ -86,3 +86,79 @@ it("should return status of 400 and should provide a login successful", done => 
       done();
     });
 });
+
+it("should return status of 200 and a message", done => {
+  let data = {
+    team_name: "China",
+  };
+  let payload = JSON.stringify(data);
+
+  request(app)
+    .post("/api/user/newteam")
+    .send(payload)
+    .set("Content-type", "application/json")
+    .then(response => {
+      expect(response.statusCode).toBe(200);
+      expect(response.body).toEqual(expect.any(Object));
+      expect(response.body.message).toBe("Inserted Team Successfully");
+      done();
+    });
+});
+
+it("should return status of 400 and a message", done => {
+  let data = {
+    team_name: "India",
+  };
+  let payload = JSON.stringify(data);
+
+  request(app)
+    .post("/api/user/newteam")
+    .send(payload)
+    .set("Content-type", "application/json")
+    .then(response => {
+      expect(response.statusCode).toBe(400);
+      expect(response.body).toEqual(expect.any(Object));
+      expect(response.body.message).toBe("Team already exists");
+      done();
+    });
+});
+
+it('it should return a status code of 200 and a message in the body', (done) => {
+  let data = {
+    email: "ykb238@gmail.com",
+    password: "654321"
+  };
+  let payload = JSON.stringify(data);
+
+  request(app)
+    .put("/api/user/resetpassword", data)
+    .send(payload)
+    .set("Content-type", "application/json")
+    .then(response => {
+      expect(response.statusCode).toBe(200);
+      expect(response.body).toEqual(expect.any(Object));
+      expect(response.body.message).toBe("Updated Password Successfully");
+      done();
+    });
+
+
+});
+
+it('it should return a status code of 400 and a message in the body', (done) => {
+  let data = {
+    email: "ykb238@gmail.com",
+    password: "654321"
+  };
+  let payload = JSON.stringify(data);
+
+  request(app)
+    .put("/api/users/resetpassword", data)
+    .send(payload)
+    .set("Content-type", "application/json")
+    .then(response => {
+      expect(response.statusCode).toBe(200);
+      expect(response.body).toEqual(expect.any(Object));
+      expect(response.body.message).toBe("Password Updation Error");
+      done();
+    });
+});

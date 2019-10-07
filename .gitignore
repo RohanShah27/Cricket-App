@@ -2,3 +2,4 @@
 **/.scannerwork
 **/**/assets
 **/package-lock.json
+**/coverage

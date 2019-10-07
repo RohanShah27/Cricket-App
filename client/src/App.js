@@ -9,7 +9,10 @@ import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
 import Match from "./components/Match";
 import Login from "./components/Login";
-
+import Player from "./components/Player";
+import AddNewAdmin from "./components/AddNewAdmin";
+import AddNewTeam from "./components/AddNewTeam";
+import ResetPassword from "./components/ResetPassword";
 function App() {
   return (
     <Router>
@@ -26,6 +29,10 @@ function App() {
         <Route exact path="/rankings" component={PlayerRanking}></Route>
         <Route exact path="/series" component={Match}></Route>
         <Route exact path="/login" component={Login}></Route>
+        <Route exact path="/player" component={Player}></Route>
+        <Route exact path="/addnewadmin" component={AddNewAdmin} />
+        <Route exact path="/addnewteam" component={AddNewTeam} />
+        <Route exact path="/resetpassword" component={ResetPassword} />
         <Footer />
       </div>
     </Router>

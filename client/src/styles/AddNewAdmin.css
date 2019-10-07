@@ -1,9 +1,9 @@
-.login-button {
+.admin-new-button {
   width: 150px;
   background: white;
   color: #f39c12;
   font-size: 18px;
-  border: 1px solid #f39c12;
+  border: 1px solid #c2c2c2;
   box-sizing: border-box;
   border-radius: 8px;
   cursor: pointer;
@@ -29,8 +29,8 @@
   }
 }
 
-.login-button:hover {
-  background: #f39c12;
+.admin-new-button:hover {
+  background: #c2c2c2;
   color: white;
 }
 
@@ -38,15 +38,16 @@
   color: #f39c12;
 }
 
-.loginheader {
-  font-size: 30px;
+.adminnewheader {
+  font-size: 15px;
   text-transform: uppercase;
   color: #2c3e50;
-  margin-bottom: 30px;
+  margin-bottom: 40px;
 }
-.login {
+.adminnewinput {
   padding: 15px;
-  border: 1px solid #218380;
+  border: 1px solid #c2c2c2;
+  margin-top: 30px;
   border-radius: 8px;
   margin-bottom: 20px;
   width: 100%;
@@ -56,18 +57,18 @@
   outline: 0;
 }
 
-#loginform fieldset {
-  border: 1px solid #218380;
+#addnewadminform fieldset {
+  border: 1px solid #c2c2c2;
   border-radius: 8px;
   padding: 50px 50px;
   box-sizing: border-box;
-  height: 350px;
+  height: 320px;
   width: 80%;
   margin: 0 10%;
   position: relative;
 }
 
-#loginform {
+#addnewadminform {
   width: 500px;
   height: 500px;
   margin: 50px auto;
