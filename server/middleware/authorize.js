@@ -1,4 +1,4 @@
-var config = require("../config/custom-environment-variables.json")
+var config = require("config")
 //authorzation of the user through token
 const jwt = require("jsonwebtoken");
 const validateToken = (req, res, next) => {
@@ -14,7 +14,7 @@ const validateToken = (req, res, next) => {
   console.log(token);
 
   try {
-    const verifyingtoken = jwt.verify(token, config.get("PrivateKey"));
+    const verifyingtoken = jwt.verify(token, config.get("privatekey"));
     const decodedToken = jwt.decode(token);
     console.log(decodedToken);
 

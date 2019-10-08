@@ -3,7 +3,7 @@ const express = require("express");
 const router = express.Router();
 const pg = require("pg-promise")();
 // Connecting to the hosted database fixtures
-const db = pg("postgres://postgres:123456@192.168.0.63:5432/crickstrait");
+const db = pg("postgres://postgres:123456@localhost/crickstrait_db");
 
 
 // Get players bio on seearch of players
@@ -27,12 +27,19 @@ router.post("/player_search", async (req, res) => {
 });
 //get all players
 router.get("/all", async (req, res) => {
-  const result = await db.any("select * from player_stats");
-  res.status(200).json({
-    status: 200,
-    data: result,
-    message: "Retrieved all players Successfully"
-  });
+  try {
+    const result = await db.any("select * from player_stats");
+    res.status(200).json({
+      status: 200,
+      data: result,
+      message: "Retrieved all players Successfully"
+    });
+  } catch (err) {
+    res.status(400).json({
+      status: 400,
+      message: "server error"
+    })
+  }
 });
 //To add a new player
 router.post("/new", async (req, res, next) => {

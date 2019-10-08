@@ -4,6 +4,6 @@ const config = require("config")
 // localStorage = new LocalStorage("./scratch");
 //creation of a token with timeline of 30s
 module.exports = payload => {
-  const token = jwt.sign(payload, config.get("PrivateKey"), { expiresIn: "12h" });
+  const token = jwt.sign(payload, config.get("privatekey"), { expiresIn: "12h" });
   return token;
 };

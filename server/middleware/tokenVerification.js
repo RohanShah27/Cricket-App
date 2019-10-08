@@ -4,11 +4,11 @@ const config = require("config");
 module.exports = () => {
   console.log(
     "decoded token" +
-    JSON.stringify(jwt.decode(global.returned_token, config.get("PrivateKey")))
+    JSON.stringify(jwt.decode(global.returned_token, config.get("privatekey")))
   );
 };
 
-global.decoded_token = jwt.decode(global.returned_token, config.get("PrivateKey"));
+global.decoded_token = jwt.decode(global.returned_token, config.get("privatekey"));
 decoded = decoded_token["isAdmin"];
 let err_message;
 jwt.verify(global.returned_token, privatekey, (err, decoded) => {
