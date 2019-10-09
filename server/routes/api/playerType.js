@@ -20,7 +20,7 @@ router.get("/all", async (req, res) => {
   res.status(200).json({
     status: 200,
     data: result,
-    message: "Retrieved all users Successfully"
+    message: "Retrieved all players Successfully"
   });
 });
 module.exports = router;

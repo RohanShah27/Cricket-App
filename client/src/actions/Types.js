@@ -19,3 +19,7 @@ export const ADD_PLAYERS = "ADD_PLAYERS";
 export const ADD_PLAYERS_TYPE = "ADD_PLAYERS_TYPE";
 
 export const GET_USERS = "GET_USERS";
+
+//Type for player -Rohan
+export const ALL_PLAYERS = "ALL_PLAYERS";
+export const PLAYER_SEARCH = "PLAYER_SEARCH";

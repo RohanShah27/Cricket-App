@@ -9,6 +9,7 @@ import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
 import Match from "./components/Match";
 import Login from "./components/Login";
+import Players from "./components/Players";
 
 function App() {
   return (
@@ -18,9 +19,10 @@ function App() {
         <Route exact path="/" component={Home}></Route>
         <Route
           exact
-          path="/playerprofile/:playerName"
+          path="/playerprofile/:player_id"
           component={PlayerProfile}
         ></Route>
+        <Route exact path="/players" component={Players}></Route>
         <Route exact path="/venues" component={Venues}></Route>
         <Route exact path="/teams" component={Team}></Route>
         <Route exact path="/rankings" component={PlayerRanking}></Route>

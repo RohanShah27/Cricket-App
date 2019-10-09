@@ -6,6 +6,8 @@
 }
 
 .profile-img {
+  margin-left: 50px;
+  margin-top: 20px;
   border-radius: 8px;
   height: 200px;
   width: 200px;
@@ -22,6 +24,20 @@
   max-width: 800px;
   border: 1px solid white;
   margin: 50px auto auto auto;
+}
+.players-stats-table {
+  text-align: right;
+  border-collapse: collapse;
+  width: 100%;
+  height: 250px;
+}
+.players-stats-table th,
+td {
+  text-align: center;
+  padding: 8px;
+}
+.players-stats-table tr:nth-child(odd) {
+  background-color: #f2f2f2;
 }
 
 .stats-row {
@@ -54,7 +70,7 @@
 }
 .flex-container > div {
   background-color: white;
-  width: 100px;
+  width: 80px;
   margin: 10px;
   text-align: left;
   line-height: 45px;
@@ -70,29 +86,39 @@
 /* Create two unequal columns that sits next to each other */
 /* Sidebar/left column */
 .side {
-  flex: 30%;
+  flex: 25%;
   border: 1px solid #c2c2c2;
   border-radius: 8px;
   box-shadow: 0px 4px 6px 0px #c2c2c2;
 }
 .side h2 {
-  border-radius: 8px;
-
+  font-size: 20px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
   text-align: center;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
   background: #f39c12;
   color: white;
 }
 .side p {
+  color: gray;
   text-align: justify;
-  padding: 20px;
-  padding-left: 5px;
-  /* padding-bottom: 5px; */
+  padding: 8px;
+  margin-top: 8px;
+  padding-left: 20px;
 }
-.side p:nth-child(odd) {
+.line {
+  width: 80%;
+  margin-left: 20px;
+}
+.personal-detail-content {
+  padding-top: 8px;
+  color: black;
+}
+/* .side p:nth-child() {
   background: #f1f1f1;
-}
+} */
 
 /* Main column */
 .main {
@@ -100,18 +126,27 @@
   border: 1px solid #c2c2c2;
   border-radius: 8px;
   text-align: center;
-  flex: 70%;
+  flex: 75%;
   box-shadow: 0px 4px 6px 0px #c2c2c2;
 }
 .main h2 {
-  padding-top: 10px;
-  padding-bottom: 10px;
+  font-size: 20px;
+  padding-top: 5px;
+  padding-bottom: 5px;
   background: #f39c12;
   color: white;
-  border-radius: 8px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
 }
 .main-section {
   width: 90%;
   margin: 0 50px;
   margin-top: 40px;
+}
+
+@media (max-width: 768px) {
+  .profile-img {
+    margin-left: 0px;
+    margin-top: 50px;
+  }
 }
