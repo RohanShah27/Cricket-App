@@ -19,3 +19,4 @@ export const ADD_PLAYERS = "ADD_PLAYERS";
 export const ADD_PLAYERS_TYPE = "ADD_PLAYERS_TYPE";
 
 export const GET_USERS = "GET_USERS";
+export const GET_GRAPH = "GET_GRAPH";

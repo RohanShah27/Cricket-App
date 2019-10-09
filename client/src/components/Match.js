@@ -1,21 +1,62 @@
-import React, { Component } from "react";
+import React, { Component, useState, useEffect } from "react";
 import { connect } from "react-redux";
 import "../styles/match.css";
 import india from "../assests/india.jpg";
+import Pagination from "./Pagination";
 import pakistan from "../assests/pakistan.jpg";
-
-import { getMatchesByType } from "../actions/matchActions";
-
+import { getMatchesByType, getGraphs } from "../actions/matchActions";
+var json;
 export class Match extends Component {
+  constructor(props) {
+    super(props);
+    this.getData = this.getData.bind(this);
+    this.btnClick = this.btnClick.bind(this);
+  }
+
   componentDidMount() {
     let type = { type: "ODI" };
     this.props.getMatchesByType(type);
+    let obj = {
+      match_id: 14,
+      inning: 2
+    };
+    this.props.getGraphs(obj);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.getData();
+  }
+
+  btnClick(e) {
+    const userId = e.target.value;
+    console.log(userId);
+    this.setState({
+      userId
+    });
+    this.getData();
+  }
+
+  getData() {
+    const { userId } = this.state;
+    this.setState({
+      data: [],
+      loading: true
+    });
+    let res = this.props.match;
+    console.log(res);
+    this.setState({
+      data: res
+    });
+    console.log("Data" + this.state.data);
   }
 
   state = {
     type: "",
     matchType: "ODI",
-    activeClass: "match-active-option"
+    activeClass: "match-active-option",
+    data: [],
+    userId: 1,
+    loading: false
   };
   sendType() {
     console.log("type" + this.state.type);
@@ -35,7 +76,6 @@ export class Match extends Component {
   }
 
   render() {
-    console.log(this.state);
     return (
       <div>
         <div className="match-pc-tab">
@@ -120,10 +160,23 @@ export class Match extends Component {
             </div>
           </section>
         </div>
+
+        <iframe
+          src="https://plot.ly/~bhavana08/158.embed"
+          style={{ width: 30 + "em", height: 30 + "em", border: "none" }}
+        />
       </div>
     );
   }
 }
+
+const PaginationComponent = props => {
+  return (
+    <button onClick={props.onClick} value={props.name}>
+      {props.name}
+    </button>
+  );
+};
 
 const mapStateToProps = state => ({
   match: state.matchReducers.match
@@ -131,5 +184,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { getMatchesByType }
+  { getMatchesByType, getGraphs }
 )(Match);

@@ -9,6 +9,7 @@ import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
 import Match from "./components/Match";
 import Login from "./components/Login";
+import Pagination from "./components/Pagination";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Route exact path="/rankings" component={PlayerRanking}></Route>
         <Route exact path="/series" component={Match}></Route>
         <Route exact path="/login" component={Login}></Route>
+        <Route exact path="/pagination" component={Pagination}></Route>
         <Footer />
       </div>
     </Router>
