@@ -7,35 +7,7 @@
 .rankings-container-header {
   text-align: center;
 }
-.rankings-wrapper {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(30px, 1fr));
-  background-color: #fff;
-  max-width: 800px;
-  height: auto;
-  border: 1px solid white;
-  margin: 50px auto auto auto;
-  padding-bottom: 80px;
-}
 
-.rankings-row {
-  grid-column: 1 / -1;
-  display: grid;
-  grid-template-columns: repeat(4, minmax(50px, 1fr));
-}
-
-.rankings-box {
-  padding: 15px;
-  font-size: 16px;
-}
-
-.rankings-row:nth-child(even) {
-  background-color: #c2c2c2;
-}
-
-.rankings-row:nth-child(1) {
-  background: #c2c2c2;
-}
 .rankingmain-container {
   width: 90%;
   margin: 0px auto;
@@ -56,19 +28,19 @@
   margin-top: 20px;
 }
 
-th {
+.ranking-table th {
   border: 1px solid #dddddd;
   text-align: center;
   padding: 15px;
 }
 
-td {
+.ranking-table td {
   border: 1px solid #dddddd;
   text-align: center;
   padding: 15px;
 }
 
-tr:nth-child(even) {
+.ranking-table tr:nth-child(even) {
   background-color: #dddddd;
 }
 
@@ -103,7 +75,7 @@ tr:nth-child(even) {
   width: 100px;
   height: 50px;
   margin-left: 5px;
-  border: 1px solid #fdf0dc;
+  border: 1px solid #f39c12;
 }
 
 .ranking-active {
@@ -128,14 +100,16 @@ tr:nth-child(even) {
   border: 1px solid #f39c12;
 }
 .ranking-t20-active {
-  border-top-right-radius: 8px;
-  border-bottom-right-radius: 8px;
-  color: white;
-  background-color: #f39c12;
   width: 100px;
-  outline: none;
   height: 50px;
   margin-left: 5px;
+  border: 1px solid #fdf0dc;
+  background-color: #f39c12;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  color: #ffffff;
+  box-shadow: 0px 4px 6px 0px #c2c2c2;
+  outline: none;
 }
 
 .ranking-odi-button {
@@ -145,4 +119,19 @@ tr:nth-child(even) {
   color: #f39c12;
   width: 100px;
   height: 50px;
+}
+
+@media screen and (max-width: 768px) {
+  .ranking-container {
+    display: block;
+  }
+  .ranking-container1 {
+    display: block;
+  }
+  .ranking-table {
+    width: 70%;
+  }
+  .rankings-container-header {
+    margin-right: 25vw;
+  }
 }

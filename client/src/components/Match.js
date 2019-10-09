@@ -2,15 +2,13 @@ import React, { Component, useState, useEffect } from "react";
 import { connect } from "react-redux";
 import "../styles/match.css";
 import india from "../assests/india.jpg";
-import Pagination from "./Pagination";
 import pakistan from "../assests/pakistan.jpg";
 import { getMatchesByType, getGraphs } from "../actions/matchActions";
 var json;
 export class Match extends Component {
   constructor(props) {
     super(props);
-    this.getData = this.getData.bind(this);
-    this.btnClick = this.btnClick.bind(this);
+    // this.getData = this.getData.bind(this);
   }
 
   componentDidMount() {
@@ -21,33 +19,6 @@ export class Match extends Component {
       inning: 2
     };
     this.props.getGraphs(obj);
-  }
-
-  componentWillReceiveProps(nextProps) {
-    this.getData();
-  }
-
-  btnClick(e) {
-    const userId = e.target.value;
-    console.log(userId);
-    this.setState({
-      userId
-    });
-    this.getData();
-  }
-
-  getData() {
-    const { userId } = this.state;
-    this.setState({
-      data: [],
-      loading: true
-    });
-    let res = this.props.match;
-    console.log(res);
-    this.setState({
-      data: res
-    });
-    console.log("Data" + this.state.data);
   }
 
   state = {
@@ -169,14 +140,6 @@ export class Match extends Component {
     );
   }
 }
-
-const PaginationComponent = props => {
-  return (
-    <button onClick={props.onClick} value={props.name}>
-      {props.name}
-    </button>
-  );
-};
 
 const mapStateToProps = state => ({
   match: state.matchReducers.match
