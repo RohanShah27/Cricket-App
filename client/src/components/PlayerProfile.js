@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Navigation from "./Navigation";
 import "../styles/playerProfile.css";
 import { connect } from "react-redux";
 import { searchPlayer } from "../actions/Players";
@@ -7,7 +6,6 @@ import virat from "../virat-kohli.png";
 
 export class PlayerProfile extends Component {
   constructor(props) {
-    // super(props) -> its parents and all of its parents properties
     super(props);
   }
 
@@ -119,27 +117,6 @@ export class PlayerProfile extends Component {
                         </tr>
                       ))
                     : console.log("no player found")}
-                  {/* <tr>
-                    <td>T20</td>
-                    <td>1</td>
-                    <td>2</td>
-                    <td>3</td>
-                    <td>3</td>
-                  </tr>
-                  <tr>
-                    <td>T20</td>
-                    <td>1</td>
-                    <td>2</td>
-                    <td>3</td>
-                    <td>3</td>
-                  </tr>
-                  <tr>
-                    <td>T20</td>
-                    <td>1</td>
-                    <td>2</td>
-                    <td>3</td>
-                    <td>3</td>
-                  </tr> */}
                 </table>
               </div>
             </div>
