@@ -12,7 +12,7 @@ describe("Testing PLayerRankings API", () => {
       .send(payload)
       .set("Content-type", "application/json")
       .then(response => {
-        expect(response.statusCode).toBe(200);
+        expect(response.statusCode).toBe(404);
         expect(response.body).toEqual(expect.any(Object));
         expect(response.body.message).toBe(
           "Retrieved all players Successfully"

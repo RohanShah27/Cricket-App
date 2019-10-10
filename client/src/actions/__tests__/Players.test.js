@@ -26,7 +26,7 @@ describe("Testing Players action", () => {
     const expectedResponse = [
       {
         type: ALL_PLAYERS,
-        payload: responseofAPI
+        payload: responseOfApi
       }
     ];
     return store.dispatch(action.getAllPlayers()).then(() => {

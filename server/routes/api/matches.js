@@ -2,12 +2,12 @@ const express = require("express");
 const router = express.Router();
 const pg = require("pg-promise")();
 // Conneccting to the hosted database fixtures
-const db = pg("postgres://postgres:123456@localhost/crickstrait_db");
+const db = pg("postgres://postgres:123456@localhost:5432/crickstrait_db");
 
 router.get("/getrecent", async (req, res) => {
   try {
     let result = await db.any(
-      "select * from match where date like '2017%' limit 8;"
+      "with s as(select count(*) as total from match) select * from match where match_id<=(select total from s) order by match_id desc limit 8;"
     );
     if (!result) {
       res.status(404).json({

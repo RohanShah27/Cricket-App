@@ -1,9 +1,9 @@
 import React from "react";
 import { shallow } from "enzyme";
-import Navigation from "../Navigation";
+import Footer from "../Footer";
 
-const navigation = jest.fn();
-const wrapper = shallow(<Navigation navigation={navigation} />);
+const footer = jest.fn();
+const wrapper = shallow(<Footer footer={footer} />);
 
 describe("Testing Footer Component", () => {
   it("should mount the component", () => {
@@ -46,7 +46,7 @@ describe("Testing Footer Component", () => {
         .find("div")
         .at(1)
         .props().className
-    ).toBe("footer-follows");
+    ).toBe("footer-follow");
   });
 
   it("no of i tag className", () => {

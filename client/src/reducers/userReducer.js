@@ -1,11 +1,18 @@
-import { LOGIN, GET_USERS, SEND_OTP, ADD_NEW_TEAM, RESET_PASSWORD, ERROR_TYPE } from "../actions/Types";
+import {
+  LOGIN,
+  GET_USERS,
+  SEND_OTP,
+  ADD_NEW_TEAM,
+  RESET_PASSWORD,
+  ERROR_TYPE
+} from "../actions/Types";
 
 const initialstate = {
   users: [],
   error: ""
 };
 
-export default function (state = initialstate, action) {
+export default function(state = initialstate, action) {
   switch (action.type) {
     case LOGIN:
       return state;
@@ -21,6 +28,5 @@ export default function (state = initialstate, action) {
       return { ...state, error: action.payload };
     default:
       return state;
-
   }
 }

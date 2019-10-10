@@ -19,7 +19,7 @@ export class Home extends Component {
     this.props.getFixtures();
   }
   render() {
-    console.log(this.props);
+    console.log(this.props.match);
     return (
       <div style={{ marginTop: "80px" }}>
         <div className="home-flex-container">
