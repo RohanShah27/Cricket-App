@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import "../styles/match.css";
 import india from "../assests/india.jpg";
 import pakistan from "../assests/pakistan.jpg";
-import { getMatchesByType, getGraphs } from "../actions/matchActions";
+import { getMatchesByType } from "../actions/matchActions";
 var json;
 export class Match extends Component {
   constructor(props) {
@@ -131,11 +131,6 @@ export class Match extends Component {
             </div>
           </section>
         </div>
-
-        <iframe
-          src="https://plot.ly/~bhavana08/158.embed"
-          style={{ width: 30 + "em", height: 30 + "em", border: "none" }}
-        />
       </div>
     );
   }
@@ -147,5 +142,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { getMatchesByType, getGraphs }
+  { getMatchesByType }
 )(Match);

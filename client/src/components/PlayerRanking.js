@@ -43,6 +43,7 @@ export class PlayerRanking extends Component {
     console.log(this.props);
     return (
       <div>
+        {/* Start of Button-Container fer Navigating through format -- Bhavana */}
         <div className="rankings-button-container">
           <button
             className={
@@ -92,9 +93,13 @@ export class PlayerRanking extends Component {
             T20
           </button>
         </div>
+        {/* End of Button-Container fer Navigating through format -- Bhavana */}
+
+        {/* Start of main container for embedding all tables - Bhavana */}
         <div className="rankingmain-container">
+          {/* Conatiner for first row -- Bhavana */}
           <div class="ranking-container">
-            {/* Table for Batting Stats for all Formats */}
+            {/* Start of Table for Batting Stats for all Formats -- Bhavana*/}
             <div>
               <h2 className="rankings-container-header">
                 {" "}
@@ -121,8 +126,9 @@ export class PlayerRanking extends Component {
                 ))}
               </table>
             </div>
+            {/* End of Table for Batting Stats for all Formats -- Bhavana*/}
 
-            {/* Table for Bowling Stats for all Formats */}
+            {/* Start of Table for Bowling Stats for all Formats -- Bhavana*/}
             <div>
               <h2 className="rankings-container-header">
                 ICC {this.state.format} Bowling
@@ -148,12 +154,13 @@ export class PlayerRanking extends Component {
                 ))}
               </table>
             </div>
+            {/* End of Table for Bowling Stats for all Formats -- Bhavana*/}
           </div>
+          {/* Conatiner for first row -- Bhavana */}
 
-          {/* Second row for ranking starts here */}
-
+          {/*  Start ofSecond row for ranking starts here */}
           <div class="ranking-container1">
-            {/* Table for All-Rounder Stats for all Formats */}
+            {/* Start of Table for All-Rounder Stats for all Formats */}
             <div>
               <h2 className="rankings-container-header">
                 ICC {this.state.format} All-Rounder
@@ -179,8 +186,9 @@ export class PlayerRanking extends Component {
                 ))}
               </table>
             </div>
+            {/* End of Table for All-Rounder Stats for all Formats */}
 
-            {/* Table for Team Stats for all Formats */}
+            {/* Start of Table for Team Stats for all Formats */}
             <div>
               <h2 className="rankings-container-header">
                 ICC {this.state.format} Teams
@@ -206,8 +214,11 @@ export class PlayerRanking extends Component {
                 ))}
               </table>
             </div>
+            {/* End of Table for Team Stats for all Formats */}
           </div>
+          {/*  End ofSecond row for ranking starts here */}
         </div>
+        {/* End of main container for embedding all tables - Bhavana */}
       </div>
     );
   }
