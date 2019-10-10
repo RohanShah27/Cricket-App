@@ -1,10 +1,10 @@
 /* button tag -yash */
-.login-button {
+.teamadmin-new-button {
   width: 150px;
   background: white;
   color: #f39c12;
   font-size: 18px;
-  border: 1px solid #f39c12;
+  border: 1px solid #c2c2c2;
   box-sizing: border-box;
   border-radius: 8px;
   cursor: pointer;
@@ -29,26 +29,27 @@
     margin-top: 0;
   }
 }
-/* hover on button -yash */
-.login-button:hover {
-  background: #f39c12;
+/* hover function on button -yash */
+.teamadmin-new-button:hover {
+  background: #c2c2c2;
   color: white;
 }
-/* placeholder for component -yash */
+/* each placeholder in the component -yash */
 ::placeholder {
   color: #f39c12;
 }
-/* header for login component -yash */
-.loginheader {
-  font-size: 30px;
+/* header in the component -yash */
+.teamadminnewheader {
+  font-size: 15px;
   text-transform: uppercase;
   color: #2c3e50;
-  margin-bottom: 30px;
+  margin-bottom: 40px;
 }
-/* login class -yash */
-.login {
+/* all the input fields -yash */
+.teamadminnewinput {
   padding: 15px;
-  border: 1px solid #218380;
+  border: 1px solid #c2c2c2;
+  margin-top: 30px;
   border-radius: 8px;
   margin-bottom: 20px;
   width: 100%;
@@ -57,19 +58,19 @@
   font-size: 13px;
   outline: 0;
 }
-/* locin form fieldset -yash */
-#loginform fieldset {
-  border: 1px solid #218380;
+/* addnewteamform fieldset -yash */
+#addnewteamform fieldset {
+  border: 1px solid #c2c2c2;
   border-radius: 8px;
   padding: 50px 50px;
   box-sizing: border-box;
-  height: 350px;
+  height: 320px;
   width: 80%;
   margin: 0 10%;
   position: relative;
 }
-/* form login -yash  */
-#loginform {
+/* form addnewteam -yash */
+#addnewteamform {
   width: 500px;
   height: 500px;
   margin: 50px auto;

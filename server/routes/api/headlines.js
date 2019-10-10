@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const pg = require("pg-promise")();
 // Conneccting to the hosted database headlines
-const db = pg("postgres://postgres:123456@192.168.0.63:5432/crickstrait");
+const db = pg("postgres://postgres:123456@localhost/crickstrait_db");
 // get all headlines in the result variable via an asynchronous function
 
 // Get Headlines for Home Section
