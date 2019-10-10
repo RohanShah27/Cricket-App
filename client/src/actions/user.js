@@ -136,7 +136,7 @@ export const login = (user, history) => dispatch => {
     .post("http://localhost:5000/api/user/login", user)
     .then(res => {
       localStorage.setItem("token", res.data.data);
-      history.push("/player");
+      history.push("/adminplayer");
       dispatch({
         type: LOGIN
       });

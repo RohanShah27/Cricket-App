@@ -8,7 +8,7 @@ import fixtures from "./fixturesReducer";
 import player from "./playersReducer";
 import match from "./matchReducers";
 import users from "./userReducer";
-import Adminplayers from "./AdminplayerReducer";
+import adminplayers from "./AdminplayerReducer";
 import playerType from "./playertypeReducer";
 import search from "./searchReducer";
 
@@ -19,7 +19,7 @@ export default combineReducers({
   teamReducer: team,
   headlinesReducer: headlines,
   fixturesReducer: fixtures,
-  AdminplayerReducer: Adminplayers,
+  AdminplayerReducer: adminplayers,
   playersReducer: player,
   playertypeReducer: playerType,
   matchReducers: match,

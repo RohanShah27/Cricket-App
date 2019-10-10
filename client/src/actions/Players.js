@@ -35,7 +35,7 @@ export const searchPlayer = playerId => dispatch => {
 export const createPlayers = player => dispatch => {
   return axios
     .post(
-      "http://localhost:5000/api/players/new",
+      "http://localhost:5000/api/players/newplayers",
       player,
       {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
@@ -56,24 +56,6 @@ export const createPlayers = player => dispatch => {
     });
 };
 
-//To get all the players present in the database -yash
-export const getPlayers = () => dispatch => {
-  return axios
-    .get("http://localhost:5000/api/players/all")
-    .then(res => {
-      dispatch({
-        type: GET_PLAYERS,
-        payload: res.data.data
-      });
-    })
-    .catch(err => {
-      dispatch({
-        type: ERROR_TYPE,
-        //dispatch error message from node -yash
-        data: err.response.data.message
-      });
-    });
-};
 // Retreiev all the players from the database -Rohan
 export const getAllPlayers = () => dispatch => {
   return axios

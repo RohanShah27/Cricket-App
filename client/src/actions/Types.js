@@ -28,7 +28,6 @@ export const PLAYER_SEARCH = "PLAYER_SEARCH";
 export const SEND_OTP = "SEND_OTP";
 export const ADD_NEW_TEAM = "ADD_NEW_TEAM";
 export const RESET_PASSWORD = "RESET_PASSWORD";
-
 export const ERROR_TYPE = "ERROR_TYPE";
 
 // Global Search

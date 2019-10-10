@@ -103,14 +103,22 @@ export class Navigation extends Component {
                       ))
                     : "No Player Found"
                   : null}
-                {/* <Link
-                  to={
-                    "/playerprofile/" +
-                    this.props.search_result.player[0].player_id
-                  }
-                > */}
-                <span></span>
-                {/* </Link> */}
+                {this.props.search_result.length != 0
+                  ? this.props.search_result.team.length != 0
+                    ? this.props.search_result.team.map(team => (
+                        <span className="search_result_data">
+                          <Link
+                            to={{
+                              pathname: "/viewteam/" + team.team_id,
+                              state: { team }
+                            }}
+                          >
+                            <p>{team.player_name}</p>
+                          </Link>
+                        </span>
+                      ))
+                    : "No Player Found"
+                  : null}
               </div>
             </li>
             {localStorage.getItem("token") ? (
