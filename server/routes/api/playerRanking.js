@@ -14,21 +14,11 @@ router.get("/all", async (req, res) => {
 });
 
 router.post("/ranking", async (req, res) => {
-  const type = req.body.type;
   const format = req.body.format;
   try {
     const result = await db.any(
-      "SELECT * FROM player_ranking where type = '" +
-        type +
-        "' and format = '" +
-        format +
-        "'; "
+      "SELECT * FROM player_ranking where format = '" + format + "'; "
     );
-    // if (!result)
-    //   throw {
-    //     statusCode: 404,
-    //     customMessage: "Cannot find ranking with the specified format"
-    //   };
     res.status(200).json({
       status: 200,
       data: result,

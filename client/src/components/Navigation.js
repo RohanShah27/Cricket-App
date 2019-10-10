@@ -6,26 +6,23 @@ import { Link } from "react-router-dom";
 export default class Navigation extends Component {
   constructor(props) {
     super(props);
-    this.changeState = this.changeState.bind(this);
-    this.menState = this.menState.bind(this);
   }
 
   state = {
-    playerName: "",
-    menSelected: true
+    gender: "male"
   };
   removeToken = () => {
     localStorage.removeItem("token");
     this.forceUpdate();
   };
-  changeState = () => {
+  femaleState = () => {
     this.setState({
-      menSelected: false
+      gender: "female"
     });
   };
   menState = () => {
     this.setState({
-      menSelected: true
+      gender: "male"
     });
   };
   OnChange = event => {
@@ -36,93 +33,66 @@ export default class Navigation extends Component {
     console.log(this.props);
     return (
       <div className="nav-container">
-        <h3 className="nav-heading">
-          <a>
-            <Link to={"/"}>Crickstrait</Link>
+        <div class="nav-header">
+          <a class="logo">
+            <Link to="/">Crickstrait</Link>
           </a>
-          {this.state.menSelected == true ? (
-            <a className="nav-options" onClick={this.menState}>
+          {this.state.gender == "male" ? (
+            <a class="options" style={{ color: "#c2c2c2c2" }}>
               Men
             </a>
           ) : (
-            <a
-              className="nav-options"
-              onClick={this.menState}
-              style={{ color: "#c2c2c2" }}
-            >
+            <a class="options" onClick={this.menState}>
               Men
             </a>
           )}
-          {this.state.menSelected == true ? (
-            <a
-              className="nav-options"
-              onClick={this.changeState}
-              style={{ color: "#c2c2c2" }}
-            >
+          {this.state.gender == "female" ? (
+            <a class="options" style={{ color: "#c2c2c2c2" }}>
               Women
             </a>
           ) : (
-            <a className="nav-options" onClick={this.changeState}>
+            <a class="options" onClick={this.femaleState}>
               Women
             </a>
           )}
-        </h3>
 
-        <ol className="nav-main-menu">
-          <li>
-            {this.state.menSelected == true ? (
-              <a>
-                <Link to="/teams">Teams</Link>
-              </a>
-            ) : (
-              <a>
-                <Link to="/teams">Teams</Link>
-              </a>
-            )}
-          </li>
-          <li>
-            {this.state.menSelected == true ? (
-              <a>
-                <Link to="/rankings">Rankings</Link>
-              </a>
-            ) : (
-              <a>
-                <Link to="/rankings">Rankings</Link>
-              </a>
-            )}
-          </li>
-          <li>
-            <a>
-              <Link to="/series">Series</Link>
-            </a>
-          </li>
-          <li>
-            <form>
-              <input
-                className="nav-input"
-                type="text"
-                placeholder="eg: Virat Kohli"
-                name="playerName"
-                onChange={this.OnChange}
-                value={this.state.playerName}
-              />
-              <button className="nav-button">
-                <Link to={"/playerprofile/" + this.state.playerName}>
-                  <i class="fa fa-search"></i>
-                </Link>
+          <input class="menu-btn" type="checkbox" id="menu-btn" />
+          <label class="menu-icon" for="menu-btn">
+            <span class="navicon"></span>
+          </label>
+
+          <ul class="menu">
+            <li>
+              <Link to="/rankings">Rankings</Link>
+            </li>
+            <li>
+              <Link to="/matches">Matches</Link>
+            </li>
+            <li>
+              <Link to="/teams">Teams</Link>
+            </li>
+            <li>
+              <Link to="/players">Players</Link>
+            </li>
+            <li style={{ textAlign: "center" }}>
+              <input class="nav-search-bar" type="text" />
+              <button class="nav-search-button">
+                <i class="fa fa-search"></i>
               </button>
-            </form>
-          </li>
-          <li>
+            </li>
             {localStorage.getItem("token") ? (
-              <a onClick={this.removeToken}>Logout</a>
+              <li>
+                <Link to="/" onClick={this.removeToken}>
+                  Logout
+                </Link>
+              </li>
             ) : (
-              <a>
-                <Link to="/login">Admin?</Link>
-              </a>
+              <li>
+                <Link to="/login">Login</Link>
+              </li>
             )}
-          </li>
-        </ol>
+          </ul>
+        </div>
       </div>
     );
   }

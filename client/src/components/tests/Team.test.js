@@ -32,24 +32,6 @@ describe("Test Team Component", () => {
     expect(wrapper.find("nav").length).toBe(1);
   });
 
-  it("it should have button with text in internationl tab", () => {
-    expect(
-      wrapper
-        .find("#viewDetails")
-        .at(0)
-        .text()
-    ).toEqual(" View Details");
-  });
-
-  it("it should have button with text in IPL tab", () => {
-    expect(
-      wrapper
-        .find("#viewDetails")
-        .at(1)
-        .text()
-    ).toEqual(" View Details");
-  });
-
   it("should have list of countries", () => {
     expect(wrapper.find("ul").length).toBe(1);
   });
@@ -76,7 +58,7 @@ describe("Test Team Component", () => {
         .find("div")
         .at(1)
         .props().className
-    ).toBe("pc-tab");
+    ).toBe("pc-playerTab");
   });
 
   it("should have exactly defined classname", () => {
@@ -85,7 +67,7 @@ describe("Test Team Component", () => {
         .find("div")
         .at(2)
         .props().className
-    ).toBe("tab1");
+    ).toBe("playerTab1");
   });
 
   it("should have exactly defined classname", () => {
@@ -94,7 +76,7 @@ describe("Test Team Component", () => {
         .find("div")
         .at(3)
         .props().className
-    ).toBe("testimonials");
+    ).toBe("team-teamTestimonials");
   });
 
   it("should have exactly defined classname", () => {
@@ -103,7 +85,7 @@ describe("Test Team Component", () => {
         .find("div")
         .at(4)
         .props().className
-    ).toBe("card");
+    ).toBe("teamcomponent-card");
   });
 
   it("should have exactly defined classname", () => {
@@ -121,7 +103,7 @@ describe("Test Team Component", () => {
         .find("div")
         .at(6)
         .props().className
-    ).toBe("content");
+    ).toBe("team-content");
   });
 
   it("should have exactly defined classname", () => {
@@ -130,7 +112,7 @@ describe("Test Team Component", () => {
         .find("div")
         .at(7)
         .props().className
-    ).toBe("details");
+    ).toBe("team-details");
   });
 
   it("should have exactly defined classname", () => {
@@ -139,7 +121,7 @@ describe("Test Team Component", () => {
         .find("div")
         .at(8)
         .props().className
-    ).toBe("card");
+    ).toBe("teamcomponent-card");
   });
 
   it("should have exactly defined classname", () => {
@@ -157,7 +139,7 @@ describe("Test Team Component", () => {
         .find("div")
         .at(10)
         .props().className
-    ).toBe("content");
+    ).toBe("team-content");
   });
 
   it("should have exactly defined classname", () => {
@@ -166,7 +148,7 @@ describe("Test Team Component", () => {
         .find("div")
         .at(11)
         .props().className
-    ).toBe("details");
+    ).toBe("team-details");
   });
 
   it("should have exactly defined classname", () => {
@@ -175,7 +157,7 @@ describe("Test Team Component", () => {
         .find("div")
         .at(12)
         .props().className
-    ).toBe("tab2");
+    ).toBe("playerTab2");
   });
 
   it("should have exactly defined classname", () => {
@@ -184,7 +166,7 @@ describe("Test Team Component", () => {
         .find("div")
         .at(13)
         .props().className
-    ).toBe("testimonials");
+    ).toBe("team-teamTestimonials");
   });
 
   it("should have exactly defined classname", () => {
@@ -193,7 +175,7 @@ describe("Test Team Component", () => {
         .find("div")
         .at(14)
         .props().className
-    ).toBe("card");
+    ).toBe("teamcomponent-card");
   });
 
   it("should have exactly defined classname", () => {
@@ -211,7 +193,7 @@ describe("Test Team Component", () => {
         .find("div")
         .at(16)
         .props().className
-    ).toBe("content");
+    ).toBe("team-content");
   });
 
   it("should have exactly defined classname", () => {
@@ -220,7 +202,7 @@ describe("Test Team Component", () => {
         .find("div")
         .at(17)
         .props().className
-    ).toBe("details");
+    ).toBe("team-details");
   });
 
   it("should have exactly defined classname", () => {
@@ -229,7 +211,7 @@ describe("Test Team Component", () => {
         .find("div")
         .at(18)
         .props().className
-    ).toBe("card");
+    ).toBe("teamcomponent-card");
   });
 
   it("should have exactly defined classname", () => {
@@ -247,7 +229,7 @@ describe("Test Team Component", () => {
         .find("div")
         .at(20)
         .props().className
-    ).toBe("content");
+    ).toBe("team-content");
   });
 
   it("should have exactly defined classname", () => {
@@ -256,7 +238,7 @@ describe("Test Team Component", () => {
         .find("div")
         .at(21)
         .props().className
-    ).toBe("details");
+    ).toBe("team-details");
   });
 
   it("should have exactly defined classname", () => {
@@ -265,7 +247,7 @@ describe("Test Team Component", () => {
         .find("li")
         .at(0)
         .props().className
-    ).toBe("tab1");
+    ).toBe("playerTab1");
   });
 
   it("should have exactly defined classname", () => {
@@ -274,7 +256,7 @@ describe("Test Team Component", () => {
         .find("li")
         .at(1)
         .props().className
-    ).toBe("tab2");
+    ).toBe("playerTab2");
   });
 
   it("should have exactly defined classname", () => {
@@ -283,7 +265,7 @@ describe("Test Team Component", () => {
         .find("li")
         .at(2)
         .props().className
-    ).toBe("tab3");
+    ).toBe("playerTab3");
   });
 
   it("should have exactly defined classname", () => {
@@ -292,6 +274,6 @@ describe("Test Team Component", () => {
         .find("li")
         .at(3)
         .props().className
-    ).toBe("tab4");
+    ).toBe("playerTab4");
   });
 });

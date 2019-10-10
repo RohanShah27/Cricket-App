@@ -2,14 +2,14 @@ const express = require("express");
 const router = express.Router();
 const pg = require("pg-promise")();
 // Conneccting to the hosted database headlines
-const db = pg("postgres://postgres:123456@192.168.0.63:5432/crickstrait");
+const db = pg("postgres://postgres:123456@localhost:5432/crickstrait_db");
 // get all headlines in the result variable via an asynchronous function
 
 // Get Headlines for Home Section
 router.get("/all", async (req, res) => {
   try {
     const result = await db.any(
-      "select * from headlines where headlines_id>32;"
+      "select * from headlines where headline_id>10;"
     );
     //   convert the response into a json format
     res.status(200).json({
@@ -27,9 +27,9 @@ router.get("/all", async (req, res) => {
 // Get a current headline for the news section
 router.get("/single_headline", async (req, res) => {
   try {
-    let number = Math.floor(Math.random() * (30 - 23) + 23);
+    let number = Math.floor(Math.random() * (10 - 21) + 21);
     const result = await db.any(
-      "select * from headlines where headlines_id='" + number + "';"
+      "select * from headlines where headline_id='" + number + "';"
     );
     //   convert the response into a json format
     res.status(200).json({

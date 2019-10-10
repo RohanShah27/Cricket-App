@@ -99,7 +99,9 @@
   border-right-color: white;
   border-bottom-color: white;
 }
-
+li {
+  user-select: none;
+}
 .pc-playerTab section div h2 {
   margin: 0;
 }
@@ -150,7 +152,8 @@
 }
 
 .team-teamTestimonials .teamcomponent-card .team-content {
-  z-index: 2;
+  height: 200px;
+  /* z-index: 2; */
 }
 
 .team-teamTestimonials .teamcomponent-card .team-content p {

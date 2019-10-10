@@ -1,11 +1,16 @@
-import { SEARCH_PLAYER } from "../actions/Types";
+import { SEARCH_PLAYER, ALL_PLAYERS, PLAYER_SEARCH } from "../actions/Types";
 const initialState = {
-  player: [[]]
+  player: [],
+  players: []
 };
 export default function(state = initialState, action) {
   switch (action.type) {
     case SEARCH_PLAYER:
-      return { player: action.payload };
+      return { ...state, player: action.payload };
+    case ALL_PLAYERS:
+      return { ...state, players: action.payload };
+    case PLAYER_SEARCH:
+      return { ...state, players: action.payload };
     default:
       return state;
   }
