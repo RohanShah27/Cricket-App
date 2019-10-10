@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Navigation from "./Navigation";
 import "../styles/playerProfile.css";
 import { connect } from "react-redux";
 import { searchPlayer } from "../actions/Players";
@@ -7,38 +6,31 @@ import virat from "../virat-kohli.png";
 
 export class PlayerProfile extends Component {
   constructor(props) {
-    // super(props) -> its parents and all of its parents properties
     super(props);
-    // this.searchForPlayer = this.searchForPlayer.bind(this);
   }
-  state = {
-    playerName: this.props.match.params.playerName
-  };
-  componentDidMount() {
-    this.getPlayerDetails();
+
+  componentWillMount() {
+    console.log(this.props.match.params.player_id);
+    this.props.searchPlayer(this.props.match.params.player_id);
   }
-  componentWillReceiveProps(nextProps) {
-    this.getPlayerDetails();
-    this.setState({ playerName: this.props.match.params.playerName });
-  }
-  getPlayerDetails = () => {
-    let player = {
-      playerName: this.props.match.params.playerName
-    };
-    this.props.searchPlayer(player);
-  };
+
   render() {
-    console.log(this.props.player[0].batting_style);
     return (
-      <div>
+      <div style={{ marginBottom: "80px" }}>
         <div className="main-section">
-          <div className="flex-container">
-            <div style={{ flexGrow: 1 }}>
+          {/* Start of flex container for image and Player Name -Rohan*/}
+          <div className="player-flex-container">
+            <div style={{ flexGrow: 2, alignItems: "center" }}>
               <img className="profile-img" src={virat}></img>
             </div>
             <div style={{ flexGrow: 8 }}>
-              <h1>{this.props.player[0].player_name}</h1>
-              <h5>Team: {this.props.player[0].player_nation}</h5>
+              <h1>{this.props.history.location.state.player.player_name}</h1>
+              <h5>
+                Team:{" "}
+                {this.props.location.state.player.nation
+                  ? this.props.location.state.player.nation
+                  : "NA"}
+              </h5>
               <div className="profile">
                 Passionate. No word describes Virat Kohli better. His passion
                 for cricket has made him one of the best batsmen in the world
@@ -49,48 +41,85 @@ export class PlayerProfile extends Component {
               </div>
             </div>
           </div>
-          <div className="row">
+          {/* End of Flex container -Rohan*/}
+          <div className="player-row">
+            {/* Personal Details of player -Rohan*/}
             <div className="side">
               <h2>Personal Details</h2>
-              <p>Date Of Birth: {this.props.player[0].player_dob}</p>
-              <p>Batting Style: {this.props.player[0].batting_style}</p>
-              <p>Bowling Style: {this.props.player[0].bowling_style}</p>
-              <p>Role: {this.props.player[0].player_role}</p>
+              <p>
+                Date Of Birth:
+                <br />
+                <span className="personal-detail-content">
+                  {" "}
+                  {this.props.location.state.player.player_dob
+                    ? this.props.location.state.player.player_dob
+                    : "NA"}
+                </span>
+              </p>
+              <hr className="line" />
+              <p>
+                Role: <br />
+                <span className="personal-detail-content">
+                  {this.props.location.state.player.player_role
+                    ? this.props.location.state.player.player_role
+                    : "NA"}
+                </span>
+              </p>
+              <hr className="line" />
+              <p>
+                Batting Style:
+                <br />{" "}
+                <span className="personal-detail-content">
+                  {this.props.location.state.player.batting_style
+                    ? this.props.location.state.player.batting_style
+                    : "NA"}
+                </span>
+              </p>
+              <hr className="line" />
+              <p>
+                Bowling Style: <br />
+                <span className="personal-detail-content">
+                  {this.props.location.state.player.bowling_style
+                    ? this.props.location.state.player.bowling_style
+                    : "NA"}
+                </span>{" "}
+              </p>
             </div>
+            {/* End of personal Details -Rohan*/}
+            {/* Player Stats section -Rohan*/}
             <div className="main">
               <h2>Player Stats</h2>
-              <div className="wrapper">
-                <div className="box-a">
-                  <b>ODI Ranking</b>
-                </div>
-                <div className="box-b">
-                  <b>Test Ranking</b>
-                </div>
-                <div className="box-c">
-                  <b>T20 Ranking</b>
-                </div>
-                <div className="stats-row">
-                  <div className="box-d">
-                    {this.props.player[0].odi_ranking}
-                  </div>
-                  <div className="box-e">
-                    {this.props.player[0].test_ranking}
-                  </div>
-                  <div className="box-f">
-                    {this.props.player[0].t20_ranking}
-                  </div>
-                </div>
+              <div>
+                <table className="players-stats-table">
+                  <tr>
+                    <th>Format</th>
+                    <th>200's</th>
+                    <th>100's</th>
+                    <th>Runs</th>
+                    <th>6's</th>
+                    <th>4's</th>
+                    <th>Wickets</th>
+                    <th>50's</th>
+                  </tr>
+                  {/* Mapping the values receieved from the server -Rohan */}
+                  {this.props.player.ODI
+                    ? Object.keys(this.props.player).map((keyName, i) => (
+                        <tr>
+                          <td>{keyName}</td>
+                          {Object.keys(this.props.player[keyName]).map(
+                            (keys, i) => (
+                              <>
+                                <td>{this.props.player[keyName][keys]}</td>
+                              </>
+                            )
+                          )}
+                        </tr>
+                      ))
+                    : console.log("no player found")}
+                </table>
               </div>
             </div>
           </div>
-          {/* <div className="image-container"></div>
-          <div className="playerdetails"></div>
-          <div className="personalinfo"> </div>
-
-          <div className="playerstats">
-            
-          </div>
-          <div className="graphs"></div> */}
         </div>
       </div>
     );
@@ -98,7 +127,7 @@ export class PlayerProfile extends Component {
 }
 
 const mapStateToProps = state => ({
-  player: state.playerReducer.player
+  player: state.playersReducer.player
 });
 export default connect(
   mapStateToProps,

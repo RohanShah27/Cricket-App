@@ -2,6 +2,7 @@ import axios from "axios";
 import { GET_HEADLINES, GET_SINGLE_HEADLINE } from "./Types";
 
 const url = "http://localhost:5000/api/headlines/";
+// Retrieve all headlines from the database -Rohan
 export const getHeadlines = () => dispatch => {
   return axios
     .get(url + "all")
@@ -16,6 +17,7 @@ export const getHeadlines = () => dispatch => {
       console.log(err);
     });
 };
+// Get a single headline from the database -Rohan
 export const getHeadline = () => dispatch => {
   return axios
     .get(url + "single_headline")

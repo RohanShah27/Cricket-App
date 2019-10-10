@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const pg = require("pg-promise")();
-const db = pg("postgres://postgres:123456@localhost:5432/crickstrait");
+const db = pg("postgres://postgres:123456@192.168.0.63:5432/crickstrait");
 
 // Retrieving all products from database
 router.get("/all", async (req, res) => {
@@ -19,11 +19,6 @@ router.post("/ranking", async (req, res) => {
     const result = await db.any(
       "SELECT * FROM player_ranking where format = '" + format + "'; "
     );
-    // if (!result)
-    //   throw {
-    //     statusCode: 404,
-    //     customMessage: "Cannot find ranking with the specified format"
-    //   };
     res.status(200).json({
       status: 200,
       data: result,

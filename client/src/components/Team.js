@@ -104,8 +104,6 @@ export class Team extends Component {
             </div>
 
             <div className="playerTab2">
-              <h2>IPL Teams</h2>
-              <p></p>
               <div className="team-teamTestimonials">
                 {this.props.tournamentTeam.map(teams => (
                   <div className="teamcomponent-card">
@@ -125,7 +123,6 @@ export class Team extends Component {
             </div>
 
             <div className="playerTab3">
-              <h2>BBL Teams</h2>
               <p></p>
               <div
                 className="

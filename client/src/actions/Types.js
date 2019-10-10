@@ -17,6 +17,16 @@ export const GET_MATCHESBYTYPE = "GET_MATCHESBYTYPE";
 export const LOGIN = "LOGIN";
 export const ADD_PLAYERS = "ADD_PLAYERS";
 export const ADD_PLAYERS_TYPE = "ADD_PLAYERS_TYPE";
-
+export const GET_PLAYERS = "GET_PLAYERS";
+export const ADD_ADMIN = "ADD_ADMIN";
 export const GET_USERS = "GET_USERS";
-export const GET_GRAPH = "GET_GRAPH";
+
+//Type for player -Rohan
+export const ALL_PLAYERS = "ALL_PLAYERS";
+export const PLAYER_SEARCH = "PLAYER_SEARCH";
+// Type for admin -Yash
+export const SEND_OTP = "SEND_OTP";
+export const ADD_NEW_TEAM = "ADD_NEW_TEAM";
+export const RESET_PASSWORD = "RESET_PASSWORD";
+
+export const ERROR_TYPE = "ERROR_TYPE";

@@ -9,24 +9,34 @@ import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
 import Match from "./components/Match";
 import Login from "./components/Login";
-
+import Players from "./components/Players";
+// Yash Bhatia
+import Player from "./components/Player";
+import AddNewAdmin from "./components/AddNewAdmin";
+import AddNewTeam from "./components/AddNewTeam";
+import ResetPassword from "./components/ResetPassword";
 function App() {
   return (
     <Router>
       <div>
-        {/* <Navigation /> */}
+        <Navigation />
         <Route exact path="/" component={Home}></Route>
         <Route
           exact
-          path="/playerprofile/:playerName"
+          path="/playerprofile/:player_id"
           component={PlayerProfile}
         ></Route>
+        <Route exact path="/players" component={Players}></Route>
         <Route exact path="/venues" component={Venues}></Route>
         <Route exact path="/teams" component={Team}></Route>
         <Route exact path="/rankings" component={PlayerRanking}></Route>
         <Route exact path="/series" component={Match}></Route>
         <Route exact path="/login" component={Login}></Route>
-        {/* <Footer /> */}
+        <Route exact path="/player" component={Player}></Route>
+        <Route exact path="/addnewadmin" component={AddNewAdmin} />
+        <Route exact path="/addnewteam" component={AddNewTeam} />
+        <Route exact path="/resetpassword" component={ResetPassword} />
+        <Footer />
       </div>
     </Router>
   );

@@ -1,5 +1,5 @@
 import * as action from "../Rankings";
-import { GET_PLAYER_RANKING, GET_TEAM_RANKING } from "../types";
+import { GET_PLAYER_RANKING, GET_TEAM_RANKING } from "../Types";
 import moxios from "moxios";
 import configureMockStore from "redux-mock-store";
 import thunk from "redux-thunk";
