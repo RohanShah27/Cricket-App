@@ -1,4 +1,8 @@
-import { GET_RECENT_MATCHES, GET_MATCHESBYTYPE } from "../actions/Types";
+import {
+  GET_RECENT_MATCHES,
+  GET_MATCHESBYTYPE,
+  GET_MATCHES_BY_TEAM
+} from "../actions/Types";
 
 const initialState = {
   match: []
@@ -13,6 +17,12 @@ export default function(state = initialState, action) {
       };
 
     case GET_MATCHESBYTYPE:
+      return {
+        ...state,
+        match: action.payload
+      };
+
+    case GET_MATCHES_BY_TEAM:
       return {
         ...state,
         match: action.payload

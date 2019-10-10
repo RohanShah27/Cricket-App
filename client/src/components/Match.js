@@ -14,8 +14,7 @@ export class Match extends Component {
 
   state = {
     type: "",
-    matchType: "ODI",
-    activeClass: "match-active-option"
+    matchType: "ODI"
   };
   sendType() {
     console.log("type" + this.state.type);
