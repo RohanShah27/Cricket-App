@@ -9,6 +9,7 @@ import "../styles/player.css"
 class Player extends Component {
     constructor() {
         super();
+        // all the handle change along with select tags in state are stated here -yash
         this.handleDayChange = this.handleDayChange.bind(this);
         this.state = {
             gender: "male",
@@ -21,19 +22,23 @@ class Player extends Component {
         this.handleTypeChange = this.handleTypeChange.bind(this);
     }
     handleChange(e) {
+        //handle change for gender -yash
         this.setState({ gender: e.target.value });
     }
 
     handleTypeChange(e) {
+        //handle change for player_role -yash
         this.setState({ player_role: e.target.value });
     };
     componentDidMount() {
+        //moount the player role as well as check for token -yash
         this.props.getPlayertype();
         if (!localStorage.getItem("token")) {
             this.props.history.push("/");
         }
     }
     state = {
+        //values that are to be stored in the database -yash
         player_name: "",
         gender: "",
         player_dob: new Date(),
@@ -43,21 +48,24 @@ class Player extends Component {
         bowling_style: "",
     }
     onChange = event => {
+        //to change state of the input box -yash
         this.setState({ [event.target.name]: event.target.value });
     };
     onCreate() {
+        //storing the values in the players table
         let player = {
             player_name: this.state.player_name,
             gender: this.state.gender,
+            //to convert date into the format eg.12/05/1993
             player_dob: this.state.player_dob.toLocaleDateString('en-GB'),
             batting_style: this.state.batting_style,
             bowling_style: this.state.bowling_style,
             player_role: this.state.player_role,
             player_nation: this.state.player_nation
         };
-
-
+        //function createPlayers is called from actions user -yash
         this.props.createPlayers(player);
+        //setting the current state of the values -yash
         this.setState({
             player_name: "",
             gender: "",
@@ -70,19 +78,22 @@ class Player extends Component {
     }
 
     handleDayChange = date => {
+        //handle date change  -yash
         this.setState({ player_dob: date });
     };
     render() {
         return (
-
+            //start of div -yash
             < div >
-                {/* <h1>{this.props.players_type.player_type}</h1> */}
-                {/* <p>{this.props.players_type.map(player => (<p>{player.player_type}</p>))}</p> */}
+                {/* start of form -yash */}
                 <form id="playerform">
+                    {/* start of fieldset -yash */}
                     <fieldset>
-
+                        {/* start of div player adding -yash */}
                         <div className="PlayerAdding">
+                            {/* start and end of header -yash */}
                             <h1 className="playerheader">Add Player</h1>
+                            {/* start of input playerdetails -yash */}
                             <input className="playerdetails"
                                 type="text"
                                 name="player_name"
@@ -90,16 +101,25 @@ class Player extends Component {
                                 onChange={this.onChange}
                                 value={this.state.player_name}
                             />
-
+                            {/* end of input -yash */}
+                            {/* start of playerflex container -yash*/}
                             <div className="playerflex-container">
+                                {/* start of division container -yash*/}
                                 <div className="division">
+                                    {/* start of select tag for gender -yash */}
                                     <select value={this.state.gender} onChange={this.handleChange} className="genders">
+                                        {/* options for select tag -yash */}
                                         <option name="choice" className="choice">Gender</option>
                                         <option name="male"> Male</option>
                                         <option name="female">Female</option>
+                                        {/* end of options for select tag -yash */}
                                     </select>
+                                    {/* end of select tag -yash */}
                                 </div>
+                                {/* end of division container -yash*/}
+                                {/* start of division container -yash */}
                                 <div className="division">
+                                    {/* datepicker function called -yash */}
                                     <DatePicker className="playerdate"
                                         dateFormat="dd-MM-yyyy"
                                         placeholderText="DOB"
@@ -119,8 +139,12 @@ class Player extends Component {
                                         }}
                                     />
                                 </div>
+                                {/* end of division container -yash */}
                             </div>
+                            {/* end of playerflex container -yash */}
+                            {/* start of p tag -yash */}
                             <p>
+                                {/* start of input for playerdetails -yash */}
                                 <input className="playerdetails"
                                     type="text"
                                     name="player_nation"
@@ -128,8 +152,13 @@ class Player extends Component {
                                     onChange={this.onChange}
                                     value={this.state.player_nation}
                                 />{" "}
+                                {/* end of playerdetails input tag -yash */}
                             </p>
+                            {/*end of p tag -yash*/}
+
+                            {/* start of p tag -yash */}
                             <p>
+                                {/* start of select tag for player role -yash */}
                                 <select value={this.state.player_role} onChange={this.handleTypeChange} className="playerType">
                                     <option name="choice">player type</option>
                                     {this.props.playerType.map(playerType => (
@@ -137,10 +166,13 @@ class Player extends Component {
                                         <option name="Batsman">{playerType.player_role}</option>
 
                                     ))}
-
                                 </select>
+                                {/* end of select tag -yash */}
                             </p>
+                            {/* end of p tag -yash */}
+                            {/* start of p tag -yash */}
                             <p>
+                                {/* start of input for batting style -yash */}
                                 <input className="playerdetails"
                                     type="text"
                                     name="batting_style"
@@ -148,8 +180,12 @@ class Player extends Component {
                                     onChange={this.onChange}
                                     value={this.state.batting_style}
                                 />
+                                {/* end of input for batting style -yash */}
                             </p>
+                            {/* end of p tag -yash */}
+                            {/* start of p tag -yash */}
                             <p>
+                                {/* start of input for bowling style -yash */}
                                 <input className="playerdetails"
                                     type="text"
                                     name="bowling_style"
@@ -157,24 +193,24 @@ class Player extends Component {
                                     onChange={this.onChange}
                                     value={this.state.bowling_style}
                                 />
+                                {/* end of input for bowling style -yash */}
                             </p>
-                            {/* <p>
-                <input className="playerdetails"
-                  type="text"
-                  name="playerdescription"
-                  placeholder=" Description"
-                  onChange={this.onChange}
-                  value={this.state.playerdescription}
-                />
-              </p> */}
+                            {/* end of p tag -yash */}
                         </div>
+                        {/* end of div tag for player adding -yash */}
+                        {/* display of error -yash */}
                         {this.props.error ? <><p>{this.props.error}</p></> : null}
+                        {/* start of button add player -yash */}
                         <button onChange={this.onChange} onClick={this.onCreate} className="playerbutton">
                             Add Player
               </button>
+                        {/* end of button -yash */}
                     </fieldset>
+                    {/* end of fieldset */}
                 </form >
+                {/* end of form -yash */}
             </div >
+            // end of main div tag -yash
         )
     }
 }
@@ -187,6 +223,7 @@ const mapStateToProps = state => ({
 
 export default connect(
     mapStateToProps,
+    // connect to createPlayers and getPlayertype -yash
     { createPlayers, getPlayertype }
 )(Player);
 
