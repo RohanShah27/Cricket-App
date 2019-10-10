@@ -15,6 +15,7 @@ export class PlayerProfile extends Component {
   }
 
   render() {
+    console.log(this.props);
     return (
       <div style={{ marginBottom: "80px" }}>
         <div className="main-section">

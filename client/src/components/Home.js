@@ -40,6 +40,7 @@ export class Home extends Component {
                 </ul>
               </div>
             </div>
+            {/* News Section */}
             <div className="news">
               <div className="col-center">
                 <h2 className="news-header">India's Tour of WestIndies</h2>
@@ -57,6 +58,7 @@ export class Home extends Component {
                       className="home-p"
                       style={{ fontSize: "15px", paddingLeft: "5px" }}
                     >
+                      {/* Single Headline */}
                       {this.props.headline[0].headlines}
                     </p>
                   </figcaption>
@@ -82,7 +84,7 @@ export class Home extends Component {
                   <div className="card">
                     <span className="tournament-home">
                       {" "}
-                      {match.tournament} - {match.match_type}
+                      {match.competition} - {match.match_type}
                     </span>
                     {/* <span style={{ fontSize: "14px" }}>
                       {console.log(match.date.split("T"))}
@@ -90,7 +92,7 @@ export class Home extends Component {
                     <div className="parent">
                       <div className="first">
                         <img className="imgformatch" src={india} />
-                        <p>{match.team_name1}</p>
+                        <p>{match.innings_one_team}</p>
                       </div>
                       <div className="second">
                         <button className="buttonformatch">View</button>
@@ -98,7 +100,7 @@ export class Home extends Component {
                       <div className="third">
                         <img className="imgformatch" src={pakistan} />
 
-                        <p>{match.team_name2}</p>
+                        <p>{match.innings_two_team}</p>
                       </div>
                     </div>
                   </div>

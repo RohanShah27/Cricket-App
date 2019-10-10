@@ -19,7 +19,7 @@
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 3;
+  z-index: 1;
 }
 
 .nav-header ul {
@@ -150,6 +150,19 @@
 .nav-search-button:focus,
 .nav-search-button:active {
   outline: none;
+}
+/* Serach result */
+.search-result {
+  border: 1px solid #c2c2c2;
+  height: auto;
+  width: 200px;
+  border-radius: 8px;
+  background-color: white;
+  position: absolute;
+  z-index: 3;
+}
+.search_result_data p {
+  color: black;
 }
 
 /* Desktop view */

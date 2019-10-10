@@ -1,67 +1,68 @@
 import React, { Component } from "react";
-import {} from "../actions/Players";
+import { getGlobalSearchResult } from "../actions/Search";
 import "../styles/navbar.css";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 
-export default class Navigation extends Component {
+export class Navigation extends Component {
   constructor(props) {
     super(props);
   }
-
   state = {
-    gender: "male"
+    search_term: ""
   };
   removeToken = () => {
     localStorage.removeItem("token");
     this.forceUpdate();
   };
-  femaleState = () => {
-    this.setState({
-      gender: "female"
-    });
+  getResult = () => {
+    let search_term = {
+      search_term: this.state.search_term
+    };
+    this.props.getGlobalSearchResult(search_term);
   };
-  menState = () => {
-    this.setState({
-      gender: "male"
-    });
-  };
+
   OnChange = event => {
     this.setState({ [event.target.name]: event.target.value });
+    let search_term = {
+      search_term: this.state.search_term
+    };
+    this.props.getGlobalSearchResult(search_term);
   };
 
   render() {
     console.log(this.props);
     return (
       <div className="nav-container">
-        <div class="nav-header">
-          <a class="logo">
+        <div className="nav-header">
+          <a className="logo">
             <Link to="/">Crickstrait</Link>
           </a>
-          {this.state.gender == "male" ? (
-            <a class="options" style={{ color: "#c2c2c2c2" }}>
+          {this.props.gender == "male" ? (
+            <a className="options" style={{ color: "#c2c2c2c2" }}>
               Men
             </a>
           ) : (
-            <a class="options" onClick={this.menState}>
+            <a className="options" onClick={this.props.menState}>
               Men
             </a>
           )}
-          {this.state.gender == "female" ? (
-            <a class="options" style={{ color: "#c2c2c2c2" }}>
+          {this.props.gender == "female" ? (
+            <a className="options" style={{ color: "#c2c2c2c2" }}>
               Women
             </a>
           ) : (
-            <a class="options" onClick={this.femaleState}>
+            <a className="options" onClick={this.props.femaleState}>
               Women
             </a>
           )}
 
-          <input class="menu-btn" type="checkbox" id="menu-btn" />
-          <label class="menu-icon" for="menu-btn">
-            <span class="navicon"></span>
+          <input className="menu-btn" type="checkbox" id="menu-btn" />
+          <label className="menu-icon" for="menu-btn">
+            <span className="navicon"></span>
           </label>
 
-          <ul class="menu">
+          <ul className="menu">
             <li>
               <Link to="/rankings">Rankings</Link>
             </li>
@@ -75,10 +76,42 @@ export default class Navigation extends Component {
               <Link to="/players">Players</Link>
             </li>
             <li style={{ textAlign: "center" }}>
-              <input class="nav-search-bar" type="text" />
-              <button class="nav-search-button">
-                <i class="fa fa-search"></i>
+              <input
+                className="nav-search-bar"
+                type="text"
+                name="search_term"
+                value={this.state.search_term}
+                onChange={this.OnChange}
+              />
+              <button className="nav-search-button" onClick={this.getResult}>
+                <i className="fa fa-search"></i>
               </button>
+              <div className="search-result">
+                {this.props.search_result.length != 0
+                  ? this.props.search_result.player.length != 0
+                    ? this.props.search_result.player.map(player => (
+                        <span className="search_result_data">
+                          <Link
+                            to={{
+                              pathname: "/playerprofile/" + player.player_id,
+                              state: { player }
+                            }}
+                          >
+                            <p>{player.player_name}</p>
+                          </Link>
+                        </span>
+                      ))
+                    : "No Player Found"
+                  : null}
+                {/* <Link
+                  to={
+                    "/playerprofile/" +
+                    this.props.search_result.player[0].player_id
+                  }
+                > */}
+                <span></span>
+                {/* </Link> */}
+              </div>
             </li>
             {localStorage.getItem("token") ? (
               <li>
@@ -97,3 +130,11 @@ export default class Navigation extends Component {
     );
   }
 }
+
+const mapStateToProps = state => ({
+  search_result: state.searchReducer.search_result
+});
+export default connect(
+  mapStateToProps,
+  { getGlobalSearchResult }
+)(Navigation);

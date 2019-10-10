@@ -30,3 +30,6 @@ export const ADD_NEW_TEAM = "ADD_NEW_TEAM";
 export const RESET_PASSWORD = "RESET_PASSWORD";
 
 export const ERROR_TYPE = "ERROR_TYPE";
+
+// Global Search
+export const GET_SEARCH = "GET_SEARCH";

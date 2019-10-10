@@ -15,31 +15,48 @@ import Player from "./components/Player";
 import AddNewAdmin from "./components/AddNewAdmin";
 import AddNewTeam from "./components/AddNewTeam";
 import ResetPassword from "./components/ResetPassword";
-function App() {
-  return (
-    <Router>
-      <div>
-        <Navigation />
-        <Route exact path="/" component={Home}></Route>
-        <Route
-          exact
-          path="/playerprofile/:player_id"
-          component={PlayerProfile}
-        ></Route>
-        <Route exact path="/players" component={Players}></Route>
-        <Route exact path="/venues" component={Venues}></Route>
-        <Route exact path="/teams" component={Team}></Route>
-        <Route exact path="/rankings" component={PlayerRanking}></Route>
-        <Route exact path="/series" component={Match}></Route>
-        <Route exact path="/login" component={Login}></Route>
-        <Route exact path="/player" component={Player}></Route>
-        <Route exact path="/addnewadmin" component={AddNewAdmin} />
-        <Route exact path="/addnewteam" component={AddNewTeam} />
-        <Route exact path="/resetpassword" component={ResetPassword} />
-        <Footer />
-      </div>
-    </Router>
-  );
+export default class App extends React.Component {
+  state = {
+    gender: "male"
+  };
+  femaleState = () => {
+    this.setState({
+      gender: "female"
+    });
+  };
+  menState = () => {
+    this.setState({
+      gender: "male"
+    });
+  };
+  render() {
+    return (
+      <Router>
+        <div>
+          <Navigation
+            femaleState={this.femaleState}
+            menState={this.menState}
+            gender={this.state.gender}
+          />
+          <Route exact path="/" component={Home}></Route>
+          <Route
+            exact
+            path="/playerprofile/:player_id"
+            component={PlayerProfile}
+          ></Route>
+          <Route exact path="/players" component={Players}></Route>
+          <Route exact path="/venues" component={Venues}></Route>
+          <Route exact path="/teams" component={Team}></Route>
+          <Route exact path="/rankings" component={PlayerRanking}></Route>
+          <Route exact path="/series" component={Match}></Route>
+          <Route exact path="/login" component={Login}></Route>
+          <Route exact path="/player" component={Player}></Route>
+          <Route exact path="/addnewadmin" component={AddNewAdmin} />
+          <Route exact path="/addnewteam" component={AddNewTeam} />
+          <Route exact path="/resetpassword" component={ResetPassword} />
+          <Footer />
+        </div>
+      </Router>
+    );
+  }
 }
-
-export default App;
