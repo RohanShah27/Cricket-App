@@ -86,40 +86,42 @@ export class Navigation extends Component {
               <button className="nav-search-button" onClick={this.getResult}>
                 <i className="fa fa-search"></i>
               </button>
-              <div className="search-result">
-                {this.props.search_result.length != 0
-                  ? this.props.search_result.player.length != 0
-                    ? this.props.search_result.player.map(player => (
-                        <span className="search_result_data">
-                          <Link
-                            to={{
-                              pathname: "/playerprofile/" + player.player_id,
-                              state: { player }
-                            }}
-                          >
-                            <p>{player.player_name}</p>
-                          </Link>
-                        </span>
-                      ))
-                    : "No Player Found"
-                  : null}
-                {this.props.search_result.length != 0
-                  ? this.props.search_result.team.length != 0
-                    ? this.props.search_result.team.map(team => (
-                        <span className="search_result_data">
-                          <Link
-                            to={{
-                              pathname: "/viewteam/" + team.team_id,
-                              state: { team }
-                            }}
-                          >
-                            <p>{team.player_name}</p>
-                          </Link>
-                        </span>
-                      ))
-                    : "No Player Found"
-                  : null}
-              </div>
+              {this.state.search_term == "" ? null : (
+                <div className="search-result">
+                  {this.props.search_result.length != 0
+                    ? this.props.search_result.player.length != 0
+                      ? this.props.search_result.player.map(player => (
+                          <span className="search_result_data">
+                            <Link
+                              to={{
+                                pathname: "/playerprofile/" + player.player_id,
+                                state: { player }
+                              }}
+                            >
+                              <p>{player.player_name}</p>
+                            </Link>
+                          </span>
+                        ))
+                      : "No Player Found"
+                    : null}
+                  {this.props.search_result.length != 0
+                    ? this.props.search_result.team.length != 0
+                      ? this.props.search_result.team.map(team => (
+                          <span className="search_result_data">
+                            <Link
+                              to={{
+                                pathname: "/viewteam/" + team.team_id,
+                                state: { team }
+                              }}
+                            >
+                              <p>{team.team_name}</p>
+                            </Link>
+                          </span>
+                        ))
+                      : "No Team Found"
+                    : null}
+                </div>
+              )}
             </li>
             {localStorage.getItem("token") ? (
               <li>

@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Venues from "./components/Venues";
 import Team from "./components/Team";
+
 import PlayerRanking from "./components/PlayerRanking";
 import Home from "./components/Home";
 import PlayerProfile from "./components/PlayerProfile";
@@ -15,6 +16,8 @@ import AdminPlayer from "./components/AdminPlayer";
 import AddNewAdmin from "./components/AddNewAdmin";
 import AddNewTeam from "./components/AddNewTeam";
 import ResetPassword from "./components/ResetPassword";
+//RohanK
+import ViewTeam from "./components/ViewTeam";
 export default class App extends React.Component {
   state = {
     gender: "male"
@@ -54,6 +57,8 @@ export default class App extends React.Component {
           <Route exact path="/addnewadmin" component={AddNewAdmin} />
           <Route exact path="/addnewteam" component={AddNewTeam} />
           <Route exact path="/resetpassword" component={ResetPassword} />
+          <Route exact path="/viewteam/:team_id" component={ViewTeam}></Route>
+
           <Footer />
         </div>
       </Router>
