@@ -11,6 +11,8 @@ import {
 import { getMatchesByTeam } from "../actions/matchActions";
 import india from "../assests/india.jpg";
 import pakistan from "../assests/pakistan.jpg";
+import DatePicker from "react-datepicker";
+
 
 export class ViewTeam extends Component {
   componentDidMount() {
@@ -40,6 +42,7 @@ export class ViewTeam extends Component {
   state = {
     team_name: "",
     match_type: "",
+    match_date: "",
     odiclick: true,
     testclick: false,
     t20click: false
@@ -275,6 +278,26 @@ export class ViewTeam extends Component {
               {/* second tab */}
               <div className="viewTeam-tab2">
                 <div className="viewTeamMatches-testimonials">
+                  <div>
+                  <DatePicker className="playerdate"
+                                        dateFormat="dd-MM-yyyy"
+                                        placeholderText="DOB"
+                                        selected={this.state.player_dob}
+                                        onChange={this.handleDayChange}
+                                        popperPlacement="bottom"
+                                        popperModifiers={{
+                                            flip: {
+                                                behavior: ["bottom"] // don't allow it to flip to be above
+                                            },
+                                            preventOverflow: {
+                                                enabled: false // tell it not to try to stay within the view (this prevents the popper from covering the element you clicked)
+                                            },
+                                            hide: {
+                                                enabled: false // turn off since needs preventOverflow to be enabled
+                                            }
+                                        }}
+                                    />
+                  </div>
                   {this.props.match.map(match => (
                     <div className="viewTeamMatches-card">
                       <div className="viewTeamMatches-parent">
