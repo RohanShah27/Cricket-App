@@ -12,11 +12,12 @@
   height: 200px;
   width: 200px;
 }
-
+/* Grid space for navigation placement -Rohan */
 .navigation {
   border-radius: 8px;
   grid-column: 1/ -1;
 }
+/* Class wrapper -Rohan */
 .wrapper {
   display: grid;
   grid-template-columns: repeat(4, minmax(30px, 1fr));
@@ -50,16 +51,15 @@ td {
   padding: 15px;
   font-size: 16px;
 }
-.flex-container {
+.player-flex-container {
   display: flex;
   align-items: stretch;
-  /* background-color: #f1f1f1; */
 }
-.flex-container h1 {
+.player-flex-container h1 {
   padding-top: 20px;
   padding-left: 20px;
 }
-.flex-container h5 {
+.player-flex-container h5 {
   padding-top: 20px;
   padding-left: 20px;
 }
@@ -68,7 +68,7 @@ td {
   line-height: 25px;
   font-size: 18px;
 }
-.flex-container > div {
+.player-flex-container > div {
   background-color: white;
   width: 80px;
   margin: 10px;
@@ -76,15 +76,15 @@ td {
   line-height: 45px;
   font-size: 20px;
 }
-/* Column container */
-.row {
+/* Column container -Rohan */
+.player-row {
   display: flex;
   padding: 5px;
   padding-top: 50px;
 }
 
-/* Create two unequal columns that sits next to each other */
-/* Sidebar/left column */
+/* Create two unequal columns that sits next to each other -Rohan*/
+/* Sidebar/left column -Rohan*/
 .side {
   flex: 25%;
   border: 1px solid #c2c2c2;
@@ -116,11 +116,8 @@ td {
   padding-top: 8px;
   color: black;
 }
-/* .side p:nth-child() {
-  background: #f1f1f1;
-} */
 
-/* Main column */
+/* Main column -Rohan*/
 .main {
   margin-left: 20px;
   border: 1px solid #c2c2c2;

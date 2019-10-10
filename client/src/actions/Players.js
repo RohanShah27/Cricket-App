@@ -31,6 +31,7 @@ export const getAllPlayers = () => dispatch => {
     });
 };
 
+// Action for player page search bar -Rohan
 export const playerSearch = playerName => dispatch => {
   return axios
     .post(url + "searchPlayer", playerName)

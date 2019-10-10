@@ -149,6 +149,7 @@ router.post("/player_search/:playerId", async (req, res) => {
   }
 });
 
+// Get all players for player page ordered in alphabetical order -Rohan
 router.get("/all", async (req, res) => {
   try {
     const result = await db.any("select * from player order by player_name;");
@@ -164,6 +165,7 @@ router.get("/all", async (req, res) => {
     });
   }
 });
+// Service for search bar on players page for live search for a player from the database -Rohan
 router.post("/searchPlayer", async (req, res) => {
   try {
     let playerName = req.body.playerName;

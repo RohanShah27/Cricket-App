@@ -24,11 +24,6 @@ router.post("/ranking", async (req, res) => {
         format +
         "'; "
     );
-    // if (!result)
-    //   throw {
-    //     statusCode: 404,
-    //     customMessage: "Cannot find ranking with the specified format"
-    //   };
     res.status(200).json({
       status: 200,
       data: result,

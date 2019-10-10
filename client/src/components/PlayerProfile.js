@@ -11,17 +11,15 @@ export class PlayerProfile extends Component {
 
   componentWillMount() {
     console.log(this.props.match.params.player_id);
-
     this.props.searchPlayer(this.props.match.params.player_id);
   }
 
   render() {
-    console.log(this.props.player);
     return (
       <div style={{ marginBottom: "80px" }}>
         <div className="main-section">
-          {/* Start of flex container for image and Player Name */}
-          <div className="flex-container">
+          {/* Start of flex container for image and Player Name -Rohan*/}
+          <div className="player-flex-container">
             <div style={{ flexGrow: 2, alignItems: "center" }}>
               <img className="profile-img" src={virat}></img>
             </div>
@@ -43,9 +41,9 @@ export class PlayerProfile extends Component {
               </div>
             </div>
           </div>
-          {/* End of Flex container */}
-          <div className="row">
-            {/* Personal Details of player */}
+          {/* End of Flex container -Rohan*/}
+          <div className="player-row">
+            {/* Personal Details of player -Rohan*/}
             <div className="side">
               <h2>Personal Details</h2>
               <p>
@@ -87,8 +85,8 @@ export class PlayerProfile extends Component {
                 </span>{" "}
               </p>
             </div>
-            {/* End of personal Details */}
-            {/* Player Stats section */}
+            {/* End of personal Details -Rohan*/}
+            {/* Player Stats section -Rohan*/}
             <div className="main">
               <h2>Player Stats</h2>
               <div>
@@ -103,6 +101,7 @@ export class PlayerProfile extends Component {
                     <th>Wickets</th>
                     <th>50's</th>
                   </tr>
+                  {/* Mapping the values receieved from the server -Rohan */}
                   {this.props.player.ODI
                     ? Object.keys(this.props.player).map((keyName, i) => (
                         <tr>
