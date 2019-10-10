@@ -1,4 +1,5 @@
 **/node_modules
 **/.scannerwork
-**/**/assets
+**/**/assests
 **/package-lock.json
+**/.vs-code
