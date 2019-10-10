@@ -3,3 +3,4 @@
 **/**/assests
 **/package-lock.json
 **/.vs-code
+**/coverage
