@@ -1,5 +1,12 @@
 import axios from "axios";
-import { SEARCH_PLAYER, ALL_PLAYERS, PLAYER_SEARCH } from "../actions/Types";
+import {
+  SEARCH_PLAYER,
+  ALL_PLAYERS,
+  PLAYER_SEARCH,
+  ERROR_TYPE,
+  ADD_PLAYERS,
+  GET_PLAYERS
+} from "../actions/Types";
 
 const url = "http://localhost:5000/api/players/";
 

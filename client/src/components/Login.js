@@ -74,7 +74,11 @@ export class Login extends Component {
             {/* end of password input field -yash */}
 
             {/* dispatch error from node -yash */}
-            {this.props.error ? <><p>{this.props.error}</p></> : null}
+            {this.props.error ? (
+              <>
+                <p>{this.props.error}</p>
+              </>
+            ) : null}
 
             {/* button for login -yash */}
             <button
@@ -95,7 +99,6 @@ export class Login extends Component {
     );
   }
 }
-
 
 const mapStateToProps = state => ({
   users: state.userReducer.users,

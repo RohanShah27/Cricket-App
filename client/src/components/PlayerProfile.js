@@ -127,7 +127,7 @@ export class PlayerProfile extends Component {
 }
 
 const mapStateToProps = state => ({
-  player: state.playerReducer.player
+  player: state.playersReducer.player
 });
 export default connect(
   mapStateToProps,
