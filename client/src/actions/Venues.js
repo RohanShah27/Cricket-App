@@ -1,4 +1,4 @@
-import { GET_VENUE_BYCOUNTRY } from "./types";
+import { GET_VENUE_BYCOUNTRY } from "./Types";
 import axios from "axios";
 const url = "http://localhost:5000/api/venues";
 

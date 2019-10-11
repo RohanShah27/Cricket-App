@@ -17,10 +17,10 @@ describe("Testing Headlines action", () => {
     moxios.uninstall();
   });
   it("should return all headlines on call of the url", () => {
-    const responseOfApi = [{}, {}, {}];
+    const responseofAPI = [{}, {}, {}];
     moxios.stubRequest(url + "all", {
       status: 200,
-      response: { data: responseOfApi }
+      response: { data: responseofAPI }
     });
     const store = mockStore({});
     const expectedResponse = [
@@ -34,10 +34,10 @@ describe("Testing Headlines action", () => {
     });
   });
   it("should return single headline on call of the url", () => {
-    const responseOfApi = [{}];
+    const responseofAPI = [{}];
     moxios.stubRequest(url + "single_headline", {
       status: 200,
-      response: { data: responseOfApi }
+      response: { data: responseofAPI }
     });
     const store = mockStore({});
     const expectedResponse = [

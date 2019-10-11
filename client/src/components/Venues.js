@@ -18,6 +18,8 @@
 // import Nehru from "../assests/Nehru Stadium.jpg";
 // import GreenPark from "../assests/green park.jpg";
 // import "react-multi-carousel/lib/styles.css";
+// import ReactCountryFlag from "react-country-flag";
+
 // import { getVenuesByCountry } from "../actions/Venues";
 
 // export class Venues extends Component {
@@ -54,7 +56,15 @@
 //             <h1 className="venueHeading">Cricket Venues</h1>
 
 //             <Carousel responsive={this.responsive}>
-//               <div>
+//               <ReactCountryFlag
+//                 styleProps={{
+//                   width: "80px",
+//                   height: "80px"
+//                 }}
+//                 code="in"
+//                 svg
+//               />
+//               {/* <div>
 //                 <a
 //                   value="India"
 //                   onClick={() => {
@@ -122,14 +132,14 @@
 //                   src={SouthAfricaFlag}
 //                   alt="South Africa Flag "
 //                 />
-//               </div>
+//               </div> */}
 //             </Carousel>
 //           </section>
 //         </div>
-//         <div>
+//         {/* <div>
 //           <img className="image" src={IndiaFlag} alt="Indian Flag " />
 //           <p className="countryHeading">Indian Venues</p>
-//         </div>
+//         </div> */}
 //         <div class="grid-container">
 //           <div class="groundCard">
 //             <img className="groundImages" src={CaptainRoop} alt="Stadium " />

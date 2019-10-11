@@ -7,156 +7,218 @@ export class PlayerRanking extends Component {
   constructor(props) {
     super(props);
     this.sendData = this.sendData.bind(this);
-    this.sendTeam = this.sendTeam.bind(this);
   }
 
   componentDidMount() {
     let ranking = {
-      type: "Batting",
       format: "Test"
     };
     this.props.getPlayerRanking(ranking);
+    this.props.getTeamRanking(ranking);
   }
 
   state = {
     type: "",
     format: "",
-    teams_ranking: false
+    testClick: true,
+    odiClick: false,
+    t20Click: false
   };
 
-  sendData(types, formats) {
-    console.log(types);
+  sendData(formats) {
     this.setState({
-      type: types,
-      format: formats,
-      teams_ranking: false
+      format: formats
     });
     let ranking = {
-      type: this.state.type,
       format: this.state.format
     };
     this.props.getPlayerRanking(ranking);
-  }
-
-  sendTeam(types) {
-    console.log(types);
-    this.setState({
-      format: types,
-      teams_ranking: true
-    });
-    let ranking = {
-      format: this.state.format
-    };
     this.props.getTeamRanking(ranking);
   }
 
   render() {
+    let playerBatting = this.props.players.slice(0, 10);
+    let playerBowling = this.props.players.slice(10, 20);
+    let playerallRounder = this.props.players.slice(20, 30);
     console.log(this.props);
     return (
       <div>
-        <div className="navbar">
-          <div className="subnav">
-            <button className="subnavbtn">
-              Batting <i className="fa fa-caret-down"></i>
-            </button>
-            <div className="subnav-content">
-              <p onClick={() => this.sendData("Batting", "Test")}>Test</p>
-              <p onClick={() => this.sendData("Batting", "ODI")}>ODI</p>
-              <p onClick={() => this.sendData("Batting", "T20")}>T20</p>
-            </div>
-          </div>
-          <div className="subnav">
-            <button className="subnavbtn">
-              Bowling <i className="fa fa-caret-down"></i>
-            </button>
-            <div className="subnav-content">
-              <p onClick={() => this.sendData("Bowling", "Test")}>Test</p>
-              <p onClick={() => this.sendData("Bowling", "ODI")}>ODI</p>
-              <p onClick={() => this.sendData("Bowling", "T20")}>T20</p>
-            </div>
-          </div>
-          <div className="subnav">
-            <button className="subnavbtn">
-              All-Rounder <i className="fa fa-caret-down"></i>
-            </button>
-            <div className="subnav-content">
-              <p onClick={() => this.sendData("All-rounder", "Test")}>Test</p>
-              <p onClick={() => this.sendData("All-rounder", "ODI")}>ODI</p>
-              <p onClick={() => this.sendData("All-rounder", "T20")}>T20</p>
-            </div>
-          </div>
-          <div className="subnav">
-            <button className="subnavbtn">
-              Teams <i className="fa fa-caret-down"></i>
-            </button>
-            <div className="subnav-content">
-              <p onClick={() => this.sendTeam("Test")}>Test</p>
-              <p onClick={() => this.sendTeam("ODI")}>ODI</p>
-              <p onClick={() => this.sendTeam("T20")}>T20</p>
-            </div>
-          </div>
+        {/* Start of Button-Container fer Navigating through format -- Bhavana */}
+        <div className="rankings-button-container">
+          <button
+            className={
+              this.state.testClick
+                ? "ranking-test-button ranking-active"
+                : "ranking-test-button"
+            }
+            onClick={() => {
+              this.sendData("Test");
+              this.setState({
+                testClick: true,
+                odiClick: false,
+                t20Click: false
+              });
+            }}
+          >
+            Test
+          </button>
+          <button
+            className={
+              this.state.odiClick ? " ranking-active" : "ranking-odi-button"
+            }
+            onClick={() => {
+              this.sendData("ODI");
+              this.setState({
+                testClick: false,
+                odiClick: true,
+                t20Click: false
+              });
+            }}
+          >
+            ODI
+          </button>
+          <button
+            className={
+              this.state.t20Click ? "ranking-t20-active" : "ranking-t20-button"
+            }
+            onClick={() => {
+              this.sendData("T20");
+              this.setState({
+                testClick: false,
+                odiClick: false,
+                t20Click: true
+              });
+            }}
+          >
+            T20
+          </button>
         </div>
-        {this.state.teams_ranking === false ? (
-          <h1 className="rankining-content-header">
-            ICC Cricket Rankings - Men's {this.state.format} {this.state.type}
-          </h1>
-        ) : (
-          <h1 className="rankining-content-header">
-            ICC Cricket Rankings - Men's {this.state.format}
-          </h1>
-        )}
+        {/* End of Button-Container fer Navigating through format -- Bhavana */}
 
-        {this.state.teams_ranking === false ? (
-          <div className="rankings-wrapper">
-            <div className="rankings-box a">
-              <b>Position</b>
+        {/* Start of main container for embedding all tables - Bhavana */}
+        <div className="rankingmain-container">
+          {/* Conatiner for first row -- Bhavana */}
+          <div class="ranking-container">
+            {/* Start of Table for Batting Stats for all Formats -- Bhavana*/}
+            <div>
+              <h2 className="rankings-container-header">
+                {" "}
+                ICC {this.state.format} Batting
+              </h2>
+              <table class="ranking-table">
+                <tr>
+                  <th>Rank</th>
+                  <th>Player Image</th>
+                  <th>Player</th>
+                  <th>Team</th>
+                  <th>Ratings</th>
+                </tr>
+                {playerBatting.map(player => (
+                  <tr>
+                    <td>{player.position}</td>
+                    <td>
+                      <img src={playeruser} className="rankingplayerIcon" />
+                    </td>
+                    <td>{player.player_name}</td>
+                    <td>{player.player_team}</td>
+                    <td>{player.ratings}</td>
+                  </tr>
+                ))}
+              </table>
             </div>
-            <div className="rankings-box b"></div>
-            <div className="rankings-box b">
-              <b>Player</b>
+            {/* End of Table for Batting Stats for all Formats -- Bhavana*/}
+
+            {/* Start of Table for Bowling Stats for all Formats -- Bhavana*/}
+            <div>
+              <h2 className="rankings-container-header">
+                ICC {this.state.format} Bowling
+              </h2>
+              <table class="ranking-table">
+                <tr>
+                  <th>Rank</th>
+                  <th>Player Image</th>
+                  <th>Player</th>
+                  <th>Team</th>
+                  <th>Ratings</th>
+                </tr>
+                {playerBowling.map(player => (
+                  <tr>
+                    <td>{player.position}</td>
+                    <td>
+                      <img src={playeruser} className="rankingplayerIcon" />
+                    </td>
+                    <td>{player.player_name}</td>
+                    <td>{player.player_team}</td>
+                    <td>{player.ratings}</td>
+                  </tr>
+                ))}
+              </table>
             </div>
-            <div className="rankings-box c">
-              <b>Ratings</b>
-            </div>
-            {this.props.players.map(player => (
-              <div className="rankings-row">
-                <div className="rankings-box d">{player.position}</div>
-                <div className="rankings-box e">
-                  <img
-                    src={playeruser}
-                    alt="player"
-                    className="rankingplayerIcon"
-                  />
-                </div>
-                <div className="rankings-box f">{player.player_name}</div>
-                <div className="rankings-box g">{player.ratings}</div>
-              </div>
-            ))}
+            {/* End of Table for Bowling Stats for all Formats -- Bhavana*/}
           </div>
-        ) : (
-          <div className="rankings-wrapper">
-            <div className="rankings-box a">
-              <b>Ranking</b>
+          {/* Conatiner for first row -- Bhavana */}
+
+          {/*  Start ofSecond row for ranking starts here */}
+          <div class="ranking-container1">
+            {/* Start of Table for All-Rounder Stats for all Formats */}
+            <div>
+              <h2 className="rankings-container-header">
+                ICC {this.state.format} All-Rounder
+              </h2>
+              <table class="ranking-table">
+                <tr>
+                  <th>Rank</th>
+                  <th>Player Image</th>
+                  <th>Player</th>
+                  <th>Team</th>
+                  <th>Ratings</th>
+                </tr>
+                {playerallRounder.map(player => (
+                  <tr>
+                    <td>{player.position}</td>
+                    <td>
+                      <img src={playeruser} className="rankingplayerIcon" />
+                    </td>
+                    <td>{player.player_name}</td>
+                    <td>{player.player_team}</td>
+                    <td>{player.ratings}</td>
+                  </tr>
+                ))}
+              </table>
             </div>
-            <div className="rankings-box b">
-              <b>Team</b>
+            {/* End of Table for All-Rounder Stats for all Formats */}
+
+            {/* Start of Table for Team Stats for all Formats */}
+            <div>
+              <h2 className="rankings-container-header">
+                ICC {this.state.format} Teams
+              </h2>
+              <table class="ranking-table">
+                <tr>
+                  <th>Rank</th>
+                  <th>Team Image</th>
+                  <th>Team</th>
+                  <th>Ratings</th>
+                  <th>Points</th>
+                </tr>
+                {this.props.teams.map(team => (
+                  <tr>
+                    <td>{team.position}</td>
+                    <td>
+                      <img src={playeruser} className="rankingplayerIcon" />
+                    </td>
+                    <td>{team.team_name}</td>
+                    <td>{team.rating}</td>
+                    <td>{team.points}</td>
+                  </tr>
+                ))}
+              </table>
             </div>
-            <div className="rankings-box b">
-              <b>Ratings</b>
-            </div>
-            <div className="rankings-box c">
-              <b>Points</b>
-            </div>
-            {this.props.teams.map(team => (
-              <div className="rankings-row">
-                <div className="rankings-box d">{team.position}</div>
-                <div className="rankings-box e">{team.team_name}</div>
-                <div className="rankings-box f">{team.rating}</div>
-                <div className="rankings-box g">{team.points}</div>
-              </div>
-            ))}
+            {/* End of Table for Team Stats for all Formats */}
           </div>
-        )}
+          {/*  End ofSecond row for ranking starts here */}
+        </div>
+        {/* End of main container for embedding all tables - Bhavana */}
       </div>
     );
   }

@@ -1,21 +1,33 @@
-import React, { Component } from "react";
+import React, { Component, useState, useEffect } from "react";
 import { connect } from "react-redux";
 import "../styles/match.css";
 import india from "../assests/india.jpg";
 import pakistan from "../assests/pakistan.jpg";
-
 import { getMatchesByType } from "../actions/matchActions";
-
+var json;
 export class Match extends Component {
+  constructor(props) {
+    super(props);
+    // this.getData = this.getData.bind(this);
+  }
+
   componentDidMount() {
     let type = { type: "ODI" };
     this.props.getMatchesByType(type);
+    let obj = {
+      match_id: 14,
+      inning: 2
+    };
+    this.props.getGraphs(obj);
   }
 
   state = {
     type: "",
     matchType: "ODI",
-    activeClass: "match-active-option"
+    activeClass: "match-active-option",
+    data: [],
+    userId: 1,
+    loading: false
   };
   sendType() {
     console.log("type" + this.state.type);
@@ -35,7 +47,6 @@ export class Match extends Component {
   }
 
   render() {
-    console.log(this.state);
     return (
       <div>
         <div className="match-pc-tab">
