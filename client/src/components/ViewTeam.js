@@ -37,7 +37,7 @@ export class ViewTeam extends Component {
       this.props.location.state.teams.team_id,
       type
     );
-    this.props.teamStatsGraphOdi(this.props.location.state.teams.team_id);
+    // this.props.teamStatsGraphOdi(this.props.location.state.teams.team_id);
   }
   state = {
     team_name: "",
