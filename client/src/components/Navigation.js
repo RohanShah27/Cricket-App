@@ -129,14 +129,15 @@ export class Navigation extends Component {
                   <hr style={{ width: "100px", marginLeft: "50px" }} />
                   {this.props.search_result.length != 0 ? (
                     this.props.search_result.team.length != 0 ? (
-                      this.props.search_result.team.map(team => (
+                      this.props.search_result.team.map(teams => (
                         <span className="search_result_data">
                           <Link
                             to={{
-                              pathname: "/viewteam/" + team.team_id,
-                              state: { team }
+                              pathname: "/viewteam/" + teams.team_id,
+                              state: { teams }
                             }}
                           >
+                            {/* <Link to={"/viewteam/" + team.team_id}> */}
                             <p
                               style={{
                                 fontSize: "18px",
@@ -145,7 +146,7 @@ export class Navigation extends Component {
                                 justifyContent: "center"
                               }}
                             >
-                              {team.team_name}
+                              {teams.team_name}
                               <img
                                 src={ipl}
                                 style={{

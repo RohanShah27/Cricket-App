@@ -71,10 +71,10 @@ router.post("/emailverify", async (req, res, next) => {
     const result = await db.any(
       `select * from user_info where email = '${req.body.email}'`
     );
-    if (result) {
+    if (result.length == 1) {
       res
         .status(400)
-        .json({ status: 200, data: result, message: "Email Already Exists" });
+        .json({ status: 400, data: result, message: "Email Already Exists" });
     }
 
     // let testAccount = await nodemailer.createTestAccount();
@@ -140,13 +140,11 @@ router.post("/login", async (req, res, next) => {
       })
       .catch(error => {
         console.log(error);
-        return res
-          .status(400)
-          .send({
-            status: 400,
-            data: result,
-            message: "incorrect id or password"
-          });
+        return res.status(400).send({
+          status: 400,
+          data: result,
+          message: "incorrect id or password"
+        });
       });
     let validateToken = (req, res, next) => {
       let bearerHeader =
@@ -165,13 +163,11 @@ router.post("/login", async (req, res, next) => {
         console.log(decodedToken);
       } catch (error) {
         console.log(error);
-        res
-          .status(400)
-          .send({
-            status: 400,
-            data: result,
-            message: "incorrect id or password"
-          });
+        res.status(400).send({
+          status: 400,
+          data: result,
+          message: "incorrect id or password"
+        });
       }
     };
   } catch (error) {
