@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const pg = require("pg-promise")();
-const db = pg("postgres://postgres:123456@192.168.0.63:5432/crickstrait");
+const db = pg("postgres://postgres:123456@localhost:5432/crickstrait_db");
 
 // Retrieving all products from database
 router.get("/all", async (req, res) => {

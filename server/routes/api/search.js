@@ -3,6 +3,7 @@ const router = express.Router();
 const pg = require("pg-promise")();
 const db = pg("postgres://postgres:123456@localhost/crickstrait_db");
 
+// Global Search
 router.post("/search", async (req, res, next) => {
   try {
     user_request = req.body.search_term;

@@ -170,16 +170,17 @@ figcaption {
 
 .first {
   padding-top: 20px;
+  width: 120px;
 }
 
 .second {
   padding-top: 95px;
-  padding-left: 10px;
+  /* padding-left: 10px; */
 }
 
 .third {
   padding-top: 20px;
-  padding-right: 2px;
+  /* padding-right: 2px; */
 }
 
 .imgformatch {
@@ -202,6 +203,7 @@ figcaption {
   height: 20px;
   outline: none;
   cursor: pointer;
+  margin-left: 0px;
 }
 
 .buttonformatch:hover {

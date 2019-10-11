@@ -135,11 +135,11 @@ export const login = (user, history) => dispatch => {
   return axios
     .post("http://localhost:5000/api/user/login", user)
     .then(res => {
-      localStorage.setItem("token", res.data.data);
-      history.push("/adminplayer");
       dispatch({
         type: LOGIN
       });
+      localStorage.setItem("token", res.data.data);
+      history.push("/");
     })
     .catch(err => {
       dispatch({

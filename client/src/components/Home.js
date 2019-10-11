@@ -84,7 +84,10 @@ export class Home extends Component {
                   <div className="card">
                     <span className="tournament-home">
                       {" "}
-                      {match.competition} - {match.match_type}
+                      {match.competition == "others"
+                        ? "International"
+                        : match.competition}{" "}
+                      - {match.match_type}
                     </span>
                     {/* <span style={{ fontSize: "14px" }}>
                       {console.log(match.date.split("T"))}
@@ -92,7 +95,7 @@ export class Home extends Component {
                     <div className="parent">
                       <div className="first">
                         <img className="imgformatch" src={india} />
-                        <p>{match.innings_one_team}</p>
+                        <p style={{ wordBreak: "break-word" }}>{match.team1}</p>
                       </div>
                       <div className="second">
                         <button className="buttonformatch">View</button>
@@ -100,7 +103,7 @@ export class Home extends Component {
                       <div className="third">
                         <img className="imgformatch" src={pakistan} />
 
-                        <p>{match.innings_two_team}</p>
+                        <p>{match.team2}</p>
                       </div>
                     </div>
                   </div>
