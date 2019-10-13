@@ -170,16 +170,17 @@ figcaption {
 
 .first {
   padding-top: 20px;
+  width: 120px;
 }
 
 .second {
   padding-top: 95px;
-  padding-left: 10px;
+  /* padding-left: 10px; */
 }
 
 .third {
   padding-top: 20px;
-  padding-right: 2px;
+  /* padding-right: 2px; */
 }
 
 .imgformatch {
@@ -202,6 +203,7 @@ figcaption {
   height: 20px;
   outline: none;
   cursor: pointer;
+  margin-left: 0px;
 }
 
 .buttonformatch:hover {
@@ -248,5 +250,55 @@ figcaption {
   }
   100% {
     transform: rotate(360deg);
+  }
+}
+@media (max-width: 768px) {
+  .home-flex-container {
+    display: block;
+  }
+  .site {
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto auto auto auto;
+  }
+  .fixtures {
+    grid-column: 1;
+    grid-row: 1/4;
+  }
+  .headlines {
+    grid-column: 2;
+    grid-row: 1/4;
+  }
+  .news {
+    grid-column: 1/-1;
+    grid-row: 4/5;
+  }
+
+  .home-match-container {
+    grid-column: 1/-1;
+    grid-row: -1;
+  }
+  .testimonials .card {
+    margin-left: 2vw;
+  }
+}
+
+@media (max-width: 412px) {
+  /* .site {
+    grid-row: auto auto auto auto auto auto;
+  } */
+  .testimonials .card {
+    margin-left: 10vw;
+  }
+  .homeimg {
+    height: 200px;
+  }
+  .news {
+    height: 380px;
+    grid-row: 4;
+  }
+}
+@media (max-width: 600px) {
+  .testimonials .card {
+    margin-left: 15vw;
   }
 }

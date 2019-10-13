@@ -20,7 +20,7 @@ export class Team extends Component {
   };
 
   componentDidMount() {
-    let team = { tournament: "International" };
+    let team = { tournament: "others" };
     this.props.getTournament(team);
   }
 
@@ -87,7 +87,7 @@ export class Team extends Component {
               <li className="playerTab1">
                 <label
                   htmlFor="playerTab1"
-                  onClick={() => this.sendTeam("International")}
+                  onClick={() => this.sendTeam("others")}
                 >
                   International
                 </label>

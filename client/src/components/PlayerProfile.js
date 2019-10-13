@@ -13,8 +13,11 @@ export class PlayerProfile extends Component {
     console.log(this.props.match.params.player_id);
     this.props.searchPlayer(this.props.match.params.player_id);
   }
-
+  componentWillReceiveProps(nextProps) {
+    this.props.searchPlayer(this.props.match.params.player_id);
+  }
   render() {
+    console.log(this.props);
     return (
       <div style={{ marginBottom: "80px" }}>
         <div className="main-section">
@@ -24,7 +27,11 @@ export class PlayerProfile extends Component {
               <img className="profile-img" src={virat}></img>
             </div>
             <div style={{ flexGrow: 8 }}>
-              <h1>{this.props.history.location.state.player.player_name}</h1>
+              <h1>
+                {this.props.history.location.state.player.player_name
+                  ? this.props.history.location.state.player.player_name
+                  : "NA"}
+              </h1>
               <h5>
                 Team:{" "}
                 {this.props.location.state.player.nation

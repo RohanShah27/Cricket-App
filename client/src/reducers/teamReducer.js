@@ -5,14 +5,20 @@ import {
   GET_TEAM_BY_ID,
   GET_TEAM_STATS,
   GET_PLAYER_STATS_FOR_TEAMS,
-  GET_PLAYER_STATS_FOR_TEAMS_BOWLER
+  GET_PLAYER_STATS_FOR_TEAMS_BOWLER,
+  TEAM_STATS_GRAPH_TEST,
+  TEAM_STATS_GRAPH_T20,
+  TEAM_STATS_GRAPH_ODI
 } from "../actions/Types";
 
 const initialState = {
   tournamentTeam: [],
   teamstats: [],
   playerstatsforteams: [],
-  playerstatsforteamsbowler: []
+  playerstatsforteamsbowler: [],
+  odi_graph: [],
+  test_graph: [],
+  t20_graph: []
 };
 export default function(state = initialState, action) {
   switch (action.type) {
@@ -50,6 +56,21 @@ export default function(state = initialState, action) {
       return {
         ...state,
         playerstatsforteamsbowler: action.payload
+      };
+    case TEAM_STATS_GRAPH_ODI:
+      return {
+        ...state,
+        odi_graph: action.payload
+      };
+    case TEAM_STATS_GRAPH_TEST:
+      return {
+        ...state,
+        test_graph: action.payload
+      };
+    case TEAM_STATS_GRAPH_T20:
+      return {
+        ...state,
+        t20_graph: action.payload
       };
     default:
       return state;

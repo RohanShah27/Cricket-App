@@ -1,15 +1,16 @@
 import { combineReducers } from "redux";
 import players from "./playerRankingReducer";
 import teams from "./teamRanking";
-import venueByCountry from "./Venues";
 import tournamentTeam from "./teamReducer";
+import venueByCountry from "./Venues";
 import headlines from "./headlinesReducer";
 import fixtures from "./fixturesReducer";
 import player from "./playersReducer";
 import match from "./matchReducers";
 import users from "./userReducer";
-import Adminplayers from "./AdminplayerReducer";
+import adminplayers from "./AdminplayerReducer";
 import playerType from "./playertypeReducer";
+import search from "./searchReducer";
 
 export default combineReducers({
   playerRankingReducer: players,
@@ -18,9 +19,10 @@ export default combineReducers({
   teamReducer: tournamentTeam,
   headlinesReducer: headlines,
   fixturesReducer: fixtures,
-  AdminplayerReducer: Adminplayers,
+  AdminplayerReducer: adminplayers,
   playersReducer: player,
   playertypeReducer: playerType,
   matchReducers: match,
-  userReducer: users
+  userReducer: users,
+  searchReducer: search
 });

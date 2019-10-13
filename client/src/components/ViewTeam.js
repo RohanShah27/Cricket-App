@@ -6,13 +6,12 @@ import {
   getTeamById,
   getTeamStats,
   getPlayerStatsForTeams,
-  getPlayerStatsForTeamsBowler
+  getPlayerStatsForTeamsBowler,
+  teamStatsGraphOdi
 } from "../actions/teamActions";
 import { getMatchesByTeam } from "../actions/matchActions";
 import india from "../assests/india.jpg";
 import pakistan from "../assests/pakistan.jpg";
-import DatePicker from "react-datepicker";
-
 
 export class ViewTeam extends Component {
   componentDidMount() {
@@ -38,11 +37,11 @@ export class ViewTeam extends Component {
       this.props.location.state.teams.team_id,
       type
     );
+    // this.props.teamStatsGraphOdi(this.props.location.state.teams.team_id);
   }
   state = {
     team_name: "",
     match_type: "",
-    match_date: "",
     odiclick: true,
     testclick: false,
     t20click: false
@@ -271,33 +270,19 @@ export class ViewTeam extends Component {
                     </table>
                   </div>
                   {/* ))} */}
-                  <div className="viewTeam-table2">Second</div>
+                  <div className="viewTeam-table2">
+                    <h2 style={{ textAlign: "center" }}>ODI Stats</h2>
+                    <iframe
+                      src={this.props.odi_graph}
+                      style={{ width: "100%", height: "500px", border: "none" }}
+                    ></iframe>
+                  </div>
                 </div>
               </div>
 
               {/* second tab */}
               <div className="viewTeam-tab2">
                 <div className="viewTeamMatches-testimonials">
-                  <div>
-                  <DatePicker className="playerdate"
-                                        dateFormat="dd-MM-yyyy"
-                                        placeholderText="DOB"
-                                        selected={this.state.player_dob}
-                                        onChange={this.handleDayChange}
-                                        popperPlacement="bottom"
-                                        popperModifiers={{
-                                            flip: {
-                                                behavior: ["bottom"] // don't allow it to flip to be above
-                                            },
-                                            preventOverflow: {
-                                                enabled: false // tell it not to try to stay within the view (this prevents the popper from covering the element you clicked)
-                                            },
-                                            hide: {
-                                                enabled: false // turn off since needs preventOverflow to be enabled
-                                            }
-                                        }}
-                                    />
-                  </div>
                   {this.props.match.map(match => (
                     <div className="viewTeamMatches-card">
                       <div className="viewTeamMatches-parent">
@@ -356,7 +341,10 @@ const mapStateToProps = state => ({
   match: state.matchReducers.match,
   teamstats: state.teamReducer.teamstats,
   playerstatsforteams: state.teamReducer.playerstatsforteams,
-  playerstatsforteamsbowler: state.teamReducer.playerstatsforteamsbowler
+  playerstatsforteamsbowler: state.teamReducer.playerstatsforteamsbowler,
+  odi_graph: state.teamReducer.odi_graph,
+  test_graph: state.teamReducer.test_graph,
+  t20_graph: state.teamReducer.t20_graph
 });
 
 export default connect(
@@ -366,6 +354,7 @@ export default connect(
     getMatchesByTeam,
     getTeamStats,
     getPlayerStatsForTeams,
-    getPlayerStatsForTeamsBowler
+    getPlayerStatsForTeamsBowler,
+    teamStatsGraphOdi
   }
 )(ViewTeam);

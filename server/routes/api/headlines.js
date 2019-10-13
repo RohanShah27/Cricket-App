@@ -27,7 +27,7 @@ router.get("/all", async (req, res) => {
 // Get a current headline for the news section
 router.get("/single_headline", async (req, res) => {
   try {
-    let number = Math.floor(Math.random() * (10 - 21) + 21);
+    let number = Math.floor(Math.random() * (10 - 20) + 20);
     const result = await db.any(
       "select * from headlines where headline_id='" + number + "';"
     );

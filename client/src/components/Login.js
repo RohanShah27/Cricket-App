@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { login } from "../actions/User";
+import { Link } from "react-router-dom";
 
 import { connect } from "react-redux";
 import "../styles/login.css";
@@ -39,6 +40,7 @@ export class Login extends Component {
       email: "",
       password: ""
     });
+    this.forceUpdate();
   }
 
   render() {
@@ -89,7 +91,17 @@ export class Login extends Component {
               Login
             </button>
             {/* end of button for login -yash */}
-
+            <Link to="/resetpassword">
+              <p
+                style={{
+                  color: "#f39c12",
+                  textDecoration: "none",
+                  borderBottom: "none"
+                }}
+              >
+                Forgot Password ?
+              </p>
+            </Link>
             {/* end of fieldset -yash */}
           </fieldset>
           {/* end of form -yash */}

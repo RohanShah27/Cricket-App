@@ -39,4 +39,13 @@ describe("Testing Footer Component", () => {
         .props().className
     ).toBe("nav-container");
   });
+
+  it("simulate search button", () => {
+    expect(
+      wrapper
+        .find("button")
+        .at(0)
+        .simulate("click")
+    );
+  });
 });

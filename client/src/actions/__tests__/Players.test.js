@@ -44,7 +44,7 @@ describe("Testing Players action", () => {
     const expectedResponse = [
       {
         type: SEARCH_PLAYER,
-        payload: responseofAPI
+        payload: responseofApi
       }
     ];
     return store.dispatch(action.searchPlayer()).then(() => {
@@ -62,7 +62,7 @@ describe("Testing Players action", () => {
     const expectedResponse = [
       {
         type: SEARCH_PLAYER,
-        payload: responseofAPI
+        payload: responseofapi
       }
     ];
     return store.dispatch(action.searchPlayer()).then(() => {

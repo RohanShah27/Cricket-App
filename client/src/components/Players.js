@@ -52,7 +52,10 @@ export class Players extends Component {
               <div className="players-card">
                 <img src={virat} className="players-img "></img>
                 <p className="player-name">{player.player_name}</p>
-                <span className="team-name">India</span>
+                <span className="team-name">
+                  <span style={{ color: "black" }}>Team:</span>{" "}
+                  {player.nation ? player.nation : "NA"}
+                </span>
                 <button
                   onClick={() =>
                     this.props.history.push(

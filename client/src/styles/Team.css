@@ -102,6 +102,7 @@
 li {
   user-select: none;
 }
+
 .pc-playerTab section div h2 {
   margin: 0;
 }
@@ -152,8 +153,7 @@ li {
 }
 
 .team-teamTestimonials .teamcomponent-card .team-content {
-  height: 200px;
-  /* z-index: 2; */
+  z-index: 2;
 }
 
 .team-teamTestimonials .teamcomponent-card .team-content p {
