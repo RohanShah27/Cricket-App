@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const pg = require("pg-promise")();
-const db = pg("postgres://postgres:123456@localhost/crickstrait_db");
+const db = pg("postgres://postgres:123456@localhost:5432/crickstrait_db");
 
 router.post("/tournament", async (req, res) => {
   const tournament = req.body.tournament;
@@ -97,8 +97,8 @@ router.get("/matchtype/:team_id", async (req, res) => {
 router.get("/playerstats", async (req, res) => {
   const result = await db.any(
     "Select player_stats.match_type, player_stats.player_stats_name,player_stats.player_stats_value from team where team_id = '" +
-      team_id +
-      "';"
+    team_id +
+    "';"
   );
   res.status(200).json({
     status: 200,

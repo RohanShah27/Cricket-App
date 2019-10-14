@@ -3,20 +3,30 @@ import { addTeam } from "../actions/User";
 
 import { connect } from "react-redux";
 import "../styles/Adminaddnewteam.css";
+//initial state for the values used in this component -yash
+const initialState = {
+    team_name: "",
+    team_name_Error: ""
+}
 export class AddNewTeam extends Component {
     constructor(props) {
         super(props);
         //to make function onaddAdminClick execute when clicked  -yash
         this.onaddAdminClick = this.onaddAdminClick.bind(this);
+        this.state = {
+            isDisabled: false
+        }
     }
     state = {
         //parameter in table teams -yash
-        team_name: ""
+        initialState
     };
 
     OnChange = event => {
-        // change the input state -yash
-        this.setState({ [event.target.name]: event.target.value });
+        //checkbox to check if all error conditions are surpassed -yash
+        const isCheckbox = event.target.type === "checkbox";
+        //state change when the user inputs in the inputbox -yash
+        this.setState({ [event.target.name]: isCheckbox ? event.target.checked : event.target.value });
     };
     componentDidMount() {
         //check if token is present -yash
@@ -24,21 +34,40 @@ export class AddNewTeam extends Component {
             this.props.history.push("/");
         }
     }
+    //errors generated from the client side -yash
+    validate = () => {
+        let team_name_Error = "";
+
+        if (!this.state.team_name_Error || this.state.team_name_Error.length <= 4) {
+            team_name_Error = "Insert Team";
+        }
+
+        if (team_name_Error) {
+            this.setState({ team_name_Error: team_name_Error });
+
+            return false;
+        }
+        return true;
+    }
 
     onaddAdminClick(e) {
         //prevent values showing on the searchbar -yash
         e.preventDefault();
-        let team = {
-            team_name: this.state.team_name
-        };
-        //function on actions to add the team_name to the team database -yash
-        this.props.addTeam(team)
-        this.setState({
-            team_name: ""
-        });
+        const isValid = this.validate();
+        if (isValid) {
+            let team = {
+                team_name: this.state.team_name
+            };
+            //function on actions to add the team_name to the team database -yash
+            this.props.addTeam(team)
+            this.setState({
+                team_name: ""
+            });
+        }
     }
 
     render() {
+        console.log(this.props)
         return (
             //start of div -yash
             <div>
@@ -58,6 +87,9 @@ export class AddNewTeam extends Component {
                             value={this.state.team_name}
                         />
                         {/* end of input team-name -yash */}
+                        {/* error generation if there is an error -yash */}
+                        <div className="teamnameerror" style={{ fontSize: 15, color: "red" }}>{this.state.team_name_Error}</div>
+                        {/* end of error generation -yash */}
                         {/* display error from node -yash */}
                         {this.props.error ? <><p>{this.props.error}</p></> : null}
                         {/* ṣtart of button add team -yash */}

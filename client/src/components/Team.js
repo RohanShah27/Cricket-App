@@ -7,12 +7,31 @@ import {
   getTournament,
   searchTeamForViewTeamPage
 } from "../actions/teamActions";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 export class Team extends Component {
   constructor(props) {
     super(props);
     this.sendTeam = this.sendTeam.bind(this);
+    this.state = {
+      tournamentTeam: Array.from({ length: 5 }),
+      hasMore: true
+    }
   }
+
+  fetchMoreData = () => {
+    if (this.state.tournamentTeam.length >= 500) {
+      this.setState({ hasMore: false });
+      return;
+    }
+    // a fake async api call like which sends
+    // 20 more records in 1.5 secs
+    setTimeout(() => {
+      this.setState({
+        tournamentTeam: this.state.tournamentTeam.concat(Array.from({ length: 5 }))
+      });
+    }, 500);
+  };
 
   state = {
     tournament: "",
@@ -132,36 +151,51 @@ export class Team extends Component {
           </div>
           <section>
             <div className="playerTab1">
-              <div className="team-teamTestimonials">
-                {this.props.tournamentTeam.map(teams => (
-                  <div className="teamcomponent-card">
-                    <div className="team-content">
-                      <img
-                        src={international}
-                        className="internationalLogo"
-                        alt="International"
-                      />
-                      <p>{teams.team_name}</p>
-                      {/* <p>India</p> */}
-                      <div className="team-details">
-                        <p>
-                          <button
-                            className="playerViewDetails"
-                            onClick={() => {
-                              this.props.history.push(
-                                "/viewteam/" + teams.team_id,
-                                { teams }
-                              );
-                            }}
-                          >
-                            {" "}
-                            View Details
+              <div id="scrollableDiv" style={{ height: 700, overflow: "auto" }}>
+                <InfiniteScroll
+                  dataLength={this.state.tournamentTeam.length}
+                  next={this.fetchMoreData}
+                  hasMore={this.state.hasMore}
+                  loader={<h4>Loading...</h4>}
+                  scrollableTarget="scrollableDiv"
+                  endMessage={
+                    <p style={{ textAlign: "center" }}>
+                      <b>Yay! You have seen it all</b>
+                    </p>
+                  }
+                >
+                  <div className="team-teamTestimonials">
+                    {this.props.tournamentTeam.map((teams, index) => (
+                      <div className="teamcomponent-card" key={index}>
+                        <div className="team-content" >
+                          <img
+                            src={international}
+                            className="internationalLogo"
+                            alt="International"
+                          />
+                          <p>{teams.team_name}</p>
+                          {/* <p>India</p> */}
+                          <div className="team-details" key={index}>
+                            <p>
+                              <button
+                                className="playerViewDetails"
+                                onClick={() => {
+                                  this.props.history.push(
+                                    "/viewteam/" + teams.team_id,
+                                    { teams }
+                                  );
+                                }}
+                              >
+                                {" "}
+                                View Details
                           </button>
-                        </p>
+                            </p>
+                          </div>
+                        </div>
                       </div>
-                    </div>
+                    ))}
                   </div>
-                ))}
+                </InfiniteScroll>
               </div>
             </div>
           </section>
