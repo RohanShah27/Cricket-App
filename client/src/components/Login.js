@@ -33,8 +33,8 @@ export class Login extends Component {
     let emailError = "";
     let passwordError = "";
 
-    if (!this.state.email || this.state.email.length <= 5 || !this.state.email.includes("@") || !this.state.email.includes(".")) {
-      emailError = "invalid credentials";
+    if (!this.state.email || this.state.email.length <= 5 || !this.state.email.includes("@") || !this.state.email.includes(".") || !this.state.password || this.state.password <= 5) {
+      emailError = "Enter All Fields";
     }
     if (!this.state.password || this.state.password.length <= 5) {
       passwordError = "invalid credentials";
@@ -129,7 +129,8 @@ export class Login extends Component {
                 <p>{this.props.error}</p>
               </>
             ) : null}
-            <div className="loginerror" style={{ fontSize: 15, color: "red" }}>{this.state.passwordError, this.state.emailError}</div>
+
+            {/* <div className="loginerror" style={{ fontSize: 15, color: "red" }}>{this.state.emailError}</div> */}
             {/* button for login -yash */}
             <button
               onChange={this.onChange}

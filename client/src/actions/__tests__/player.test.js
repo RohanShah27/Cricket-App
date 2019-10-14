@@ -57,7 +57,7 @@ it("should return Response successful", () => {
     gender: "male",
     DOB: "12/12/1993",
     Nationality: "Indian",
-    player_Type: "Batsman",
+    player_role: "Batsman",
     Batting_Style: "Right Handed",
     Bowling_Style: "Spinner"
   };
@@ -66,7 +66,7 @@ it("should return Response successful", () => {
     response: { data: responseofAPI }
   });
   const store = mockStore({});
-  const expectedResponse = [];
+  const expectedResponse = [{ data: "Field Empty", type: "ERROR_TYPE" }];
   return store.dispatch(actions.createPlayers(types)).then(() => {
     expect(store.getActions()).toEqual(expectedResponse);
   });
@@ -84,11 +84,11 @@ it("should Add a player unsuccessfully", () => {
     Bowling_Style: "Spinner"
   };
   moxios.stubRequest("http://localhost:5000/api/player/new", {
-    status: 400,
+    status: 500,
     response: { data: responseofAPI }
   });
   const store = mockStore({});
-  const expectedResponse = [];
+  const expectedResponse = [{ data: "Field Empty", type: "ERROR_TYPE" }];
   return store
     .dispatch(actions.createPlayers(types))
     .then(() => {
@@ -111,11 +111,11 @@ it("should Add a player unsuccessfully", () => {
     Bowling_Style: "Spinner"
   };
   moxios.stubRequest("http://localhost:5000/api/player/new", {
-    status: 400,
+    status: 500,
     response: { data: responseofAPI }
   });
   const store = mockStore({});
-  const expectedResponse = [];
+  const expectedResponse = [{ data: "Field Empty", type: "ERROR_TYPE" }];
   return store.dispatch(actions.createPlayers(types)).then(() => {
     expect(store.getActions()).toEqual(expectedResponse);
   });
@@ -134,11 +134,11 @@ it("should Add a player unsuccessfully", () => {
     Bowling_Style: "Spinner"
   };
   moxios.stubRequest("http://localhost:5000/api/player/new", {
-    status: 400,
+    status: 500,
     response: { data: responseofAPI }
   });
   const store = mockStore({});
-  const expectedResponse = [];
+  const expectedResponse = [{ data: "Field Empty", type: "ERROR_TYPE" }];
   return store.dispatch(actions.createPlayers(types)).then(() => {
     expect(store.getActions()).toEqual(expectedResponse);
   });
@@ -157,11 +157,11 @@ it("should Add a player unsuccessfully", () => {
     Bowling_Style: "Spinner"
   };
   moxios.stubRequest("http://localhost:5000/api/player/new", {
-    status: 400,
+    status: 500,
     response: { data: responseofAPI }
   });
   const store = mockStore({});
-  const expectedResponse = [];
+  const expectedResponse = [{ data: "Field Empty", type: "ERROR_TYPE" }];
   return store.dispatch(actions.createPlayers(types)).then(() => {
     expect(store.getActions()).toEqual(expectedResponse);
   });
@@ -180,11 +180,11 @@ it("should Add a player unsuccessfully", () => {
     Bowling_Style: "Spinner"
   };
   moxios.stubRequest("http://localhost:5000/api/player/new", {
-    status: 400,
+    status: 500,
     response: { data: responseofAPI }
   });
   const store = mockStore({});
-  const expectedResponse = [];
+  const expectedResponse = [{ data: "Field Empty", type: "ERROR_TYPE" }];
   return store.dispatch(actions.createPlayers(types)).then(() => {
     expect(store.getActions()).toEqual(expectedResponse);
   });
@@ -203,11 +203,12 @@ it("should Add a player unsuccessfully", () => {
     Bowling_Style: "S"
   };
   moxios.stubRequest("http://localhost:5000/api/player/new", {
-    status: 400,
+    status: 500,
     response: { data: responseofAPI }
   });
   const store = mockStore({});
-  const expectedResponse = [];
+  const expectedResponse = [{ data: "Field Empty", type: "ERROR_TYPE" }
+  ];
   return store.dispatch(actions.createPlayers(types)).then(() => {
     expect(store.getActions()).toEqual(expectedResponse);
   });

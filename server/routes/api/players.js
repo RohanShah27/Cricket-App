@@ -5,7 +5,7 @@ const pg = require("pg-promise")();
 // Conneccting to the hosted database fixtures
 const db = pg("postgres://postgres:123456@localhost:5432/crickstrait_db");
 
-// Get players bio on seearch of players
+// Get stats of a player
 router.post("/player_search/:playerId", async (req, res) => {
   try {
     let playerId = req.params.playerId;
@@ -167,6 +167,7 @@ router.get("/all", async (req, res) => {
   }
 });
 // Service for search bar on players page for live search for a player from the database -Rohan
+// filter search
 router.post("/searchPlayer", async (req, res) => {
   try {
     let playerName = req.body.playerName;

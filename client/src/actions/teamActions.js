@@ -4,7 +4,10 @@ import {
   GET_TEAM_BY_ID,
   GET_TEAM_STATS,
   GET_PLAYER_STATS_FOR_TEAMS,
-  GET_PLAYER_STATS_FOR_TEAMS_BOWLER
+  GET_PLAYER_STATS_FOR_TEAMS_BOWLER,
+  TEAM_STATS_GRAPH_ODI,
+  TEAM_STATS_GRAPH_TEST,
+  TEAM_STATS_GRAPH_T20
 } from "./Types";
 import axios from "axios";
 const url = "http://localhost:5000/api/team";
@@ -100,6 +103,49 @@ export const getPlayerStatsForTeamsBowler = (
         payload: res.data.data
       });
       console.log(res.data.data);
+    })
+    .catch(err => {
+      console.log(err);
+    });
+};
+
+export const teamStatsGraphOdi = id => dispatch => {
+  return axios
+    .get("http://127.0.0.1:5000/odistats/" + id)
+    .then(res => {
+      dispatch({
+        type: TEAM_STATS_GRAPH_ODI,
+        payload: res.data
+      });
+      console.log(res.data);
+    })
+    .catch(err => {
+      console.log(err);
+    });
+};
+export const teamStatsGraphTest = id => dispatch => {
+  return axios
+    .get("http://127.0.0.1:5000/teststats/" + id)
+    .then(res => {
+      dispatch({
+        type: TEAM_STATS_GRAPH_TEST,
+        payload: res.data
+      });
+      console.log(res.data);
+    })
+    .catch(err => {
+      console.log(err);
+    });
+};
+export const teamStatsGraphT20 = id => dispatch => {
+  return axios
+    .get("http://127.0.0.1:5000/t20stats/" + id)
+    .then(res => {
+      dispatch({
+        type: TEAM_STATS_GRAPH_T20,
+        payload: res.data
+      });
+      console.log(res.data);
     })
     .catch(err => {
       console.log(err);

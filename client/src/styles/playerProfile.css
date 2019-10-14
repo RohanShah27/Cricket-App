@@ -147,3 +147,14 @@ td {
     margin-top: 50px;
   }
 }
+@media (max-width: 425px) {
+  .player-flex-container {
+    display: flex;
+    align-items: flex-start;
+  }
+  .profile {
+    /* padding-left: 20px; */
+    line-height: 25px;
+    font-size: 15px;
+  }
+}

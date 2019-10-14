@@ -24,9 +24,9 @@ export const getUsers = () => dispatch => {
       dispatch({
         type: ERROR_TYPE,
         //dispatch error message from node -yash
-        message: err.response.message,
+        message: err.response.data.message,
       });
-      console.log(dispatch)
+      console.log(err.response.data.message)
     });
 };
 
@@ -45,14 +45,14 @@ export const addAdmin = user => dispatch => {
       dispatch({
         type: ADD_ADMIN,
         //dispatch error message from node -yash
-        message: res.response.message
+        // message: res.response.data.message
       });
     })
     .catch(err => {
       dispatch({
         type: ERROR_TYPE,
         //dispatch error message from node -yash
-        message: err.response.message
+        message: err.response.data.message
       });
     });
 };
@@ -73,7 +73,7 @@ export const resetPassword = user => dispatch => {
       dispatch({
         type: ERROR_TYPE,
         //dispatch error message from node -yash
-        data: err.response.message,
+        message: err.response.data.message
       });
       console.log(err)
     });
@@ -98,8 +98,9 @@ export const addTeam = team => dispatch => {
       dispatch({
         type: ERROR_TYPE,
         //dispatch error message from node -yash
-        data: err.response.data.message
+        message: err.response.data.message
       });
+
     });
 };
 
@@ -123,8 +124,9 @@ export const sendPassword = user => dispatch => {
       dispatch({
         type: ERROR_TYPE,
         //dispatch error message from node -yash
-        data: err.response.message
+        message: err.response.data.message
       });
+      console.log(err.response.data.message)
     });
 };
 
@@ -138,14 +140,15 @@ export const login = (user, history) => dispatch => {
       dispatch({
         type: LOGIN
       });
+      localStorage.setItem("token", res.data.data);
+      history.push("/");
     })
     .catch(err => {
       dispatch({
         type: ERROR_TYPE,
         //dispatch error message from node -yash
-        data: err.response.message
+        message: err.response.data.message
       });
-      console.log(err.data)
-      console.log(err.type)
+      console.log(err.response.data.message)
     });
 };

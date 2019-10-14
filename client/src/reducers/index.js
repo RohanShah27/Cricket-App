@@ -11,6 +11,7 @@ import users from "./userReducer";
 import adminplayers from "./AdminplayerReducer";
 import playerType from "./playertypeReducer";
 import search from "./searchReducer";
+// import errors from "./userReducer"
 
 export default combineReducers({
   playerRankingReducer: players,
@@ -24,5 +25,6 @@ export default combineReducers({
   playertypeReducer: playerType,
   matchReducers: match,
   userReducer: users,
+  // userReducer: errors,
   searchReducer: search
 });

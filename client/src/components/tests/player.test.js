@@ -1,6 +1,6 @@
 import React from "react";
 import { mount } from "enzyme";
-import Player from "../player";
+import Player from "../AdminPlayer";
 import { Provider } from "react-redux";
 import store from "../../store";
 

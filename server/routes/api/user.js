@@ -3,8 +3,8 @@ const router = express.Router();
 const bcrypt = require("bcrypt");
 const pg = require("pg-promise")();
 const Joi = require("joi");
-const bodyParser = require('body-parser')
-const config = require("config")
+const bodyParser = require("body-parser");
+const config = require("config");
 // const jsonParser = bodyParser.json()
 const validateUser = require("./auth");
 const db = pg("postgres://postgres:123456@localhost/crickstrait_db");
@@ -43,22 +43,21 @@ router.post("/new", async (req, res, next) => {
         password: req.body.password
       };
 
-      validateUser(user)
-        .then(async val_user => {
-          console.log("joi : " + user);
-          let salt = bcrypt.genSaltSync(10);
-          let hashed_password = bcrypt.hashSync(user.password, salt);
+      validateUser(user).then(async val_user => {
+        console.log("joi : " + user);
+        let salt = bcrypt.genSaltSync(10);
+        let hashed_password = bcrypt.hashSync(user.password, salt);
 
-          const result = await db.any(`insert into user_info(email, password) 
+        const result = await db.any(`insert into user_info(email, password) 
                 values('${user.email}', '${hashed_password}') 
                 returning id`);
-          console.log(result);
-          res.status(200).json({
-            status: 200,
-            data: result,
-            message: "created one user successfully"
-          });
-        })
+        console.log(result);
+        res.status(200).json({
+          status: 200,
+          data: result,
+          message: "created one user successfully"
+        });
+      });
     }
   } catch (err) {
     next(err);
@@ -123,6 +122,7 @@ router.post("/login", async (req, res, next) => {
     if (result.length == 0) {
       return res.status(500).send({ message: "Account not found" });
     }
+    // console.log(res.message)
     // console.log(result)
     bcrypt
       .compare(req.body.password, result[0].password)
@@ -130,7 +130,7 @@ router.post("/login", async (req, res, next) => {
         const token = jwt.sign(
           {
             id: result[0].id,
-            email: result[0].email,
+            email: result[0].email
           },
           "privatekey",
           {
@@ -145,20 +145,21 @@ router.post("/login", async (req, res, next) => {
       })
       .catch(error => {
         console.log(error);
-        return res.status(400).send({ status: 400, data: result, message: "incorrect id or password" });
+        return res.status(400).send({
+          status: 400,
+          data: result,
+          message: "incorrect id or password"
+        });
       });
     // console.log(error.message)
     let validateToken = (req, res, next) => {
       let bearerHeader =
         req.headers["x-access-token"] || req.headers["authorization"];
       if (!bearerHeader)
-        return (
-          res.status(400).json({
-            login: "failed",
-            message: "token not found"
-
-          })
-        );
+        return res.status(400).json({
+          login: "failed",
+          message: "token not found"
+        });
       const token = bearerHeader.split(" ")[1];
       console.log(token);
       try {
@@ -172,10 +173,9 @@ router.post("/login", async (req, res, next) => {
       }
     };
   } catch (error) {
-    console.log(error);
+    console.log(res.message);
     res.status(500).send({ status: 500, data: result, message: "incorrect id or password" });
   }
-
 });
 router.post("/newteam", async (req, res, next) => {
   try {
@@ -232,7 +232,5 @@ router.put("/resetpassword", async (req, res, next) => {
     next(err);
   }
 });
-
-
 
 module.exports = router;

@@ -97,7 +97,7 @@ export class AddNewAdmin extends Component {
                         {/* end of input tag email -yash */}
                         <div className="adminerror" style={{ fontSize: 15, color: "red" }}>{this.state.emailError}</div>
                         {/* display error from node  -yash */}
-                        {this.props.error ? <><p>{this.props.error}</p></> : null}
+                        {this.props.errors ? <><p>{this.props.errors}</p></> : null}
                         {/* start of button add user -yash */}
                         <button
                             onChange={this.onChange}
