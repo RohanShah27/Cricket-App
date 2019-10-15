@@ -113,12 +113,13 @@ export class ResetPassword extends Component {
                             value={this.state.confirmpassword}
                         />
                         {/* end of input field -yash*/}
-                        <div className="loginerror" style={{ fontSize: 15, color: "red" }}>{this.state.emailError}</div>
-                        {this.props.error ? (
-                            <>
-                                <p>{this.props.error}</p>
-                            </>
-                        ) : null}
+                        <div className="loginerror" style={{ fontSize: 15, color: "red" }}>
+                            {this.props.error ? (
+                                <>
+                                    <p>{this.props.error}</p>
+                                </>
+                            ) : this.state.emailError}
+                        </div>
                         {/* start of button reset password -yash*/}
                         <button
                             onChange={this.onChange}

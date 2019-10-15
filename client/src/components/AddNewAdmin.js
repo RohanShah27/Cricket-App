@@ -40,7 +40,7 @@ export class AddNewAdmin extends Component {
         let emailError = "";
 
         if (!this.state.email || this.state.email.length <= 5 || !this.state.email.includes("@") || !this.state.email.includes(".")) {
-            emailError = "invalid credentials";
+            emailError = "Enter a valid Email";
         }
 
         if (emailError) {
@@ -95,10 +95,11 @@ export class AddNewAdmin extends Component {
                             required
                         />
                         {/* end of input tag email -yash */}
-                        <div className="adminerror" style={{ fontSize: 15, color: "red" }}>{this.state.emailError}</div>
-                        {/* display error from node  -yash */}
-                        {this.props.errors ? <><p>{this.props.errors}</p></> : null}
-                        {/* start of button add user -yash */}
+                        <div className="adminerror" style={{ fontSize: 15, color: "red" }}>
+                            {/* display error from node  -yash */}
+                            {this.props.error ? <><p>{this.props.error}</p></> : <p>{this.state.emailError}</p>}
+                            {/* start of button add user -yash */}
+                        </div>
                         <button
                             onChange={this.onChange}
                             onClick={this.onaddAdminClick}

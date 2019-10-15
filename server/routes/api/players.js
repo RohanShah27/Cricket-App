@@ -203,14 +203,15 @@ router.post("/newplayers", async (req, res, next) => {
     const result = await db.any(
       `select * from player where player_name='${req.body.player_name}'`
     );
-    if (result.length == 1) {
+    if (result.length == 0) {
       console.log(result);
       return res.status(500).send({ message: "player already exists" });
     }
-    else if (result.length == 0) {
-      console.log(result);
-      return res.status(500).send({ message: "Field Empty" });
-    } else {
+    // else if (result.length == 1) {
+    //   console.log(result);
+    //   return res.status(500).send({ message: "Field Empty" });
+    // }
+    else {
       //Insert a new player
       const result = await db.any(`insert into player(player_name,player_role,nation,gender,player_dob,batting_style,bowling_style)values('${player.player_name}','${player.player_role}','${player.nation}','${player.gender}','${player.player_dob}','${player.batting_style}','${player.bowling_style}')
               returning player_id`);

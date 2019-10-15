@@ -24,7 +24,7 @@ export const getUsers = () => dispatch => {
       dispatch({
         type: ERROR_TYPE,
         //dispatch error message from node -yash
-        message: err.response.data.message,
+        payload: err.response.data.message,
       });
       console.log(err.response.data.message)
     });
@@ -52,7 +52,7 @@ export const addAdmin = user => dispatch => {
       dispatch({
         type: ERROR_TYPE,
         //dispatch error message from node -yash
-        message: err.response.data.message
+        payload: err.response.data.message
       });
     });
 };
@@ -73,7 +73,7 @@ export const resetPassword = user => dispatch => {
       dispatch({
         type: ERROR_TYPE,
         //dispatch error message from node -yash
-        message: err.response.data.message
+        payload: err.response.data.message
       });
       console.log(err)
     });
@@ -98,7 +98,7 @@ export const addTeam = team => dispatch => {
       dispatch({
         type: ERROR_TYPE,
         //dispatch error message from node -yash
-        message: err.response.data.message
+        payload: err.response.data.message
       });
 
     });
@@ -124,7 +124,7 @@ export const sendPassword = user => dispatch => {
       dispatch({
         type: ERROR_TYPE,
         //dispatch error message from node -yash
-        message: err.response.data.message
+        payload: err.response.data.message
       });
       console.log(err.response.data.message)
     });
@@ -147,7 +147,7 @@ export const login = (user, history) => dispatch => {
       dispatch({
         type: ERROR_TYPE,
         //dispatch error message from node -yash
-        message: err.response.data.message
+        payload: err.response.data.message
       });
       console.log(err.response.data.message)
     });

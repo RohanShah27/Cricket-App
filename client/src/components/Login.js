@@ -65,6 +65,7 @@ export class Login extends Component {
 
   }
 
+
   onLogin(e) {
     //does not allow login values should be shown on the searchbar -yash
     e.preventDefault();
@@ -83,7 +84,16 @@ export class Login extends Component {
       });
     }
   }
-
+  error(state, props) {
+    const reducererror = props.error;
+    const clienterror = state.error;
+    if (reducererror) {
+      return this.props.error
+    }
+    else if (clienterror) {
+      return this.state.error
+    }
+  }
 
   render() {
     console.log(this.props)
@@ -122,15 +132,15 @@ export class Login extends Component {
             />
 
             {/* end of password input field -yash */}
+            <div className="loginerror" style={{ fontSize: 15, color: "red" }}>
+              {/* dispatch error from node -yash */}
+              {this.props.error ? (
+                <>
+                  <p>{this.props.error}</p>
+                </>
+              ) : <p>{this.state.emailError}</p>}
 
-            {/* dispatch error from node -yash */}
-            {this.props.error ? (
-              <>
-                <p>{this.props.error}</p>
-              </>
-            ) : null}
-
-            {/* <div className="loginerror" style={{ fontSize: 15, color: "red" }}>{this.state.emailError}</div> */}
+            </div>
             {/* button for login -yash */}
             <button
               onChange={this.onChange}

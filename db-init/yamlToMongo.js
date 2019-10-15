@@ -5,13 +5,13 @@ const { execSync } = require("child_process");
 const main = () => {
   let i = 1;
   try {
-    fs.readdir("yaml", (err, files) => {
+    fs.readdir("yaml-t20-all", (err, files) => {
       if (err) {
         return console.log("error" + err);
       }
       // iterate through all the files in the directory
       files.forEach(file => {
-        var doc = yaml.load(fs.readFileSync("yaml/" + file));
+        var doc = yaml.load(fs.readFileSync("yaml-t20-all/" + file));
 
         //  writing json file to json folder
         const converted = fs.writeFileSync(
@@ -35,7 +35,7 @@ const main = () => {
       // executing shell command to import json file in mongo from json folder
       execSync(
         // executes mongoimport for all the files in json folder
-        "for %i in (json\\*) do (mongoimport --db crickstrait_db --collection matchinfo --file %i)",
+        "for %i in (json\\*) do (mongoimport --db crickstrait_dbs --collection matchinfo --file %i)",
         (err, stdout, stderr) => {
           if (err) {
             console.error(err);
@@ -49,9 +49,9 @@ const main = () => {
         }
       );
 
-      // executes shell command to create postgres data base from crickstrait_db.sql file
+      // executes shell command to create postgres data base from crickstrait_dbs.sql file
       execSync(
-        "psql -U postgres -f crickstrait_db.sql",
+        "psql -U postgres -f crickstrait_dbs.sql",
         (err, stdout, stderr) => {
           if (err) {
             console.error("this", err);

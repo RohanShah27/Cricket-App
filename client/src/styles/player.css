@@ -134,6 +134,7 @@
 /* form id playerform -yash */
 #playerform {
   width: 42%;
+  height: auto;
   margin: 50px auto;
   text-align: center;
   position: relative;
@@ -144,6 +145,7 @@
   border: 1px solid #c2c2c2;
   border-radius: 8px;
   padding: 50px 50px;
+  /* margin-bottom:10px; */
   box-sizing: border-box;
   width: 80%;
   margin: 5% 10%;
@@ -197,4 +199,3 @@
   font-size: 12px;
   margin-left: 5px;
 }
-

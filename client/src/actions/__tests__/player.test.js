@@ -53,7 +53,7 @@ describe("Testing contacts actions", () => {
 it("should return Response successful", () => {
   const responseofAPI = [];
   let types = {
-    player_name: "Rohit Sharma",
+    player_name: "Iyer",
     gender: "male",
     DOB: "12/12/1993",
     Nationality: "Indian",
@@ -66,7 +66,7 @@ it("should return Response successful", () => {
     response: { data: responseofAPI }
   });
   const store = mockStore({});
-  const expectedResponse = [{ data: "Field Empty", type: "ERROR_TYPE" }];
+  const expectedResponse = [{ payload: "player already exists", type: "ERROR_TYPE" }];
   return store.dispatch(actions.createPlayers(types)).then(() => {
     expect(store.getActions()).toEqual(expectedResponse);
   });
@@ -88,7 +88,7 @@ it("should Add a player unsuccessfully", () => {
     response: { data: responseofAPI }
   });
   const store = mockStore({});
-  const expectedResponse = [{ data: "Field Empty", type: "ERROR_TYPE" }];
+  const expectedResponse = [{ payload: "player already exists", type: "ERROR_TYPE" }];
   return store
     .dispatch(actions.createPlayers(types))
     .then(() => {
@@ -115,7 +115,7 @@ it("should Add a player unsuccessfully", () => {
     response: { data: responseofAPI }
   });
   const store = mockStore({});
-  const expectedResponse = [{ data: "Field Empty", type: "ERROR_TYPE" }];
+  const expectedResponse = [{ payload: "player already exists", type: "ERROR_TYPE" }];
   return store.dispatch(actions.createPlayers(types)).then(() => {
     expect(store.getActions()).toEqual(expectedResponse);
   });
@@ -138,7 +138,7 @@ it("should Add a player unsuccessfully", () => {
     response: { data: responseofAPI }
   });
   const store = mockStore({});
-  const expectedResponse = [{ data: "Field Empty", type: "ERROR_TYPE" }];
+  const expectedResponse = [{ payload: "player already exists", type: "ERROR_TYPE" }];
   return store.dispatch(actions.createPlayers(types)).then(() => {
     expect(store.getActions()).toEqual(expectedResponse);
   });
@@ -161,7 +161,7 @@ it("should Add a player unsuccessfully", () => {
     response: { data: responseofAPI }
   });
   const store = mockStore({});
-  const expectedResponse = [{ data: "Field Empty", type: "ERROR_TYPE" }];
+  const expectedResponse = [{ payload: "player already exists", type: "ERROR_TYPE" }];
   return store.dispatch(actions.createPlayers(types)).then(() => {
     expect(store.getActions()).toEqual(expectedResponse);
   });
@@ -184,7 +184,7 @@ it("should Add a player unsuccessfully", () => {
     response: { data: responseofAPI }
   });
   const store = mockStore({});
-  const expectedResponse = [{ data: "Field Empty", type: "ERROR_TYPE" }];
+  const expectedResponse = [{ payload: "player already exists", type: "ERROR_TYPE" }];
   return store.dispatch(actions.createPlayers(types)).then(() => {
     expect(store.getActions()).toEqual(expectedResponse);
   });
@@ -207,7 +207,7 @@ it("should Add a player unsuccessfully", () => {
     response: { data: responseofAPI }
   });
   const store = mockStore({});
-  const expectedResponse = [{ data: "Field Empty", type: "ERROR_TYPE" }
+  const expectedResponse = [{ data: "Field Empty", payload: "player already exists", type: "ERROR_TYPE" }
   ];
   return store.dispatch(actions.createPlayers(types)).then(() => {
     expect(store.getActions()).toEqual(expectedResponse);

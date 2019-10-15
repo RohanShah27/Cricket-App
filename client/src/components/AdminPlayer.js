@@ -74,29 +74,29 @@ class AdminPlayer extends Component {
     let nationError = "";
     let player_role_Error = "";
 
-    if (!this.state.player_name_Error || this.state.player_name_Error <= 5) {
-      player_name_Error = "enter player name correctly";
+    if (!this.state.player_name_Error || !this.state.player_dob_Error) {
+      player_name_Error = "Enter All Fields Correctly";
     }
     if (!this.state.player_role_Error) {
-      player_name_Error = "enter player role";
+      player_role_Error = "enter player role";
     }
     if (!this.state.player_dob_Error) {
-      player_name_Error = "enter player dob";
+      player_dob_Error = "enter player dob";
     }
     if (!this.state.genderError) {
-      player_name_Error = "enter player gender";
+      genderError = "enter player gender";
     }
-    if (!this.state.nationError || this.state.email.nationError <= 5) {
-      player_name_Error = "enter player nation correctly";
+    if (!this.state.nationError || this.state.nationError <= 5) {
+      nationError = "enter player nation correctly";
     }
     if (!this.state.batting_style_Error || this.state.batting_style_Error <= 5) {
-      player_name_Error = "enter batting style correctly";
+      batting_style_Error = "enter batting style correctly";
     }
     if (!this.state.bowling_style_Error || this.state.bowling_style_Error <= 5) {
-      player_name_Error = "enter bowling style correctly";
+      bowling_style_Error = "enter bowling style correctly";
     }
-    if (nationError || player_dob_Error || player_name_Error || player_role_Error || batting_style_Error || bowling_style_Error || genderError) {
-      this.setState({ nationError: nationError, player_dob_Error: player_dob_Error, genderError: genderError, player_name_Error: player_name_Error, player_role_Error: player_role_Error, batting_style_Error: batting_style_Error, bowling_style_Error: bowling_style_Error });
+    if (player_name_Error) {
+      this.setState({ player_name_Error: player_name_Error });
 
       return false;
     }
@@ -138,6 +138,7 @@ class AdminPlayer extends Component {
     this.setState({ player_dob: date });
   };
   render() {
+    console.log(this.props)
     return (
       //start of div -yash
       <div>
@@ -159,7 +160,7 @@ class AdminPlayer extends Component {
                 value={this.state.player_name}
                 required
               />
-              <div className="teamnameerror" style={{ fontSize: 15, color: "red" }}>{this.state.player_name_Error}</div>
+              {/* <div className="teamnameerror" style={{ fontSize: 15, color: "red" }}>{this.state.player_name_Error}</div> */}
               {/* end of input -yash */}
               {/* start of playerflex container -yash*/}
               <div className="playerflex-container">
@@ -172,7 +173,7 @@ class AdminPlayer extends Component {
                     className="genders"
                     required
                   >
-                    <div className="teamnameerror" style={{ fontSize: 15, color: "red" }}>{this.state.genderError}</div>
+                    {/* <div className="teamnameerror" style={{ fontSize: 15, color: "red" }}>{this.state.genderError}</div> */}
                     {/* options for select tag -yash */}
                     <option name="choice" className="choice">
                       Gender
@@ -208,7 +209,7 @@ class AdminPlayer extends Component {
                     required
                   />
                   {/* error generation if there is any error -yash */}
-                  <div className="teamnameerror" style={{ fontSize: 15, color: "red" }}>{this.state.player_dob_Error}</div>
+                  {/* <div className="teamnameerror" style={{ fontSize: 15, color: "red" }}>{this.state.player_dob_Error}</div> */}
                   {/* end of error generation -yash */}
                 </div>
                 {/* end of division container -yash */}
@@ -226,7 +227,7 @@ class AdminPlayer extends Component {
                   value={this.state.nation}
                   required
                 />{" "}
-                <div className="teamnameerror" style={{ fontSize: 15, color: "red" }}>{this.state.nationError}</div>
+                {/* <div className="teamnameerror" style={{ fontSize: 15, color: "red" }}>{this.state.nationError}</div> */}
                 {/* end of playerdetails input tag -yash */}
               </p>
               {/*end of p tag -yash*/}
@@ -248,7 +249,7 @@ class AdminPlayer extends Component {
                 </select>
                 {/* end of select tag -yash */}
                 {/* start of error generation if error occurs-yash */}
-                <div className="teamnameerror" style={{ fontSize: 15, color: "red" }}>{this.state.player_role_Error}</div>
+                {/* <div className="teamnameerror" style={{ fontSize: 15, color: "red" }}>{this.state.player_role_Error}</div> */}
                 {/* end of error generation -yash */}
               </p>
               {/* end of p tag -yash */}
@@ -265,7 +266,7 @@ class AdminPlayer extends Component {
                   required
                 />
                 {/* end of input for batting style -yash */}
-                <div className="teamnameerror" style={{ fontSize: 15, color: "red" }}>{this.state.batting_style_Error}</div>
+                {/* <div className="teamnameerror" style={{ fontSize: 15, color: "red" }}>{this.state.batting_style_Error}</div> */}
               </p>
               {/* end of p tag -yash */}
               {/* start of p tag -yash */}
@@ -280,18 +281,20 @@ class AdminPlayer extends Component {
                   value={this.state.bowling_style}
                   required
                 />
-                <div className="teamnameerror" style={{ fontSize: 15, color: "red" }}>{this.state.bowling_style_Error}</div>
+                {/* <div className="teamnameerror" style={{ fontSize: 15, color: "red" }}>{this.state.bowling_style_Error}</div> */}
                 {/* end of input for bowling style -yash */}
               </p>
               {/* end of p tag -yash */}
             </div>
             {/* end of div tag for player adding -yash */}
             {/* display of error -yash */}
-            {this.props.error ? (
-              <>
-                <p>{this.props.error}</p>
-              </>
-            ) : null}
+            <div className="teamnameerror" style={{ fontSize: 15, color: "red" }}>
+              {this.props.error ? (
+                <>
+                  <p>{this.props.error}</p>
+                </>
+              ) : this.state.player_name_Error}
+            </div>
             {/* start of button add player -yash */}
             <button
               onChange={this.onChange}

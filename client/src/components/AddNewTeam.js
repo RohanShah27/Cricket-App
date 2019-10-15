@@ -38,8 +38,8 @@ export class AddNewTeam extends Component {
     validate = () => {
         let team_name_Error = "";
 
-        if (!this.state.team_name_Error || this.state.team_name_Error.length <= 4) {
-            team_name_Error = "Insert Team";
+        if (!this.state.team_name_Error) {
+            team_name_Error = "Team Name Cannot Be Empty";
         }
 
         if (team_name_Error) {
@@ -88,11 +88,12 @@ export class AddNewTeam extends Component {
                         />
                         {/* end of input team-name -yash */}
                         {/* error generation if there is an error -yash */}
-                        <div className="teamnameerror" style={{ fontSize: 15, color: "red" }}>{this.state.team_name_Error}</div>
-                        {/* end of error generation -yash */}
-                        {/* display error from node -yash */}
-                        {this.props.error ? <><p>{this.props.error}</p></> : null}
-                        {/* ṣtart of button add team -yash */}
+                        <div className="teamnameerror" style={{ fontSize: 15, color: "red" }}>
+                            {/* end of error generation -yash */}
+                            {/* display error from node -yash */}
+                            {this.props.error ? <><p>{this.props.error}</p></> : <p>{this.state.team_name_Error}</p>}
+                            {/* ṣtart of button add team -yash */}
+                        </div>
                         <button
                             onChange={this.onChange}
                             onClick={this.onaddAdminClick}

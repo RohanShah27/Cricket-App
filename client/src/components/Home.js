@@ -59,7 +59,7 @@ export class Home extends Component {
                       style={{ fontSize: "15px", paddingLeft: "5px" }}
                     >
                       {/* Single Headline */}
-                      {this.props.headline[0].headlines}
+                      {/* {this.props.headline[0].headlines} */}
                     </p>
                   </figcaption>
                 </div>
