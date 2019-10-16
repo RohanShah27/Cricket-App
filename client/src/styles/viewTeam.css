@@ -1,8 +1,8 @@
 @import url(https://fonts.googleapis.com/css?family=Work+Sans);
 
-::-webkit-scrollbar {
+/* ::-webkit-scrollbar {
   display: none;
-}
+} */
 * {
   user-select: none;
 }
@@ -129,6 +129,7 @@ body {
 .viewTeam-table2 {
   border: 1px solid #c2c2c2;
   border-radius: 8px;
+  margin-bottom: 20px;
   height: auto;
   box-shadow: 0px 4px 6px 0px #c2c2c2;
 }
@@ -154,7 +155,7 @@ body {
   background: #232832;
 }
 
-.stats tr:nth-child(even) {
+.stats tr:nth-child(odd) {
   background-color: #f2f2f2;
 }
 
@@ -163,6 +164,7 @@ body {
   width: 100%;
   box-shadow: 0px 4px 6px 0px #c2c2c2;
   margin-top: 10px;
+  overflow-y: auto;
 }
 
 .playerstats td,
@@ -180,7 +182,7 @@ body {
   background: #232832;
 }
 
-.playerstats tr:nth-child(even) {
+.playerstats tr:nth-child(odd) {
   background-color: #f2f2f2;
 }
 
@@ -188,6 +190,7 @@ body {
 .bowlerstats {
   border-collapse: collapse;
   width: 100%;
+  margin-bottom: 20px;
   box-shadow: 0px 4px 6px 0px #c2c2c2;
   margin-top: 50px;
 }
@@ -207,13 +210,13 @@ body {
   background: #232832;
 }
 
-.bowlerstats tr:nth-child(even) {
+.bowlerstats tr:nth-child(odd) {
   background-color: #f2f2f2;
 }
 
 .viewTeamMatches-testimonials {
   display: grid;
-  margin-top: 30px;
+  margin-top: 20px;
   margin-left: 8px;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   grid-gap: 10px;
@@ -298,25 +301,94 @@ body {
   margin-top: 5%;
 }
 
-.viewTeam-odi {
-  background: #f39c12;
-  color: white;
+.viewTeam-test-button {
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+  background-color: white;
+  color: #f39c12;
+  width: 80px;
+  height: 50px;
+  margin-left: 5px;
   border: 1px solid #f39c12;
-  padding: 15px 25px;
-  border-radius: 8px;
-  font-family: "Work Sans" !important;
-  user-select: none;
-  margin-right: 2%;
 }
 
-.viewTeam-test {
-  background: white;
-  color: black;
-  border: 1px solid #f39c12;
-  padding: 15px 25px;
+.viewTeam-active {
+  width: 80px;
+  height: 50px;
+  margin-left: 5px;
+  border: 1px solid #fdf0dc;
+  background-color: #f39c12;
+  color: #ffffff;
+  box-shadow: 0px 4px 6px 0px #c2c2c2;
+  outline: none;
+}
 
+.viewTeam-t20-button {
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  background-color: white;
+  color: #f39c12;
+  width: 80px;
+  height: 50px;
+  margin-left: 5px;
+  border: 1px solid #f39c12;
+}
+.viewTeam-t20-active {
+  width: 80px;
+  height: 50px;
+  margin-left: 5px;
+  border: 1px solid #fdf0dc;
+  background-color: #f39c12;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  color: #ffffff;
+  box-shadow: 0px 4px 6px 0px #c2c2c2;
+  outline: none;
+}
+
+.viewTeam-odi-button {
+  border: 1px solid #f39c12;
+  margin-left: 5px;
+  background-color: white;
+  color: #f39c12;
+  width: 80px;
+  height: 50px;
+}
+
+.viewTeam-scrollable {
+  overflow-y: auto;
+}
+
+.viewTeam-statsmatch {
+  margin-top: 15%;
+  margin-left: 1%;
+}
+
+.viewTeam-calendaractive {
+  position: absolute;
+  margin-left: 71.2%;
+  z-index: 1;
+}
+
+.viewTeam-calendardisable {
+  display: none;
+}
+
+.viewTeam-calendarbutton {
+  height: 30px;
+  width: auto;
+  padding: 7px;
+  color: #f39c12;
+  border: 1px solid #f39c12;
   border-radius: 8px;
-  font-family: "Work Sans" !important;
+  float: right;
+  margin-top: 30px;
+  margin-right: 15px;
+  cursor: pointer;
   user-select: none;
-  margin-right: 2%;
+}
+
+.viewTeam-calendarbutton:hover {
+  color: white;
+  background-color: #f39c12;
 }

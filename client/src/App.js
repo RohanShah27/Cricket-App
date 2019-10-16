@@ -10,7 +10,6 @@ import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
 import Match from "./components/Match";
 import Login from "./components/Login";
-import ViewTeam from "./components/ViewTeam";
 
 import Players from "./components/Players";
 // Yash Bhatia

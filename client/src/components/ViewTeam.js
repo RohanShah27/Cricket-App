@@ -9,11 +9,61 @@ import {
   getPlayerStatsForTeamsBowler,
   teamStatsGraphOdi
 } from "../actions/teamActions";
-import { getMatchesByTeam } from "../actions/matchActions";
+import {
+  getMatchesByTeam,
+  getMatchesByTeamAndType,
+  getMatchesByDate
+} from "../actions/matchActions";
 import india from "../assests/india.jpg";
 import pakistan from "../assests/pakistan.jpg";
+import Calendar from "react-calendar";
+import { deflateSync } from "zlib";
 
 export class ViewTeam extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      team_name: "",
+      match_type: "",
+      odiclick: false,
+      testclick: true,
+      t20click: false,
+      odiclickmatch: false,
+      testclickmatch: true,
+      t20clickmatch: false,
+      date: new Date(),
+      calendarIsOpen: false
+    };
+    this.handleChange = this.handleChange.bind(this);
+    this.opencalendar = this.opencalendar.bind(this);
+  }
+
+  handleChange(date) {
+    console.log("handleChange", date);
+    this.setState({ date: date });
+    this.setState({
+      calendarIsOpen: false
+    });
+    let obj = {
+      team_name: this.state.team_name,
+      match_type: this.state.match_type,
+      match_date: this.state.date.toJSON().slice(0, 10)
+    };
+    console.log(obj);
+    this.props.getMatchesByDate(obj);
+    // console.log("State date", this.state.date);
+  }
+
+  opencalendar = () => {
+    this.setState({
+      calendarIsOpen: true
+    });
+  };
+  closecalendar = () => {
+    this.setState({
+      calendarIsOpen: false
+    });
+  };
   componentDidMount() {
     console.log(this.props);
     let team_id = {
@@ -23,7 +73,7 @@ export class ViewTeam extends Component {
       team: this.props.location.state.teams
     };
     let type = {
-      match_type: "ODI"
+      match_type: "Test"
     };
     console.log(teams);
     console.log(team_id);
@@ -39,13 +89,6 @@ export class ViewTeam extends Component {
     );
     // this.props.teamStatsGraphOdi(this.props.location.state.teams.team_id);
   }
-  state = {
-    team_name: "",
-    match_type: "",
-    odiclick: true,
-    testclick: false,
-    t20click: false
-  };
 
   onodiclick = () => {
     this.setState({
@@ -110,16 +153,65 @@ export class ViewTeam extends Component {
     );
   };
 
+  onodiclickmatch(team) {
+    this.setState({
+      match_type: "ODI",
+      team_name: team,
+      odiclickmatch: true,
+      testclickmatch: false,
+      t20clickmatch: false
+    });
+    let type = {
+      match_type: this.state.match_type,
+      team_name: this.state.team_name
+    };
+    console.log(type);
+    this.props.getMatchesByTeamAndType(type);
+  }
+
+  ontestclickmatch(team) {
+    this.setState({
+      match_type: "Test",
+      team_name: team,
+      odiclickmatch: false,
+      testclickmatch: true,
+      t20clickmatch: false
+    });
+    let type = {
+      match_type: this.state.match_type,
+      team_name: this.state.team_name
+    };
+    console.log(type);
+    this.props.getMatchesByTeamAndType(type);
+  }
+
+  ont20clickmatch(team) {
+    this.setState({
+      match_type: "T20",
+      team_name: team,
+      odiclickmatch: false,
+      testclickmatch: false,
+      t20clickmatch: true
+    });
+    let type = {
+      match_type: this.state.match_type,
+      team_name: this.state.team_name
+    };
+    console.log(type);
+    this.props.getMatchesByTeamAndType(type);
+  }
+
   getMatches(team) {
     this.setState({
       team_name: team
     });
     let obj = {
-      team: this.state.team_name
+      team_name: this.state.team_name
     };
     console.log("from team nav", obj);
     this.props.getMatchesByTeam(obj);
   }
+
   render() {
     return (
       <div>
@@ -152,7 +244,7 @@ export class ViewTeam extends Component {
                 {this.props.tournamentTeam.map(teams => (
                   <li
                     className="viewTeam-tab2"
-                    onClick={() => this.getMatches(teams.team_name)}
+                    onClick={() => this.ontestclickmatch(teams.team_name)}
                   >
                     <label htmlFor="viewTeam-tab2">
                       <b>Matches</b>
@@ -200,7 +292,19 @@ export class ViewTeam extends Component {
                     <div className="viewTeam-stats">
                       <button
                         className={
-                          this.state.odiclick ? "viewTeam-odi" : "viewTeam-test"
+                          this.state.testclick
+                            ? "viewTeam-test-button viewTeam-active"
+                            : "viewTeam-test-button"
+                        }
+                        onClick={this.ontestclick}
+                      >
+                        Test
+                      </button>
+                      <button
+                        className={
+                          this.state.odiclick
+                            ? "viewTeam-active"
+                            : "viewTeam-odi-button"
                         }
                         onClick={this.onodiclick}
                         style={{ fontFamily: "Work Sans" }}
@@ -209,65 +313,59 @@ export class ViewTeam extends Component {
                       </button>
                       <button
                         className={
-                          this.state.testclick
-                            ? "viewTeam-odi"
-                            : "viewTeam-test"
-                        }
-                        onClick={this.ontestclick}
-                      >
-                        Test
-                      </button>
-                      <button
-                        className={
-                          this.state.t20click ? "viewTeam-odi" : "viewTeam-test"
+                          this.state.t20click
+                            ? "viewTeam-t20-active"
+                            : "viewTeam-t20-button"
                         }
                         onClick={this.ont20click}
                       >
                         T20
                       </button>
                     </div>
-                    <table className="playerstats">
-                      <tr>
-                        <th style={{ borderTopLeftRadius: "8px" }}>Player</th>
-                        {/* <th>
+                    <div className="viewTeam-scrollable">
+                      <table className="playerstats">
+                        <tr>
+                          <th style={{ borderTopLeftRadius: "8px" }}>Player</th>
+                          {/* <th>
                           <a onClick={this.onodiclick}>ODI</a>
                         </th>
                         <th>
                           <a onClick={this.ont20click}>T20</a>
                         </th> */}
-                        <th style={{ borderTopRightRadius: "8px" }}>
-                          Total Runs
-                        </th>
-                      </tr>
-                      {this.props.playerstatsforteams.map(
-                        playerstatsforteams => (
-                          <tr>
-                            <td>{playerstatsforteams.player_name}</td>
-                            <td>{playerstatsforteams.player_stats_value}</td>
-                            {/* <td>{playerstatsforteams.player_stats_value}</td>
+                          <th style={{ borderTopRightRadius: "8px" }}>
+                            Total Runs
+                          </th>
+                        </tr>
+                        {this.props.playerstatsforteams.map(
+                          playerstatsforteams => (
+                            <tr>
+                              <td>{playerstatsforteams.player_name}</td>
+                              <td>{playerstatsforteams.player_stats_value}</td>
+                              {/* <td>{playerstatsforteams.player_stats_value}</td>
                             <td>{playerstatsforteams.player_stats_value}</td> */}
-                          </tr>
-                        )
-                      )}
-                    </table>
-                    <table className="bowlerstats">
-                      <tr>
-                        <th style={{ borderTopLeftRadius: "8px" }}>Player</th>
-                        <th style={{ borderTopRightRadius: "8px" }}>
-                          Total Wickets
-                        </th>
-                      </tr>
-                      {this.props.playerstatsforteamsbowler.map(
-                        playerstatsforteamsbowler => (
-                          <tr>
-                            <td>{playerstatsforteamsbowler.player_name}</td>
-                            <td>
-                              {playerstatsforteamsbowler.player_stats_value}
-                            </td>
-                          </tr>
-                        )
-                      )}
-                    </table>
+                            </tr>
+                          )
+                        )}
+                      </table>
+                      <table className="bowlerstats">
+                        <tr>
+                          <th style={{ borderTopLeftRadius: "8px" }}>Player</th>
+                          <th style={{ borderTopRightRadius: "8px" }}>
+                            Total Wickets
+                          </th>
+                        </tr>
+                        {this.props.playerstatsforteamsbowler.map(
+                          playerstatsforteamsbowler => (
+                            <tr>
+                              <td>{playerstatsforteamsbowler.player_name}</td>
+                              <td>
+                                {playerstatsforteamsbowler.player_stats_value}
+                              </td>
+                            </tr>
+                          )
+                        )}
+                      </table>
+                    </div>
                   </div>
                   {/* ))} */}
                   <div className="viewTeam-table2">
@@ -282,50 +380,110 @@ export class ViewTeam extends Component {
 
               {/* second tab */}
               <div className="viewTeam-tab2">
-                <div className="viewTeamMatches-testimonials">
-                  {this.props.match.map(match => (
-                    <div className="viewTeamMatches-card">
-                      <div className="viewTeamMatches-parent">
-                        <div className="viewTeamMatches-first">
-                          <img className="viewTeamMatches-img" src={india} />
-                          <p>
-                            <b>{match.team1}</b>
-                            {/* <b>India</b> */}
-                          </p>
-                          <p className="viewTeamMatches-p">
-                            <b>250/5 (50.0)</b>
-                          </p>
-                        </div>
-                        <div className="viewTeamMatches-second">
-                          <b>
-                            <img
-                              className="viewTeamMatches-img"
-                              src={pakistan}
-                            />
-                          </b>
-                          <p>
-                            <b>{match.team2}</b>
-                            {/* <b>Pakistan</b> */}
-                          </p>
-                          <p className="viewTeamMatches-p">
-                            <b>224/6 (50.0)</b>
-                          </p>
-                        </div>
+                {this.props.tournamentTeam.map(teams => (
+                  <div className="viewTeam-statsmatch">
+                    <button
+                      style={{ marginTop: "20px" }}
+                      className={
+                        this.state.testclickmatch
+                          ? "viewTeam-test-button viewTeam-active"
+                          : "viewTeam-test-button"
+                      }
+                      onClick={() => this.ontestclickmatch(teams.team_name)}
+                    >
+                      Test
+                    </button>
+                    <button
+                      className={
+                        this.state.odiclickmatch
+                          ? "viewTeam-active"
+                          : "viewTeam-odi-button"
+                      }
+                      onClick={() => this.onodiclickmatch(teams.team_name)}
+                    >
+                      ODI
+                    </button>
+                    <button
+                      className={
+                        this.state.t20clickmatch
+                          ? "viewTeam-t20-active"
+                          : "viewTeam-t20-button"
+                      }
+                      onClick={() => this.ont20clickmatch(teams.team_name)}
+                    >
+                      T20
+                    </button>
+                    {/* <div className="viewTeam-calendar"> */}
+                    <Calendar
+                      className={
+                        this.state.calendarIsOpen
+                          ? "viewTeam-calendaractive"
+                          : "viewTeam-calendardisable"
+                      }
+                      onChange={this.handleChange}
+                      value={this.state.date}
+                      open={this.state.calendarIsOpen}
+                      onClickOutside={this.closecalendar}
+                    />
+                    {/* {console.log(this.state.date.toJSON().slice(0, 10))} */}
+                    <button
+                      className="viewTeam-calendarbutton"
+                      onClick={this.opencalendar}
+                    >
+                      Filter By Date
+                    </button>
+                    {/* </div> */}
+                  </div>
+                ))}
 
-                        <div className="viewTeamMatches-third">
-                          <b>
-                            {match.match_winner}
-                            <p>{match.won_by}</p>
-                            {/* India win by 10 runs */}
-                          </b>
-                          <p>
-                            <b>MoM: {match.player_of_the_match}</b>
-                            {/* <b>MoM: Rohit Sharma</b> */}
-                          </p>
+                <div className="viewTeamMatches-testimonials">
+                  {this.props.match.length == 0 ? (
+                    <h1 style={{ textAlign: "center" }}>No Matches Found</h1>
+                  ) : (
+                    this.props.match.map(match => (
+                      <div className="viewTeamMatches-card">
+                        <div className="viewTeamMatches-parent">
+                          <div className="viewTeamMatches-first">
+                            <img className="viewTeamMatches-img" src={india} />
+                            <p>
+                              <b>{match.team1}</b>
+                              {/* <b>India</b> */}
+                            </p>
+                            <p className="viewTeamMatches-p">
+                              <b>250/5 (50.0)</b>
+                            </p>
+                          </div>
+                          <div className="viewTeamMatches-second">
+                            <b>
+                              <img
+                                className="viewTeamMatches-img"
+                                src={pakistan}
+                              />
+                            </b>
+                            <p>
+                              <b>{match.team2}</b>
+                              {/* <b>Pakistan</b> */}
+                            </p>
+                            <p className="viewTeamMatches-p">
+                              <b>224/6 (50.0)</b>
+                            </p>
+                          </div>
+
+                          <div className="viewTeamMatches-third">
+                            <b>
+                              {match.match_winner}
+                              <p>{match.won_by}</p>
+                              {/* India win by 10 runs */}
+                            </b>
+                            <p>
+                              <b>MoM: {match.player_of_the_match}</b>
+                              {/* <b>MoM: Rohit Sharma</b> */}
+                            </p>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  ))}
+                    ))
+                  )}
                 </div>
               </div>
             </section>
@@ -355,6 +513,8 @@ export default connect(
     getTeamStats,
     getPlayerStatsForTeams,
     getPlayerStatsForTeamsBowler,
-    teamStatsGraphOdi
+    teamStatsGraphOdi,
+    getMatchesByTeamAndType,
+    getMatchesByDate
   }
 )(ViewTeam);

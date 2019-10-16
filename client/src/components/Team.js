@@ -28,10 +28,10 @@ export class Team extends Component {
     this.setState({ [event.target.name]: event.target.value });
     event.preventDefault();
 
-    let teamname = {
-      teamname: this.state.team_name
+    let team_name = {
+      team_name: this.state.team_name
     };
-    this.props.searchTeamForViewTeamPage(teamname);
+    this.props.searchTeamForViewTeamPage(team_name);
   };
 
   getTeam = () => {
