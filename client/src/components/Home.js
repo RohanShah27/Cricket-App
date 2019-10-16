@@ -12,9 +12,9 @@ export class Home extends Component {
   constructor(props) {
     super(props);
   }
-  componentDidMount() {
+  componentWillMount() {
     this.props.getMatchesRecentMatches();
-    this.props.getHeadline();
+    this.props.getHeadline(1);
     this.props.getHeadlines();
     this.props.getFixtures();
   }
@@ -50,8 +50,7 @@ export class Home extends Component {
                   </figure>
                   <figcaption>
                     <span className="newsTitle">
-                      MS Dhoni Enjoys A Game Of Billiards At JSCA Stadium In
-                      Ranchi
+                      {this.props.headline[0].headlines}
                     </span>
                     <hr className="home-hr" />
                     <p
@@ -59,7 +58,7 @@ export class Home extends Component {
                       style={{ fontSize: "15px", paddingLeft: "5px" }}
                     >
                       {/* Single Headline */}
-                      {this.props.headline[0].headlines}
+                      {this.props.headline[0].headlines_description}
                     </p>
                   </figcaption>
                 </div>
@@ -69,9 +68,18 @@ export class Home extends Component {
               <h2 className="fixtures-header">Headlines</h2>
               <div className="col-content">
                 <ul className="home-ul">
-                  {this.props.headlines.map(headline => (
+                  {this.props.headlines.map(single_headline => (
                     <>
-                      <li className="home-li">{headline.headlines}</li>
+                      <a
+                        onClick={() =>
+                          this.props.getHeadline(single_headline.headline_id)
+                        }
+                      >
+                        {" "}
+                        <li className="home-li" style={{ cursor: "pointer" }}>
+                          {single_headline.headlines}
+                        </li>
+                      </a>
                       <hr className="home-hr" />
                     </>
                   ))}
@@ -89,9 +97,7 @@ export class Home extends Component {
                         : match.competition}{" "}
                       - {match.match_type}
                     </span>
-                    {/* <span style={{ fontSize: "14px" }}>
-                      {console.log(match.date.split("T"))}
-                    </span> */}
+
                     <div className="parent">
                       <div className="first">
                         <img className="imgformatch" src={india} />

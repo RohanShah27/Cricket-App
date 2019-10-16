@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Venues from "./components/Venues";
 import Team from "./components/Team";
-
+// Rohan Shah
 import PlayerRanking from "./components/PlayerRanking";
 import Home from "./components/Home";
 import PlayerProfile from "./components/PlayerProfile";
@@ -12,6 +12,7 @@ import Match from "./components/Match";
 import Login from "./components/Login";
 
 import Players from "./components/Players";
+import paginatePlayers from "./components/paginatePlayers";
 // Yash Bhatia
 import AdminPlayer from "./components/AdminPlayer";
 import AddNewAdmin from "./components/AddNewAdmin";
@@ -48,7 +49,7 @@ export default class App extends React.Component {
             path="/playerprofile/:player_id"
             component={PlayerProfile}
           ></Route>
-          <Route exact path="/players" component={Players}></Route>
+          {/* <Route exact path="/players" component={Players}></Route> */}
           <Route exact path="/venues" component={Venues}></Route>
           <Route exact path="/teams" component={Team}></Route>
           <Route exact path="/rankings" component={PlayerRanking}></Route>
@@ -59,6 +60,11 @@ export default class App extends React.Component {
           <Route exact path="/addnewteam" component={AddNewTeam} />
           <Route exact path="/resetpassword" component={ResetPassword} />
           <Route exact path="/viewteam/:team_id" component={ViewTeam}></Route>
+          <Route
+            exact
+            path="/paginatePlayers"
+            component={paginatePlayers}
+          ></Route>
 
           <Footer />
         </div>

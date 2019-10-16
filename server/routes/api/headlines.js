@@ -25,11 +25,12 @@ router.get("/all", async (req, res) => {
   }
 });
 // Get a current headline for the news section
-router.get("/single_headline", async (req, res) => {
+router.post("/single_headline/:id", async (req, res) => {
   try {
-    let number = Math.floor(Math.random() * (10 - 20) + 20);
+    let id = req.params.id;
+    // let number = Math.floor(Math.random() * (10 - 20) + 20);
     const result = await db.any(
-      "select * from headlines where headline_id='" + number + "';"
+      "select * from headlines where headline_id='" + id + "';"
     );
     //   convert the response into a json format
     res.status(200).json({
