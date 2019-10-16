@@ -1,16 +1,16 @@
-const url = "mongodb://localhost:27017/crickstrait_db";
+const url = "mongodb://localhost:27017/crickstrait_dbs";
 const escape = require("pg-escape");
 
 let MongoClient = require("mongodb").MongoClient;
 
 const pgp = require("pg-promise")();
-const postdb = pgp("postgres://postgres:root@localhost:5432/crickstrait_db");
+const postdb = pgp("postgres://postgres:123456@localhost:5432/crickstrait_dbs");
 let dbo;
 
 MongoClient.connect(url, {
 	useNewUrlParser: true
 }).then(async db => {
-	dbo = db.db("crickstrait_db");
+	dbo = db.db("crickstrait_dbs");
 	// async function which will be defined below
 
 	console.time("Computing match type");
@@ -230,7 +230,7 @@ async function match() {
 									// );
 									// get fielder_one id
 									let query = escape(
-										"with s as (select player_id, player_name,gender from player where player_name=%L), i as (insert into player(player_name) select %L where not exists (select 1 from s) returning player_id) select player_id from s union all select player_id from i",
+										"with s as (select player_id, player_name,gender from player where player_name=%L and gender=%L), i as (insert into player(player_name,gender) select %L,%L where not exists (select 1 from s) returning player_id) select player_id from s union all select player_id from i",
 										val.wicket.fielders[0],
 										gender,
 										val.wicket.fielders[0],
@@ -246,7 +246,7 @@ async function match() {
 									// get fielder_two id
 									if (val.wicket.fielders.length == 2) {
 										query = escape(
-											"with s as (select player_id, player_name,gender from player where player_name=%L), i as (insert into player(player_name) select %L where not exists (select 1 from s) returning player_id) select player_id from s union all select player_id from i",
+											"with s as (select player_id, player_name,gender from player where player_name=%L and gender=%L), i as (insert into player(player_name,gender) select %L,%L where not exists (select 1 from s) returning player_id) select player_id from s union all select player_id from i",
 											val.wicket.fielders[1],
 											gender,
 											val.wicket.fielders[1], gender
@@ -263,9 +263,11 @@ async function match() {
 
 								// get player_out id
 								let query = escape(
-									"with s as (select player_id, player_name from player where player_name=%L), i as (insert into player(player_name) select %L where not exists (select 1 from s) returning player_id) select player_id from s union all select player_id from i",
+									"with s as (select player_id, player_name,gender from player where player_name=%L and gender=%L), i as (insert into player(player_name,gender) select %L,%L where not exists (select 1 from s) returning player_id) select player_id from s union all select player_id from i",
 									val.wicket.player_out,
-									val.wicket.player_out
+									gender,
+									val.wicket.player_out,
+									gender
 								);
 								let player_out = await postdb.any(query);
 								player_out = player_out[0].player_id;
@@ -287,18 +289,21 @@ async function match() {
 
 							// get striker_id
 							let query = escape(
-								"with s as (select player_id, player_name from player where player_name=%L), i as (insert into player(player_name) select %L where not exists (select 1 from s) returning player_id) select player_id from s union all select player_id from i",
+								"with s as (select player_id, player_name,gender from player where player_name=%L and gender=%L), i as (insert into player(player_name,gender) select %L,%L where not exists (select 1 from s) returning player_id) select player_id from s union all select player_id from i",
 								val.batsman,
-								val.batsman
+								gender,
+								val.batsman,
+								gender
 							);
 							let striker_id = await postdb.any(query);
 							striker_id = striker_id[0].player_id;
 
 							// get non_striker_id
 							query = escape(
-								"with s as (select player_id, player_name from player where player_name=%L), i as (insert into player(player_name) select %L where not exists (select 1 from s) returning player_id) select player_id from s union all select player_id from i",
+								"with s as (select player_id, player_name,gender from player where player_name=%L and gender=%L), i as (insert into player(player_name,gender) select %L,%L where not exists (select 1 from s) returning player_id) select player_id from s union all select player_id from i",
 								val.non_striker,
-								val.non_striker
+								gender,
+								val.non_striker, gender
 							);
 							let non_striker_id = await postdb.any(query);
 							non_striker_id = non_striker_id[0].player_id;
@@ -308,9 +313,11 @@ async function match() {
 
 							// get bowler_id
 							query = escape(
-								"with s as (select player_id, player_name from player where player_name=%L), i as (insert into player(player_name) select %L where not exists (select 1 from s) returning player_id) select player_id from s union all select player_id from i",
+								"with s as (select player_id, player_name,gender from player where player_name=%L and gender=%L), i as (insert into player(player_name,gender) select %L,%L where not exists (select 1 from s) returning player_id) select player_id from s union all select player_id from i",
 								val.bowler,
-								val.bowler
+								gender,
+								val.bowler,
+								gender
 							);
 							let bowler_id = await postdb.any(query);
 							bowler_id = bowler_id[0].player_id;

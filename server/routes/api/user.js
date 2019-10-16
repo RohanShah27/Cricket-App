@@ -35,7 +35,7 @@ router.post("/new", async (req, res, next) => {
     const result = await db.any(`select * from user_info where email='${req.body.email}'`);
     if (result.length == 1) {
       console.log(result);
-      return res.status(500).send({ message: "email already exists" });
+      return res.status(400).send({ message: "email already exists" });
     }
     else {
       user = {
@@ -73,7 +73,7 @@ router.post("/emailverify", async (req, res, next) => {
       `select * from user_info where email = '${req.body.email}'`
     );
     if (result.length == 1) {
-      res.status(500).json({ status: 500, data: result, message: "Email Already Exists" })
+      res.status(400).json({ status: 400, data: result, message: "Email Already Exists" })
       console.log(result.length)
       // console.log(message)
       console.log(res)
@@ -93,10 +93,10 @@ router.post("/emailverify", async (req, res, next) => {
       let info = await transporter.sendMail({
         from: '"Crickstrait"<nodemailerTest0117@gmail.com>',
         to: email,
-        subject: "forgot password",
+        subject: "New Account?",
         text: "reset password",
 
-        html: "<b>New Account? <br/>your account has been successfully created  </b>click to reset the password <a href=http://localhost:3000/resetpassword>ResetPassword</a>"
+        html: "<b>New Account? <br/>your account has been successfully created  </b>click here to set the password <a href=http://localhost:3000/resetpassword>ResetPassword</a>"
       });
 
       console.log("Message sent: %s", info.messageId);
@@ -120,7 +120,7 @@ router.post("/login", async (req, res, next) => {
     );
     console.log(result)
     if (result.length == 0) {
-      return res.status(500).send({ message: "Account not found" });
+      return res.status(400).send({ message: "Account not found" });
     }
     // console.log(res.message)
     // console.log(result)
@@ -169,7 +169,7 @@ router.post("/login", async (req, res, next) => {
         console.log(decodedToken);
       } catch (error) {
         console.log(error);
-        res.status(500).send({ status: 500, data: result, message: "incorrect id or password" });
+        res.status(400).send({ status: 400, data: result, message: "incorrect id or password" });
       }
     };
   } catch (error) {
@@ -183,7 +183,7 @@ router.post("/newteam", async (req, res, next) => {
     const result = await db.any(`select * from team where team_name='${req.body.team_name}'`);
     if (result.length == 1) {
       console.log(result);
-      return res.status(500).send({ message: "Team already exists" })
+      return res.status(400).send({ message: "Team already exists" })
     }
     else {
       team = {
@@ -212,7 +212,7 @@ router.put("/resetpassword", async (req, res, next) => {
     console.log(email);
     const result = await db.any(`select * from user_info where email='${email}'`)
     if (result.length == 0) {
-      return res.status(500).send({ message: "User Does not exist" })
+      return res.status(400).send({ message: "User Does not exist" })
     }
     else {
       let hashed_password = bcrypt.hash(req.body.password, 10)

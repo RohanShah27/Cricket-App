@@ -207,7 +207,7 @@ it("should Add a player unsuccessfully", () => {
     response: { data: responseofAPI }
   });
   const store = mockStore({});
-  const expectedResponse = [{ data: "Field Empty", payload: "player already exists", type: "ERROR_TYPE" }
+  const expectedResponse = [{ payload: "player already exists", type: "ERROR_TYPE" }
   ];
   return store.dispatch(actions.createPlayers(types)).then(() => {
     expect(store.getActions()).toEqual(expectedResponse);

@@ -8,7 +8,7 @@ describe("Testing Users Reducers", () => {
       payload: []
     };
     const returnedState = players(undefined, action);
-    expect(returnedState).toEqual({ error: "", players: action.payload, adminplayers: action.payload });
+    expect(returnedState).toEqual({ error: "", adminplayers: action.payload });
   });
 
   it("should return a state object with PLAYERS array equal to the payload in the action when the action type is GET_USERS (when the returned state is not an initial state", () => {
@@ -29,13 +29,13 @@ describe("Testing Users Reducers", () => {
       payload: [{}, {}, {}]
     };
     let returnedState = players(undefined, action);
-    expect(returnedState).toEqual({ error: "", players: [], adminplayers: [] });
+    expect(returnedState).toEqual({ error: "", adminplayers: [] });
     action = {
       type: "SOME_TYPE",
       payload: [{}, {}, {}]
     };
     returnedState = players(undefined, action);
-    expect(returnedState).toEqual({ players: [], adminplayers: [] });
+    expect(returnedState).toEqual({ error: "", adminplayers: [] });
   });
 
   it("should return a state object with contacts array equal to the payload in the action when the action type is GET_USERS (when the returned state is not an initial state", () => {

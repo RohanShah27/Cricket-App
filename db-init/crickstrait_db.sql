@@ -8,7 +8,7 @@ create table user_info
     id serial,
     email varchar,
     password varchar
-)
+);
 create table delivery
 (
     match_id int,

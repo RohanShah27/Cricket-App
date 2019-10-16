@@ -25,9 +25,8 @@ export class Login extends Component {
   };
 
   OnChange = (event) => {
-    const isCheckbox = event.target.type === "checkbox";
     //state change when the user inputs in the inputbox -yash
-    this.setState({ [event.target.name]: isCheckbox ? event.target.checked : event.target.value });
+    this.setState({ [event.target.name]: event.target.value });
   }
   validate = () => {
     let emailError = "";
@@ -82,16 +81,6 @@ export class Login extends Component {
         email: "",
         password: ""
       });
-    }
-  }
-  error(state, props) {
-    const reducererror = props.error;
-    const clienterror = state.error;
-    if (reducererror) {
-      return this.props.error
-    }
-    else if (clienterror) {
-      return this.state.error
     }
   }
 

@@ -18,11 +18,9 @@ export class ResetPassword extends Component {
         initialState
     };
 
-    OnChange = event => {
-        //checkbox method to check if the error validation methods are met -yash
-        const isCheckbox = event.target.type === "checkbox";
+    OnChange = (event) => {
         //state change when the user inputs in the inputbox -yash
-        this.setState({ [event.target.name]: isCheckbox ? event.target.checked : event.target.value });
+        this.setState({ [event.target.name]: event.target.value });
     };
     componentDidMount() {
         //checking if token is not present -yash
@@ -33,16 +31,17 @@ export class ResetPassword extends Component {
     //errors which are validated in the front end 
     validate = () => {
         let emailError = "";
+        let passwordError = "";
 
-        if (!this.state.email || this.state.email.length <= 5 || !this.state.email.includes("@") || !this.state.email.includes(".") || !this.state.password || this.state.password.length <= 5 || !this.state.password == this.state.confirmpassword) {
+        if (!this.state.email || this.state.email.length <= 5 || !this.state.email.includes("@") || !this.state.email.includes(".") || !this.state.password || this.state.password.length <= 5) {
             emailError = "enter all fields correctly";
         }
-        // if (!this.state.password || this.state.password.length <= 5 || !this.state.password == this.state.confirmpassword) {
-        //     passwordError = "passwords do not match";
-        // }
+        if (!(this.state.password == this.state.confirmpassword)) {
+            passwordError = "passwords do not match";
+        }
 
-        if (emailError) {
-            this.setState({ emailError: emailError });
+        if (emailError || passwordError) {
+            this.setState({ emailError: emailError, passwordError: passwordError });
 
             return false;
         }
@@ -118,7 +117,7 @@ export class ResetPassword extends Component {
                                 <>
                                     <p>{this.props.error}</p>
                                 </>
-                            ) : this.state.emailError}
+                            ) : this.state.emailError || this.state.passwordError}
                         </div>
                         {/* start of button reset password -yash*/}
                         <button

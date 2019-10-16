@@ -38,7 +38,7 @@ export class AddNewTeam extends Component {
     validate = () => {
         let team_name_Error = "";
 
-        if (!this.state.team_name_Error) {
+        if (!this.state.team_name) {
             team_name_Error = "Team Name Cannot Be Empty";
         }
 

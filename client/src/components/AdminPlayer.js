@@ -9,10 +9,10 @@ import "../styles/player.css";
 //stating the values that are to be used in this component -yash
 const initialState = {
   player_name: "",
-  gender: "",
+  gender: "male",
   player_dob: new Date(),
   nation: "",
-  player_role: "",
+  player_role: "choice",
   batting_style: "",
   bowling_style: "",
   player_name_Error: "",
@@ -21,7 +21,8 @@ const initialState = {
   nationError: "",
   player_role_Error: "",
   batting_style_Error: "",
-  bowling_style_Error: ""
+  bowling_style_Error: "",
+  isDisabled: false
 
 }
 class AdminPlayer extends Component {
@@ -29,11 +30,7 @@ class AdminPlayer extends Component {
     super();
     // all the handle change along with select tags in state are stated here -yash
     this.handleDayChange = this.handleDayChange.bind(this);
-    this.state = {
-      gender: "male",
-      player_role: "choice",
-      isDisabled: false
-    };
+    this.state = initialState
     this.handleChange = this.handleChange.bind(this);
     this.onChange = this.onChange.bind(this);
     this.onCreate = this.onCreate.bind(this);
@@ -54,49 +51,36 @@ class AdminPlayer extends Component {
       this.props.history.push("/");
     }
   }
-  state = {
-    //values that are to be stored in the database -yash
-    initialState
-  };
+  // state = {
+  //   //values that are to be stored in the database -yash
+  //   initialState
+  // };
   onChange = event => {
-    //to check if there are no error conditions met -yash
-    const isCheckbox = event.target.type === "checkbox";
     //state change when the user inputs in the inputbox -yash
-    this.setState({ [event.target.name]: isCheckbox ? event.target.checked : event.target.value });
+    this.setState({ [event.target.name]: event.target.value });
   };
   //to check custom errors that are generated from the front end -yash
   validate = () => {
     let player_name_Error = "";
-    let genderError = "";
-    let player_dob_Error = "";
     let batting_style_Error = "";
     let bowling_style_Error = "";
     let nationError = "";
-    let player_role_Error = "";
-
-    if (!this.state.player_name_Error || !this.state.player_dob_Error) {
-      player_name_Error = "Enter All Fields Correctly";
+    if (this.state.player_name.length < 5 || !this.state.player_name) {
+      // console.log(true, 1)
+      player_name_Error = "Enter Player Name Correctly";
     }
-    if (!this.state.player_role_Error) {
-      player_role_Error = "enter player role";
+    if (this.state.batting_style.length < 5 || !this.state.batting_style) {
+      batting_style_Error = "Enter Batting Style Correctly";
     }
-    if (!this.state.player_dob_Error) {
-      player_dob_Error = "enter player dob";
+    if (this.state.bowling_style < 5 || !this.state.bowling_style) {
+      bowling_style_Error = "Enter Bowling Style Correctly";
     }
-    if (!this.state.genderError) {
-      genderError = "enter player gender";
+    if (this.state.nation < 5 || !this.state.nation) {
+      bowling_style_Error = "Enter Nation Correctly";
     }
-    if (!this.state.nationError || this.state.nationError <= 5) {
-      nationError = "enter player nation correctly";
-    }
-    if (!this.state.batting_style_Error || this.state.batting_style_Error <= 5) {
-      batting_style_Error = "enter batting style correctly";
-    }
-    if (!this.state.bowling_style_Error || this.state.bowling_style_Error <= 5) {
-      bowling_style_Error = "enter bowling style correctly";
-    }
-    if (player_name_Error) {
-      this.setState({ player_name_Error: player_name_Error });
+    if (player_name_Error || batting_style_Error || bowling_style_Error || nationError) {
+      // console.log(true, 2)
+      this.setState({ player_name_Error: player_name_Error, batting_style_Error: batting_style_Error, bowling_style_Error: bowling_style_Error, nationError: nationError });
 
       return false;
     }
@@ -106,6 +90,7 @@ class AdminPlayer extends Component {
   onCreate(e) {
     e.preventDefault();
     const isValid = this.validate();
+    console.log(isValid)
     if (isValid) {
       //storing the values in the players table
       let player = {
@@ -134,10 +119,12 @@ class AdminPlayer extends Component {
   }
 
   handleDayChange = date => {
+
     //handle date change  -yash
     this.setState({ player_dob: date });
   };
   render() {
+    console.log(this.state)
     console.log(this.props)
     return (
       //start of div -yash
@@ -293,7 +280,7 @@ class AdminPlayer extends Component {
                 <>
                   <p>{this.props.error}</p>
                 </>
-              ) : this.state.player_name_Error}
+              ) : this.state.player_name_Error || this.state.nationError || this.state.batting_style_Error || this.state.bowling_style_Error}
             </div>
             {/* start of button add player -yash */}
             <button

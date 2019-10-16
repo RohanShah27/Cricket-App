@@ -45,19 +45,19 @@ export class Navigation extends Component {
               Men
             </a>
           ) : (
-            <a className="options" onClick={this.props.menState}>
-              Men
+              <a className="options" onClick={this.props.menState}>
+                Men
             </a>
-          )}
+            )}
           {this.props.gender == "female" ? (
             <a className="options" style={{ color: "#c2c2c2c2" }}>
               Women
             </a>
           ) : (
-            <a className="options" onClick={this.props.femaleState}>
-              Women
+              <a className="options" onClick={this.props.femaleState}>
+                Women
             </a>
-          )}
+            )}
 
           <input className="menu-btn" type="checkbox" id="menu-btn" />
           <label className="menu-icon" for="menu-btn">
@@ -123,8 +123,8 @@ export class Navigation extends Component {
                         </span>
                       ))
                     ) : (
-                      <p style={{ padding: "10px 10px" }}>No Player Found</p>
-                    )
+                        <p style={{ padding: "10px 10px" }}>No Player Found</p>
+                      )
                   ) : null}
                   <hr style={{ width: "100px", marginLeft: "50px" }} />
                   {this.props.search_result.length != 0 ? (
@@ -161,8 +161,8 @@ export class Navigation extends Component {
                         </span>
                       ))
                     ) : (
-                      <p style={{ padding: "10px 10px" }}>No Team Found</p>
-                    )
+                        <p style={{ padding: "10px 10px" }}>No Team Found</p>
+                      )
                   ) : null}
                 </div>
               )}
@@ -197,10 +197,10 @@ export class Navigation extends Component {
                 </li>
               </>
             ) : (
-              <li>
-                <Link to="/login">Login</Link>
-              </li>
-            )}
+                <li>
+                  <Link to="/login">Login</Link>
+                </li>
+              )}
           </ul>
         </div>
       </div>

@@ -205,7 +205,7 @@ router.post("/newplayers", async (req, res, next) => {
     );
     if (result.length == 0) {
       console.log(result);
-      return res.status(500).send({ message: "player already exists" });
+      return res.status(400).send({ message: "player already exists" });
     }
     // else if (result.length == 1) {
     //   console.log(result);

@@ -101,21 +101,19 @@
   background: white;
   color: #f39c12;
   font-size: 18px;
-  border: 1px solid #f39c12;
+  border: 1px solid #c2c2c2;
   box-sizing: border-box;
   border-radius: 8px;
   cursor: pointer;
   padding: 10px;
   outline: 0;
   margin-top: 20px;
+  box-shadow: 0px 4px 6px 0px #c2c2c2;
 }
 /* hover function on button -yash */
-.playerbutton:hover,
-.playerbutton:active,
-.playerbutton:focus {
-  background: orange;
+.playerbutton:hover {
+  background: #c2c2c2;
   color: white;
-  box-shadow: 0px 4px 6px 0px #c2c2c2;
 }
 /* playerdetails input field -yash */
 .playerdetails {
