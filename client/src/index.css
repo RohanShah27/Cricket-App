@@ -223,7 +223,8 @@ figcaption {
   display: flex;
   flex-direction: row;
   width: 100vw;
-  margin-top: 15vw;
+  margin-top: 2vw;
+  margin-bottom: 10vw;
   justify-content: center;
 }
 .user-loader {
