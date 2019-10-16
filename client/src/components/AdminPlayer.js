@@ -5,7 +5,7 @@ import "react-datepicker/dist/react-datepicker.css";
 // import DatePicker from 'react-date-picker/dist/entry.nostyle';
 import { createPlayers } from "../actions/Players";
 import { getPlayertype } from "../actions/playerType";
-import "../styles/player.css";
+import "../styles/Adminplayer.css";
 //stating the values that are to be used in this component -yash
 const initialState = {
   player_name: "",

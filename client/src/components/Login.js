@@ -32,11 +32,11 @@ export class Login extends Component {
     let emailError = "";
     let passwordError = "";
 
-    if (!this.state.email || this.state.email.length <= 5 || !this.state.email.includes("@") || !this.state.email.includes(".") || !this.state.password || this.state.password <= 5) {
-      emailError = "Enter All Fields";
+    if (!this.state.email || this.state.email.length <= 5 || !this.state.email.includes("@") || !this.state.email.includes(".")) {
+      emailError = "Email Field Incorrect";
     }
     if (!this.state.password || this.state.password.length <= 5) {
-      passwordError = "invalid credentials";
+      passwordError = "Enter Password Correctly";
     }
 
     if (emailError || passwordError) {
@@ -127,7 +127,7 @@ export class Login extends Component {
                 <>
                   <p>{this.props.error}</p>
                 </>
-              ) : <p>{this.state.emailError}</p>}
+              ) : <p>{this.state.emailError || this.state.passwordError}</p>}
 
             </div>
             {/* button for login -yash */}
