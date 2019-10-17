@@ -10,16 +10,6 @@
   font-family: "Work Sans";
 }
 
-/* #header {
-  margin: 0;
-  padding: 20px;
-  text-align: initial;
-  background: #f39c12;
-  color: white;
-  font-size: 25px;
-  font-style: #ffffff;
-} */
-
 .match-pc-tab input,
 .match-pc-tab section > div {
   display: none;
@@ -63,10 +53,6 @@
   color: white;
 }
 
-/* .pc-tab ul li label:active {
-  background-color: black;
-} */
-
 .match-pc-tab ul li:not(:last-child) label {
   border-right-width: 0;
 }
@@ -102,6 +88,8 @@
 #match-tab2:checked ~ nav .match-tab2 label,
 #match-tab3:checked ~ nav .match-tab3 label {
   position: relative;
+  background-color: #f39c12;
+  color: white;
 }
 
 #match-tab1:checked ~ nav .match-tab1 label:after,
@@ -133,10 +121,6 @@
   border-radius: 8px;
   overflow: hidden;
 }
-.match-active-option {
-  color: white;
-  background: #f39c12;
-}
 
 .match-parent {
   display: flex;
@@ -165,7 +149,6 @@
   left: 0;
   width: 100%;
   height: 100%;
-  transition: 0.5s;
 }
 
 .match-testimonials .match-card .content {
@@ -181,9 +164,6 @@
   font-size: 18px;
   color: #fff;
 }
-/* p {
-  word-break: break-all;
-} */
 
 .match-p {
   font-size: 14px;

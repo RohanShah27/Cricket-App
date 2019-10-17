@@ -5,7 +5,7 @@ const pg = require("pg-promise")();
 // Conneccting to the hosted database fixtures
 const db = pg("postgres://postgres:123456@localhost:5432/crickstrait_db");
 
-// Get players bio on seearch of players
+// Get stats of a player
 router.post("/player_search/:playerId", async (req, res) => {
   try {
     let playerId = req.params.playerId;
@@ -167,6 +167,7 @@ router.get("/all", async (req, res) => {
   }
 });
 // Service for search bar on players page for live search for a player from the database -Rohan
+// filter search
 router.post("/searchPlayer", async (req, res) => {
   try {
     let playerName = req.body.playerName;
@@ -187,12 +188,12 @@ router.post("/searchPlayer", async (req, res) => {
   }
 });
 //To add a new player
-router.post("/new", async (req, res, next) => {
+router.post("/newplayers", async (req, res, next) => {
   try {
     player = {
       player_name: req.body.player_name,
       player_role: req.body.player_role,
-      player_nation: req.body.player_nation,
+      nation: req.body.nation,
       gender: req.body.gender,
       player_dob: req.body.player_dob,
       batting_style: req.body.batting_style,
@@ -200,15 +201,20 @@ router.post("/new", async (req, res, next) => {
     };
     //To check if player already exists or not
     const result = await db.any(
-      `select * from player_stats where player_name='${req.body.player_name}'`
+      `select * from player where player_name='${req.body.player_name}'`
     );
-    if (result.length == 1) {
+    if (result.length == 0) {
       console.log(result);
       return res.status(400).send({ message: "player already exists" });
-    } else {
+    }
+    // else if (result.length == 1) {
+    //   console.log(result);
+    //   return res.status(500).send({ message: "Field Empty" });
+    // }
+    else {
       //Insert a new player
-      const result = await db.any(`insert into player_stats(player_name,player_role,player_nation,gender,player_dob,batting_style,bowling_style)values('${player.player_name}','${player.player_role}','${player.player_nation}','${player.gender}','${player.player_dob}','${player.batting_style}','${player.bowling_style}')
-              returning player_stats_id`);
+      const result = await db.any(`insert into player(player_name,player_role,nation,gender,player_dob,batting_style,bowling_style)values('${player.player_name}','${player.player_role}','${player.nation}','${player.gender}','${player.player_dob}','${player.batting_style}','${player.bowling_style}')
+              returning player_id`);
       console.log(result);
       res.status(200).json({
         status: 200,

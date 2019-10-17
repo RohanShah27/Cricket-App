@@ -4,7 +4,8 @@ import "../styles/match.css";
 import india from "../assests/india.jpg";
 import pakistan from "../assests/pakistan.jpg";
 import { getMatchesByType } from "../actions/matchActions";
-var json;
+import InfiniteScroll from "react-infinite-scroll-component";
+
 export class Match extends Component {
   constructor(props) {
     super(props);
@@ -21,6 +22,10 @@ export class Match extends Component {
     matchType: "ODI",
     activeClass: "match-active-option",
     data: [],
+    items: 6,
+    loadingstate: false,
+    height: 800,
+    pageMatches: [],
     userId: 1,
     loading: false
   };
@@ -41,8 +46,37 @@ export class Match extends Component {
     this.sendType();
   }
 
+  componentWillReceiveProps(nextProps) {
+    nextProps.viewmatch.length > 0
+      ? this.displayMatches(nextProps.viewmatch)
+      : console.log(0, " Matches");
+  }
+
+  displayMatches = Matches => {
+    console.log(Matches);
+    const { items } = this.state;
+
+    if (Matches.length === 0) return;
+    let pageMatches = [];
+    for (let i = 0; i < items; i++) {
+      pageMatches.push(Matches[i]);
+    }
+    this.setState({ pageMatches });
+    console.log("PageMatches array", this.state.pageMatches.length);
+  };
+
+  loadMoreItems = () => {
+    setTimeout(() => {
+      this.setState({
+        items: this.state.items + 6
+      });
+
+      console.log("Matches", this.props.viewmatch);
+      this.displayMatches(this.props.viewmatch);
+    }, 1000);
+  };
+
   render() {
-    console.log(this.props.match.result);
     return (
       <div>
         <div className="match-pc-tab">
@@ -86,38 +120,55 @@ export class Match extends Component {
           </nav>
           <section>
             <div className="match-tab1">
-              <div className="match-testimonials">
-                {this.props.viewmatch.map(match => (
-                  <div
-                    className="match-card"
-                    onClick={() => {
-                      this.props.history.push(
-                        "/matchdetails/" + match.match_id,
-                        { match }
-                      );
-                    }}
-                  >
-                    <div className="match-parent">
-                      <div className="match-first">
-                        <img className="match-img" src={india} />
-                        <p>{match.team1}</p>
-                        <p className="match-p">250/5 (50.0)</p>
-                      </div>
-                      <div className="match-second">
-                        <img className="match-img" src={pakistan} />
+              <InfiniteScroll
+                dataLength={this.state.pageMatches.length} //This is important field to render the next data
+                next={this.loadMoreItems}
+                hasMore={true}
+                height={600}
+                loader={
+                  <div className="loader-container">
+                    <div className="user-loader"></div>
+                  </div>
+                }
+                endMessage={
+                  <p style={{ textAlign: "center" }}>
+                    <b>Yay! You have seen all Teams</b>
+                  </p>
+                }
+              >
+                <div className="match-testimonials">
+                  {this.state.pageMatches.map(match => (
+                    <div
+                      className="match-card"
+                      onClick={() => {
+                        this.props.history.push(
+                          "/matchdetails/" + match.match_id,
+                          { match }
+                        );
+                      }}
+                    >
+                      <div className="match-parent">
+                        <div className="match-first">
+                          <img className="match-img" src={india} />
+                          <p>{match.team1}</p>
+                          <p className="match-p">250/5 (50.0)</p>
+                        </div>
+                        <div className="match-second">
+                          <img className="match-img" src={pakistan} />
 
-                        <p>{match.team2}</p>
-                        <p className="match-p">224/6 (50.0)</p>
-                      </div>
+                          <p>{match.team2}</p>
+                          <p className="match-p">224/6 (50.0)</p>
+                        </div>
 
-                      <div className="match-third">
-                        {match.match_winner} {match.won_by}
-                        <p>MoM: {match.player_of_the_match}</p>
+                        <div className="match-third">
+                          {match.match_winner} {match.won_by}
+                          <p>MoM: {match.player_of_the_match}</p>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                ))}
-              </div>
+                  ))}
+                </div>
+              </InfiniteScroll>
             </div>
           </section>
         </div>

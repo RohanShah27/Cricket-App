@@ -1,6 +1,7 @@
 **/node_modules
 **/.scannerwork
 **/**/assests
-**/package-lock.json
+**/**/package-lock.json
 **/.vs-code
+**/**/yaml-t20-all
 **/coverage

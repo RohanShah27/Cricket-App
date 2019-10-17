@@ -1,4 +1,4 @@
-import * as actions from "../user";
+import * as actions from "../User";
 import { GET_USERS, SEND_OTP } from "../Types";
 import moxios from "moxios";
 import configureMockStore from "redux-mock-store";

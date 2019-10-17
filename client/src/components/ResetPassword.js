@@ -2,6 +2,12 @@ import React, { Component } from "react";
 import { resetPassword } from "../actions/User";
 import { connect } from "react-redux";
 import "../styles/resetpassword.css";
+const initialState = {
+    email: "",
+    password: "",
+    confirmpassword: "",
+    emailError: "",
+}
 export class ResetPassword extends Component {
     constructor(props) {
         super(props);
@@ -9,39 +15,58 @@ export class ResetPassword extends Component {
     }
     state = {
         //values in the database -yash
-        email: "",
-        password: "",
-        confirmpassword: ""
+        initialState
     };
 
-    OnChange = event => {
-        //change of state when user enters in the text field -yash
+    OnChange = (event) => {
+        //state change when the user inputs in the inputbox -yash
         this.setState({ [event.target.name]: event.target.value });
     };
     componentDidMount() {
         //checking if token is not present -yash
-        if (!localStorage.getItem("token")) {
+        if (localStorage.getItem("token")) {
             this.props.history.push("/");
         }
+    }
+    //errors which are validated in the front end 
+    validate = () => {
+        let emailError = "";
+        let passwordError = "";
+
+        if (!this.state.email || this.state.email.length <= 5 || !this.state.email.includes("@") || !this.state.email.includes(".") || !this.state.password || this.state.password.length <= 5) {
+            emailError = "enter all fields correctly";
+        }
+        if (!(this.state.password == this.state.confirmpassword)) {
+            passwordError = "passwords do not match";
+        }
+
+        if (emailError || passwordError) {
+            this.setState({ emailError: emailError, passwordError: passwordError });
+
+            return false;
+        }
+        return true;
     }
     onSubmitClick = (e) => {
         //to prevent values to be shown on the searchbar -yash
         e.preventDefault();
-        let a = this.state.password;
-        let b = this.state.confirmpassword;
-        // eslint-disable-next-line
-        //compare if password and confirm password are the same -yash
-        if (a == b) {
-            let user = {
-                email: this.state.email,
-                password: this.state.password
-            };
-            //function resetPassword present in actions/user -yash
-            this.props.resetPassword(user);
-        } else {
-            console.log("error");
+        const isValid = this.validate();
+        if (isValid) {
+            let a = this.state.password;
+            let b = this.state.confirmpassword;
+            // eslint-disable-next-line
+            //compare if password and confirm password are the same -yash
+            if (a == b) {
+                let user = {
+                    email: this.state.email,
+                    password: this.state.password
+                };
+                //function resetPassword present in actions/user -yash
+                this.props.resetPassword(user);
+            } else {
+                console.log("error");
+            }
         }
-
     }
     render() {
         return (
@@ -87,7 +112,13 @@ export class ResetPassword extends Component {
                             value={this.state.confirmpassword}
                         />
                         {/* end of input field -yash*/}
-
+                        <div className="loginerror" style={{ fontSize: 15, color: "red" }}>
+                            {this.props.error ? (
+                                <>
+                                    <p>{this.props.error}</p>
+                                </>
+                            ) : this.state.emailError || this.state.passwordError}
+                        </div>
                         {/* start of button reset password -yash*/}
                         <button
                             onChange={this.onChange}
@@ -108,7 +139,8 @@ export class ResetPassword extends Component {
 }
 
 const mapStateToProps = state => ({
-    users: state.userReducer.users
+    users: state.userReducer.users,
+    error: state.userReducer.error
 });
 
 export default connect(

@@ -5,11 +5,13 @@ import ReactCountryFlag from "react-country-flag";
 import {
   getAllMatchDetails,
   getScorecard,
-  getMatchDetails
+  getMatchDetails,
+  getManhattanGraphMatch
 } from "../actions/matchActions";
 import virat from "./rishabh.jpg";
 export class MatchDetails extends Component {
   componentWillMount() {
+    console.log("Props", this.props.location.state.match.match_id);
     let id = {
       match_id: this.props.location.state.match.match_id
     };
@@ -17,13 +19,13 @@ export class MatchDetails extends Component {
     this.props.getMatchDetails(id);
     this.props.getScorecard(id);
     this.props.getAllMatchDetails(id);
+    // this.props.getManhattanGraphMatch(id);
   }
 
   render() {
     console.log(this.props);
     return (
       <div>
-        {/* display the tournament name, teams played, their score and reuslt */}
         {this.props.summary.map(match => (
           <section>
             <div className="matchDetails-flex-container">
@@ -118,7 +120,7 @@ export class MatchDetails extends Component {
             <div className="matchDetails-tab2">
               <div className="matchDetails-testimonials">
                 <div className="matchDetails-details">
-                  {this.props.match.map(inning => (
+                  {this.props.singlematch.map(inning => (
                     <div className="innings-container">
                       <h2 className="matchDetails-scoreboard-header">
                         Innings {inning.inning}
@@ -208,12 +210,13 @@ export class MatchDetails extends Component {
             </div>
 
             <div className="matchDetails-tab3">
-              {/* <h2>Tab2</h2> */}
-
               <div className="matchDetails-testimonials">
-                <div className="matchDetails-card">
-                  <div className="matchDetails-content">
-                    <div className="matchDetails-details"></div>
+                <div className="matchDetails-statistics-container">
+                  <div className="manhattan-match">
+                    <iframe
+                      src={this.props.manhattan}
+                      style={{ width: "100%", height: "300px", border: "none" }}
+                    />
                   </div>
                 </div>
               </div>
@@ -468,11 +471,12 @@ export class MatchDetails extends Component {
 
 const mapStateToProps = state => ({
   current_match: state.matchReducers.current_match,
-  match: state.matchReducers.match,
-  summary: state.matchReducers.summary
+  singlematch: state.matchReducers.singlematch,
+  summary: state.matchReducers.summary,
+  manhattan: state.matchReducers.manhattan
 });
 
 export default connect(
   mapStateToProps,
-  { getAllMatchDetails, getScorecard, getMatchDetails }
+  { getAllMatchDetails, getScorecard, getMatchDetails, getManhattanGraphMatch }
 )(MatchDetails);

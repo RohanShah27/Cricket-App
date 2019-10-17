@@ -311,6 +311,22 @@ td {
   flex-direction: row;
 }
 
+.matchDetails-statistics-container {
+  display: grid;
+  grid-template-rows: auto auto;
+  grid-gap: 10px;
+  border: 1px solid #f39c12;
+  padding: 10px;
+  margin-top: 20px;
+}
+
+.matchDetails-statistics-container > div {
+  background-color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  padding: 30px 0;
+  font-size: 30px;
+}
+
 @media screen and (max-width: 768px) {
   .matchDetails-flex-container > div {
     display: block;

@@ -4,12 +4,18 @@ import {
   SEARCH_TEAM,
   GET_MATCH_DETAILS,
   GET_SCORECARD,
-  MATCH_SUMMARY
+  MATCH_SUMMARY,
+  GET_MATCHES_BY_TEAM,
+  GET_MATCHES_BY_TEAM_AND_TYPE,
+  GET_MATCHES_BY_DATE,
+  MANHATTAN_GRAPH_MATCH
 } from "../actions/Types";
 
 const initialState = {
   match: [],
+  singlematch: [],
   viewmatch: [],
+  manhattan: [],
   current_match: {
     player1: [{}, {}],
     toss: [{}, {}],
@@ -43,7 +49,7 @@ export default function(state = initialState, action) {
     case GET_SCORECARD:
       return {
         ...state,
-        match: action.payload
+        singlematch: action.payload
       };
     case SEARCH_TEAM:
       return { match: action.payload };
@@ -51,6 +57,29 @@ export default function(state = initialState, action) {
       return { ...state, current_match: action.payload };
     case MATCH_SUMMARY:
       return { ...state, summary: action.payload };
+
+    case GET_MATCHES_BY_TEAM:
+      return {
+        ...state,
+        match: action.payload
+      };
+
+    case GET_MATCHES_BY_TEAM_AND_TYPE:
+      return {
+        ...state,
+        match: action.payload
+      };
+
+    case GET_MATCHES_BY_DATE:
+      return {
+        ...state,
+        match: action.payload
+      };
+    case MANHATTAN_GRAPH_MATCH:
+      return {
+        ...state,
+        manhattan: action.payload
+      };
     default:
       return state;
   }
