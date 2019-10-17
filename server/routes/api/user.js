@@ -31,13 +31,13 @@ router.get("/all", async (req, res, next) => {
 router.post("/new", async (req, res, next) => {
   try {
     let email = req.body.email;
-    const result = await db.any(
-      `select * from user_info where email='${req.body.email}'`
-    );
+    console.log(email)
+    const result = await db.any(`select * from user_info where email='${req.body.email}'`);
     if (result.length == 1) {
       console.log(result);
       return res.status(400).send({ message: "email already exists" });
-    } else {
+    }
+    else {
       user = {
         email: req.body.email,
         password: req.body.password
@@ -61,6 +61,7 @@ router.post("/new", async (req, res, next) => {
     }
   } catch (err) {
     next(err);
+    console.log(err)
   }
 });
 
@@ -72,9 +73,10 @@ router.post("/emailverify", async (req, res, next) => {
       `select * from user_info where email = '${req.body.email}'`
     );
     if (result.length == 1) {
-      res
-        .status(400)
-        .json({ status: 400, data: result, message: "Email Already Exists" });
+      res.status(400).json({ status: 400, data: result, message: "Email Already Exists" })
+      console.log(result.length)
+      // console.log(message)
+      console.log(res)
     }
 
     // let testAccount = await nodemailer.createTestAccount();
@@ -91,13 +93,10 @@ router.post("/emailverify", async (req, res, next) => {
       let info = await transporter.sendMail({
         from: '"Crickstrait"<nodemailerTest0117@gmail.com>',
         to: email,
-        subject: "forgot password",
+        subject: "New Account?",
         text: "reset password",
 
-        html:
-          "<b>New Account? <br/>your Password is : </b>" +
-          password +
-          "If you wish to reset yout password follow this link <a href=http://localhost:3000/login>ResetPassword</a>"
+        html: "<b>New Account? <br/>your account has been successfully created  </b>click here to set the password <a href=http://localhost:3000/resetpassword>ResetPassword</a>"
       });
 
       console.log("Message sent: %s", info.messageId);
@@ -108,17 +107,23 @@ router.post("/emailverify", async (req, res, next) => {
     }
   } catch (err) {
     next(err);
+    console.log(err)
   }
 });
 
 router.post("/login", async (req, res, next) => {
   try {
+    let email = req.body.email;
+    console.log(email);
     const result = await db.any(
       `select * from user_info where email = '${req.body.email}'`
     );
+    console.log(result)
     if (result.length == 0) {
       return res.status(400).send({ message: "Account not found" });
     }
+    // console.log(res.message)
+    // console.log(result)
     bcrypt
       .compare(req.body.password, result[0].password)
       .then(async validate => {
@@ -146,6 +151,7 @@ router.post("/login", async (req, res, next) => {
           message: "incorrect id or password"
         });
       });
+    // console.log(error.message)
     let validateToken = (req, res, next) => {
       let bearerHeader =
         req.headers["x-access-token"] || req.headers["authorization"];
@@ -163,34 +169,29 @@ router.post("/login", async (req, res, next) => {
         console.log(decodedToken);
       } catch (error) {
         console.log(error);
-        res.status(400).send({
-          status: 400,
-          data: result,
-          message: "incorrect id or password"
-        });
+        res.status(400).send({ status: 400, data: result, message: "incorrect id or password" });
       }
     };
   } catch (error) {
-    console.log(error);
-    next(error);
+    console.log(res.message);
+    res.status(500).send({ status: 500, data: result, message: "incorrect id or password" });
   }
 });
 router.post("/newteam", async (req, res, next) => {
   try {
     let team_name = req.body.team_name;
-    const result = await db.any(
-      `select * from team where team_name='${req.body.team_name}'`
-    );
+    const result = await db.any(`select * from team where team_name='${req.body.team_name}'`);
     if (result.length == 1) {
       console.log(result);
-      return res.status(400).send({ message: "Team already exists" });
-    } else {
+      return res.status(400).send({ message: "Team already exists" })
+    }
+    else {
       team = {
         team_name: req.body.team_name
       };
 
       // validateUser(team)
-      const result = await db.any(`insert into teams(team_name)values('${team.team_name}')
+      const result = await db.any(`insert into team(team_name)values('${team.team_name}')
               returning team_id`);
       console.log(result);
       res.status(200).json({
@@ -209,24 +210,24 @@ router.put("/resetpassword", async (req, res, next) => {
     //get email from react component
     const email = req.body.email;
     console.log(email);
-    // let salt = bcrypt.genSaltSync(10);
-    // let hashed_password = bcrypt.hashSync(req.body.password, salt);
-    let hashed_password = bcrypt.hash(req.body.password, 10);
-    const result = await db.any(
-      //update user password
+    const result = await db.any(`select * from user_info where email='${email}'`)
+    if (result.length == 0) {
+      return res.status(400).send({ message: "User Does not exist" })
+    }
+    else {
+      let hashed_password = bcrypt.hash(req.body.password, 10)
+      const result = await db.any(
+        //update user password
 
-      "update user_info set password='" +
-        hashed_password +
-        '"where email="' +
-        email +
-        "';"
-      // `update user_info set password = '${hashed_password}' where email = ${email}`
-    );
-    res.status(200).json({
-      status: 200,
-      data: result,
-      message: "Updated Password Successfully"
-    });
+        "update user_info set password='" + hashed_password + '"where email="' + email + "';"
+        // `update user_info set password = '${hashed_password}' where email = ${email}`
+      );
+      res.status(200).json({
+        status: 200,
+        data: result,
+        message: "Updated Password Successfully"
+      });
+    }
   } catch (err) {
     next(err);
   }

@@ -12,7 +12,7 @@ const initialstate = {
   error: ""
 };
 
-export default function(state = initialstate, action) {
+export default function (state = initialstate, action) {
   switch (action.type) {
     case LOGIN:
       return state;

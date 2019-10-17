@@ -177,8 +177,11 @@ describe("Testing  ViewTeam Reducers", () => {
     };
     const returnedState = teamReducer(undefined, action);
     expect(returnedState).toEqual({
+      odi_graph: action.payload,
       tournamentTeam: action.payload,
       teamstats: action.payload,
+      t20_graph: action.payload,
+      test_graph: action.payload,
       playerstatsforteams: action.payload,
       playerstatsforteamsbowler: action.payload
     });

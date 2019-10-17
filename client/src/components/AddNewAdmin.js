@@ -3,21 +3,31 @@ import { addAdmin, sendPassword } from "../actions/User";
 
 import { connect } from "react-redux";
 import "../styles/AddNewAdmin.css";
+//setting initial state that is to be used in this component -yash
+const initialState = {
+    email: "",
+    password: "12356",
+    emailError: ""
+}
 export class AddNewAdmin extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            isDisabled: true
+        }
         //To allow the function this.onaddAdminClick to send data to the actions page -yash
         this.onaddAdminClick = this.onaddAdminClick.bind(this);
     }
     //The values that are going to be used in this component -yash
     state = {
-        email: "",
-        password: "123456"
+        initialState
     };
 
     OnChange = event => {
-        //To change the text fields to accept input -yash
-        this.setState({ [event.target.name]: event.target.value });
+        //checkbox method to check if there are no errors from client side -yash
+        const isCheckbox = event.target.type === "checkbox";
+        //state change when the user inputs in the inputbox -yash
+        this.setState({ [event.target.name]: isCheckbox ? event.target.checked : event.target.value });
     };
     componentDidMount() {
         //If Token not present return to landing screen -yash
@@ -25,29 +35,49 @@ export class AddNewAdmin extends Component {
             this.props.history.push("/");
         }
     }
+    //error vlidation from the front end -yash
+    validate = () => {
+        let emailError = "";
+
+        if (!this.state.email || this.state.email.length <= 5 || !this.state.email.includes("@") || !this.state.email.includes(".")) {
+            emailError = "Enter a valid Email";
+        }
+
+        if (emailError) {
+            this.setState({ emailError: emailError });
+
+            return false;
+        }
+        return true;
+    }
     //(e) used to prevent data being shown on the searchbar -yash
     onaddAdminClick(e) {
         e.preventDefault();
-        //storing values email and password in an object user -yash
-        let user = {
-            email: this.state.email,
-            password: this.state.password
-        };
-        //calling addAdmin function from actions -yash
-        this.props.addAdmin(user)
-        //calling sendpassword function from actions -yash
-        this.props.sendPassword(user);
-        //set current state of the values email and password -yash
-        this.setState({
-            email: "",
-            password: "123456"
-        });
+        const isValid = this.validate();
+        if (isValid) {
+            //storing values email and password in an object user -yash
+            let user = {
+                email: this.state.email,
+                password: this.state.password
+            };
+            //calling addAdmin function from actions -yash
+            this.props.addAdmin(user)
+            //calling sendpassword function from actions -yash
+            this.props.sendPassword(user);
+            //set current state of the values email and password -yash
+            this.setState({
+                email: "",
+                password: "123456"
+            });
+        }
     }
 
     render() {
+        console.log(this.props)
         return (
             // /start of main div -yash
             <div>
+
                 {/* start of form -yash */}
                 <form id="addnewadminform">
                     {/* start of fieldset -yash */}
@@ -62,11 +92,14 @@ export class AddNewAdmin extends Component {
                             placeholder="Enter email"
                             onChange={this.OnChange}
                             value={this.state.email}
+                            required
                         />
                         {/* end of input tag email -yash */}
-                        {/* display error from node  -yash */}
-                        {this.props.error ? <><p>{this.props.error}</p></> : null}
-                        {/* start of button add user -yash */}
+                        <div className="adminerror" style={{ fontSize: 15, color: "red" }}>
+                            {/* display error from node  -yash */}
+                            {this.props.error ? <><p>{this.props.error}</p></> : <p>{this.state.emailError}</p>}
+                            {/* start of button add user -yash */}
+                        </div>
                         <button
                             onChange={this.onChange}
                             onClick={this.onaddAdminClick}

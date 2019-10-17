@@ -24,8 +24,9 @@ export const getUsers = () => dispatch => {
       dispatch({
         type: ERROR_TYPE,
         //dispatch error message from node -yash
-        message: err.response.data.message
+        payload: err.response.data.message,
       });
+      console.log(err.response.data.message)
     });
 };
 
@@ -44,14 +45,14 @@ export const addAdmin = user => dispatch => {
       dispatch({
         type: ADD_ADMIN,
         //dispatch error message from node -yash
-        message: res.response.data.message
+        // message: res.response.data.message
       });
     })
     .catch(err => {
       dispatch({
         type: ERROR_TYPE,
         //dispatch error message from node -yash
-        message: err.response.data.message
+        payload: err.response.data.message
       });
     });
 };
@@ -61,10 +62,6 @@ export const resetPassword = user => dispatch => {
   return axios
     .put(
       "http://localhost:5000/api/user/resetpassword",
-      user,
-      {
-        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
-      },
       user
     )
     .then(res => {
@@ -76,8 +73,9 @@ export const resetPassword = user => dispatch => {
       dispatch({
         type: ERROR_TYPE,
         //dispatch error message from node -yash
-        data: err.response.data.message
+        payload: err.response.data.message
       });
+      console.log(err)
     });
 };
 //To add a team to the database -yash
@@ -100,8 +98,9 @@ export const addTeam = team => dispatch => {
       dispatch({
         type: ERROR_TYPE,
         //dispatch error message from node -yash
-        data: err.response.data.message
+        payload: err.response.data.message
       });
+
     });
 };
 
@@ -125,8 +124,9 @@ export const sendPassword = user => dispatch => {
       dispatch({
         type: ERROR_TYPE,
         //dispatch error message from node -yash
-        data: err.response.data.message
+        payload: err.response.data.message
       });
+      console.log(err.response.data.message)
     });
 };
 
@@ -135,6 +135,8 @@ export const login = (user, history) => dispatch => {
   return axios
     .post("http://localhost:5000/api/user/login", user)
     .then(res => {
+      localStorage.setItem("token", res.data.data);
+      history.push("/");
       dispatch({
         type: LOGIN
       });
@@ -145,7 +147,8 @@ export const login = (user, history) => dispatch => {
       dispatch({
         type: ERROR_TYPE,
         //dispatch error message from node -yash
-        data: err.response.data.message
+        payload: err.response.data.message
       });
+      console.log(err.response.data.message)
     });
 };
