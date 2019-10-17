@@ -41,16 +41,30 @@ export class Navigation extends Component {
             <Link to="/">Crickstrait</Link>
           </a>
           {this.props.gender == "male" ? (
-            <a className="options" style={{ color: "#c2c2c2c2" }}>
+            <a
+              className="options"
+              style={{
+                color: "#f39c12",
+                background: "white",
+                marginRight: "5px"
+              }}
+            >
               Men
             </a>
           ) : (
-            <a className="options" onClick={this.props.menState}>
+            <a
+              className="options"
+              onClick={this.props.menState}
+              style={{ marginRight: "5px" }}
+            >
               Men
             </a>
           )}
           {this.props.gender == "female" ? (
-            <a className="options" style={{ color: "#c2c2c2c2" }}>
+            <a
+              className="options"
+              style={{ color: "#f39c12", background: "white" }}
+            >
               Women
             </a>
           ) : (

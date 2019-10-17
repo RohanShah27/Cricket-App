@@ -19,18 +19,20 @@ export class Home extends Component {
     this.props.getFixtures();
   }
   render() {
-    console.log(this.props.match);
+    console.log("check props home", this.props);
     return (
       <div style={{ marginTop: "80px" }}>
-        <div className="home-flex-container">
+        <div className="home-flex-container" id="test">
           <div className="site">
             <div className="fixtures ">
-              <h2 className="fixtures-header">Fixtures</h2>
+              <h2 className="fixtures-header" id="fixtures-header">
+                Fixtures
+              </h2>
               <div className="col-content">
                 <ul className="home-ul">
-                  {this.props.fixtures.map(fixture => (
+                  {this.props.fixtures.map((index, fixture) => (
                     <p class="home-p">
-                      <span>{fixture.match}</span>{" "}
+                      <span id={"matchName"}>{fixture.match}</span>{" "}
                       <span className="home-time">
                         {fixture.match_date} at {fixture.time}
                       </span>
@@ -43,7 +45,9 @@ export class Home extends Component {
             {/* News Section */}
             <div className="news">
               <div className="col-center">
-                <h2 className="news-header">India's Tour of WestIndies</h2>
+                <h2 className="news-header" id="news-Section">
+                  India's Tour of WestIndies
+                </h2>
                 <div col-content>
                   <figure>
                     <img src={dhoni} className="homeimg" />
@@ -65,7 +69,9 @@ export class Home extends Component {
               </div>
             </div>
             <div className="headlines">
-              <h2 className="fixtures-header">Headlines</h2>
+              <h2 className="fixtures-header" id="headlines">
+                Headlines
+              </h2>
               <div className="col-content">
                 <ul className="home-ul">
                   {this.props.headlines.map(single_headline => (
@@ -87,7 +93,7 @@ export class Home extends Component {
               </div>
             </div>
             <div className="home-match-container">
-              <div className="testimonials">
+              <div className="testimonials" id="#recent-matches">
                 {this.props.match.map(match => (
                   <div className="card">
                     <span className="tournament-home">

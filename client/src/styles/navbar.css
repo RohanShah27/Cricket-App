@@ -47,8 +47,11 @@
   display: block;
   float: left;
   font-size: 15px;
-  padding: 25px 20px;
+  padding: 10px 20px;
   text-decoration: none;
+  border: 1px solid white;
+  border-radius: 8px;
+  margin-top: 10px;
 }
 
 /* menu */
