@@ -9,14 +9,14 @@ const initialState = {
   password: "",
   emailError: "",
   passwordError: ""
-}
+};
 export class Login extends Component {
   constructor(props) {
     super(props);
     this.onLogin = this.onLogin.bind(this);
     this.state = {
       isDisabled: true
-    }
+    };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   //values to be taken in the current component -yash
@@ -24,15 +24,20 @@ export class Login extends Component {
     initialState
   };
 
-  OnChange = (event) => {
+  OnChange = event => {
     //state change when the user inputs in the inputbox -yash
     this.setState({ [event.target.name]: event.target.value });
-  }
+  };
   validate = () => {
     let emailError = "";
     let passwordError = "";
 
-    if (!this.state.email || this.state.email.length <= 5 || !this.state.email.includes("@") || !this.state.email.includes(".")) {
+    if (
+      !this.state.email ||
+      this.state.email.length <= 5 ||
+      !this.state.email.includes("@") ||
+      !this.state.email.includes(".")
+    ) {
       emailError = "Email Field Incorrect";
     }
     if (!this.state.password || this.state.password.length <= 5) {
@@ -45,25 +50,22 @@ export class Login extends Component {
       return false;
     }
     return true;
-  }
+  };
   handleSubmit = event => {
     event.preventDefault();
     const isValid = this.validate();
     if (isValid) {
-
       console.log(this.state);
       this.setState(initialState);
     }
-  }
+  };
 
   componentDidMount() {
     // check if token preset -yash
     if (localStorage.getItem("token")) {
       this.props.history.push("/");
     }
-
   }
-
 
   onLogin(e) {
     //does not allow login values should be shown on the searchbar -yash
@@ -85,7 +87,7 @@ export class Login extends Component {
   }
 
   render() {
-    console.log(this.props)
+    console.log(this.props);
     return (
       //start of div -yash
       <div>
@@ -104,7 +106,6 @@ export class Login extends Component {
               onChange={this.OnChange}
               value={this.state.email}
               required
-
             />
             {/* end of email input tag -yash */}
 
@@ -127,8 +128,9 @@ export class Login extends Component {
                 <>
                   <p>{this.props.error}</p>
                 </>
-              ) : <p>{this.state.emailError || this.state.passwordError}</p>}
-
+              ) : (
+                <p>{this.state.emailError || this.state.passwordError}</p>
+              )}
             </div>
             {/* button for login -yash */}
             <button
@@ -136,12 +138,14 @@ export class Login extends Component {
               // onSubmit={this.onsubmit}
               onClick={this.onLogin}
               className="login-button"
-            // disabled={!this.state.email || !this.state.password}
+              // disabled={!this.state.email || !this.state.password}
             >
               Login
             </button>
             {/* end of button for login -yash */}
-            <Link to="/resetpassword" className="login-link">Forgot Password?</Link>
+            <Link to="/resetpassword" className="login-link">
+              Forgot Password?
+            </Link>
             {/* end of fieldset -yash */}
           </fieldset>
           {/* end of form -yash */}

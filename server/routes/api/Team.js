@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const pg = require("pg-promise")();
-<<<<<<< HEAD
 const db = pg("postgres://postgres:postgres@localhost/crickstrait_db");
 
 // router.post("/tournament", async (req, res) => {
@@ -16,9 +15,6 @@ const db = pg("postgres://postgres:postgres@localhost/crickstrait_db");
 //     message: "Retrieved all tournaments  successfully"
 //   });
 // });
-=======
-const db = pg("postgres://postgres:123456@localhost:5432/crickstrait_db");
->>>>>>> 00740829461b2deb742561476d1227c6175e004b
 
 router.post("/tournament", async (req, res) => {
   const tournament = req.body.tournament;
@@ -114,8 +110,8 @@ router.get("/matchtype/:team_id", async (req, res) => {
 router.get("/playerstats", async (req, res) => {
   const result = await db.any(
     "Select player_stats.match_type, player_stats.player_stats_name,player_stats.player_stats_value from team where team_id = '" +
-    team_id +
-    "';"
+      team_id +
+      "';"
   );
   res.status(200).json({
     status: 200,

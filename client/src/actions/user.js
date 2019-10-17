@@ -24,9 +24,9 @@ export const getUsers = () => dispatch => {
       dispatch({
         type: ERROR_TYPE,
         //dispatch error message from node -yash
-        payload: err.response.data.message,
+        payload: err.response.data.message
       });
-      console.log(err.response.data.message)
+      console.log(err.response.data.message);
     });
 };
 
@@ -43,7 +43,7 @@ export const addAdmin = user => dispatch => {
     )
     .then(res => {
       dispatch({
-        type: ADD_ADMIN,
+        type: ADD_ADMIN
         //dispatch error message from node -yash
         // message: res.response.data.message
       });
@@ -60,10 +60,7 @@ export const addAdmin = user => dispatch => {
 //To update the password of an admin in the database -yash
 export const resetPassword = user => dispatch => {
   return axios
-    .put(
-      "http://localhost:5000/api/user/resetpassword",
-      user
-    )
+    .put("http://localhost:5000/api/user/resetpassword", user)
     .then(res => {
       dispatch({
         type: RESET_PASSWORD
@@ -75,7 +72,7 @@ export const resetPassword = user => dispatch => {
         //dispatch error message from node -yash
         payload: err.response.data.message
       });
-      console.log(err)
+      console.log(err);
     });
 };
 //To add a team to the database -yash
@@ -100,7 +97,6 @@ export const addTeam = team => dispatch => {
         //dispatch error message from node -yash
         payload: err.response.data.message
       });
-
     });
 };
 
@@ -126,7 +122,7 @@ export const sendPassword = user => dispatch => {
         //dispatch error message from node -yash
         payload: err.response.data.message
       });
-      console.log(err.response.data.message)
+      console.log(err.response.data.message);
     });
 };
 
@@ -149,6 +145,6 @@ export const login = (user, history) => dispatch => {
         //dispatch error message from node -yash
         payload: err.response.data.message
       });
-      console.log(err.response.data.message)
+      console.log(err.response.data.message);
     });
 };

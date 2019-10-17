@@ -9,33 +9,12 @@ import {
   getTournament,
   searchTeamForViewTeamPage
 } from "../actions/teamActions";
-import InfiniteScroll from "react-infinite-scroll-component";
 
 export class Team extends Component {
   constructor(props) {
     super(props);
     this.sendTeam = this.sendTeam.bind(this);
-    this.state = {
-      tournamentTeam: Array.from({ length: 5 }),
-      hasMore: true
-    };
   }
-
-  fetchMoreData = () => {
-    if (this.state.tournamentTeam.length >= 500) {
-      this.setState({ hasMore: false });
-      return;
-    }
-    // a fake async api call like which sends
-    // 20 more records in 1.5 secs
-    setTimeout(() => {
-      this.setState({
-        tournamentTeam: this.state.tournamentTeam.concat(
-          Array.from({ length: 5 })
-        )
-      });
-    }, 500);
-  };
 
   state = {
     tournament: "",
@@ -182,7 +161,7 @@ export class Team extends Component {
             <input
               className="team-search-input"
               type="text"
-              placeholder={this.state.pageTeams.length}
+              placeholder="Enter Team Name"
               name="team_name"
               onChange={this.OnChange}
             />
