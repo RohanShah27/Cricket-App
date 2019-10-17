@@ -22,15 +22,15 @@ const initialState = {
   player_role_Error: "",
   batting_style_Error: "",
   bowling_style_Error: "",
-  isDisabled: false
-
 }
 class AdminPlayer extends Component {
   constructor() {
     super();
     // all the handle change along with select tags in state are stated here -yash
     this.handleDayChange = this.handleDayChange.bind(this);
-    this.state = initialState
+    this.state = {
+player_dob:''
+    }
     this.handleChange = this.handleChange.bind(this);
     this.onChange = this.onChange.bind(this);
     this.onCreate = this.onCreate.bind(this);
@@ -51,10 +51,10 @@ class AdminPlayer extends Component {
       this.props.history.push("/");
     }
   }
-  // state = {
-  //   //values that are to be stored in the database -yash
-  //   initialState
-  // };
+  state = {
+    //values that are to be stored in the database -yash
+    initialState
+  };
   onChange = event => {
     //state change when the user inputs in the inputbox -yash
     this.setState({ [event.target.name]: event.target.value });
@@ -66,7 +66,7 @@ class AdminPlayer extends Component {
     let bowling_style_Error = "";
     let nationError = "";
     if (this.state.player_name.length < 5 || !this.state.player_name) {
-      // console.log(true, 1)
+
       player_name_Error = "Enter Player Name Correctly";
     }
     if (this.state.batting_style.length < 5 || !this.state.batting_style) {
@@ -79,7 +79,7 @@ class AdminPlayer extends Component {
       bowling_style_Error = "Enter Nation Correctly";
     }
     if (player_name_Error || batting_style_Error || bowling_style_Error || nationError) {
-      // console.log(true, 2)
+
       this.setState({ player_name_Error: player_name_Error, batting_style_Error: batting_style_Error, bowling_style_Error: bowling_style_Error, nationError: nationError });
 
       return false;
@@ -130,7 +130,7 @@ class AdminPlayer extends Component {
       //start of div -yash
       <div>
         {/* start of form -yash */}
-        <form id="playerform" noValidate >
+        <form id="playerform">
           {/* start of fieldset -yash */}
           <fieldset>
             {/* start of div player adding -yash */}
