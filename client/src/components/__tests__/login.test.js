@@ -45,4 +45,14 @@ describe("Test Login Component", () => {
                 .props().placeholder
         ).toBe("Enter Password");
     });
+
+
+    it("should simulate login button", () => {
+        expect(
+            wrapper
+                .find("button")
+                .at(2)
+                .simulate("click")
+        );
+    });
 });
