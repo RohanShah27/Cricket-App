@@ -51,7 +51,7 @@ export const createPlayers = player => dispatch => {
       dispatch({
         type: ERROR_TYPE,
         //dispatch error message from node -yash
-        data: err.response.data.message
+        payload: err.response.data.message
       });
     });
 };

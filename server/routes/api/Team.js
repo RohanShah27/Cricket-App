@@ -1,7 +1,20 @@
 const express = require("express");
 const router = express.Router();
 const pg = require("pg-promise")();
-const db = pg("postgres://postgres:123456@localhost/crickstrait_db");
+const db = pg("postgres://postgres:postgres@localhost/crickstrait_db");
+
+// router.post("/tournament", async (req, res) => {
+//   const tournament = req.body.tournament;
+//   console.log(tournament);
+//   const result = await db.any(
+//     "select * from teams where tournament ='" + tournament + "';"
+//   );
+//   res.status(200).json({
+//     status: 200,
+//     data: result,
+//     message: "Retrieved all tournaments  successfully"
+//   });
+// });
 
 router.post("/tournament", async (req, res) => {
   const tournament = req.body.tournament;
@@ -112,7 +125,7 @@ router.post("/teamsearch", async (req, res) => {
     let team_name = req.body.team_name;
     let tournament = req.body.tournament;
     console.log(team_name);
-    const query = `select * from team where team_name like '${team_name}%'`;
+    const query = `select * from team where team_name ilike '${team_name}%'`;
     console.log("query", query);
     const result = await db.any(
       query

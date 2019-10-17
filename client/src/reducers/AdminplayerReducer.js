@@ -5,12 +5,12 @@ const initialstate = {
   error: ""
 };
 
-export default function(state = initialstate, action) {
+export default function (state = initialstate, action) {
   switch (action.type) {
     case ADD_PLAYERS:
       return state;
     case ERROR_TYPE:
-      return { ...state, users: action.payload };
+      return { ...state, error: action.payload };
     default:
       return state;
   }

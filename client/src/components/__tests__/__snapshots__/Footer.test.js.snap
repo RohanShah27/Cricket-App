@@ -1,29 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Testing Footer Component should mount the component 1`] = `
-<div
-  className="footer"
->
-  <p
-    className="footer-p"
-  >
-     © Powered By Headstrait
-  </p>
-  <div
-    className="footer-follow"
-  >
-    <i
-      className="fab fa-twitter footer-fab"
-    />
-    <i
-      className="fab fa-facebook footer-fab"
-    />
-    <i
-      className="fab fa-instagram footer-fab"
-    />
-    <i
-      className="fab fa-pinterest footer-fab"
-    />
-  </div>
-</div>
-`;
+exports[`Testing Footer Component should mount the component 1`] = `ShallowWrapper {}`;

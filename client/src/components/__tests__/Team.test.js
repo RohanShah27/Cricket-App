@@ -52,6 +52,17 @@ describe("Test Team Component", () => {
     expect(wrapper.find("div").length).toBe(32);
   });
 
+  it("test", () => {
+    expect(
+      wrapper
+        .find("label")
+        .at(0)
+        .simulate()
+        .click("International")
+        .props.state.tournament.toBe("International")
+    );
+  });
+
   it("should have exactly defined classname", () => {
     expect(
       wrapper

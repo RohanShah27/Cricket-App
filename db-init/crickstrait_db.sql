@@ -1,8 +1,14 @@
-drop database if exists crickstrait_db;
-create database crickstrait_db;
+drop database if exists crickstrait_dbs;
+create database crickstrait_dbs;
 
-\c crickstrait_db;
+\c crickstrait_dbs;
 
+create table user_info
+(
+    id serial,
+    email varchar,
+    password varchar
+);
 create table delivery
 (
     match_id int,
@@ -75,7 +81,7 @@ create table match
     (
         headline_id serial,
         headlines varchar(8000)
-        
+
     );
     create table fixtures
     (
@@ -93,7 +99,8 @@ create table match
         batting_style varchar(255),
         bowling_style varchar(255),
         player_dob date,
-        player_role varchar(255)
+        player_role varchar(255),
+        gender varchar
     );
 
     create table player_stats
@@ -139,17 +146,6 @@ create table match
         umpire_id serial,
         umpire_name varchar(255)
     );
-
-    create table users
-    (
-        user_id serial,
-        user_name varchar(255),
-        user_email varchar(255),
-        user_password varchar(255),
-        isAdmin boolean
-    );
-
-
     create table venue
     (
         venue_id serial,

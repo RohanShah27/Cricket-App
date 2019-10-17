@@ -2,116 +2,149 @@ import React, { Component } from "react";
 import { resetPassword } from "../actions/User";
 import { connect } from "react-redux";
 import "../styles/resetpassword.css";
-export class ResetPassword extends Component {
-  constructor(props) {
-    super(props);
-    this.onSubmitClick = this.onSubmitClick.bind(this);
-  }
-  state = {
-    //values in the database -yash
+const initialState = {
     email: "",
     password: "",
-    confirmpassword: ""
-  };
-
-  OnChange = event => {
-    //change of state when user enters in the text field -yash
-    this.setState({ [event.target.name]: event.target.value });
-  };
-  componentDidMount() {
-    //checking if token is not present -yash
-    if (localStorage.getItem("token")) {
-      this.props.history.push("/");
+    confirmpassword: "",
+    emailError: "",
+}
+export class ResetPassword extends Component {
+    constructor(props) {
+        super(props);
+        this.onSubmitClick = this.onSubmitClick.bind(this);
     }
-  }
-  onSubmitClick = e => {
-    //to prevent values to be shown on the searchbar -yash
-    e.preventDefault();
-    let a = this.state.password;
-    let b = this.state.confirmpassword;
-    // eslint-disable-next-line
-    //compare if password and confirm password are the same -yash
-    if (a == b) {
-      let user = {
-        email: this.state.email,
-        password: this.state.password
-      };
-      //function resetPassword present in actions/user -yash
-      this.props.resetPassword(user);
-    } else {
-      console.log("error");
+    state = {
+        //values in the database -yash
+        initialState
+    };
+
+    OnChange = (event) => {
+        //state change when the user inputs in the inputbox -yash
+        this.setState({ [event.target.name]: event.target.value });
+    };
+    componentDidMount() {
+        //checking if token is not present -yash
+        if (localStorage.getItem("token")) {
+            this.props.history.push("/");
+        }
     }
-  };
-  render() {
-    return (
-      //start of div -yash
-      <div>
-        {/* start of form -yash */}
-        <form id="resetpasswordform">
-          <fieldset>
-            {/* start of fieldset -yash */}
+    //errors which are validated in the front end 
+    validate = () => {
+        let emailError = "";
+        let passwordError = "";
 
-            {/* start and end of header -yash */}
-            <h1 className="resetpasswordheader">Reset Password</h1>
+        if (!this.state.email || this.state.email.length <= 5 || !this.state.email.includes("@") || !this.state.email.includes(".") || !this.state.password || this.state.password.length <= 5) {
+            emailError = "enter all fields correctly";
+        }
+        if (!(this.state.password == this.state.confirmpassword)) {
+            passwordError = "passwords do not match";
+        }
 
-            {/* start of input field for email -yash */}
-            <input
-              className="resetpassword"
-              type="text"
-              name="email"
-              placeholder="Enter email"
-              onChange={this.OnChange}
-              value={this.state.email}
-            />
-            {/* end of input field -yash */}
+        if (emailError || passwordError) {
+            this.setState({ emailError: emailError, passwordError: passwordError });
 
-            {/* start of input field for password -yash */}
-            <input
-              className="resetpassword"
-              type="password"
-              name="password"
-              placeholder="Password"
-              onChange={this.OnChange}
-              value={this.state.password}
-            />
-            {/* end of input field -yash */}
+            return false;
+        }
+        return true;
+    }
+    onSubmitClick = (e) => {
+        //to prevent values to be shown on the searchbar -yash
+        e.preventDefault();
+        const isValid = this.validate();
+        if (isValid) {
+            let a = this.state.password;
+            let b = this.state.confirmpassword;
+            // eslint-disable-next-line
+            //compare if password and confirm password are the same -yash
+            if (a == b) {
+                let user = {
+                    email: this.state.email,
+                    password: this.state.password
+                };
+                //function resetPassword present in actions/user -yash
+                this.props.resetPassword(user);
+            } else {
+                console.log("error");
+            }
+        }
+    }
+    render() {
+        return (
+            //start of div -yash
+            <div>
+                {/* start of form -yash */}
+                <form id="resetpasswordform">
+                    <fieldset>
+                        {/* start of fieldset -yash */}
 
-            {/* start of input field for confirm password -yash */}
-            <input
-              className="resetpassword"
-              type="password"
-              name="confirmpassword"
-              placeholder="Confirm Password"
-              onChange={this.OnChange}
-              value={this.state.confirmpassword}
-            />
-            {/* end of input field -yash*/}
+                        {/* start and end of header -yash */}
+                        <h1 className="resetpasswordheader">Reset Password</h1>
 
-            {/* start of button reset password -yash*/}
-            <button
-              onChange={this.onChange}
-              onClick={this.onSubmitClick}
-              className="resetpassword-button"
-            >
-              Update Password
+                        {/* start of input field for email -yash */}
+                        <input
+                            className="resetpassword"
+                            type="text"
+                            name="email"
+                            placeholder="Enter email"
+                            onChange={this.OnChange}
+                            value={this.state.email}
+                        />
+                        {/* end of input field -yash */}
+
+                        {/* start of input field for password -yash */}
+                        <input
+                            className="resetpassword"
+                            type="password"
+                            name="password"
+                            placeholder="Password"
+                            onChange={this.OnChange}
+                            value={this.state.password}
+                        />
+                        {/* end of input field -yash */}
+
+                        {/* start of input field for confirm password -yash */}
+                        <input
+                            className="resetpassword"
+                            type="password"
+                            name="confirmpassword"
+                            placeholder="Confirm Password"
+                            onChange={this.OnChange}
+                            value={this.state.confirmpassword}
+                        />
+                        {/* end of input field -yash*/}
+                        <div className="loginerror" style={{ fontSize: 15, color: "red" }}>
+                            {this.props.error ? (
+                                <>
+                                    <p>{this.props.error}</p>
+                                </>
+                            ) : this.state.emailError || this.state.passwordError}
+                        </div>
+                        {/* start of button reset password -yash*/}
+                        <button
+                            onChange={this.onChange}
+                            onClick={this.onSubmitClick}
+                            className="resetpassword-button"
+                        >
+                            Update Password
             </button>
-            {/* end of button -yash*/}
-          </fieldset>
-          {/* end of fieldset -yash */}
-        </form>
-        {/* end of form -yash */}
-      </div>
-      // end of div -yash
-    );
-  }
+                        {/* end of button -yash*/}
+                    </fieldset>
+                    {/* end of fieldset -yash */}
+                </form>
+                {/* end of form -yash */}
+            </div>
+            // end of div -yash
+        );
+    }
 }
 
 const mapStateToProps = state => ({
-  users: state.userReducer.users
+    users: state.userReducer.users,
+    error: state.userReducer.error
 });
 
 export default connect(
-  mapStateToProps,
-  //call to reset password function -yash
-  { resetPassword }
+    mapStateToProps,
+    //call to reset password function -yash
+    { resetPassword }
 )(ResetPassword);

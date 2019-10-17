@@ -1,16 +1,16 @@
-const url = "mongodb://localhost:27017/crickstrait_db";
+const url = "mongodb://localhost:27017/crickstrait_dbs";
 const escape = require("pg-escape");
 
 let MongoClient = require("mongodb").MongoClient;
 
 const pgp = require("pg-promise")();
-const postdb = pgp("postgres://postgres:root@localhost:5432/crickstrait_db");
+const postdb = pgp("postgres://postgres:123456@localhost:5432/crickstrait_dbs");
 let dbo;
 
 MongoClient.connect(url, {
 	useNewUrlParser: true
 }).then(async db => {
-	dbo = db.db("crickstrait_db");
+	dbo = db.db("crickstrait_dbs");
 	// async function which will be defined below
 
 	console.time("Computing match type");
@@ -48,6 +48,7 @@ async function match() {
 		let winner_id;
 		try {
 			let currentId = ids[id];
+			let gender = currentId.info.gender;
 			// // venue
 			venue_id = 0;
 			if (
@@ -146,11 +147,11 @@ async function match() {
 			// Insert into match table
 			query = escape(
 				`insert into match(match_type,toss_winner,toss_decision,innings_one_team,innings_two_team,outcome,player_of_the_match,gender,winner,venue_id,competition) values('${
-					currentId.info.match_type
+				currentId.info.match_type
 				}',${toss_winner_id},'${currentId.info.toss.decision}',${
-					inning_team_id[0]
+				inning_team_id[0]
 				},${inning_team_id[1]},'${outcome_match}',ARRAY[%L],'${
-					currentId.info.gender
+				currentId.info.gender
 				}',${winner_id},${venue_id},%L) returning match_id`,
 				currentId.info.player_of_match,
 				competition
@@ -229,9 +230,11 @@ async function match() {
 									// );
 									// get fielder_one id
 									let query = escape(
-										"with s as (select player_id, player_name from player where player_name=%L), i as (insert into player(player_name) select %L where not exists (select 1 from s) returning player_id) select player_id from s union all select player_id from i",
+										"with s as (select player_id, player_name,gender from player where player_name=%L and gender=%L), i as (insert into player(player_name,gender) select %L,%L where not exists (select 1 from s) returning player_id) select player_id from s union all select player_id from i",
 										val.wicket.fielders[0],
-										val.wicket.fielders[0]
+										gender,
+										val.wicket.fielders[0],
+										gender
 									);
 									fielder_one = await postdb.any(query);
 									if (fielder_one.length > 0) {
@@ -243,9 +246,10 @@ async function match() {
 									// get fielder_two id
 									if (val.wicket.fielders.length == 2) {
 										query = escape(
-											"with s as (select player_id, player_name from player where player_name=%L), i as (insert into player(player_name) select %L where not exists (select 1 from s) returning player_id) select player_id from s union all select player_id from i",
+											"with s as (select player_id, player_name,gender from player where player_name=%L and gender=%L), i as (insert into player(player_name,gender) select %L,%L where not exists (select 1 from s) returning player_id) select player_id from s union all select player_id from i",
 											val.wicket.fielders[1],
-											val.wicket.fielders[1]
+											gender,
+											val.wicket.fielders[1], gender
 										);
 										fielder_two = await postdb.any(query);
 										if (fielder_two.length > 0) {
@@ -259,9 +263,11 @@ async function match() {
 
 								// get player_out id
 								let query = escape(
-									"with s as (select player_id, player_name from player where player_name=%L), i as (insert into player(player_name) select %L where not exists (select 1 from s) returning player_id) select player_id from s union all select player_id from i",
+									"with s as (select player_id, player_name,gender from player where player_name=%L and gender=%L), i as (insert into player(player_name,gender) select %L,%L where not exists (select 1 from s) returning player_id) select player_id from s union all select player_id from i",
 									val.wicket.player_out,
-									val.wicket.player_out
+									gender,
+									val.wicket.player_out,
+									gender
 								);
 								let player_out = await postdb.any(query);
 								player_out = player_out[0].player_id;
@@ -283,18 +289,21 @@ async function match() {
 
 							// get striker_id
 							let query = escape(
-								"with s as (select player_id, player_name from player where player_name=%L), i as (insert into player(player_name) select %L where not exists (select 1 from s) returning player_id) select player_id from s union all select player_id from i",
+								"with s as (select player_id, player_name,gender from player where player_name=%L and gender=%L), i as (insert into player(player_name,gender) select %L,%L where not exists (select 1 from s) returning player_id) select player_id from s union all select player_id from i",
 								val.batsman,
-								val.batsman
+								gender,
+								val.batsman,
+								gender
 							);
 							let striker_id = await postdb.any(query);
 							striker_id = striker_id[0].player_id;
 
 							// get non_striker_id
 							query = escape(
-								"with s as (select player_id, player_name from player where player_name=%L), i as (insert into player(player_name) select %L where not exists (select 1 from s) returning player_id) select player_id from s union all select player_id from i",
+								"with s as (select player_id, player_name,gender from player where player_name=%L and gender=%L), i as (insert into player(player_name,gender) select %L,%L where not exists (select 1 from s) returning player_id) select player_id from s union all select player_id from i",
 								val.non_striker,
-								val.non_striker
+								gender,
+								val.non_striker, gender
 							);
 							let non_striker_id = await postdb.any(query);
 							non_striker_id = non_striker_id[0].player_id;
@@ -304,9 +313,11 @@ async function match() {
 
 							// get bowler_id
 							query = escape(
-								"with s as (select player_id, player_name from player where player_name=%L), i as (insert into player(player_name) select %L where not exists (select 1 from s) returning player_id) select player_id from s union all select player_id from i",
+								"with s as (select player_id, player_name,gender from player where player_name=%L and gender=%L), i as (insert into player(player_name,gender) select %L,%L where not exists (select 1 from s) returning player_id) select player_id from s union all select player_id from i",
 								val.bowler,
-								val.bowler
+								gender,
+								val.bowler,
+								gender
 							);
 							let bowler_id = await postdb.any(query);
 							bowler_id = bowler_id[0].player_id;
@@ -407,33 +418,33 @@ async function player_stats() {
 		});
 
 		// total 50s
-		const total_50s_result =await postdb.any(`with total as (select m.match_type, m.match_id, sum(d.batsman_run) as total_50s from delivery as d inner join match as m on d.match_id = m.match_id
+		const total_50s_result = await postdb.any(`with total as (select m.match_type, m.match_id, sum(d.batsman_run) as total_50s from delivery as d inner join match as m on d.match_id = m.match_id
 		where d.striker = ${player.player_id} group by m.match_type, m.match_id)
 		select match_type, count(total_50s) as no_of_50s from total where total_50s >= 50 and total_50s <100 group by match_type`)
-		total_50s_result.forEach(async result=>{
-			let query =`insert into player_stats(player_stats_name,player_stats_value,player_id,match_type) values ('total_50s','${result.no_of_50s}',${player.player_id},'${result.match_type}') returning player_stats_id;`
+		total_50s_result.forEach(async result => {
+			let query = `insert into player_stats(player_stats_name,player_stats_value,player_id,match_type) values ('total_50s','${result.no_of_50s}',${player.player_id},'${result.match_type}') returning player_stats_id;`
 			const player_stat = await postdb.any(query);
 			console.log("add total 50s to player_stats : ", query);
 		});
 
 		// Total centuries
-		const total_100s_result =await postdb.any(`with total as (select m.match_type, m.match_id, sum(d.batsman_run) as total_100s from delivery as d inner join match as m on d.match_id = m.match_id
+		const total_100s_result = await postdb.any(`with total as (select m.match_type, m.match_id, sum(d.batsman_run) as total_100s from delivery as d inner join match as m on d.match_id = m.match_id
 		where d.striker = ${player.player_id} group by m.match_type, m.match_id)
 		select match_type, count(total_100s) as no_of_100s from total where total_100s >= 100 and total_100s <200 group by match_type`)
-		total_100s_result.forEach(async result=>{
-			let query =`insert into player_stats(player_stats_name,player_stats_value,player_id,match_type) values ('centuries','${result.no_of_100s}',${player.player_id},'${result.match_type}') returning player_stats_id;`
-			console.log("Added total 100s to the player_stats",query);
-			const player_stat=await postdb.any(query);
+		total_100s_result.forEach(async result => {
+			let query = `insert into player_stats(player_stats_name,player_stats_value,player_id,match_type) values ('centuries','${result.no_of_100s}',${player.player_id},'${result.match_type}') returning player_stats_id;`
+			console.log("Added total 100s to the player_stats", query);
+			const player_stat = await postdb.any(query);
 		})
 
 		// Total double centuries
-		const total_200s_result =await postdb.any(`with total as (select m.match_type, m.match_id, sum(d.batsman_run) as total_200s from delivery as d inner join match as m on d.match_id = m.match_id
+		const total_200s_result = await postdb.any(`with total as (select m.match_type, m.match_id, sum(d.batsman_run) as total_200s from delivery as d inner join match as m on d.match_id = m.match_id
 		where d.striker = ${player.player_id} group by m.match_type, m.match_id)
 		select match_type, count(total_200s) as no_of_200s from total where total_200s >= 200 and total_200s <300 group by match_type`)
-		total_200s_result.forEach(async result=>{
-			let query =`insert into player_stats(player_stats_name,player_stats_value,player_id,match_type) values ('double centuries','${result.no_of_200s}',${player.player_id},'${result.match_type}') returning player_stats_id;`
-			console.log("Added total 200s to the player_stats",query);
-			const player_stat=await postdb.any(query);
+		total_200s_result.forEach(async result => {
+			let query = `insert into player_stats(player_stats_name,player_stats_value,player_id,match_type) values ('double centuries','${result.no_of_200s}',${player.player_id},'${result.match_type}') returning player_stats_id;`
+			console.log("Added total 200s to the player_stats", query);
+			const player_stat = await postdb.any(query);
 		})
 	});
 }

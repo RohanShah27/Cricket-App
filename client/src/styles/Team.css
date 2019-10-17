@@ -99,6 +99,9 @@
   border-right-color: white;
   border-bottom-color: white;
 }
+li {
+  user-select: none;
+}
 
 .pc-playerTab section div h2 {
   margin: 0;
@@ -198,7 +201,8 @@
   float: right;
   width: 300px;
   height: 40px;
-  border: 1px solid black;
+  padding: 12px;
+  border: 1px solid #c2c2c2;
   border-top-left-radius: 8px;
   border-bottom-left-radius: 8px;
 }
@@ -212,4 +216,11 @@
   width: 30px;
   float: right;
   cursor: pointer;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  color: white;
+  border: none;
+  background: #f39c12;
 }
+
+/* .team-search-box; */

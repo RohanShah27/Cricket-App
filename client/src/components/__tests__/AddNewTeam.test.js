@@ -36,4 +36,12 @@ describe("Test AddNewTeam Component", () => {
         .props().placeholder
     ).toBe("Enter New Team Name");
   });
+  it("should simulate add team button", () => {
+    expect(
+      wrapper
+        .find("button")
+        .at(1)
+        .simulate("click")
+    );
+  });
 });

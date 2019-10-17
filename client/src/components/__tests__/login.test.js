@@ -4,10 +4,10 @@ import Login from "../Login";
 import { Provider } from "react-redux";
 import store from "../../store";
 
-const login = jest.fn();
+// const Login = jest.fn();
 const wrapper = mount(
     <Provider store={store}>
-        <Login login={login} />
+        <Login login={Login} history={[]} />
     </Provider>
 );
 
@@ -44,5 +44,15 @@ describe("Test Login Component", () => {
                 .at(1)
                 .props().placeholder
         ).toBe("Enter Password");
+    });
+
+
+    it("should simulate login button", () => {
+        expect(
+            wrapper
+                .find("button")
+                .at(2)
+                .simulate("click")
+        );
     });
 });

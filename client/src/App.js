@@ -10,6 +10,7 @@ import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
 import Match from "./components/Match";
 import Login from "./components/Login";
+
 import Players from "./components/Players";
 import PaginatePlayers from "./components/paginatePlayers";
 // Yash Bhatia
@@ -17,6 +18,7 @@ import AdminPlayer from "./components/AdminPlayer";
 import AddNewAdmin from "./components/AddNewAdmin";
 import AddNewTeam from "./components/AddNewTeam";
 import ResetPassword from "./components/ResetPassword";
+import MatchDetails from "./components/MatchDetails";
 //RohanK
 import ViewTeam from "./components/ViewTeam";
 export default class App extends React.Component {
@@ -81,6 +83,11 @@ export default class App extends React.Component {
             component={props => (
               <PaginatePlayers {...props} gender={this.state.gender} />
             )}
+          ></Route>
+          <Route
+            exact
+            path="/matchdetails/:match_id"
+            component={MatchDetails}
           ></Route>
 
           <Footer />

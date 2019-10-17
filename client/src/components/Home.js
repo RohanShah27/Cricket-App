@@ -119,7 +119,17 @@ export class Home extends Component {
                         </p>
                       </div>
                       <div className="second">
-                        <button className="buttonformatch">View</button>
+                        <button
+                          className="buttonformatch"
+                          onClick={() => {
+                            this.props.history.push(
+                              "/matchdetails/" + match.match_id,
+                              { match }
+                            );
+                          }}
+                        >
+                          View
+                        </button>
                       </div>
                       <div className="third">
                         <img className="imgformatch" src={pakistan} />

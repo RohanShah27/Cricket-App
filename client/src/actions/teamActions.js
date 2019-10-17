@@ -32,7 +32,7 @@ export const searchTeamForViewTeamPage = team => dispatch => {
         type: SEARCH_TEAM_FOR_VIEW_TEAM_PAGE,
         payload: res.data.data
       });
-      console.log(res.data);
+      console.log(res.data.data);
     })
     .catch(err => {
       console.log(err);
@@ -47,7 +47,7 @@ export const getTeamById = team_id => dispatch => {
         type: GET_TEAM_BY_ID,
         payload: res.data.data
       });
-      console.log(res.data);
+      console.log(res.data.data);
     })
     .catch(err => {
       console.log(err);
@@ -63,7 +63,7 @@ export const getTeamStats = team_id => dispatch => {
         type: GET_TEAM_STATS,
         payload: res.data.data
       });
-      console.log(res);
+      console.log(res.data.data);
     })
     .catch(err => {
       console.log(err);

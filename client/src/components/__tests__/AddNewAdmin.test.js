@@ -36,4 +36,12 @@ describe("Test AddNewAdmin Component", () => {
         .props().placeholder
     ).toBe("Enter email");
   });
+  it("should simulate add admin button", () => {
+    expect(
+      wrapper
+        .find("button")
+        .at(1)
+        .simulate("click")
+    );
+  });
 });

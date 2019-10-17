@@ -89,7 +89,7 @@ export class Navigation extends Component {
               <Link to="/teams">Teams</Link>
             </li>
             <li>
-              <Link to="/players">Players</Link>
+              <Link to="/paginatePlayers">Players</Link>
             </li>
             <li style={{ textAlign: "center" }}>
               <input
