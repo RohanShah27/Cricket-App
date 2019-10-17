@@ -83,7 +83,7 @@ describe("Testing users actions", () => {
     });
     const store = mockStore({});
     const expectedResponse = [];
-    return store.dispatch(actions.sendPassword(types)).then(() => {
+    store.dispatch(actions.sendPassword(types)).then(() => {
       expect(store.getActions()).toEqual(expectedResponse);
     });
   });
@@ -99,7 +99,7 @@ describe("Testing users actions", () => {
     });
     const store = mockStore({});
     const expectedResponse = [];
-    return store.dispatch(actions.sendPassword(types)).then(() => {
+    store.dispatch(actions.sendPassword(types)).then(() => {
       expect(store.getActions()).toEqual(expectedResponse);
     });
   });
@@ -116,7 +116,7 @@ describe("Testing users actions", () => {
     });
     const store = mockStore({});
     const expectedResponse = [];
-    return store.dispatch(actions.login(types)).then(() => {
+    store.dispatch(actions.login(types)).then(() => {
       expect(store.getActions()).toEqual(expectedResponse);
     });
   });
@@ -132,7 +132,7 @@ describe("Testing users actions", () => {
     });
     const store = mockStore({});
     const expectedResponse = [{ type: "SEND_OTP" }];
-    return store.dispatch(actions.sendPassword(types)).then(() => {
+    store.dispatch(actions.sendPassword(types)).then(() => {
       expect(store.getActions()).toEqual(expectedResponse);
     });
   });
@@ -147,7 +147,7 @@ describe("Testing users actions", () => {
     });
     const store = mockStore({});
     const expectedResponse = [];
-    return store.dispatch(actions.sendPassword(types)).then(() => {
+    store.dispatch(actions.sendPassword(types)).then(() => {
       expect(store.getActions()).toEqual(expectedResponse);
     });
   });
@@ -167,7 +167,7 @@ describe("Testing users actions", () => {
         type: "ADD_NEW_TEAM"
       }
     ];
-    return store.dispatch(actions.addTeam(types)).then(() => {
+    store.dispatch(actions.addTeam(types)).then(() => {
       expect(store.getActions()).toEqual(expectedResponse);
     });
   });
@@ -183,7 +183,7 @@ describe("Testing users actions", () => {
     });
     const store = mockStore({});
     const expectedResponse = [];
-    return store.dispatch(actions.addTeam(types)).then(() => {
+    store.dispatch(actions.addTeam(types)).then(() => {
       expect(store.getActions()).toEqual(expectedResponse);
     });
   });
@@ -203,7 +203,7 @@ describe("Testing users actions", () => {
       }
     ];
     console.log(responseofAPI);
-    return store.dispatch(actions.getUsers()).then(() => {
+    store.dispatch(actions.getUsers()).then(() => {
       expect(store.getActions()).toEqual(expectedActions);
     });
 

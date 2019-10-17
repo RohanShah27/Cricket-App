@@ -7,7 +7,7 @@ import store from "../../store";
 const AddnewTeam = jest.fn();
 const wrapper = mount(
   <Provider store={store}>
-    <AddNewTeam addnewteam={AddNewTeam} history={[]} />
+    <AddNewTeam addnewteam={AddnewTeam} history={[]} />
   </Provider>
 );
 

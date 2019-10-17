@@ -37,25 +37,25 @@ export class paginatePlayers extends Component {
     console.log("PagePlayers array", this.state.pagePlayers.length);
     // return this.pagePlayers;
   };
-  genMarkup = player => (
-    <div className="players-card">
-      <img src={virat} className="players-img "></img>
-      <p className="player-name">{player.player_name}</p>
-      <span className="team-name">
-        <span style={{ color: "black" }}>Team:</span>{" "}
-        {player.nation ? player.nation : "NA"}
-      </span>
-      <button
-        onClick={() =>
-          this.props.history.push("/playerprofile/" + player.player_id, {
-            player
-          })
-        }
-      >
-        View
-      </button>
-    </div>
-  );
+  // genMarkup = player => (
+  //   <div className="players-card">
+  //     <img src={virat} className="players-img "></img>
+  //     <p className="player-name">{player.player_name}</p>
+  //     <span className="team-name">
+  //       <span style={{ color: "black" }}>Team:</span>{" "}
+  //       {player.nation ? player.nation : "NA"}
+  //     </span>
+  //     <button
+  //       onClick={() =>
+  //         this.props.history.push("/playerprofile/" + player.player_id, {
+  //           player
+  //         })
+  //       }
+  //     >
+  //       View
+  //     </button>
+  //   </div>
+  // );
   loadMoreItems = () => {
     // this.setState({ loadingState: true, height: this.state.height + 800 });
     setTimeout(() => {
@@ -80,6 +80,7 @@ export class paginatePlayers extends Component {
     this.props.playerSearch(playerName);
   };
   render() {
+    console.log("Paginate props", this.props);
     return (
       <div style={{ marginTop: "80px" }}>
         <div className="players-search-section">
@@ -112,7 +113,7 @@ export class paginatePlayers extends Component {
                           <p
                             style={{
                               fontSize: "18px",
-                              paddingTop: "2px ",
+                              paddingTop: "10px ",
                               display: "flex",
                               justifyContent: "center"
                             }}

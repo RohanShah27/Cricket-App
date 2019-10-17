@@ -19,18 +19,20 @@ export class Home extends Component {
     this.props.getFixtures();
   }
   render() {
-    console.log(this.props.match);
+    console.log("check props home", this.props);
     return (
       <div style={{ marginTop: "80px" }}>
-        <div className="home-flex-container">
+        <div className="home-flex-container" id="test">
           <div className="site">
             <div className="fixtures ">
-              <h2 className="fixtures-header">Fixtures</h2>
+              <h2 className="fixtures-header" id="fixtures-header">
+                Fixtures
+              </h2>
               <div className="col-content">
                 <ul className="home-ul">
-                  {this.props.fixtures.map(fixture => (
+                  {this.props.fixtures.map((fixture, index) => (
                     <p class="home-p">
-                      <span>{fixture.match}</span>{" "}
+                      <span id={"matchName" + index}>{fixture.match}</span>{" "}
                       <span className="home-time">
                         {fixture.match_date} at {fixture.time}
                       </span>
@@ -43,7 +45,9 @@ export class Home extends Component {
             {/* News Section */}
             <div className="news">
               <div className="col-center">
-                <h2 className="news-header">India's Tour of WestIndies</h2>
+                <h2 className="news-header" id="news-Section">
+                  India's Tour of WestIndies
+                </h2>
                 <div col-content>
                   <figure>
                     <img src={dhoni} className="homeimg" />
@@ -65,10 +69,12 @@ export class Home extends Component {
               </div>
             </div>
             <div className="headlines">
-              <h2 className="fixtures-header">Headlines</h2>
+              <h2 className="fixtures-header" id="headlines">
+                Headlines
+              </h2>
               <div className="col-content">
                 <ul className="home-ul">
-                  {this.props.headlines.map(single_headline => (
+                  {this.props.headlines.map((single_headline, index) => (
                     <>
                       <a
                         onClick={() =>
@@ -76,7 +82,11 @@ export class Home extends Component {
                         }
                       >
                         {" "}
-                        <li className="home-li" style={{ cursor: "pointer" }}>
+                        <li
+                          className="home-li"
+                          id={"singleheadline" + index}
+                          style={{ cursor: "pointer" }}
+                        >
                           {single_headline.headlines}
                         </li>
                       </a>
@@ -87,8 +97,8 @@ export class Home extends Component {
               </div>
             </div>
             <div className="home-match-container">
-              <div className="testimonials">
-                {this.props.match.map(match => (
+              <div className="testimonials" id="#recent-matches">
+                {this.props.match.map((match, index) => (
                   <div className="card">
                     <span className="tournament-home">
                       {" "}
@@ -101,15 +111,30 @@ export class Home extends Component {
                     <div className="parent">
                       <div className="first">
                         <img className="imgformatch" src={india} />
-                        <p style={{ wordBreak: "break-word" }}>{match.team1}</p>
+                        <p
+                          style={{ wordBreak: "break-word" }}
+                          id={"matchTeamOne" + index}
+                        >
+                          {match.team1}
+                        </p>
                       </div>
                       <div className="second">
-                        <button className="buttonformatch">View</button>
+                        <button
+                          className="buttonformatch"
+                          onClick={() => {
+                            this.props.history.push(
+                              "/matchdetails/" + match.match_id,
+                              { match }
+                            );
+                          }}
+                        >
+                          View
+                        </button>
                       </div>
                       <div className="third">
                         <img className="imgformatch" src={pakistan} />
 
-                        <p>{match.team2}</p>
+                        <p id={"matchTeamTwo" + index}>{match.team2}</p>
                       </div>
                     </div>
                   </div>

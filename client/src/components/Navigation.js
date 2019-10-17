@@ -41,23 +41,37 @@ export class Navigation extends Component {
             <Link to="/">Crickstrait</Link>
           </a>
           {this.props.gender == "male" ? (
-            <a className="options" style={{ color: "#c2c2c2c2" }}>
+            <a
+              className="options"
+              style={{
+                color: "#f39c12",
+                background: "white",
+                marginRight: "5px"
+              }}
+            >
               Men
             </a>
           ) : (
-              <a className="options" onClick={this.props.menState}>
-                Men
+            <a
+              className="options"
+              onClick={this.props.menState}
+              style={{ marginRight: "5px" }}
+            >
+              Men
             </a>
-            )}
+          )}
           {this.props.gender == "female" ? (
-            <a className="options" style={{ color: "#c2c2c2c2" }}>
+            <a
+              className="options"
+              style={{ color: "#f39c12", background: "white" }}
+            >
               Women
             </a>
           ) : (
-              <a className="options" onClick={this.props.femaleState}>
-                Women
+            <a className="options" onClick={this.props.femaleState}>
+              Women
             </a>
-            )}
+          )}
 
           <input className="menu-btn" type="checkbox" id="menu-btn" />
           <label className="menu-icon" for="menu-btn">
@@ -75,7 +89,7 @@ export class Navigation extends Component {
               <Link to="/teams">Teams</Link>
             </li>
             <li>
-              <Link to="/players">Players</Link>
+              <Link to="/paginatePlayers">Players</Link>
             </li>
             <li style={{ textAlign: "center" }}>
               <input
@@ -92,7 +106,7 @@ export class Navigation extends Component {
                 <div className="search-result">
                   {this.props.search_result.length != 0 ? (
                     this.props.search_result.player.length != 0 ? (
-                      this.props.search_result.player.map(player => (
+                      this.props.search_result.player.map((player, index) => (
                         <span className="search_result_data">
                           <Link
                             to={{
@@ -107,6 +121,7 @@ export class Navigation extends Component {
                                 display: "flex",
                                 justifyContent: "center"
                               }}
+                              id={"searchPlayer" + index}
                             >
                               {player.player_name}
                               <img
@@ -123,8 +138,8 @@ export class Navigation extends Component {
                         </span>
                       ))
                     ) : (
-                        <p style={{ padding: "10px 10px" }}>No Player Found</p>
-                      )
+                      <p style={{ padding: "10px 10px" }}>No Player Found</p>
+                    )
                   ) : null}
                   <hr style={{ width: "100px", marginLeft: "50px" }} />
                   {this.props.search_result.length != 0 ? (
@@ -161,8 +176,8 @@ export class Navigation extends Component {
                         </span>
                       ))
                     ) : (
-                        <p style={{ padding: "10px 10px" }}>No Team Found</p>
-                      )
+                      <p style={{ padding: "10px 10px" }}>No Team Found</p>
+                    )
                   ) : null}
                 </div>
               )}
@@ -197,10 +212,10 @@ export class Navigation extends Component {
                 </li>
               </>
             ) : (
-                <li>
-                  <Link to="/login">Login</Link>
-                </li>
-              )}
+              <li>
+                <Link to="/login">Login</Link>
+              </li>
+            )}
           </ul>
         </div>
       </div>

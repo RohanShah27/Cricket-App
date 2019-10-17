@@ -1,9 +1,30 @@
 import React from "react";
-import { shallow } from "enzyme";
-import Navigation from "../Navigation";
+import { shallow, mount } from "enzyme";
+import { Navigation } from "../Navigation";
 
+let search_result = {
+  player: [
+    {
+      player_id: 4,
+      player_name: "Test name"
+    }
+  ],
+  team: [
+    {
+      team_id: 4,
+      team_name: "Team Test Name"
+    }
+  ]
+};
 const navigation = jest.fn();
-const wrapper = shallow(<Navigation navigation={navigation} />);
+const getGlobalSearchResult = jest.fn();
+const wrapper = shallow(
+  <Navigation
+    navigation={navigation}
+    getGlobalSearchResult={getGlobalSearchResult}
+    search_result={search_result}
+  />
+);
 
 describe("Testing Footer Component", () => {
   it("should mount the component", () => {
@@ -48,4 +69,9 @@ describe("Testing Footer Component", () => {
         .simulate("click")
     );
   });
+  // it("should map players from search result", () => {
+  //   expect(wrapper.find("#searchPlayer1").props().children).toBe(
+  //     search_result.player[0].player_name
+  //   );
+  // });
 });

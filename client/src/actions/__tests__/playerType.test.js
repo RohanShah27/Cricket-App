@@ -32,7 +32,7 @@ describe("Testing contacts actions", () => {
       }
     ];
     console.log(responseofAPI);
-    return store.dispatch(actions.getPlayertype()).then(() => {
+    store.dispatch(actions.getPlayertype()).then(() => {
       expect(store.getActions()).toEqual(expectedActions);
     });
   });
@@ -46,7 +46,7 @@ describe("Testing contacts actions", () => {
 
     const store = mockStore({});
     const expectedActions = [];
-    return store.dispatch(actions.getPlayertype()).then(() => {
+    store.dispatch(actions.getPlayertype()).then(() => {
       expect(store.getActions()).toEqual(expectedActions);
     });
   });

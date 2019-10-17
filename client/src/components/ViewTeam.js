@@ -170,6 +170,13 @@ export class ViewTeam extends Component {
   }
 
   ontestclickmatch(team) {
+    setTimeout(() => {
+      return (
+        <div className="loader-container">
+          <div className="user-loader"></div>
+        </div>
+      );
+    }, 10);
     this.setState({
       match_type: "Test",
       team_name: team,
@@ -250,7 +257,9 @@ export class ViewTeam extends Component {
                 {this.props.tournamentTeam.map(teams => (
                   <li
                     className="viewTeam-tab2"
-                    onClick={() => this.ontestclickmatch(teams.team_name)}
+                    onClick={() => {
+                      this.ontestclickmatch(teams.team_name);
+                    }}
                   >
                     <label htmlFor="viewTeam-tab2" onClick={this.loader}>
                       <b>Matches</b>
@@ -447,43 +456,43 @@ export class ViewTeam extends Component {
                     <p style={{ textAlign: "center" }}>No Matches Found</p>
                   ) : (
                     this.props.match.map(match => (
-                      <div className="viewTeamMatches-card">
+                      <div
+                        className="viewTeamMatches-card"
+                        onClick={() => {
+                          this.props.history.push(
+                            "/matchdetails/" + match.match_id,
+                            { match }
+                          );
+                        }}
+                      >
                         <div className="viewTeamMatches-parent">
                           <div className="viewTeamMatches-first">
                             <img className="viewTeamMatches-img" src={india} />
                             <p>
-                              <b>{match.team1}</b>
-                              {/* <b>India</b> */}
-                            </p>
-                            <p className="viewTeamMatches-p">
-                              <b>250/5 (50.0)</b>
+                              {match.team1}
+                              {/* India */}
                             </p>
                           </div>
                           <div className="viewTeamMatches-second">
-                            <b>
-                              <img
-                                className="viewTeamMatches-img"
-                                src={pakistan}
-                              />
-                            </b>
+                            <img
+                              className="viewTeamMatches-img"
+                              src={pakistan}
+                            />
+
                             <p>
-                              <b>{match.team2}</b>
-                              {/* <b>Pakistan</b> */}
-                            </p>
-                            <p className="viewTeamMatches-p">
-                              <b>224/6 (50.0)</b>
+                              {match.team2}
+                              {/* Pakistan */}
                             </p>
                           </div>
 
                           <div className="viewTeamMatches-third">
-                            <b>
-                              {match.match_winner}
-                              <p>{match.won_by}</p>
-                              {/* India win by 10 runs */}
-                            </b>
+                            {match.match_winner}
+                            <p>{match.won_by}</p>
+                            {/* India win by 10 runs */}
+
                             <p>
-                              <b>MoM: {match.player_of_the_match}</b>
-                              {/* <b>MoM: Rohit Sharma</b> */}
+                              MoM: {match.player_of_the_match}
+                              {/* <b>MoM: Rohit Sharma */}
                             </p>
                           </div>
                         </div>
