@@ -20,6 +20,10 @@ export const ADD_PLAYERS_TYPE = "ADD_PLAYERS_TYPE";
 export const GET_PLAYERS = "GET_PLAYERS";
 export const ADD_ADMIN = "ADD_ADMIN";
 export const GET_USERS = "GET_USERS";
+export const GET_MATCH_DETAILS = "GET_MATCH_DETAILS";
+export const GET_SCORECARD = "GET_SCORECARD";
+export const MATCH_SUMMARY = "MATCH_SUMMARY";
+export const SEARCH_TEAM = "SEARCH_TEAM";
 
 //Type for player -Rohan
 export const ALL_PLAYERS = "ALL_PLAYERS";

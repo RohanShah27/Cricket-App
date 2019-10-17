@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test Home Component should render the component 1`] = `ReactWrapper {}`;
+
+exports[`Test Team Component should render the component 1`] = `ReactWrapper {}`;

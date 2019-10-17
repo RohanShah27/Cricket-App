@@ -53,6 +53,6 @@ describe("Testing Users Reducers", () => {
       payload: [{}, {}, {}]
     };
     returnedState = players(initialState, action);
-    expect(returnedState).toEqual({ error: "", players: initialState.players });
+    expect(returnedState).toEqual({ players: initialState.players });
   });
 });

@@ -53,7 +53,7 @@ describe("Testing Players action", () => {
   });
   it("should return single empty array on call of the url with wrong value", () => {
     const responseOfApi = [];
-    let playerId = abc;
+    let playerId = "abc";
     moxios.stubRequest(url + "player_search/" + playerId, {
       status: 200,
       response: { data: responseOfApi }

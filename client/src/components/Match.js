@@ -14,11 +14,6 @@ export class Match extends Component {
   componentDidMount() {
     let type = { type: "ODI" };
     this.props.getMatchesByType(type);
-    let obj = {
-      match_id: 14,
-      inning: 2
-    };
-    this.props.getGraphs(obj);
   }
 
   state = {
@@ -47,6 +42,7 @@ export class Match extends Component {
   }
 
   render() {
+    console.log(this.props.match.result);
     return (
       <div>
         <div className="match-pc-tab">
@@ -91,38 +87,32 @@ export class Match extends Component {
           <section>
             <div className="match-tab1">
               <div className="match-testimonials">
-                {this.props.match.map(match => (
-                  <div className="match-card">
+                {this.props.viewmatch.map(match => (
+                  <div
+                    className="match-card"
+                    onClick={() => {
+                      this.props.history.push(
+                        "/matchdetails/" + match.match_id,
+                        { match }
+                      );
+                    }}
+                  >
                     <div className="match-parent">
                       <div className="match-first">
                         <img className="match-img" src={india} />
-                        <p>
-                          <b>{match.team_name1}</b>
-                        </p>
-                        <p className="match-p">
-                          <b>250/5 (50.0)</b>
-                        </p>
+                        <p>{match.team1}</p>
+                        <p className="match-p">250/5 (50.0)</p>
                       </div>
                       <div className="match-second">
-                        <b>
-                          <img className="match-img" src={pakistan} />
-                        </b>
-                        <p>
-                          <b>{match.team_name2}</b>
-                        </p>
-                        <p className="match-p">
-                          <b>224/6 (50.0)</b>
-                        </p>
+                        <img className="match-img" src={pakistan} />
+
+                        <p>{match.team2}</p>
+                        <p className="match-p">224/6 (50.0)</p>
                       </div>
 
                       <div className="match-third">
-                        <b>
-                          {match.winner}
-                          {match.result}
-                        </b>
-                        <p>
-                          <b>MoM: {match.pom}</b>
-                        </p>
+                        {match.match_winner} {match.won_by}
+                        <p>MoM: {match.player_of_the_match}</p>
                       </div>
                     </div>
                   </div>
@@ -137,7 +127,7 @@ export class Match extends Component {
 }
 
 const mapStateToProps = state => ({
-  match: state.matchReducers.match
+  viewmatch: state.matchReducers.viewmatch
 });
 
 export default connect(
