@@ -17,7 +17,6 @@ import {
 import india from "../assests/india.jpg";
 import pakistan from "../assests/pakistan.jpg";
 import Calendar from "react-calendar";
-import { deflateSync } from "zlib";
 
 export class ViewTeam extends Component {
   constructor(props) {
@@ -59,7 +58,7 @@ export class ViewTeam extends Component {
       calendarIsOpen: true
     });
   };
-  closecalendar = () => {
+  calendarIsClose = () => {
     this.setState({
       calendarIsOpen: false
     });
@@ -253,7 +252,7 @@ export class ViewTeam extends Component {
                     className="viewTeam-tab2"
                     onClick={() => this.ontestclickmatch(teams.team_name)}
                   >
-                    <label htmlFor="viewTeam-tab2">
+                    <label htmlFor="viewTeam-tab2" onClick={this.loader}>
                       <b>Matches</b>
                     </label>
                   </li>
@@ -430,7 +429,7 @@ export class ViewTeam extends Component {
                       onChange={this.handleChange}
                       value={this.state.date}
                       open={this.state.calendarIsOpen}
-                      onClickOutside={this.closecalendar}
+                      onClickOutside={this.state.calendarIsClose}
                     />
                     {/* {console.log(this.state.date.toJSON().slice(0, 10))} */}
                     <button
@@ -445,7 +444,7 @@ export class ViewTeam extends Component {
 
                 <div className="viewTeamMatches-testimonials">
                   {this.props.match.length === 0 ? (
-                    <p>No Matches Found</p>
+                    <p style={{ textAlign: "center" }}>No Matches Found</p>
                   ) : (
                     this.props.match.map(match => (
                       <div className="viewTeamMatches-card">
