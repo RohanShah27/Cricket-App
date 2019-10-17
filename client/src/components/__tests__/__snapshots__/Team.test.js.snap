@@ -1,0 +1,164 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test Team Component should render the component 1`] = `
+<div
+  className="team-body"
+>
+  <div
+    className="pc-playerTab"
+  >
+    <input
+      className="inputforbuttons"
+      defaultChecked="defaultChecked"
+      id="playerTab1"
+      name="pct"
+      type="radio"
+    />
+    <input
+      className="inputforbuttons"
+      id="playerTab2"
+      name="pct"
+      type="radio"
+    />
+    <input
+      className="inputforbuttons"
+      id="playerTab3"
+      name="pct"
+      type="radio"
+    />
+    <input
+      className="inputforbuttons"
+      id="playerTab4"
+      name="pct"
+      type="radio"
+    />
+    <nav>
+      <ul>
+        <li
+          className="playerTab1"
+        >
+          <label
+            htmlFor="playerTab1"
+            onClick={[Function]}
+          >
+            International
+          </label>
+        </li>
+        <li
+          className="playerTab2"
+        >
+          <label
+            htmlFor="playerTab2"
+            onClick={[Function]}
+          >
+            IPL
+          </label>
+        </li>
+        <li
+          className="playerTab3"
+        >
+          <label
+            htmlFor="playerTab3"
+            onClick={[Function]}
+          >
+            Big Bash League
+          </label>
+        </li>
+        <li
+          className="playerTab4"
+        >
+          <label
+            htmlFor="playerTab4"
+            onClick={[Function]}
+          >
+            Pakistan Super League
+          </label>
+        </li>
+      </ul>
+    </nav>
+    <div
+      className="team-search-box"
+    >
+      <button
+        className="team-search-button"
+        onClick={[Function]}
+      >
+        <i
+          class="fa fa-search"
+        />
+      </button>
+      <input
+        className="team-search-input"
+        name="team_name"
+        onChange={[Function]}
+        placeholder="Enter Team Name"
+        type="text"
+      />
+    </div>
+    <section>
+      <div
+        className="playerTab1"
+      >
+        <div
+          className="team-teamTestimonials"
+        >
+          <div
+            className="teamcomponent-card"
+          >
+            <div
+              className="team-content"
+            >
+              <img
+                alt="International"
+                className="internationalLogo"
+                src="international.png"
+              />
+              <p />
+              <div
+                className="team-details"
+              >
+                <p>
+                  <button
+                    className="playerViewDetails"
+                    onClick={[Function]}
+                  >
+                     
+                    View Details
+                  </button>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div
+            className="teamcomponent-card"
+          >
+            <div
+              className="team-content"
+            >
+              <img
+                alt="International"
+                className="internationalLogo"
+                src="international.png"
+              />
+              <p />
+              <div
+                className="team-details"
+              >
+                <p>
+                  <button
+                    className="playerViewDetails"
+                    onClick={[Function]}
+                  >
+                     
+                    View Details
+                  </button>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+`;

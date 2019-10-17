@@ -1,8 +1,6 @@
 import React from "react";
 import { shallow, mount } from "enzyme";
-import Home from "../Home";
-import { Provider } from "react-redux";
-import store from "../../store";
+import { Home } from "../Home";
 
 let fixtures = [
   {
@@ -19,6 +17,12 @@ let fixtures = [
 let headlines = [
   { headline_id: 1, headlines: "Master Blaster Sachin baby" },
   { headline_id: 2, headlines: "BCCI President elections coming up" }
+];
+let headline = [
+  {
+    headlines: "Test headline",
+    headline_description: "test Descrption"
+  }
 ];
 let match = [
   {
@@ -42,19 +46,17 @@ const getMatchesRecentMatches = jest.fn();
 const getHeadline = jest.fn();
 const getHeadlines = jest.fn();
 const wrapper = mount(
-  <Provider store={store}>
-    <Home
-      home={home}
-      // props={fixtures={fixtures}, headlines, match)}
-      getFixtures={getFixtures}
-      getMatchesRecentMatches={getMatchesRecentMatches}
-      getHeadline={getHeadline}
-      getHeadlines={getHeadlines}
-      fixtures={fixtures}
-      headlines={headlines}
-      match={match}
-    />
-  </Provider>
+  <Home
+    home={home}
+    getFixtures={getFixtures}
+    getMatchesRecentMatches={getMatchesRecentMatches}
+    getHeadline={getHeadline}
+    getHeadlines={getHeadlines}
+    fixtures={fixtures}
+    headlines={headlines}
+    match={match}
+    headline={headline}
+  />
 );
 
 describe("Test Team Component", () => {
@@ -77,8 +79,39 @@ describe("Test Team Component", () => {
     expect(wrapper.find("#headlines").props().children).toBe("Headlines");
   });
   it("should have a match name in fixture ", () => {
-    console.log("MATCH WALA", wrapper.find("#matchName"));
-    expect(wrapper.find("#matchName").props().children).toBe(fixtures[0].match);
+    expect(wrapper.find("#matchName0").props().children).toBe(
+      fixtures[0].match
+    );
+  });
+  it("should have a match name in fixture ", () => {
+    expect(wrapper.find("#matchName1").props().children).toBe(
+      fixtures[1].match
+    );
+  });
+  it("should have a headline in headlines ", () => {
+    expect(wrapper.find("#singleheadline0").props().children).toBe(
+      headlines[0].headlines
+    );
+  });
+  it("should have a match team one in matches ", () => {
+    expect(wrapper.find("#matchTeamOne0").props().children).toBe(
+      match[0].team1
+    );
+  });
+  it("should have a match team one in matches ", () => {
+    expect(wrapper.find("#matchTeamTwo0").props().children).toBe(
+      match[0].team2
+    );
+  });
+  it("should have a match team one in matches ", () => {
+    expect(wrapper.find("#matchTeamOne1").props().children).toBe(
+      match[1].team1
+    );
+  });
+  it("should have a match team one in matches ", () => {
+    expect(wrapper.find("#matchTeamTwo1").props().children).toBe(
+      match[1].team2
+    );
   });
   it("should have a match name in fixture ", () => {
     expect(wrapper.find("#matchName0")).toBeTruthy();

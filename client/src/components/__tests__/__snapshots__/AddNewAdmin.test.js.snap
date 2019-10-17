@@ -1,0 +1,81 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test AddNewAdmin Component should render the component 1`] = `
+<Provider
+  store={
+    Object {
+      "dispatch": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+      Symbol(observable): [Function],
+    }
+  }
+>
+  <Connect(AddNewAdmin)
+    addnewadmin={
+      Object {
+        "$$typeof": Symbol(react.memo),
+        "WrappedComponent": [Function],
+        "compare": null,
+        "displayName": "Connect(AddNewAdmin)",
+        "type": [Function],
+      }
+    }
+    history={
+      Array [
+        "/",
+      ]
+    }
+  >
+    <AddNewAdmin
+      addAdmin={[Function]}
+      addnewadmin={
+        Object {
+          "$$typeof": Symbol(react.memo),
+          "WrappedComponent": [Function],
+          "compare": null,
+          "displayName": "Connect(AddNewAdmin)",
+          "type": [Function],
+        }
+      }
+      error=""
+      history={
+        Array [
+          "/",
+        ]
+      }
+      sendPassword={[Function]}
+      users={Array []}
+    >
+      <div>
+        <form
+          id="addnewadminform"
+        >
+          <fieldset>
+            <h1
+              className="adminheader"
+            >
+              Add New Admin
+            </h1>
+            <input
+              className="adminnewinput"
+              name="email"
+              onChange={[Function]}
+              placeholder="Enter email"
+              type="text"
+              value=""
+            />
+            <button
+              className="admin-new-button"
+              onClick={[Function]}
+            >
+              Add User
+            </button>
+          </fieldset>
+        </form>
+      </div>
+    </AddNewAdmin>
+  </Connect(AddNewAdmin)>
+</Provider>
+`;

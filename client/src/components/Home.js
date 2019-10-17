@@ -30,9 +30,9 @@ export class Home extends Component {
               </h2>
               <div className="col-content">
                 <ul className="home-ul">
-                  {this.props.fixtures.map((index, fixture) => (
+                  {this.props.fixtures.map((fixture, index) => (
                     <p class="home-p">
-                      <span id={"matchName"}>{fixture.match}</span>{" "}
+                      <span id={"matchName" + index}>{fixture.match}</span>{" "}
                       <span className="home-time">
                         {fixture.match_date} at {fixture.time}
                       </span>
@@ -74,7 +74,7 @@ export class Home extends Component {
               </h2>
               <div className="col-content">
                 <ul className="home-ul">
-                  {this.props.headlines.map(single_headline => (
+                  {this.props.headlines.map((single_headline, index) => (
                     <>
                       <a
                         onClick={() =>
@@ -82,7 +82,11 @@ export class Home extends Component {
                         }
                       >
                         {" "}
-                        <li className="home-li" style={{ cursor: "pointer" }}>
+                        <li
+                          className="home-li"
+                          id={"singleheadline" + index}
+                          style={{ cursor: "pointer" }}
+                        >
                           {single_headline.headlines}
                         </li>
                       </a>
@@ -94,7 +98,7 @@ export class Home extends Component {
             </div>
             <div className="home-match-container">
               <div className="testimonials" id="#recent-matches">
-                {this.props.match.map(match => (
+                {this.props.match.map((match, index) => (
                   <div className="card">
                     <span className="tournament-home">
                       {" "}
@@ -107,7 +111,12 @@ export class Home extends Component {
                     <div className="parent">
                       <div className="first">
                         <img className="imgformatch" src={india} />
-                        <p style={{ wordBreak: "break-word" }}>{match.team1}</p>
+                        <p
+                          style={{ wordBreak: "break-word" }}
+                          id={"matchTeamOne" + index}
+                        >
+                          {match.team1}
+                        </p>
                       </div>
                       <div className="second">
                         <button className="buttonformatch">View</button>
@@ -115,7 +124,7 @@ export class Home extends Component {
                       <div className="third">
                         <img className="imgformatch" src={pakistan} />
 
-                        <p>{match.team2}</p>
+                        <p id={"matchTeamTwo" + index}>{match.team2}</p>
                       </div>
                     </div>
                   </div>

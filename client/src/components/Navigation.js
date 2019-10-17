@@ -106,7 +106,7 @@ export class Navigation extends Component {
                 <div className="search-result">
                   {this.props.search_result.length != 0 ? (
                     this.props.search_result.player.length != 0 ? (
-                      this.props.search_result.player.map(player => (
+                      this.props.search_result.player.map((player, index) => (
                         <span className="search_result_data">
                           <Link
                             to={{
@@ -121,6 +121,7 @@ export class Navigation extends Component {
                                 display: "flex",
                                 justifyContent: "center"
                               }}
+                              id={"searchPlayer" + index}
                             >
                               {player.player_name}
                               <img
