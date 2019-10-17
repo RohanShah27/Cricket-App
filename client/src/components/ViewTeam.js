@@ -64,6 +64,7 @@ export class ViewTeam extends Component {
       calendarIsOpen: false
     });
   };
+
   componentDidMount() {
     console.log(this.props);
     let team_id = {
@@ -211,6 +212,12 @@ export class ViewTeam extends Component {
     console.log("from team nav", obj);
     this.props.getMatchesByTeam(obj);
   }
+
+  // callloader = () => {
+  //   <div className="loader-container">
+  //     <div className="user-loader"></div>
+  //   </div>;
+  // };
 
   render() {
     return (
@@ -437,8 +444,8 @@ export class ViewTeam extends Component {
                 ))}
 
                 <div className="viewTeamMatches-testimonials">
-                  {this.props.match.length == 0 ? (
-                    <h1 style={{ textAlign: "center" }}>No Matches Found</h1>
+                  {this.props.match.length === 0 ? (
+                    <p>No Matches Found</p>
                   ) : (
                     this.props.match.map(match => (
                       <div className="viewTeamMatches-card">

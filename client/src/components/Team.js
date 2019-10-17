@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import "../styles/Team.css";
 import international from "./international.png";
 import ipl from "./ipl.png";
+import InfiniteScroll from "react-infinite-scroll-component";
+
 import {
   getTournament,
   searchTeamForViewTeamPage
@@ -16,12 +18,17 @@ export class Team extends Component {
 
   state = {
     tournament: "",
-    team_name: ""
+    team_name: "",
+    items: 8,
+    loadingState: false,
+    height: 800,
+    pageTeams: []
   };
 
   componentDidMount() {
     let team = { tournament: "others" };
     this.props.getTournament(team);
+    // this.loadMoreItems();
   }
 
   OnChange = event => {
@@ -53,6 +60,35 @@ export class Team extends Component {
     this.props.getTournament(tournament);
   }
 
+  componentWillReceiveProps(nextProps) {
+    nextProps.tournamentTeam.length > 0
+      ? this.displayTeams(nextProps.tournamentTeam)
+      : console.log(0, " teams");
+  }
+
+  displayTeams = teams => {
+    console.log(teams);
+    const { items } = this.state;
+
+    if (teams.length === 0) return;
+    let pageTeams = [];
+    for (let i = 0; i < items; i++) {
+      pageTeams.push(teams[i]);
+    }
+    this.setState({ pageTeams });
+    console.log("PageTeams array", this.state.pageTeams.length);
+  };
+
+  loadMoreItems = () => {
+    setTimeout(() => {
+      this.setState({
+        items: this.state.items + 8
+      });
+
+      console.log("Teams", this.props.tournamentTeam);
+      this.displayTeams(this.props.tournamentTeam);
+    }, 1000);
+  };
   render() {
     return (
       <div className="team-body">
@@ -125,44 +161,71 @@ export class Team extends Component {
             <input
               className="team-search-input"
               type="text"
-              placeholder="Enter Team Name"
+              placeholder={this.state.pageTeams.length}
               name="team_name"
               onChange={this.OnChange}
             />
           </div>
           <section>
             <div className="playerTab1">
-              <div className="team-teamTestimonials">
-                {this.props.tournamentTeam.map(teams => (
-                  <div className="teamcomponent-card">
-                    <div className="team-content">
-                      <img
-                        src={international}
-                        className="internationalLogo"
-                        alt="International"
-                      />
-                      <p>{teams.team_name}</p>
-                      {/* <p>India</p> */}
-                      <div className="team-details">
-                        <p>
-                          <button
-                            className="playerViewDetails"
-                            onClick={() => {
-                              this.props.history.push(
-                                "/viewteam/" + teams.team_id,
-                                { teams }
-                              );
-                            }}
-                          >
-                            {" "}
-                            View Details
-                          </button>
-                        </p>
-                      </div>
-                    </div>
+              <InfiniteScroll
+                dataLength={this.state.pageTeams.length} //This is important field to render the next data
+                next={this.loadMoreItems}
+                hasMore={true}
+                height={600}
+                loader={
+                  <div className="loader-container">
+                    <div className="user-loader"></div>
                   </div>
-                ))}
-              </div>
+                }
+                endMessage={
+                  <p style={{ textAlign: "center" }}>
+                    <b>Yay! You have seen all Teams</b>
+                  </p>
+                }
+              >
+                <div className="team-teamTestimonials">
+                  {/* {this.props.tournamentTeam.map(teams => ( */}
+                  {this.state.pageTeams.map(teams => {
+                    return (
+                      <div>
+                        {teams ? (
+                          <div className="teamcomponent-card">
+                            <div className="team-content">
+                              {/* <p>Started</p> */}
+                              <img
+                                src={international}
+                                className="internationalLogo"
+                                alt="International"
+                              />
+                              <p>{teams.team_name}</p>
+                              {/* <p>India</p> */}
+                              <div className="team-details">
+                                <p>
+                                  <button
+                                    className="playerViewDetails"
+                                    onClick={() => {
+                                      this.props.history.push(
+                                        "/viewteam/" + teams.team_id,
+                                        { teams }
+                                      );
+                                    }}
+                                  >
+                                    {" "}
+                                    View Details
+                                  </button>
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        ) : (
+                          <div></div>
+                        )}
+                      </div>
+                    );
+                  })}
+                </div>
+              </InfiniteScroll>
             </div>
           </section>
         </div>
