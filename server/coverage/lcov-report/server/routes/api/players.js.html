@@ -276,7 +276,13 @@
 <a name='L228'></a><a href='#L228'>228</a>
 <a name='L229'></a><a href='#L229'>229</a>
 <a name='L230'></a><a href='#L230'>230</a>
-<a name='L231'></a><a href='#L231'>231</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">6x</span>
+<a name='L231'></a><a href='#L231'>231</a>
+<a name='L232'></a><a href='#L232'>232</a>
+<a name='L233'></a><a href='#L233'>233</a>
+<a name='L234'></a><a href='#L234'>234</a>
+<a name='L235'></a><a href='#L235'>235</a>
+<a name='L236'></a><a href='#L236'>236</a>
+<a name='L237'></a><a href='#L237'>237</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">6x</span>
@@ -445,29 +451,30 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -483,6 +490,11 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -513,7 +525,7 @@ const pg = require("pg-promise")();
 // Conneccting to the hosted database fixtures
 const db = pg("postgres://postgres:123456@localhost:5432/crickstrait_db");
 &nbsp;
-// Get players bio on seearch of players
+// Get stats of a player
 router.post("/player_search/:playerId", <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {
 <span class="cstat-no" title="statement not covered" >  try {</span>
     let playerId = <span class="cstat-no" title="statement not covered" >req.params.playerId;</span>
@@ -675,6 +687,7 @@ router.get("/all", <span class="fstat-no" title="function not covered" >as</span
   }
 });
 // Service for search bar on players page for live search for a player from the database -Rohan
+// filter search
 router.post("/searchPlayer", <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {
 <span class="cstat-no" title="statement not covered" >  try {</span>
     let playerName = <span class="cstat-no" title="statement not covered" >req.body.playerName;</span>
@@ -695,12 +708,12 @@ router.post("/searchPlayer", <span class="fstat-no" title="function not covered"
   }
 });
 //To add a new player
-router.post("/new", <span class="fstat-no" title="function not covered" >as</span>ync (req, res, next) =&gt; {
+router.post("/newplayers", <span class="fstat-no" title="function not covered" >as</span>ync (req, res, next) =&gt; {
 <span class="cstat-no" title="statement not covered" >  try {</span>
 <span class="cstat-no" title="statement not covered" >    player = {</span>
       player_name: req.body.player_name,
       player_role: req.body.player_role,
-      player_nation: req.body.player_nation,
+      nation: req.body.nation,
       gender: req.body.gender,
       player_dob: req.body.player_dob,
       batting_style: req.body.batting_style,
@@ -708,15 +721,20 @@ router.post("/new", <span class="fstat-no" title="function not covered" >as</spa
     };
     //To check if player already exists or not
     const result = <span class="cstat-no" title="statement not covered" >await db.any(</span>
-      `select * from player_stats where player_name='${req.body.player_name}'`
+      `select * from player where player_name='${req.body.player_name}'`
     );
-<span class="cstat-no" title="statement not covered" >    if (result.length == 1) {</span>
+<span class="cstat-no" title="statement not covered" >    if (result.length == 0) {</span>
 <span class="cstat-no" title="statement not covered" >      console.log(result);</span>
 <span class="cstat-no" title="statement not covered" >      return res.status(400).send({ message: "player already exists" });</span>
-    } else {
+    }
+    // else if (result.length == 1) {
+    //   console.log(result);
+    //   return res.status(500).send({ message: "Field Empty" });
+    // }
+    else {
       //Insert a new player
-      const result = <span class="cstat-no" title="statement not covered" >await db.any(`insert into player_stats(player_name,player_role,player_nation,gender,player_dob,batting_style,bowling_style)values('${player.player_name}','${player.player_role}','${player.player_nation}','${player.gender}','${player.player_dob}','${player.batting_style}','${player.bowling_style}')</span>
-              returning player_stats_id`);
+      const result = <span class="cstat-no" title="statement not covered" >await db.any(`insert into player(player_name,player_role,nation,gender,player_dob,batting_style,bowling_style)values('${player.player_name}','${player.player_role}','${player.nation}','${player.gender}','${player.player_dob}','${player.batting_style}','${player.bowling_style}')</span>
+              returning player_id`);
 <span class="cstat-no" title="statement not covered" >      console.log(result);</span>
 <span class="cstat-no" title="statement not covered" >      res.status(200).json({</span>
         status: 200,
@@ -742,7 +760,7 @@ module.exports = router;
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Oct 10 2019 14:05:49 GMT+0530 (India Standard Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Fri Oct 18 2019 12:34:45 GMT+0530 (India Standard Time)
 </div>
 </div>
 <script src="..\..\..\prettify.js"></script>
