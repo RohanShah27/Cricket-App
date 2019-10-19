@@ -82,6 +82,7 @@ export class PlayerProfile extends Component {
                     : "NA"}
                 </span>
               </p>
+             
               <hr className="line" />
               <p>
                 Bowling Style: <br />

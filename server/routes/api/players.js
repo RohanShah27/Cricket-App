@@ -153,7 +153,7 @@ router.post("/player_search/:playerId", async (req, res) => {
 // Get all players for player page ordered in alphabetical order -Rohan
 router.get("/all", async (req, res) => {
   try {
-    const result = await db.any("select * from player order by player_name;");
+    const result = await db.any(`select * from player order by player_name;`);
     res.status(200).json({
       status: 200,
       data: result,

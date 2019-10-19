@@ -15,9 +15,10 @@ router.get("/all", async (req, res) => {
 
 router.post("/ranking", async (req, res) => {
   const format = req.body.format;
+  const gender = req.body.gender;
   try {
     const result = await db.any(
-      "SELECT * FROM player_ranking where format = '" + format + "'; "
+      `select * from player_ranking where format='${format}' and gender='${gender}'`
     );
     res.status(200).json({
       status: 200,
@@ -36,10 +37,11 @@ router.post("/ranking", async (req, res) => {
 
 router.post("/teamranking", async (req, res) => {
   const format = req.body.format;
+  const gender = req.body.gender;
   console.log(format);
   try {
     const result = await db.any(
-      "SELECT * FROM team_ranking where format = '" + format + "'; "
+      `SELECT * FROM team_ranking where format = '${format}' and gender='${gender}'`
     );
     if (!result)
       throw {

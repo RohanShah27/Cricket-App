@@ -11,7 +11,8 @@ export class PlayerRanking extends Component {
 
   componentDidMount() {
     let ranking = {
-      format: "Test"
+      format: "Test",
+      gender: this.props.gender
     };
     this.props.getPlayerRanking(ranking);
     this.props.getTeamRanking(ranking);
@@ -30,7 +31,8 @@ export class PlayerRanking extends Component {
       format: formats
     });
     let ranking = {
-      format: this.state.format
+      format: this.state.format,
+      gender: this.props.gender
     };
     this.props.getPlayerRanking(ranking);
     this.props.getTeamRanking(ranking);
@@ -40,59 +42,102 @@ export class PlayerRanking extends Component {
     let playerBatting = this.props.players.slice(0, 10);
     let playerBowling = this.props.players.slice(10, 20);
     let playerallRounder = this.props.players.slice(20, 30);
-    console.log(this.props);
+    console.log(this.props.gender);
     return (
       <div>
         {/* Start of Button-Container fer Navigating through format -- Bhavana */}
-        <div className="rankings-button-container">
-          <button
-            className={
-              this.state.testClick
-                ? "ranking-test-button ranking-active"
-                : "ranking-test-button"
-            }
-            onClick={() => {
-              this.sendData("Test");
-              this.setState({
-                testClick: true,
-                odiClick: false,
-                t20Click: false
-              });
-            }}
-          >
-            Test
-          </button>
-          <button
-            className={
-              this.state.odiClick ? " ranking-active" : "ranking-odi-button"
-            }
-            onClick={() => {
-              this.sendData("ODI");
-              this.setState({
-                testClick: false,
-                odiClick: true,
-                t20Click: false
-              });
-            }}
-          >
-            ODI
-          </button>
-          <button
-            className={
-              this.state.t20Click ? "ranking-t20-active" : "ranking-t20-button"
-            }
-            onClick={() => {
-              this.sendData("T20");
-              this.setState({
-                testClick: false,
-                odiClick: false,
-                t20Click: true
-              });
-            }}
-          >
-            T20
-          </button>
-        </div>
+
+        {this.props.gender == "male" ? (
+          <div className="rankings-button-container">
+            <button
+              className={
+                this.state.testClick
+                  ? "ranking-test-button ranking-active"
+                  : "ranking-test-button"
+              }
+              onClick={() => {
+                this.sendData("Test");
+                this.setState({
+                  testClick: true,
+                  odiClick: false,
+                  t20Click: false
+                });
+              }}
+            >
+              Test
+            </button>
+            <button
+              className={
+                this.state.odiClick ? " ranking-active" : "ranking-odi-button"
+              }
+              onClick={() => {
+                this.sendData("ODI");
+                this.setState({
+                  testClick: false,
+                  odiClick: true,
+                  t20Click: false
+                });
+              }}
+            >
+              ODI
+            </button>
+            <button
+              className={
+                this.state.t20Click
+                  ? "ranking-t20-active"
+                  : "ranking-t20-button"
+              }
+              onClick={() => {
+                this.sendData("T20");
+                this.setState({
+                  testClick: false,
+                  odiClick: false,
+                  t20Click: true
+                });
+              }}
+            >
+              T20
+            </button>
+          </div>
+        ) : (
+          <div className="rankings-button-container">
+            <button
+              className={
+                this.state.testClick
+                  ? "ranking-test-button ranking-active"
+                  : "ranking-test-button"
+              }
+              onClick={() => {
+                this.sendData("ODI");
+                this.setState({
+                  testClick: true,
+                  odiClick: false,
+                  t20Click: false
+                });
+              }}
+            >
+              ODI
+            </button>
+
+            <button
+              className={
+                this.state.t20Click
+                  ? "ranking-t20-active"
+                  : "ranking-t20-button"
+              }
+              onClick={() => {
+                this.sendData("T20");
+                this.setState({
+                  testClick: false,
+                  odiClick: false,
+                  t20Click: true
+                });
+              }}
+            >
+              T20
+            </button>
+          </div>
+        )}
         {/* End of Button-Container fer Navigating through format -- Bhavana */}
 
         {/* Start of main container for embedding all tables - Bhavana */}
