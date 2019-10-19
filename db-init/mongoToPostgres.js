@@ -14,14 +14,14 @@ MongoClient.connect(url, {
 	// async function which will be defined below
 
 	console.time("Computing match type");
-	await match_type();
-	console.timeEnd("match type");
+	// await match_type();
+	// console.timeEnd("match type");
 
-	console.log();
+	// console.log();
 
-	console.time("Computing match table");
-	await match();
-	console.timeEnd("match table");
+	// console.time("Computing match table");
+	// await match();
+	// console.timeEnd("match table");
 
 	await player_stats();
 	console.log("Promise satisfied");

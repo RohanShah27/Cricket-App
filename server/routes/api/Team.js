@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const pg = require("pg-promise")();
-const db = pg("postgres://postgres:postgres@localhost/crickstrait_db");
+const db = pg("postgres://postgres:postgres@localhost/crickstrait_capstone");
 
 // router.post("/tournament", async (req, res) => {
 //   const tournament = req.body.tournament;
@@ -20,10 +20,10 @@ router.post("/tournament", async (req, res) => {
   const tournament = req.body.tournament;
   console.log(tournament);
   const result = await db.any(
-    // "select distinct(team_name), team_id from team_competition where competition ='" +
-    //   tournament +
-    //   "';"
-    `with ss as(select match.innings_one_team, match.innings_two_team, match.competition, team.team_name, team.team_id from match inner join team on match.innings_one_team = team.team_id), t2 as (select match.innings_two_team, match.competition, team.team_name, team.team_id from match inner join team on match.innings_two_team = team.team_id) select distinct(team_name), team_id from t2 where competition='${tournament}'`
+    `with ss as(select match.innings_one_team, match.innings_two_team, match.competition, team.team_name, team.team_id ,team.team_image from match 
+      inner join team on match.innings_one_team = team.team_id), 
+      t2 as (select match.innings_two_team, match.competition, team.team_name, team.team_id,team.team_image from match 
+      inner join team on match.innings_two_team = team.team_id) select distinct(team_name), team_id,team_image from t2 where competition='${tournament}'`
   );
   res.status(200).json({
     status: 200,

@@ -14,7 +14,9 @@ export class PlayerProfile extends Component {
     this.props.searchPlayer(this.props.match.params.player_id);
   }
   componentWillReceiveProps(nextProps) {
-    this.props.searchPlayer(this.props.match.params.player_id);
+    if (nextProps.player_id != this.props.match.params.player_id) {
+      this.props.searchPlayer(this.props.match.params.player_id);
+    }
   }
   render() {
     console.log(this.props);
@@ -82,7 +84,7 @@ export class PlayerProfile extends Component {
                     : "NA"}
                 </span>
               </p>
-             
+
               <hr className="line" />
               <p>
                 Bowling Style: <br />

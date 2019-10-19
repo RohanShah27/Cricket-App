@@ -18,8 +18,10 @@ export class paginatePlayers extends Component {
     pagePlayers: []
   };
   componentDidMount() {
-    console.log(this.props.gender);
-    this.props.getAllPlayers();
+    let globalgender = {
+      gender: this.props.gender
+    };
+    this.props.getAllPlayers(this.props.gender);
   }
   componentWillReceiveProps(nextProps) {
     nextProps.players.length > 0

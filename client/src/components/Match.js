@@ -5,6 +5,7 @@ import india from "../assests/india.jpg";
 import pakistan from "../assests/pakistan.jpg";
 import { getMatchesByType } from "../actions/matchActions";
 import InfiniteScroll from "react-infinite-scroll-component";
+import ReactCountryFlag from "react-country-flag";
 
 export class Match extends Component {
   constructor(props) {
@@ -22,7 +23,7 @@ export class Match extends Component {
     matchType: "ODI",
     activeClass: "match-active-option",
     data: [],
-    items: 6,
+    items: 9,
     loadingstate: false,
     height: 800,
     pageMatches: [],
@@ -69,7 +70,7 @@ export class Match extends Component {
   loadMoreItems = () => {
     setTimeout(() => {
       this.setState({
-        items: this.state.items + 6
+        items: this.state.items + 9
       });
 
       console.log("Matches", this.props.viewmatch);
@@ -171,13 +172,26 @@ export class Match extends Component {
                     >
                       <div className="match-parent">
                         <div className="match-first">
-                          <img className="match-img" src={india} />
+                          <ReactCountryFlag
+                            styleProps={{
+                              width: "60px",
+                              height: "60px"
+                            }}
+                            code={match.team1_image ? match.team1_image : "ao"}
+                            svg
+                          />{" "}
                           <p>{match.team1}</p>
                           <p className="match-p">250/5 (50.0)</p>
                         </div>
                         <div className="match-second">
-                          <img className="match-img" src={pakistan} />
-
+                          <ReactCountryFlag
+                            styleProps={{
+                              width: "60px",
+                              height: "60px"
+                            }}
+                            code={match.team2_image ? match.team2_image : "ao"}
+                            svg
+                          />{" "}
                           <p>{match.team2}</p>
                           <p className="match-p">224/6 (50.0)</p>
                         </div>

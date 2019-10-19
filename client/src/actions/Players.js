@@ -57,12 +57,13 @@ export const createPlayers = player => dispatch => {
 };
 
 // Retreiev all the players from the database -Rohan
-export const getAllPlayers = () => dispatch => {
-  // console.log(gender);
+export const getAllPlayers = genderObj => dispatch => {
+  console.log(genderObj);
   return axios
-    .get(url + "all")
+    .get(url + "all/" + genderObj)
     .then(res => {
       dispatch({ type: ALL_PLAYERS, payload: res.data.data });
+      console.log(res.data.data);
     })
     .catch(err => {
       console.log(err);
