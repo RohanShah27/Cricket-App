@@ -75,4 +75,7 @@ describe("Testing Footer Component", () => {
         .props().className
     ).toBe("fab fa-pinterest footer-fab");
   });
+  it("should check for footer info text", () => {
+    expect(wrapper.find("#footerInfo").text()).toBe(" © Powered By Headstrait");
+  });
 });

@@ -1,0 +1,377 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test suite for Player Profile Component Should Render the component and match snapshot 1`] = `
+<PlayerProfile
+  history={
+    Object {
+      "location": Object {
+        "state": Object {
+          "player": Object {
+            "player_name": "test name",
+          },
+        },
+      },
+    }
+  }
+  location={
+    Object {
+      "state": Object {
+        "player": Object {
+          "batting_style": "test style",
+          "bowling_style": "test style",
+          "nation": "test nation",
+          "player_dob": "1/2/3",
+          "player_id": 1,
+          "player_name": "test name",
+          "player_role": "test role",
+        },
+      },
+    }
+  }
+  match={
+    Object {
+      "isExact": true,
+      "params": Object {
+        "player_id": 1,
+      },
+      "path": "",
+      "url": "",
+    }
+  }
+  player={
+    Object {
+      "ODI": Object {
+        "total4s": 1,
+        "total50s": 1,
+        "total6s": 1,
+        "totalRuns": 1,
+        "totalWickets": 1,
+        "totalcenturies": 1,
+        "totaldoublecenturies": 1,
+      },
+      "T20": Object {
+        "total4s": 1,
+        "total50s": 1,
+        "total6s": 1,
+        "totalRuns": 1,
+        "totalWickets": 1,
+        "totalcenturies": 1,
+        "totaldoublecenturies": 1,
+      },
+      "Test": Object {
+        "total4s": 1,
+        "total50s": 1,
+        "total6s": 1,
+        "totalRuns": 1,
+        "totalWickets": 1,
+        "totalcenturies": 1,
+        "totaldoublecenturies": 1,
+      },
+    }
+  }
+  playerProfile={[MockFunction]}
+  searchPlayer={
+    [MockFunction] {
+      "calls": Array [
+        Array [
+          1,
+        ],
+      ],
+      "results": Array [
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+      ],
+    }
+  }
+>
+  <div
+    style={
+      Object {
+        "marginBottom": "80px",
+      }
+    }
+  >
+    <div
+      className="main-section"
+    >
+      <div
+        className="player-flex-container"
+      >
+        <div
+          style={
+            Object {
+              "alignItems": "center",
+              "flexGrow": 2,
+            }
+          }
+        >
+          <img
+            className="profile-img"
+            id="playerImage"
+            src="virat-kohli.png"
+          />
+        </div>
+        <div
+          style={
+            Object {
+              "flexGrow": 8,
+            }
+          }
+        >
+          <h1
+            id="playerName"
+          >
+            test name
+          </h1>
+          <h5
+            id="playerNation"
+          >
+            Team:
+            test nation
+          </h5>
+          <div
+            className="profile"
+          >
+            Passionate. No word describes Virat Kohli better. His passion for cricket has made him one of the best batsmen in the world across formats, and has also helped him grow into a ruthless captain. It's also passion that defines Kohli's emotional, effervescent and at times firecracker character. Virat Kohli does not hold back and that remains his strength.
+          </div>
+        </div>
+      </div>
+      <div
+        className="player-row"
+      >
+        <div
+          className="side"
+        >
+          <h2>
+            Personal Details
+          </h2>
+          <p>
+            Date Of Birth:
+            <br />
+            <span
+              className="personal-detail-content"
+              id="playerDOB"
+            >
+               
+              1/2/3
+            </span>
+          </p>
+          <hr
+            className="line"
+          />
+          <p>
+            Role: 
+            <br />
+            <span
+              className="personal-detail-content"
+              id="playerRole"
+            >
+              test role
+            </span>
+          </p>
+          <hr
+            className="line"
+          />
+          <p>
+            Batting Style:
+            <br />
+             
+            <span
+              className="personal-detail-content"
+              id="battingStyle"
+            >
+              test style
+            </span>
+          </p>
+          <hr
+            className="line"
+          />
+          <p>
+            Bowling Style: 
+            <br />
+            <span
+              className="personal-detail-content"
+              id="bowlingStyle"
+            >
+              test style
+            </span>
+             
+          </p>
+        </div>
+        <div
+          className="main"
+        >
+          <h2
+            id="playerStats"
+          >
+            Player Stats
+          </h2>
+          <div>
+            <table
+              className="players-stats-table"
+            >
+              <tr>
+                <th>
+                  Format
+                </th>
+                <th>
+                  200's
+                </th>
+                <th>
+                  100's
+                </th>
+                <th>
+                  Runs
+                </th>
+                <th>
+                  6's
+                </th>
+                <th>
+                  4's
+                </th>
+                <th>
+                  Wickets
+                </th>
+                <th>
+                  50's
+                </th>
+              </tr>
+              <tr>
+                <td
+                  id="keyName0"
+                >
+                  ODI
+                </td>
+                <td
+                  id="keyValue0"
+                >
+                  1
+                </td>
+                <td
+                  id="keyValue1"
+                >
+                  1
+                </td>
+                <td
+                  id="keyValue2"
+                >
+                  1
+                </td>
+                <td
+                  id="keyValue3"
+                >
+                  1
+                </td>
+                <td
+                  id="keyValue4"
+                >
+                  1
+                </td>
+                <td
+                  id="keyValue5"
+                >
+                  1
+                </td>
+                <td
+                  id="keyValue6"
+                >
+                  1
+                </td>
+              </tr>
+              <tr>
+                <td
+                  id="keyName1"
+                >
+                  Test
+                </td>
+                <td
+                  id="keyValue0"
+                >
+                  1
+                </td>
+                <td
+                  id="keyValue1"
+                >
+                  1
+                </td>
+                <td
+                  id="keyValue2"
+                >
+                  1
+                </td>
+                <td
+                  id="keyValue3"
+                >
+                  1
+                </td>
+                <td
+                  id="keyValue4"
+                >
+                  1
+                </td>
+                <td
+                  id="keyValue5"
+                >
+                  1
+                </td>
+                <td
+                  id="keyValue6"
+                >
+                  1
+                </td>
+              </tr>
+              <tr>
+                <td
+                  id="keyName2"
+                >
+                  T20
+                </td>
+                <td
+                  id="keyValue0"
+                >
+                  1
+                </td>
+                <td
+                  id="keyValue1"
+                >
+                  1
+                </td>
+                <td
+                  id="keyValue2"
+                >
+                  1
+                </td>
+                <td
+                  id="keyValue3"
+                >
+                  1
+                </td>
+                <td
+                  id="keyValue4"
+                >
+                  1
+                </td>
+                <td
+                  id="keyValue5"
+                >
+                  1
+                </td>
+                <td
+                  id="keyValue6"
+                >
+                  1
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      id="playerStatsVisualizationSection"
+    />
+  </div>
+</PlayerProfile>
+`;

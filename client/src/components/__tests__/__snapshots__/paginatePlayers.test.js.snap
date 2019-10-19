@@ -1,0 +1,160 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test paginatePlayers Component should render the component 1`] = `
+<BrowserRouter>
+  <Router
+    history={
+      Object {
+        "action": "POP",
+        "block": [Function],
+        "createHref": [Function],
+        "go": [Function],
+        "goBack": [Function],
+        "goForward": [Function],
+        "length": 1,
+        "listen": [Function],
+        "location": Object {
+          "hash": "",
+          "pathname": "/",
+          "search": "",
+          "state": undefined,
+        },
+        "push": [Function],
+        "replace": [Function],
+      }
+    }
+  >
+    <PaginatePlayers
+      getAllPlayers={
+        [MockFunction] {
+          "calls": Array [
+            Array [],
+          ],
+          "results": Array [
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+          ],
+        }
+      }
+      history={
+        Object {
+          "push": [MockFunction],
+        }
+      }
+      paginate={[MockFunction]}
+      playerSearch={[MockFunction]}
+      searchForPlayer={[MockFunction]}
+      search_result={
+        Array [
+          Object {
+            "player_id": 1,
+            "player_name": "virat",
+          },
+          Object {
+            "player_id": 2,
+            "player_name": "Kohli",
+          },
+        ]
+      }
+    >
+      <div
+        style={
+          Object {
+            "marginTop": "80px",
+          }
+        }
+      >
+        <div
+          className="players-search-section"
+        >
+          <input
+            id="searchPlayer"
+            name="playerName"
+            onChange={[Function]}
+            placeholder="Search for Players"
+            type="text"
+            value=""
+          />
+          <button
+            id="searchButton"
+            onClick={[Function]}
+          >
+             
+            <i
+              class="fa fa-search"
+            />
+          </button>
+        </div>
+        <InfiniteScroll
+          dataLength={0}
+          disableBrowserPullToRefresh={true}
+          endMessage={
+            <p
+              style={
+                Object {
+                  "textAlign": "center",
+                }
+              }
+            >
+              <b>
+                Yay! You have seen all Players
+              </b>
+            </p>
+          }
+          hasMore={true}
+          height={600}
+          loader={
+            <div
+              className="loader-container"
+            >
+              <div
+                className="user-loader"
+              />
+            </div>
+          }
+          next={[Function]}
+          pullDownToRefreshContent={
+            <h3>
+              Pull down to refresh
+            </h3>
+          }
+          pullDownToRefreshThreshold={100}
+          releaseToRefreshContent={
+            <h3>
+              Release to refresh
+            </h3>
+          }
+        >
+          <div
+            style={Object {}}
+          >
+            <div
+              className="infinite-scroll-component "
+              style={
+                Object {
+                  "WebkitOverflowScrolling": "touch",
+                  "height": 600,
+                  "overflow": "auto",
+                }
+              }
+            >
+              <div
+                className="players-card-container"
+              />
+              <div
+                className="loader-container"
+              >
+                <div
+                  className="user-loader"
+                />
+              </div>
+            </div>
+          </div>
+        </InfiniteScroll>
+      </div>
+    </PaginatePlayers>
+  </Router>
+</BrowserRouter>
+`;

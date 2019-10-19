@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { Link } from "react-router-dom";
 
-export class paginatePlayers extends Component {
+export class PaginatePlayers extends Component {
   constructor(props) {
     super(props);
   }
@@ -18,7 +18,6 @@ export class paginatePlayers extends Component {
     pagePlayers: []
   };
   componentDidMount() {
-    console.log(this.props.gender);
     this.props.getAllPlayers();
   }
   componentWillReceiveProps(nextProps) {
@@ -35,8 +34,6 @@ export class paginatePlayers extends Component {
       pagePlayers.push(players[i]);
     }
     this.setState({ pagePlayers });
-    console.log("PagePlayers array", this.state.pagePlayers.length);
-    // return this.pagePlayers;
   };
   // genMarkup = player => (
   //   <div className="players-card">
@@ -58,11 +55,9 @@ export class paginatePlayers extends Component {
   //   </div>
   // );
   loadMoreItems = () => {
-    // this.setState({ loadingState: true, height: this.state.height + 800 });
     setTimeout(() => {
       this.setState({
         items: this.state.items + 10
-        //   loadingState: false
       });
       this.displayPlayers(this.props.players);
     }, 1000);
@@ -86,13 +81,14 @@ export class paginatePlayers extends Component {
       <div style={{ marginTop: "80px" }}>
         <div className="players-search-section">
           <input
+            id="searchPlayer"
             type="text"
             placeholder="Search for Players"
             name="playerName"
             value={this.state.playerName}
             onChange={this.OnChange}
           />
-          <button onClick={this.searchForPlayer}>
+          <button id="searchButton" onClick={this.searchForPlayer}>
             {" "}
             <i class="fa fa-search"></i>
           </button>
@@ -101,7 +97,7 @@ export class paginatePlayers extends Component {
               <span className="search_result_data">
                 <p>
                   {this.props.search_result
-                    ? this.props.search_result.map(player => (
+                    ? this.props.search_result.map((player, index) => (
                         <Link
                           style={{
                             textDecoration: "none"
@@ -112,6 +108,7 @@ export class paginatePlayers extends Component {
                           }}
                         >
                           <p
+                            id={"name" + index}
                             style={{
                               fontSize: "18px",
                               paddingTop: "10px ",
@@ -146,16 +143,21 @@ export class paginatePlayers extends Component {
           }
         >
           <div className="players-card-container">
-            {this.state.pagePlayers.map(player => {
+            {this.state.pagePlayers.map((player, index) => {
               return (
                 <div className="players-card">
                   <img src={virat} className="players-img "></img>
-                  <p className="player-name">{player.player_name}</p>
+                  <p className="player-name" id={"playerName" + index}>
+                    {player.player_name}
+                  </p>
                   <span className="team-name">
-                    <span style={{ color: "black" }}>Team:</span>{" "}
+                    <span style={{ color: "black" }} id={"playerTeam" + index}>
+                      Team:
+                    </span>{" "}
                     {player.nation ? player.nation : "NA"}
                   </span>
                   <button
+                    id={"playerButton" + index}
                     onClick={() =>
                       this.props.history.push(
                         "/playerprofile/" + player.player_id,
@@ -183,4 +185,4 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   { getAllPlayers, playerSearch }
-)(paginatePlayers);
+)(PaginatePlayers);
