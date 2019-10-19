@@ -18,6 +18,7 @@ export class paginatePlayers extends Component {
     pagePlayers: []
   };
   componentDidMount() {
+    console.log(this.props.gender);
     this.props.getAllPlayers();
   }
   componentWillReceiveProps(nextProps) {
@@ -80,7 +81,7 @@ export class paginatePlayers extends Component {
     this.props.playerSearch(playerName);
   };
   render() {
-    console.log("Paginate props", this.props);
+    console.log("Paginate props", this.props.players);
     return (
       <div style={{ marginTop: "80px" }}>
         <div className="players-search-section">

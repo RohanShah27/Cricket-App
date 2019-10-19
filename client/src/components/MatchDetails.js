@@ -40,11 +40,12 @@ export class MatchDetails extends Component {
                         width: "50px",
                         height: "50px"
                       }}
-                      code={"nz"}
+                      code={match.team1_image ? match.team1_image : "ao"}
                       svg
                     />{" "}
                     {match.teamOne}
                   </p>
+                  {console.log(match.team1_image)}
 
                   <p className="matchDetails-country-name">
                     <ReactCountryFlag
@@ -52,7 +53,7 @@ export class MatchDetails extends Component {
                         width: "50px",
                         height: "50px"
                       }}
-                      code="in"
+                      code={match.team2_image ? match.team2_image : "in"}
                       svg
                     />{" "}
                     {match.teamTwo}
@@ -144,7 +145,10 @@ export class MatchDetails extends Component {
 
                                 {score.wicket_type ? (
                                   <td>
-                                    {score.wicket_type} {""}
+                                    {score.wicket_type == "caught"
+                                      ? "c"
+                                      : score.wicket_type}{" "}
+                                    {""}
                                     {score.fielder_name} (b) {score.bowler_name}
                                   </td>
                                 ) : (

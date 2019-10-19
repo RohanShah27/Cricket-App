@@ -58,6 +58,7 @@ export const createPlayers = player => dispatch => {
 
 // Retreiev all the players from the database -Rohan
 export const getAllPlayers = () => dispatch => {
+  // console.log(gender);
   return axios
     .get(url + "all")
     .then(res => {

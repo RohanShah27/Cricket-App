@@ -13,7 +13,7 @@ export class Match extends Component {
   }
 
   componentDidMount() {
-    let type = { type: "ODI" };
+    let type = { type: "ODI", gender: this.props.gender };
     this.props.getMatchesByType(type);
   }
 
@@ -32,7 +32,8 @@ export class Match extends Component {
   sendType() {
     console.log("type" + this.state.type);
     let matches = {
-      type: this.state.type
+      type: this.state.type,
+      gender: this.props.gender
     };
     this.props.getMatchesByType(matches);
   }
@@ -99,25 +100,46 @@ export class Match extends Component {
             name="pct"
             onClick={() => this.sendData("T20")}
           />
-          <nav>
-            <ul>
-              <li className="match-tab1">
-                <label htmlFor="match-tab1">
-                  <b>ODI</b>
-                </label>
-              </li>
-              <li className="match-tab2">
-                <label htmlFor="match-tab2">
-                  <b>TEST</b>
-                </label>
-              </li>
-              <li className="match-tab3">
-                <label htmlFor="match-tab3">
-                  <b>T20</b>
-                </label>
-              </li>
-            </ul>
-          </nav>
+
+          {/* Checking the gender */}
+          {this.props.gender == "male" ? (
+            // Start of nav i.e Buttons for Test,ODI,T20
+            <nav>
+              <ul>
+                <li className="match-tab1">
+                  <label htmlFor="match-tab1">
+                    <b>ODI</b>
+                  </label>
+                </li>
+                <li className="match-tab2">
+                  <label htmlFor="match-tab2">
+                    <b>TEST</b>
+                  </label>
+                </li>
+                <li className="match-tab3">
+                  <label htmlFor="match-tab3">
+                    <b>T20</b>
+                  </label>
+                </li>
+              </ul>
+            </nav>
+          ) : (
+            <nav>
+              <ul>
+                <li className="match-tab1">
+                  <label htmlFor="match-tab1">
+                    <b>ODI</b>
+                  </label>
+                </li>
+
+                <li className="match-tab3">
+                  <label htmlFor="match-tab3">
+                    <b>T20</b>
+                  </label>
+                </li>
+              </ul>
+            </nav>
+          )}
           <section>
             <div className="match-tab1">
               <InfiniteScroll
