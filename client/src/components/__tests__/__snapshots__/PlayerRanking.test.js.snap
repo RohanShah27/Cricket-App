@@ -1,3 +1,1264 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Test Team Component should render the component 1`] = `ShallowWrapper {}`;
+exports[`Test Team Component should render the component 1`] = `
+<PlayerRanking
+  gender="male"
+  getPlayerRanking={
+    [MockFunction] {
+      "calls": Array [
+        Array [
+          Object {
+            "format": "Test",
+            "gender": "male",
+          },
+        ],
+      ],
+      "results": Array [
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+      ],
+    }
+  }
+  getTeamRanking={
+    [MockFunction] {
+      "calls": Array [
+        Array [
+          Object {
+            "format": "Test",
+            "gender": "male",
+          },
+        ],
+      ],
+      "results": Array [
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+      ],
+    }
+  }
+  onClick={[MockFunction]}
+  playerRanking={[MockFunction]}
+  players={
+    Array [
+      Object {
+        "player_name": "test name",
+        "player_team": "test team",
+        "position": "test position",
+        "ratings": "test ratings",
+      },
+      Object {
+        "player_name": "test name",
+        "player_team": "test team",
+        "position": "test position",
+        "ratings": "test ratings",
+      },
+      Object {
+        "player_name": "test name",
+        "player_team": "test team",
+        "position": "test position",
+        "ratings": "test ratings",
+      },
+      Object {
+        "player_name": "test name",
+        "player_team": "test team",
+        "position": "test position",
+        "ratings": "test ratings",
+      },
+      Object {
+        "player_name": "test name",
+        "player_team": "test team",
+        "position": "test position",
+        "ratings": "test ratings",
+      },
+      Object {
+        "player_name": "test name",
+        "player_team": "test team",
+        "position": "test position",
+        "ratings": "test ratings",
+      },
+      Object {
+        "player_name": "test name",
+        "player_team": "test team",
+        "position": "test position",
+        "ratings": "test ratings",
+      },
+      Object {
+        "player_name": "test name",
+        "player_team": "test team",
+        "position": "test position",
+        "ratings": "test ratings",
+      },
+      Object {
+        "player_name": "test name",
+        "player_team": "test team",
+        "position": "test position",
+        "ratings": "test ratings",
+      },
+      Object {
+        "player_name": "test name",
+        "player_team": "test team",
+        "position": "test position",
+        "ratings": "test ratings",
+      },
+      Object {
+        "player_name": "test name",
+        "player_team": "test team",
+        "position": "test position",
+        "ratings": "test ratings",
+      },
+      Object {
+        "player_name": "test name",
+        "player_team": "test team",
+        "position": "test position",
+        "ratings": "test ratings",
+      },
+      Object {
+        "player_name": "test name",
+        "player_team": "test team",
+        "position": "test position",
+        "ratings": "test ratings",
+      },
+      Object {
+        "player_name": "test name",
+        "player_team": "test team",
+        "position": "test position",
+        "ratings": "test ratings",
+      },
+      Object {
+        "player_name": "test name",
+        "player_team": "test team",
+        "position": "test position",
+        "ratings": "test ratings",
+      },
+      Object {
+        "player_name": "test name",
+        "player_team": "test team",
+        "position": "test position",
+        "ratings": "test ratings",
+      },
+      Object {
+        "player_name": "test name",
+        "player_team": "test team",
+        "position": "test position",
+        "ratings": "test ratings",
+      },
+      Object {
+        "player_name": "test name",
+        "player_team": "test team",
+        "position": "test position",
+        "ratings": "test ratings",
+      },
+      Object {
+        "player_name": "test name",
+        "player_team": "test team",
+        "position": "test position",
+        "ratings": "test ratings",
+      },
+      Object {
+        "player_name": "test name",
+        "player_team": "test team",
+        "position": "test position",
+        "ratings": "test ratings",
+      },
+      Object {
+        "player_name": "test name",
+        "player_team": "test team",
+        "position": "test position",
+        "ratings": "test ratings",
+      },
+      Object {
+        "player_name": "test name",
+        "player_team": "test team",
+        "position": "test position",
+        "ratings": "test ratings",
+      },
+      Object {
+        "player_name": "test name",
+        "player_team": "test team",
+        "position": "test position",
+        "ratings": "test ratings",
+      },
+      Object {
+        "player_name": "test name",
+        "player_team": "test team",
+        "position": "test position",
+        "ratings": "test ratings",
+      },
+      Object {
+        "player_name": "test name",
+        "player_team": "test team",
+        "position": "test position",
+        "ratings": "test ratings",
+      },
+      Object {
+        "player_name": "test name",
+        "player_team": "test team",
+        "position": "test position",
+        "ratings": "test ratings",
+      },
+      Object {
+        "player_name": "test name",
+        "player_team": "test team",
+        "position": "test position",
+        "ratings": "test ratings",
+      },
+      Object {
+        "player_name": "test name",
+        "player_team": "test team",
+        "position": "test position",
+        "ratings": "test ratings",
+      },
+      Object {
+        "player_name": "test name",
+        "player_team": "test team",
+        "position": "test position",
+        "ratings": "test ratings",
+      },
+      Object {
+        "player_name": "test name",
+        "player_team": "test team",
+        "position": "test position",
+        "ratings": "test ratings",
+      },
+    ]
+  }
+  teams={
+    Array [
+      Object {
+        "points": "test points",
+        "position": "test position",
+        "rating": "test rating",
+        "team_name": "test name",
+      },
+    ]
+  }
+>
+  <div>
+    <div
+      className="rankings-button-container"
+    >
+      <button
+        className="ranking-test-button ranking-active"
+        id="testTab"
+        onClick={[Function]}
+      >
+        Test
+      </button>
+      <button
+        className="ranking-odi-button"
+        id="odiTab"
+        onClick={[Function]}
+      >
+        ODI
+      </button>
+      <button
+        className="ranking-t20-button"
+        id="t20Tab"
+        onClick={[Function]}
+      >
+        T20
+      </button>
+    </div>
+    <div
+      className="rankingmain-container"
+    >
+      <div
+        class="ranking-container"
+      >
+        <div>
+          <h2
+            className="rankings-container-header"
+          >
+             
+            ICC 
+             Batting
+          </h2>
+          <table
+            class="ranking-table"
+          >
+            <tr>
+              <th>
+                Rank
+              </th>
+              <th>
+                Player Image
+              </th>
+              <th>
+                Player
+              </th>
+              <th>
+                Team
+              </th>
+              <th>
+                Ratings
+              </th>
+            </tr>
+            <tr>
+              <td
+                id="battingPosition0"
+              >
+                test position
+              </td>
+              <td>
+                <img
+                  className="rankingplayerIcon"
+                  src="player.jpg"
+                />
+              </td>
+              <td
+                id="battingName0"
+              >
+                test name
+              </td>
+              <td
+                id="battingTeam0"
+              >
+                test team
+              </td>
+              <td
+                id="battingRating0"
+              >
+                test ratings
+              </td>
+            </tr>
+            <tr>
+              <td
+                id="battingPosition1"
+              >
+                test position
+              </td>
+              <td>
+                <img
+                  className="rankingplayerIcon"
+                  src="player.jpg"
+                />
+              </td>
+              <td
+                id="battingName1"
+              >
+                test name
+              </td>
+              <td
+                id="battingTeam1"
+              >
+                test team
+              </td>
+              <td
+                id="battingRating1"
+              >
+                test ratings
+              </td>
+            </tr>
+            <tr>
+              <td
+                id="battingPosition2"
+              >
+                test position
+              </td>
+              <td>
+                <img
+                  className="rankingplayerIcon"
+                  src="player.jpg"
+                />
+              </td>
+              <td
+                id="battingName2"
+              >
+                test name
+              </td>
+              <td
+                id="battingTeam2"
+              >
+                test team
+              </td>
+              <td
+                id="battingRating2"
+              >
+                test ratings
+              </td>
+            </tr>
+            <tr>
+              <td
+                id="battingPosition3"
+              >
+                test position
+              </td>
+              <td>
+                <img
+                  className="rankingplayerIcon"
+                  src="player.jpg"
+                />
+              </td>
+              <td
+                id="battingName3"
+              >
+                test name
+              </td>
+              <td
+                id="battingTeam3"
+              >
+                test team
+              </td>
+              <td
+                id="battingRating3"
+              >
+                test ratings
+              </td>
+            </tr>
+            <tr>
+              <td
+                id="battingPosition4"
+              >
+                test position
+              </td>
+              <td>
+                <img
+                  className="rankingplayerIcon"
+                  src="player.jpg"
+                />
+              </td>
+              <td
+                id="battingName4"
+              >
+                test name
+              </td>
+              <td
+                id="battingTeam4"
+              >
+                test team
+              </td>
+              <td
+                id="battingRating4"
+              >
+                test ratings
+              </td>
+            </tr>
+            <tr>
+              <td
+                id="battingPosition5"
+              >
+                test position
+              </td>
+              <td>
+                <img
+                  className="rankingplayerIcon"
+                  src="player.jpg"
+                />
+              </td>
+              <td
+                id="battingName5"
+              >
+                test name
+              </td>
+              <td
+                id="battingTeam5"
+              >
+                test team
+              </td>
+              <td
+                id="battingRating5"
+              >
+                test ratings
+              </td>
+            </tr>
+            <tr>
+              <td
+                id="battingPosition6"
+              >
+                test position
+              </td>
+              <td>
+                <img
+                  className="rankingplayerIcon"
+                  src="player.jpg"
+                />
+              </td>
+              <td
+                id="battingName6"
+              >
+                test name
+              </td>
+              <td
+                id="battingTeam6"
+              >
+                test team
+              </td>
+              <td
+                id="battingRating6"
+              >
+                test ratings
+              </td>
+            </tr>
+            <tr>
+              <td
+                id="battingPosition7"
+              >
+                test position
+              </td>
+              <td>
+                <img
+                  className="rankingplayerIcon"
+                  src="player.jpg"
+                />
+              </td>
+              <td
+                id="battingName7"
+              >
+                test name
+              </td>
+              <td
+                id="battingTeam7"
+              >
+                test team
+              </td>
+              <td
+                id="battingRating7"
+              >
+                test ratings
+              </td>
+            </tr>
+            <tr>
+              <td
+                id="battingPosition8"
+              >
+                test position
+              </td>
+              <td>
+                <img
+                  className="rankingplayerIcon"
+                  src="player.jpg"
+                />
+              </td>
+              <td
+                id="battingName8"
+              >
+                test name
+              </td>
+              <td
+                id="battingTeam8"
+              >
+                test team
+              </td>
+              <td
+                id="battingRating8"
+              >
+                test ratings
+              </td>
+            </tr>
+            <tr>
+              <td
+                id="battingPosition9"
+              >
+                test position
+              </td>
+              <td>
+                <img
+                  className="rankingplayerIcon"
+                  src="player.jpg"
+                />
+              </td>
+              <td
+                id="battingName9"
+              >
+                test name
+              </td>
+              <td
+                id="battingTeam9"
+              >
+                test team
+              </td>
+              <td
+                id="battingRating9"
+              >
+                test ratings
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div>
+          <h2
+            className="rankings-container-header"
+          >
+            ICC 
+             Bowling
+          </h2>
+          <table
+            class="ranking-table"
+          >
+            <tr>
+              <th>
+                Rank
+              </th>
+              <th>
+                Player Image
+              </th>
+              <th>
+                Player
+              </th>
+              <th>
+                Team
+              </th>
+              <th>
+                Ratings
+              </th>
+            </tr>
+            <tr>
+              <td
+                id="bowlingPosition0"
+              >
+                test position
+              </td>
+              <td>
+                <img
+                  className="rankingplayerIcon"
+                  src="player.jpg"
+                />
+              </td>
+              <td
+                id="bowlingName0"
+              >
+                test name
+              </td>
+              <td
+                id="bowlingTeam0"
+              >
+                test team
+              </td>
+              <td
+                id="bowlingRating0"
+              >
+                test ratings
+              </td>
+            </tr>
+            <tr>
+              <td
+                id="bowlingPosition1"
+              >
+                test position
+              </td>
+              <td>
+                <img
+                  className="rankingplayerIcon"
+                  src="player.jpg"
+                />
+              </td>
+              <td
+                id="bowlingName1"
+              >
+                test name
+              </td>
+              <td
+                id="bowlingTeam1"
+              >
+                test team
+              </td>
+              <td
+                id="bowlingRating1"
+              >
+                test ratings
+              </td>
+            </tr>
+            <tr>
+              <td
+                id="bowlingPosition2"
+              >
+                test position
+              </td>
+              <td>
+                <img
+                  className="rankingplayerIcon"
+                  src="player.jpg"
+                />
+              </td>
+              <td
+                id="bowlingName2"
+              >
+                test name
+              </td>
+              <td
+                id="bowlingTeam2"
+              >
+                test team
+              </td>
+              <td
+                id="bowlingRating2"
+              >
+                test ratings
+              </td>
+            </tr>
+            <tr>
+              <td
+                id="bowlingPosition3"
+              >
+                test position
+              </td>
+              <td>
+                <img
+                  className="rankingplayerIcon"
+                  src="player.jpg"
+                />
+              </td>
+              <td
+                id="bowlingName3"
+              >
+                test name
+              </td>
+              <td
+                id="bowlingTeam3"
+              >
+                test team
+              </td>
+              <td
+                id="bowlingRating3"
+              >
+                test ratings
+              </td>
+            </tr>
+            <tr>
+              <td
+                id="bowlingPosition4"
+              >
+                test position
+              </td>
+              <td>
+                <img
+                  className="rankingplayerIcon"
+                  src="player.jpg"
+                />
+              </td>
+              <td
+                id="bowlingName4"
+              >
+                test name
+              </td>
+              <td
+                id="bowlingTeam4"
+              >
+                test team
+              </td>
+              <td
+                id="bowlingRating4"
+              >
+                test ratings
+              </td>
+            </tr>
+            <tr>
+              <td
+                id="bowlingPosition5"
+              >
+                test position
+              </td>
+              <td>
+                <img
+                  className="rankingplayerIcon"
+                  src="player.jpg"
+                />
+              </td>
+              <td
+                id="bowlingName5"
+              >
+                test name
+              </td>
+              <td
+                id="bowlingTeam5"
+              >
+                test team
+              </td>
+              <td
+                id="bowlingRating5"
+              >
+                test ratings
+              </td>
+            </tr>
+            <tr>
+              <td
+                id="bowlingPosition6"
+              >
+                test position
+              </td>
+              <td>
+                <img
+                  className="rankingplayerIcon"
+                  src="player.jpg"
+                />
+              </td>
+              <td
+                id="bowlingName6"
+              >
+                test name
+              </td>
+              <td
+                id="bowlingTeam6"
+              >
+                test team
+              </td>
+              <td
+                id="bowlingRating6"
+              >
+                test ratings
+              </td>
+            </tr>
+            <tr>
+              <td
+                id="bowlingPosition7"
+              >
+                test position
+              </td>
+              <td>
+                <img
+                  className="rankingplayerIcon"
+                  src="player.jpg"
+                />
+              </td>
+              <td
+                id="bowlingName7"
+              >
+                test name
+              </td>
+              <td
+                id="bowlingTeam7"
+              >
+                test team
+              </td>
+              <td
+                id="bowlingRating7"
+              >
+                test ratings
+              </td>
+            </tr>
+            <tr>
+              <td
+                id="bowlingPosition8"
+              >
+                test position
+              </td>
+              <td>
+                <img
+                  className="rankingplayerIcon"
+                  src="player.jpg"
+                />
+              </td>
+              <td
+                id="bowlingName8"
+              >
+                test name
+              </td>
+              <td
+                id="bowlingTeam8"
+              >
+                test team
+              </td>
+              <td
+                id="bowlingRating8"
+              >
+                test ratings
+              </td>
+            </tr>
+            <tr>
+              <td
+                id="bowlingPosition9"
+              >
+                test position
+              </td>
+              <td>
+                <img
+                  className="rankingplayerIcon"
+                  src="player.jpg"
+                />
+              </td>
+              <td
+                id="bowlingName9"
+              >
+                test name
+              </td>
+              <td
+                id="bowlingTeam9"
+              >
+                test team
+              </td>
+              <td
+                id="bowlingRating9"
+              >
+                test ratings
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div
+        class="ranking-container1"
+      >
+        <div>
+          <h2
+            className="rankings-container-header"
+          >
+            ICC 
+             All-Rounder
+          </h2>
+          <table
+            class="ranking-table"
+          >
+            <tr>
+              <th>
+                Rank
+              </th>
+              <th>
+                Player Image
+              </th>
+              <th>
+                Player
+              </th>
+              <th>
+                Team
+              </th>
+              <th>
+                Ratings
+              </th>
+            </tr>
+            <tr>
+              <td
+                id="allRounderPosition0"
+              >
+                test position
+              </td>
+              <td>
+                <img
+                  className="rankingplayerIcon"
+                  src="player.jpg"
+                />
+              </td>
+              <td
+                id="allRounderName0"
+              >
+                test name
+              </td>
+              <td
+                id="allRounderTeam0"
+              >
+                test team
+              </td>
+              <td
+                id="allRounderRating0"
+              >
+                test ratings
+              </td>
+            </tr>
+            <tr>
+              <td
+                id="allRounderPosition1"
+              >
+                test position
+              </td>
+              <td>
+                <img
+                  className="rankingplayerIcon"
+                  src="player.jpg"
+                />
+              </td>
+              <td
+                id="allRounderName1"
+              >
+                test name
+              </td>
+              <td
+                id="allRounderTeam1"
+              >
+                test team
+              </td>
+              <td
+                id="allRounderRating1"
+              >
+                test ratings
+              </td>
+            </tr>
+            <tr>
+              <td
+                id="allRounderPosition2"
+              >
+                test position
+              </td>
+              <td>
+                <img
+                  className="rankingplayerIcon"
+                  src="player.jpg"
+                />
+              </td>
+              <td
+                id="allRounderName2"
+              >
+                test name
+              </td>
+              <td
+                id="allRounderTeam2"
+              >
+                test team
+              </td>
+              <td
+                id="allRounderRating2"
+              >
+                test ratings
+              </td>
+            </tr>
+            <tr>
+              <td
+                id="allRounderPosition3"
+              >
+                test position
+              </td>
+              <td>
+                <img
+                  className="rankingplayerIcon"
+                  src="player.jpg"
+                />
+              </td>
+              <td
+                id="allRounderName3"
+              >
+                test name
+              </td>
+              <td
+                id="allRounderTeam3"
+              >
+                test team
+              </td>
+              <td
+                id="allRounderRating3"
+              >
+                test ratings
+              </td>
+            </tr>
+            <tr>
+              <td
+                id="allRounderPosition4"
+              >
+                test position
+              </td>
+              <td>
+                <img
+                  className="rankingplayerIcon"
+                  src="player.jpg"
+                />
+              </td>
+              <td
+                id="allRounderName4"
+              >
+                test name
+              </td>
+              <td
+                id="allRounderTeam4"
+              >
+                test team
+              </td>
+              <td
+                id="allRounderRating4"
+              >
+                test ratings
+              </td>
+            </tr>
+            <tr>
+              <td
+                id="allRounderPosition5"
+              >
+                test position
+              </td>
+              <td>
+                <img
+                  className="rankingplayerIcon"
+                  src="player.jpg"
+                />
+              </td>
+              <td
+                id="allRounderName5"
+              >
+                test name
+              </td>
+              <td
+                id="allRounderTeam5"
+              >
+                test team
+              </td>
+              <td
+                id="allRounderRating5"
+              >
+                test ratings
+              </td>
+            </tr>
+            <tr>
+              <td
+                id="allRounderPosition6"
+              >
+                test position
+              </td>
+              <td>
+                <img
+                  className="rankingplayerIcon"
+                  src="player.jpg"
+                />
+              </td>
+              <td
+                id="allRounderName6"
+              >
+                test name
+              </td>
+              <td
+                id="allRounderTeam6"
+              >
+                test team
+              </td>
+              <td
+                id="allRounderRating6"
+              >
+                test ratings
+              </td>
+            </tr>
+            <tr>
+              <td
+                id="allRounderPosition7"
+              >
+                test position
+              </td>
+              <td>
+                <img
+                  className="rankingplayerIcon"
+                  src="player.jpg"
+                />
+              </td>
+              <td
+                id="allRounderName7"
+              >
+                test name
+              </td>
+              <td
+                id="allRounderTeam7"
+              >
+                test team
+              </td>
+              <td
+                id="allRounderRating7"
+              >
+                test ratings
+              </td>
+            </tr>
+            <tr>
+              <td
+                id="allRounderPosition8"
+              >
+                test position
+              </td>
+              <td>
+                <img
+                  className="rankingplayerIcon"
+                  src="player.jpg"
+                />
+              </td>
+              <td
+                id="allRounderName8"
+              >
+                test name
+              </td>
+              <td
+                id="allRounderTeam8"
+              >
+                test team
+              </td>
+              <td
+                id="allRounderRating8"
+              >
+                test ratings
+              </td>
+            </tr>
+            <tr>
+              <td
+                id="allRounderPosition9"
+              >
+                test position
+              </td>
+              <td>
+                <img
+                  className="rankingplayerIcon"
+                  src="player.jpg"
+                />
+              </td>
+              <td
+                id="allRounderName9"
+              >
+                test name
+              </td>
+              <td
+                id="allRounderTeam9"
+              >
+                test team
+              </td>
+              <td
+                id="allRounderRating9"
+              >
+                test ratings
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div>
+          <h2
+            className="rankings-container-header"
+          >
+            ICC 
+             Teams
+          </h2>
+          <table
+            class="ranking-table"
+          >
+            <tr>
+              <th>
+                Rank
+              </th>
+              <th>
+                Team Image
+              </th>
+              <th>
+                Team
+              </th>
+              <th>
+                Ratings
+              </th>
+              <th>
+                Points
+              </th>
+            </tr>
+            <tr>
+              <td
+                id="teamPosition0"
+              >
+                test position
+              </td>
+              <td>
+                <img
+                  className="rankingplayerIcon"
+                  src="player.jpg"
+                />
+              </td>
+              <td
+                id="teamName0"
+              >
+                test name
+              </td>
+              <td
+                id="teamRating0"
+              >
+                test rating
+              </td>
+              <td
+                id="teamPoints0"
+              >
+                test points
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</PlayerRanking>
+`;
