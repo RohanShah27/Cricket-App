@@ -58,10 +58,13 @@ export class ViewTeam extends Component {
       calendarIsOpen: true
     });
   };
-  calendarIsClose = () => {
+  closecalendar = () => {
     this.setState({
       calendarIsOpen: false
     });
+    {
+      console.log(this.setState.calendarIsOpen);
+    }
   };
 
   componentDidMount() {
@@ -226,6 +229,9 @@ export class ViewTeam extends Component {
   // };
 
   render() {
+    console.log(
+      this.props.teamstats["0"] ? this.props.teamstats["0"].test_played : "NAs"
+    );
     return (
       <div>
         <div className="viewTeam-container">
@@ -304,39 +310,48 @@ export class ViewTeam extends Component {
                         </tr>
                       </table>
                     ))}
-                    <div className="viewTeam-stats">
-                      <button
-                        className={
-                          this.state.testclick
-                            ? "viewTeam-test-button viewTeam-active"
-                            : "viewTeam-test-button"
-                        }
-                        onClick={this.ontestclick}
-                      >
-                        Test
-                      </button>
-                      <button
-                        className={
-                          this.state.odiclick
-                            ? "viewTeam-active"
-                            : "viewTeam-odi-button"
-                        }
-                        onClick={this.onodiclick}
-                        style={{ fontFamily: "Work Sans" }}
-                      >
-                        ODI
-                      </button>
-                      <button
-                        className={
-                          this.state.t20click
-                            ? "viewTeam-t20-active"
-                            : "viewTeam-t20-button"
-                        }
-                        onClick={this.ont20click}
-                      >
-                        T20
-                      </button>
-                    </div>
+                    {this.props.teamstats.map(teamstats =>
+                      teamstats.test_played == 0 &&
+                      teamstats.odi_played == 0 ? (
+                        <div className="viewTeam-stats">
+                          <h3>Top Players</h3>
+                        </div>
+                      ) : (
+                        <div className="viewTeam-stats">
+                          <button
+                            className={
+                              this.state.testclick
+                                ? "viewTeam-test-button viewTeam-active"
+                                : "viewTeam-test-button"
+                            }
+                            onClick={this.ontestclick}
+                          >
+                            Test
+                          </button>
+                          <button
+                            className={
+                              this.state.odiclick
+                                ? "viewTeam-active"
+                                : "viewTeam-odi-button"
+                            }
+                            onClick={this.onodiclick}
+                            style={{ fontFamily: "Work Sans" }}
+                          >
+                            ODI
+                          </button>
+                          <button
+                            className={
+                              this.state.t20click
+                                ? "viewTeam-t20-active"
+                                : "viewTeam-t20-button"
+                            }
+                            onClick={this.ont20click}
+                          >
+                            T20
+                          </button>
+                        </div>
+                      )
+                    )}
                     <div className="viewTeam-scrollable">
                       <table className="playerstats">
                         <tr>
@@ -438,7 +453,7 @@ export class ViewTeam extends Component {
                       onChange={this.handleChange}
                       value={this.state.date}
                       open={this.state.calendarIsOpen}
-                      onClickOutside={this.state.calendarIsClose}
+                      onClickOutside={this.closecalendar}
                     />
                     {/* {console.log(this.state.date.toJSON().slice(0, 10))} */}
                     <button
@@ -453,7 +468,7 @@ export class ViewTeam extends Component {
 
                 <div className="viewTeamMatches-testimonials">
                   {this.props.match.length === 0 ? (
-                    <p style={{ textAlign: "center" }}>No Matches Found</p>
+                    <h2 style={{ textAlign: "center" }}>No Matches Played</h2>
                   ) : (
                     this.props.match.map(match => (
                       <div

@@ -214,6 +214,7 @@ li {
 .team-search-button {
   height: 40px;
   width: 30px;
+  margin-right: 80px;
   float: right;
   cursor: pointer;
   border-top-right-radius: 5px;
@@ -224,3 +225,19 @@ li {
 }
 
 /* .team-search-box; */
+
+.team-search-result {
+  border: 1px solid #c2c2c2;
+  height: auto;
+  width: 300px;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  background-color: white;
+  /* margin-left: auto; */
+  z-index: 1;
+  right: 0;
+  margin-top: 40px;
+  margin-right: 135px;
+  /* text-align: right; */
+  position: absolute;
+}

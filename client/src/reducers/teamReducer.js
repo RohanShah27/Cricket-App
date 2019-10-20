@@ -13,6 +13,7 @@ import {
 
 const initialState = {
   tournamentTeam: [],
+  teamsearch: [],
   teamstats: [],
   playerstatsforteams: [],
   playerstatsforteamsbowler: [],
@@ -31,7 +32,7 @@ export default function(state = initialState, action) {
     case SEARCH_TEAM_FOR_VIEW_TEAM_PAGE:
       return {
         ...state,
-        tournamentTeam: action.payload
+        teamsearch: action.payload
       };
 
     case GET_TEAM_BY_ID:

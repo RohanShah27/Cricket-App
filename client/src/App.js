@@ -79,7 +79,7 @@ export default class App extends React.Component {
           <Route exact path="/viewteam/:team_id" component={ViewTeam}></Route>
           <Route
             exact
-            path="/Players"
+            path="/paginatePlayers"
             component={props => (
               <PaginatePlayers {...props} gender={this.state.gender} />
             )}

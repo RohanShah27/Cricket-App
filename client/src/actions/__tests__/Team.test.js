@@ -1,5 +1,5 @@
 import * as action from "../Team";
-import { GET_TOURNAMENT } from "../types";
+import { GET_TOURNAMENT, SEARCH_TEAM_FOR_VIEW_TEAM_PAGE } from "../types";
 import moxios from "moxios";
 import configureMockStore from "redux-mock-store";
 import thunk from "redux-thunk";

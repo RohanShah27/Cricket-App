@@ -3,9 +3,13 @@ import {
   SEARCH_TEAM_FOR_VIEW_TEAM_PAGE,
   GET_TEAM_BY_ID,
   GET_TOURNAMENT,
+  GET_MATCHES_BY_TEAM_AND_TYPE,
   GET_TEAM_STATS,
   GET_PLAYER_STATS_FOR_TEAMS,
-  GET_PLAYER_STATS_FOR_TEAMS_BOWLER
+  GET_PLAYER_STATS_FOR_TEAMS_BOWLER,
+  TEAM_STATS_GRAPH_ODI,
+  TEAM_STATS_GRAPH_TEST,
+  TEAM_STATS_GRAPH_T20
 } from "../../actions/Types";
 
 describe("Testing  ViewTeam Reducers", () => {
@@ -19,16 +23,17 @@ describe("Testing  ViewTeam Reducers", () => {
       tournamentTeam: action.payload,
       teamstats: action.payload,
       playerstatsforteams: action.payload,
-      playerstatsforteamsbowler: action.payload
+      playerstatsforteamsbowler: action.payload,
+      t20_graph: action.payload,
+      test_graph: action.payload,
+      odi_graph: action.payload,
+      teamsearch: action.payload
     });
   });
 
   it("should return state object with match array equal to the payload in the action when the action type is GET_TOURNAMENT(when the state is not initial state)", () => {
     const initialState = {
-      tournamentTeam: [],
-      teamstats: [],
-      playerstatsforteams: [],
-      playerstatsforteamsbowler: []
+      tournamentTeam: []
     };
 
     const action = {
@@ -37,10 +42,7 @@ describe("Testing  ViewTeam Reducers", () => {
     };
     const returnedState = teamReducer(initialState, action);
     expect(returnedState).toEqual({
-      tournamentTeam: initialState.tournamentTeam,
-      teamstats: initialState.teamstats,
-      playerstatsforteams: initialState.playerstatsforteams,
-      playerstatsforteamsbowler: initialState.playerstatsforteamsbowler
+      tournamentTeam: initialState.tournamentTeam
     });
   });
 });
@@ -56,7 +58,11 @@ describe("Testing  ViewTeam Reducers", () => {
       tournamentTeam: action.payload,
       teamstats: action.payload,
       playerstatsforteams: action.payload,
-      playerstatsforteamsbowler: action.payload
+      playerstatsforteamsbowler: action.payload,
+      t20_graph: action.payload,
+      test_graph: action.payload,
+      odi_graph: action.payload,
+      teamsearch: action.payload
     });
   });
 
@@ -87,13 +93,17 @@ describe("Testing  ViewTeam Reducers", () => {
       tournamentTeam: action.payload,
       teamstats: action.payload,
       playerstatsforteams: action.payload,
-      playerstatsforteamsbowler: action.payload
+      playerstatsforteamsbowler: action.payload,
+      t20_graph: action.payload,
+      test_graph: action.payload,
+      odi_graph: action.payload,
+      teamsearch: action.payload
     });
   });
 
   it("should return state object with match array equal to the payload in the action when the action type is SEARCH_TEAM_FOR_VIEW_TEAM_PAGE(when the state is not initial state)", () => {
     const initialState = {
-      tournamentTeam: [{}]
+      teamsearch: [{}]
     };
 
     const action = {
@@ -102,7 +112,7 @@ describe("Testing  ViewTeam Reducers", () => {
     };
     const returnedState = teamReducer(initialState, action);
     expect(returnedState).toEqual({
-      tournamentTeam: initialState.tournamentTeam
+      teamsearch: initialState.teamsearch
     });
   });
 });
@@ -118,7 +128,11 @@ describe("Testing  ViewTeam Reducers", () => {
       tournamentTeam: action.payload,
       teamstats: action.payload,
       playerstatsforteams: action.payload,
-      playerstatsforteamsbowler: action.payload
+      playerstatsforteamsbowler: action.payload,
+      t20_graph: action.payload,
+      test_graph: action.payload,
+      odi_graph: action.payload,
+      teamsearch: action.payload
     });
   });
 
@@ -149,7 +163,11 @@ describe("Testing  ViewTeam Reducers", () => {
       tournamentTeam: action.payload,
       teamstats: action.payload,
       playerstatsforteams: action.payload,
-      playerstatsforteamsbowler: action.payload
+      playerstatsforteamsbowler: action.payload,
+      t20_graph: action.payload,
+      test_graph: action.payload,
+      odi_graph: action.payload,
+      teamsearch: action.payload
     });
   });
 
@@ -183,7 +201,8 @@ describe("Testing  ViewTeam Reducers", () => {
       t20_graph: action.payload,
       test_graph: action.payload,
       playerstatsforteams: action.payload,
-      playerstatsforteamsbowler: action.payload
+      playerstatsforteamsbowler: action.payload,
+      teamsearch: action.payload
     });
   });
 
@@ -199,6 +218,138 @@ describe("Testing  ViewTeam Reducers", () => {
     const returnedState = teamReducer(initialState, action);
     expect(returnedState).toEqual({
       playerstatsforteamsbowler: initialState.playerstatsforteamsbowler
+    });
+  });
+
+  it("should return state object with match array equal to the payload in the action when the action type is GET_MATCHES_BY_TEAM_AND_TYPE(when the state is initial state)", () => {
+    let action = {
+      type: GET_MATCHES_BY_TEAM_AND_TYPE,
+      payload: []
+    };
+    const returnedState = teamReducer(undefined, action);
+    expect(returnedState).toEqual({
+      tournamentTeam: action.payload,
+      teamstats: action.payload,
+      playerstatsforteams: action.payload,
+      playerstatsforteamsbowler: action.payload,
+      t20_graph: action.payload,
+      test_graph: action.payload,
+      odi_graph: action.payload,
+      teamsearch: action.payload
+    });
+  });
+
+  it("should return state object with match array equal to the payload in the action when the action type is GET_MATCHES_BY_TEAM_AND_TYPE(when the state is not initial state)", () => {
+    const initialState = {
+      tournamentTeam: []
+    };
+
+    const action = {
+      type: GET_MATCHES_BY_TEAM_AND_TYPE,
+      payload: []
+    };
+    const returnedState = teamReducer(initialState, action);
+    expect(returnedState).toEqual({
+      tournamentTeam: initialState.tournamentTeam
+    });
+  });
+
+  it("should return state object with match array equal to the payload in the action when the action type is TEAM_STATS_GRAPH_TEST(when the state is initial state)", () => {
+    let action = {
+      type: TEAM_STATS_GRAPH_TEST,
+      payload: []
+    };
+    const returnedState = teamReducer(undefined, action);
+    expect(returnedState).toEqual({
+      tournamentTeam: action.payload,
+      teamstats: action.payload,
+      playerstatsforteams: action.payload,
+      playerstatsforteamsbowler: action.payload,
+      t20_graph: action.payload,
+      test_graph: action.payload,
+      odi_graph: action.payload,
+      teamsearch: action.payload
+    });
+  });
+
+  it("should return state object with match array equal to the payload in the action when the action type is GET_TOURNAMENT(when the state is not initial state)", () => {
+    const initialState = {
+      test_graph: []
+    };
+
+    const action = {
+      type: TEAM_STATS_GRAPH_TEST,
+      payload: []
+    };
+    const returnedState = teamReducer(initialState, action);
+    expect(returnedState).toEqual({
+      test_graph: initialState.test_graph
+    });
+  });
+
+  it("should return state object with match array equal to the payload in the action when the action type is TEAM_STATS_GRAPH_ODI(when the state is initial state)", () => {
+    let action = {
+      type: TEAM_STATS_GRAPH_ODI,
+      payload: []
+    };
+    const returnedState = teamReducer(undefined, action);
+    expect(returnedState).toEqual({
+      tournamentTeam: action.payload,
+      teamstats: action.payload,
+      playerstatsforteams: action.payload,
+      playerstatsforteamsbowler: action.payload,
+      t20_graph: action.payload,
+      test_graph: action.payload,
+      odi_graph: action.payload,
+      teamsearch: action.payload
+    });
+  });
+
+  it("should return state object with match array equal to the payload in the action when the action type is GET_TOURNAMENT(when the state is not initial state)", () => {
+    const initialState = {
+      odi_graph: []
+    };
+
+    const action = {
+      type: TEAM_STATS_GRAPH_ODI,
+      payload: []
+    };
+    const returnedState = teamReducer(initialState, action);
+    expect(returnedState).toEqual({
+      odi_graph: initialState.odi_graph
+    });
+  });
+
+  it("should return state object with match array equal to the payload in the action when the action type is TEAM_STATS_GRAPH_T20(when the state is initial state)", () => {
+    let action = {
+      type: TEAM_STATS_GRAPH_T20,
+      payload: []
+    };
+    const returnedState = teamReducer(undefined, action);
+    expect(returnedState).toEqual({
+      tournamentTeam: action.payload,
+      teamstats: action.payload,
+      playerstatsforteams: action.payload,
+      playerstatsforteamsbowler: action.payload,
+      t20_graph: action.payload,
+      test_graph: action.payload,
+      odi_graph: action.payload,
+      teamsearch: action.payload
+    });
+  });
+
+  it("should return state object with match array equal to the payload in the action when the action type is GET_TOURNAMENT(when the state is not initial state)", () => {
+    const initialState = {
+      t20_graph: []
+    };
+
+    const action = {
+      type: TEAM_STATS_GRAPH_T20,
+      payload: []
+    };
+    const returnedState = teamReducer(initialState, action);
+    expect(returnedState).toEqual({
+      t20_graph: initialState.t20_graph
     });
   });
 });

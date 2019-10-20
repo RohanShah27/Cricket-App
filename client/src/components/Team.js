@@ -4,6 +4,7 @@ import "../styles/Team.css";
 import international from "./international.png";
 import ipl from "./ipl.png";
 import InfiniteScroll from "react-infinite-scroll-component";
+import { Link } from "react-router-dom";
 
 import {
   getTournament,
@@ -165,6 +166,39 @@ export class Team extends Component {
               name="team_name"
               onChange={this.OnChange}
             />
+            {this.state.team_name == "" ? null : (
+              <div className="team-search-result">
+                <span className="search_result_data">
+                  <p>
+                    {this.props.teamsearch
+                      ? this.props.teamsearch.map(teams => (
+                          <Link
+                            style={{
+                              textDecoration: "none"
+                            }}
+                            to={{
+                              pathname: "/viewteam/" + teams.team_id,
+                              state: { teams }
+                            }}
+                          >
+                            {" "}
+                            <p
+                              style={{
+                                fontSize: "18px",
+                                paddingTop: "10px ",
+                                display: "flex",
+                                justifyContent: "center"
+                              }}
+                            >
+                              {teams.team_name}
+                            </p>
+                          </Link>
+                        ))
+                      : null}
+                  </p>
+                </span>
+              </div>
+            )}
           </div>
           <section>
             <div className="playerTab1">
@@ -235,8 +269,8 @@ export class Team extends Component {
 }
 
 const mapStateToProps = state => ({
-  tournamentTeam: state.teamReducer.tournamentTeam
-  // team: state.teamReducer.team
+  tournamentTeam: state.teamReducer.tournamentTeam,
+  teamsearch: state.teamReducer.teamsearch
 });
 
 export default connect(

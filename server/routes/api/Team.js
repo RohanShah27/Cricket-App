@@ -154,7 +154,7 @@ router.post("/teamsearch", async (req, res) => {
     let team_name = req.body.team_name;
     let tournament = req.body.tournament;
     console.log(team_name);
-    const query = `select * from team where team_name ilike '${team_name}%'`;
+    const query = `select * from team where team_name ilike '${team_name}%' or team_name ilike '%${team_name}'`;
     console.log("query", query);
     const result = await db.any(
       query
