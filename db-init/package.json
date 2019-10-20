@@ -1,20 +1,18 @@
 {
-  "name": "db-init",
+  "name": "",
   "version": "1.0.0",
-  "description": "DB Files for Cricket Data",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Rohan",
+  "author": "",
   "license": "ISC",
   "dependencies": {
     "fs": "0.0.1-security",
     "js-yaml": "^3.13.1",
     "mongodb": "^3.3.2",
-    "path": "^0.12.7",
     "pg-escape": "^0.2.0",
-    "pg-promise": "^9.2.1",
-    "scandir": "^0.1.2"
+    "pg-promise": "^9.2.1"
   }
 }

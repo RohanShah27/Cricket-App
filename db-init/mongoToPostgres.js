@@ -1,27 +1,27 @@
-const url = "mongodb://localhost:27017/crickstrait_dbs";
+const url = "mongodb://localhost:27017/crickstrait_capstone";
 const escape = require("pg-escape");
 
 let MongoClient = require("mongodb").MongoClient;
 
 const pgp = require("pg-promise")();
-const postdb = pgp("postgres://postgres:123456@localhost:5432/crickstrait_dbs");
+const postdb = pgp("postgres://postgres:123456@localhost:5432/crickstrait_capstone");
 let dbo;
 
 MongoClient.connect(url, {
 	useNewUrlParser: true
 }).then(async db => {
-	dbo = db.db("crickstrait_dbs");
+	dbo = db.db("crickstrait_capstone");
 	// async function which will be defined below
 
 	console.time("Computing match type");
-	await match_type();
-	console.timeEnd("match type");
+	// await match_type();
+	// console.timeEnd("match type");
 
-	console.log();
+	// console.log();
 
-	console.time("Computing match table");
-	await match();
-	console.timeEnd("match table");
+	// console.time("Computing match table");
+	// await match();
+	// console.timeEnd("match table");
 
 	await player_stats();
 	console.log("Promise satisfied");

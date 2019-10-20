@@ -1,6 +1,7 @@
 import React from "react";
 import { shallow, mount } from "enzyme";
 import { Home } from "../Home";
+const history = { push: jest.fn() };
 
 let fixtures = [
   {
@@ -33,7 +34,7 @@ let match = [
     team2: "Pakistan"
   },
   {
-    match_id: 2,
+    match_id: 3,
     match_competition: "Big bAsh leagues",
     match_type: "T20",
     team1: "India",
@@ -56,12 +57,18 @@ const wrapper = mount(
     headlines={headlines}
     match={match}
     headline={headline}
+    history={history}
   />
 );
 
 describe("Test Team Component", () => {
   it("should render the component", () => {
     expect(wrapper).toMatchSnapshot();
+  });
+  it("should check for component did mount as a function", () => {
+    const componentWillMount = jest.spyOn(Home.prototype, "componentWillMount");
+    wrapper.instance().componentWillMount();
+    expect(componentWillMount).toHaveBeenCalled();
   });
   it("should have a container with heading called fixtures", () => {
     expect(wrapper.find("#fixtures-header")).toBeTruthy();
@@ -98,7 +105,7 @@ describe("Test Team Component", () => {
       match[0].team1
     );
   });
-  it("should have a match team one in matches ", () => {
+  it("should have a match team two in matches ", () => {
     expect(wrapper.find("#matchTeamTwo0").props().children).toBe(
       match[0].team2
     );
@@ -108,12 +115,33 @@ describe("Test Team Component", () => {
       match[1].team1
     );
   });
-  it("should have a match team one in matches ", () => {
+  it("should have a match team two in matches ", () => {
     expect(wrapper.find("#matchTeamTwo1").props().children).toBe(
       match[1].team2
     );
   });
   it("should have a match name in fixture ", () => {
     expect(wrapper.find("#matchName0")).toBeTruthy();
+  });
+  it("Check history push as a function ", () => {
+    wrapper.find("#recent-match0").simulate("click");
+    expect(history.push).toBeCalledWith(
+      "/matchdetails/" + match[0].match_id,
+      match[0]
+    );
+  });
+  it("check recent match Data", () => {
+    expect(wrapper.find("#matchData0").text()).toEqual("  - ODI");
+  });
+  it("Check history push as a function ", () => {
+    wrapper.find("#recent-match1").simulate("click");
+    expect(history.push).toBeCalledWith(
+      "/matchdetails/" + match[1].match_id,
+      match[1]
+    );
+  });
+  it("Check function call to GetHeadline ", () => {
+    wrapper.find("#getHeadlineData0").simulate("click");
+    expect(getHeadline).toBeCalledWith(headlines[0].headline_id);
   });
 });

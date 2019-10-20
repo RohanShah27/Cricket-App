@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const pg = require("pg-promise")();
-const db = pg("postgres://postgres:123456@localhost:5432/crickstrait_db");
+const db = pg("postgres://postgres:123456@localhost:5432/crickstrait_capstone");
 
 // Retrieving all products from database
 router.get("/all", async (req, res) => {
@@ -15,9 +15,10 @@ router.get("/all", async (req, res) => {
 
 router.post("/ranking", async (req, res) => {
   const format = req.body.format;
+  const gender = req.body.gender;
   try {
     const result = await db.any(
-      "SELECT * FROM player_ranking where format = '" + format + "'; "
+      `select * from player_ranking where format='${format}' and gender='${gender}'`
     );
     if (!result)
       throw {
@@ -41,10 +42,11 @@ router.post("/ranking", async (req, res) => {
 
 router.post("/teamranking", async (req, res) => {
   const format = req.body.format;
+  const gender = req.body.gender;
   console.log(format);
   try {
     const result = await db.any(
-      "SELECT * FROM team_ranking where format = '" + format + "'; "
+      `SELECT * FROM team_ranking where format = '${format}' and gender='${gender}'`
     );
     if (!result)
       throw {

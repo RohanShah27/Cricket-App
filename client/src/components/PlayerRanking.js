@@ -11,7 +11,8 @@ export class PlayerRanking extends Component {
 
   componentDidMount() {
     let ranking = {
-      format: "Test"
+      format: "Test",
+      gender: this.props.gender
     };
     this.props.getPlayerRanking(ranking);
     this.props.getTeamRanking(ranking);
@@ -30,7 +31,8 @@ export class PlayerRanking extends Component {
       format: formats
     });
     let ranking = {
-      format: this.state.format
+      format: this.state.format,
+      gender: this.props.gender
     };
     this.props.getPlayerRanking(ranking);
     this.props.getTeamRanking(ranking);
@@ -40,59 +42,105 @@ export class PlayerRanking extends Component {
     let playerBatting = this.props.players.slice(0, 10);
     let playerBowling = this.props.players.slice(10, 20);
     let playerallRounder = this.props.players.slice(20, 30);
-    console.log(this.props);
+    console.log(this.props.gender);
     return (
       <div>
         {/* Start of Button-Container fer Navigating through format -- Bhavana */}
-        <div className="rankings-button-container">
-          <button
-            className={
-              this.state.testClick
-                ? "ranking-test-button ranking-active"
-                : "ranking-test-button"
-            }
-            onClick={() => {
-              this.sendData("Test");
-              this.setState({
-                testClick: true,
-                odiClick: false,
-                t20Click: false
-              });
-            }}
-          >
-            Test
-          </button>
-          <button
-            className={
-              this.state.odiClick ? " ranking-active" : "ranking-odi-button"
-            }
-            onClick={() => {
-              this.sendData("ODI");
-              this.setState({
-                testClick: false,
-                odiClick: true,
-                t20Click: false
-              });
-            }}
-          >
-            ODI
-          </button>
-          <button
-            className={
-              this.state.t20Click ? "ranking-t20-active" : "ranking-t20-button"
-            }
-            onClick={() => {
-              this.sendData("T20");
-              this.setState({
-                testClick: false,
-                odiClick: false,
-                t20Click: true
-              });
-            }}
-          >
-            T20
-          </button>
-        </div>
+
+        {this.props.gender == "male" ? (
+          <div className="rankings-button-container">
+            <button
+              id="testTab"
+              className={
+                this.state.testClick
+                  ? "ranking-test-button ranking-active"
+                  : "ranking-test-button"
+              }
+              onClick={() => {
+                this.sendData("Test");
+                this.setState({
+                  testClick: true,
+                  odiClick: false,
+                  t20Click: false
+                });
+              }}
+            >
+              Test
+            </button>
+            <button
+              id="odiTab"
+              className={
+                this.state.odiClick ? " ranking-active" : "ranking-odi-button"
+              }
+              onClick={() => {
+                this.sendData("ODI");
+                this.setState({
+                  testClick: false,
+                  odiClick: true,
+                  t20Click: false
+                });
+              }}
+            >
+              ODI
+            </button>
+            <button
+              id="t20Tab"
+              className={
+                this.state.t20Click
+                  ? "ranking-t20-active"
+                  : "ranking-t20-button"
+              }
+              onClick={() => {
+                this.sendData("T20");
+                this.setState({
+                  testClick: false,
+                  odiClick: false,
+                  t20Click: true
+                });
+              }}
+            >
+              T20
+            </button>
+          </div>
+        ) : (
+          <div className="rankings-button-container">
+            <button
+              className={
+                this.state.testClick
+                  ? "ranking-test-button ranking-active"
+                  : "ranking-test-button"
+              }
+              onClick={() => {
+                this.sendData("ODI");
+                this.setState({
+                  testClick: true,
+                  odiClick: false,
+                  t20Click: false
+                });
+              }}
+            >
+              ODI
+            </button>
+
+            <button
+              className={
+                this.state.t20Click
+                  ? "ranking-t20-active"
+                  : "ranking-t20-button"
+              }
+              onClick={() => {
+                this.sendData("T20");
+                this.setState({
+                  testClick: false,
+                  odiClick: false,
+                  t20Click: true
+                });
+              }}
+            >
+              T20
+            </button>
+          </div>
+        )}
         {/* End of Button-Container fer Navigating through format -- Bhavana */}
 
         {/* Start of main container for embedding all tables - Bhavana */}
@@ -113,15 +161,15 @@ export class PlayerRanking extends Component {
                   <th>Team</th>
                   <th>Ratings</th>
                 </tr>
-                {playerBatting.map(player => (
+                {playerBatting.map((player, index) => (
                   <tr>
-                    <td>{player.position}</td>
+                    <td id={"battingPosition" + index}>{player.position}</td>
                     <td>
                       <img src={playeruser} className="rankingplayerIcon" />
                     </td>
-                    <td>{player.player_name}</td>
-                    <td>{player.player_team}</td>
-                    <td>{player.ratings}</td>
+                    <td id={"battingName" + index}>{player.player_name}</td>
+                    <td id={"battingTeam" + index}>{player.player_team}</td>
+                    <td id={"battingRating" + index}>{player.ratings}</td>
                   </tr>
                 ))}
               </table>
@@ -141,15 +189,15 @@ export class PlayerRanking extends Component {
                   <th>Team</th>
                   <th>Ratings</th>
                 </tr>
-                {playerBowling.map(player => (
+                {playerBowling.map((player, index) => (
                   <tr>
-                    <td>{player.position}</td>
+                    <td id={"bowlingPosition" + index}>{player.position}</td>
                     <td>
                       <img src={playeruser} className="rankingplayerIcon" />
                     </td>
-                    <td>{player.player_name}</td>
-                    <td>{player.player_team}</td>
-                    <td>{player.ratings}</td>
+                    <td id={"bowlingName" + index}>{player.player_name}</td>
+                    <td id={"bowlingTeam" + index}>{player.player_team}</td>
+                    <td id={"bowlingRating" + index}>{player.ratings}</td>
                   </tr>
                 ))}
               </table>
@@ -173,15 +221,15 @@ export class PlayerRanking extends Component {
                   <th>Team</th>
                   <th>Ratings</th>
                 </tr>
-                {playerallRounder.map(player => (
+                {playerallRounder.map((player, index) => (
                   <tr>
-                    <td>{player.position}</td>
+                    <td id={"allRounderPosition" + index}>{player.position}</td>
                     <td>
                       <img src={playeruser} className="rankingplayerIcon" />
                     </td>
-                    <td>{player.player_name}</td>
-                    <td>{player.player_team}</td>
-                    <td>{player.ratings}</td>
+                    <td id={"allRounderName" + index}>{player.player_name}</td>
+                    <td id={"allRounderTeam" + index}>{player.player_team}</td>
+                    <td id={"allRounderRating" + index}>{player.ratings}</td>
                   </tr>
                 ))}
               </table>
@@ -201,15 +249,15 @@ export class PlayerRanking extends Component {
                   <th>Ratings</th>
                   <th>Points</th>
                 </tr>
-                {this.props.teams.map(team => (
+                {this.props.teams.map((team, index) => (
                   <tr>
-                    <td>{team.position}</td>
+                    <td id={"teamPosition" + index}>{team.position}</td>
                     <td>
                       <img src={playeruser} className="rankingplayerIcon" />
                     </td>
-                    <td>{team.team_name}</td>
-                    <td>{team.rating}</td>
-                    <td>{team.points}</td>
+                    <td id={"teamName" + index}>{team.team_name}</td>
+                    <td id={"teamRating" + index}>{team.rating}</td>
+                    <td id={"teamPoints" + index}>{team.points}</td>
                   </tr>
                 ))}
               </table>

@@ -3,7 +3,7 @@ const express = require("express");
 const router = express.Router();
 const pg = require("pg-promise")();
 // Conneccting to the hosted database fixtures
-const db = pg("postgres://postgres:123456@localhost:5432/crickstrait_db");
+const db = pg("postgres://postgres:123456@localhost:5432/crickstrait_capstone");
 
 // Get stats of a player
 router.post("/player_search/:playerId", async (req, res) => {
@@ -151,9 +151,14 @@ router.post("/player_search/:playerId", async (req, res) => {
 });
 
 // Get all players for player page ordered in alphabetical order -Rohan
-router.get("/all", async (req, res) => {
+router.get("/all/:gender", async (req, res) => {
   try {
-    const result = await db.any("select * from player order by player_name;");
+    const gender = req.params.gender;
+    console.log(gender);
+    const result = await db.any(
+      `select * from player where gender ='${gender}' order by player_name ;`
+    );
+    console.log(result);
     res.status(200).json({
       status: 200,
       data: result,

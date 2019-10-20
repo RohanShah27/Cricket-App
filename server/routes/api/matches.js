@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const pg = require("pg-promise")();
 // Conneccting to the hosted database fixtures
-const db = pg("postgres://postgres:123456@localhost:5432/crickstrait_db");
+const db = pg("postgres://postgres:123456@localhost:5432/crickstrait_capstone");
 // const db = pg("postgres://postgres:123456@192.168.0.63:5432/crickstrait");
 
 router.get("/getrecent", async (req, res) => {
@@ -189,20 +189,21 @@ router.post("/getbydate", async (req, res) => {
 
 router.post("/getbytype", async (req, res) => {
   const type = req.body.type;
+  const gender = req.body.gender;
   console.log(type);
   try {
     const result = await db.any(
-      `with ss as (with s as ( select m.match_id, m.innings_one_team, m.innings_two_team, m.outcome as won_by,m.competition, winner, m.match_type, m.player_of_the_match, t.team_name
-        as team1, d.match_date, v.venue_name,v.venue_city from match as m
+      `with ss as (with s as ( select m.match_id, m.innings_one_team, m.innings_two_team, m.outcome as won_by,m.competition, winner, m.match_type, m.player_of_the_match, t.team_name as team1,t.team_image as team1_image
+        , d.match_date, v.venue_name,v.venue_city from match as m
          inner join team as t on t.team_id = m.innings_one_team
          inner join venue as v on m.venue_id = v.venue_id
-         inner join match_date d on m.match_id = d.match_id where match_type='${type}'),
-         ps as (select team_id, team_name as team2 from team
+         inner join match_date d on m.match_id = d.match_id where match_type='${type}' and gender='${gender}'),
+         ps as (select team_id, team_name as team2,team_image as team2_image from team
          where team_id in (select innings_two_team from s))
-         select match_id, innings_one_team, team1, innings_two_team, team2, winner, won_by, match_type, player_of_the_match, match_date,venue_name,venue_city,competition from ps
+         select match_id, innings_one_team, team1, innings_two_team, team2, winner, won_by, match_type, player_of_the_match, match_date,venue_name,venue_city,competition, team1_image,team2_image from ps
          inner join s on s.innings_two_team = ps.team_id),
          pss as (select team_id, team_name as match_winner from team where team_id in (select winner from ss))
-         select match_id, team1, team2, match_winner, won_by, match_type, player_of_the_match, match_date ,venue_name,venue_city,competition
+         select match_id, team1, team2, match_winner, won_by, match_type, player_of_the_match, match_date ,venue_name,venue_city,competition, team1_image,team2_image
          from pss inner join ss on ss.winner = pss.team_id  ;`
     );
     if (!result) {
@@ -232,22 +233,20 @@ router.get("/summary/:match_id", async (req, res, next) => {
 
     let match_id = req.params.match_id;
 
-    // match_id, team_one_name,  team_two_name, match_winner_name, won_by, match_type, player_of_the match
-
     const match_detail = await db.any(`with ss as (with s as (select m.match_id, m.innings_one_team, m.innings_two_team, 
-                m.outcome as won_by,winner, m.match_type, m.player_of_the_match,t.team_name as team_one_name 
-                from match as m 
-                inner join team as t on t.team_id=m.innings_one_team where match_id=${match_id}),
-                ps as( select team_id,team_name as team_two_name from team
-                where team_id in(select innings_two_team from s))
-                select match_id, innings_one_team, team_one_name, innings_two_team,team_two_name, 
-                winner,won_by, match_type, player_of_the_match 
-                from ps inner join s on s.innings_two_team=ps.team_id),
-                pss as( select team_id, team_name as match_winner from team 
-                where team_id in(select winner from ss))
-                select match_id, innings_one_team, team_one_name, innings_two_team,team_two_name, 
-                winner,match_winner,won_by, match_type, player_of_the_match 
-                from pss inner join ss on ss.winner=pss.team_id`);
+      m.outcome as won_by,winner, m.match_type, m.player_of_the_match,t.team_name as team_one_name ,t.team_image as team1_image
+      from match as m 
+      inner join team as t on t.team_id=m.innings_one_team where match_id='${match_id}'),
+      ps as( select team_id,team_name as team_two_name ,team_image as team2_image from team
+      where team_id in(select innings_two_team from s))
+      select match_id, innings_one_team, team_one_name, innings_two_team,team_two_name, team1_image,team2_image,
+      winner,won_by, match_type, player_of_the_match 
+      from ps inner join s on s.innings_two_team=ps.team_id),
+      pss as( select team_id, team_name as match_winner from team 
+      where team_id in(select cast(winner as int) from ss))
+      select match_id, innings_one_team, team_one_name, innings_two_team,team_two_name, team1_image,team2_image,
+      winner,match_winner,won_by, match_type, player_of_the_match 
+      from pss inner join ss on cast(ss.winner as int)=pss.team_id`);
 
     console.log(match_detail);
 
@@ -275,6 +274,8 @@ router.get("/summary/:match_id", async (req, res, next) => {
       teamOne: match_detail[0].team_one_name,
       teamTwo: match_detail[0].team_two_name,
       team_winner: match_detail[0].match_winner,
+      team1_image: match_detail[0].team1_image,
+      team2_image: match_detail[0].team2_image,
       won_by: match_detail[0].won_by,
       player_of_the_match: match_detail[0].player_of_the_match,
       teamOneScore: match_total_of_score[0].total_score,

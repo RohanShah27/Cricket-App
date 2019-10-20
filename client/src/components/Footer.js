@@ -4,7 +4,10 @@ export default class Footer extends Component {
   render() {
     return (
       <div className="footer">
-        <p className="footer-p"> © Powered By Headstrait</p>
+        <p className="footer-p" id="footerInfo">
+          {" "}
+          © Powered By Headstrait
+        </p>
         <div className="footer-follow">
           <i className="fab fa-twitter footer-fab"></i>
           <i className="fab fa-facebook footer-fab"></i>

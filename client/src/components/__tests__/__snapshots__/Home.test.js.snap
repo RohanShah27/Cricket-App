@@ -90,6 +90,11 @@ exports[`Test Team Component should render the component 1`] = `
       },
     ]
   }
+  history={
+    Object {
+      "push": [MockFunction],
+    }
+  }
   home={[MockFunction]}
   match={
     Array [
@@ -102,7 +107,7 @@ exports[`Test Team Component should render the component 1`] = `
       },
       Object {
         "match_competition": "Big bAsh leagues",
-        "match_id": 2,
+        "match_id": 3,
         "match_type": "T20",
         "team1": "India",
         "team2": "Srilanka",
@@ -241,6 +246,7 @@ exports[`Test Team Component should render the component 1`] = `
               className="home-ul"
             >
               <a
+                id="getHeadlineData0"
                 onClick={[Function]}
               >
                  
@@ -260,6 +266,7 @@ exports[`Test Team Component should render the component 1`] = `
                 className="home-hr"
               />
               <a
+                id="getHeadlineData1"
                 onClick={[Function]}
               >
                  
@@ -293,6 +300,7 @@ exports[`Test Team Component should render the component 1`] = `
             >
               <span
                 className="tournament-home"
+                id="matchData0"
               >
                  
                  
@@ -325,6 +333,8 @@ exports[`Test Team Component should render the component 1`] = `
                 >
                   <button
                     className="buttonformatch"
+                    id="recent-match0"
+                    onClick={[Function]}
                   >
                     View
                   </button>
@@ -349,6 +359,7 @@ exports[`Test Team Component should render the component 1`] = `
             >
               <span
                 className="tournament-home"
+                id="matchData1"
               >
                  
                  
@@ -381,6 +392,8 @@ exports[`Test Team Component should render the component 1`] = `
                 >
                   <button
                     className="buttonformatch"
+                    id="recent-match1"
+                    onClick={[Function]}
                   >
                     View
                   </button>

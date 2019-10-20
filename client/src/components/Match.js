@@ -5,6 +5,7 @@ import india from "../assests/india.jpg";
 import pakistan from "../assests/pakistan.jpg";
 import { getMatchesByType } from "../actions/matchActions";
 import InfiniteScroll from "react-infinite-scroll-component";
+import ReactCountryFlag from "react-country-flag";
 
 export class Match extends Component {
   constructor(props) {
@@ -13,7 +14,7 @@ export class Match extends Component {
   }
 
   componentDidMount() {
-    let type = { type: "ODI" };
+    let type = { type: "ODI", gender: this.props.gender };
     this.props.getMatchesByType(type);
   }
 
@@ -22,7 +23,7 @@ export class Match extends Component {
     matchType: "ODI",
     activeClass: "match-active-option",
     data: [],
-    items: 6,
+    items: 9,
     loadingstate: false,
     height: 800,
     pageMatches: [],
@@ -32,7 +33,8 @@ export class Match extends Component {
   sendType() {
     console.log("type" + this.state.type);
     let matches = {
-      type: this.state.type
+      type: this.state.type,
+      gender: this.props.gender
     };
     this.props.getMatchesByType(matches);
   }
@@ -68,7 +70,7 @@ export class Match extends Component {
   loadMoreItems = () => {
     setTimeout(() => {
       this.setState({
-        items: this.state.items + 6
+        items: this.state.items + 9
       });
 
       console.log("Matches", this.props.viewmatch);
@@ -99,25 +101,46 @@ export class Match extends Component {
             name="pct"
             onClick={() => this.sendData("T20")}
           />
-          <nav>
-            <ul>
-              <li className="match-tab1">
-                <label htmlFor="match-tab1">
-                  <b>ODI</b>
-                </label>
-              </li>
-              <li className="match-tab2">
-                <label htmlFor="match-tab2">
-                  <b>TEST</b>
-                </label>
-              </li>
-              <li className="match-tab3">
-                <label htmlFor="match-tab3">
-                  <b>T20</b>
-                </label>
-              </li>
-            </ul>
-          </nav>
+
+          {/* Checking the gender */}
+          {this.props.gender == "male" ? (
+            // Start of nav i.e Buttons for Test,ODI,T20
+            <nav>
+              <ul>
+                <li className="match-tab1">
+                  <label htmlFor="match-tab1">
+                    <b>ODI</b>
+                  </label>
+                </li>
+                <li className="match-tab2">
+                  <label htmlFor="match-tab2">
+                    <b>TEST</b>
+                  </label>
+                </li>
+                <li className="match-tab3">
+                  <label htmlFor="match-tab3">
+                    <b>T20</b>
+                  </label>
+                </li>
+              </ul>
+            </nav>
+          ) : (
+            <nav>
+              <ul>
+                <li className="match-tab1">
+                  <label htmlFor="match-tab1">
+                    <b>ODI</b>
+                  </label>
+                </li>
+
+                <li className="match-tab3">
+                  <label htmlFor="match-tab3">
+                    <b>T20</b>
+                  </label>
+                </li>
+              </ul>
+            </nav>
+          )}
           <section>
             <div className="match-tab1">
               <InfiniteScroll
@@ -149,13 +172,26 @@ export class Match extends Component {
                     >
                       <div className="match-parent">
                         <div className="match-first">
-                          <img className="match-img" src={india} />
+                          <ReactCountryFlag
+                            styleProps={{
+                              width: "60px",
+                              height: "60px"
+                            }}
+                            code={match.team1_image ? match.team1_image : "ao"}
+                            svg
+                          />{" "}
                           <p>{match.team1}</p>
                           <p className="match-p">250/5 (50.0)</p>
                         </div>
                         <div className="match-second">
-                          <img className="match-img" src={pakistan} />
-
+                          <ReactCountryFlag
+                            styleProps={{
+                              width: "60px",
+                              height: "60px"
+                            }}
+                            code={match.team2_image ? match.team2_image : "ao"}
+                            svg
+                          />{" "}
                           <p>{match.team2}</p>
                           <p className="match-p">224/6 (50.0)</p>
                         </div>

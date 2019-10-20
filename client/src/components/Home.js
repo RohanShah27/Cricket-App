@@ -77,6 +77,7 @@ export class Home extends Component {
                   {this.props.headlines.map((single_headline, index) => (
                     <>
                       <a
+                        id={"getHeadlineData" + index}
                         onClick={() =>
                           this.props.getHeadline(single_headline.headline_id)
                         }
@@ -100,7 +101,7 @@ export class Home extends Component {
               <div className="testimonials" id="#recent-matches">
                 {this.props.match.map((match, index) => (
                   <div className="card">
-                    <span className="tournament-home">
+                    <span className="tournament-home" id={"matchData" + index}>
                       {" "}
                       {match.competition == "others"
                         ? "International"
@@ -120,11 +121,12 @@ export class Home extends Component {
                       </div>
                       <div className="second">
                         <button
+                          id={"recent-match" + index}
                           className="buttonformatch"
                           onClick={() => {
                             this.props.history.push(
                               "/matchdetails/" + match.match_id,
-                              { match }
+                              match
                             );
                           }}
                         >

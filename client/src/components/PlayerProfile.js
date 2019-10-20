@@ -8,32 +8,32 @@ export class PlayerProfile extends Component {
   constructor(props) {
     super(props);
   }
-
   componentWillMount() {
     console.log(this.props.match.params.player_id);
     this.props.searchPlayer(this.props.match.params.player_id);
   }
   componentWillReceiveProps(nextProps) {
-    this.props.searchPlayer(this.props.match.params.player_id);
+    if (nextProps.player_id != this.props.match.params.player_id) {
+      this.props.searchPlayer(this.props.match.params.player_id);
+    }
   }
   render() {
-    console.log(this.props);
     return (
       <div style={{ marginBottom: "80px" }}>
         <div className="main-section">
           {/* Start of flex container for image and Player Name -Rohan*/}
           <div className="player-flex-container">
             <div style={{ flexGrow: 2, alignItems: "center" }}>
-              <img className="profile-img" src={virat}></img>
+              <img className="profile-img" src={virat} id="playerImage"></img>
             </div>
             <div style={{ flexGrow: 8 }}>
-              <h1>
+              <h1 id="playerName">
                 {this.props.history.location.state.player.player_name
                   ? this.props.history.location.state.player.player_name
                   : "NA"}
               </h1>
-              <h5>
-                Team:{" "}
+              <h5 id="playerNation">
+                Team:
                 {this.props.location.state.player.nation
                   ? this.props.location.state.player.nation
                   : "NA"}
@@ -56,7 +56,7 @@ export class PlayerProfile extends Component {
               <p>
                 Date Of Birth:
                 <br />
-                <span className="personal-detail-content">
+                <span className="personal-detail-content" id="playerDOB">
                   {" "}
                   {this.props.location.state.player.player_dob
                     ? this.props.location.state.player.player_dob
@@ -66,7 +66,7 @@ export class PlayerProfile extends Component {
               <hr className="line" />
               <p>
                 Role: <br />
-                <span className="personal-detail-content">
+                <span className="personal-detail-content" id="playerRole">
                   {this.props.location.state.player.player_role
                     ? this.props.location.state.player.player_role
                     : "NA"}
@@ -76,16 +76,17 @@ export class PlayerProfile extends Component {
               <p>
                 Batting Style:
                 <br />{" "}
-                <span className="personal-detail-content">
+                <span className="personal-detail-content" id="battingStyle">
                   {this.props.location.state.player.batting_style
                     ? this.props.location.state.player.batting_style
                     : "NA"}
                 </span>
               </p>
+
               <hr className="line" />
               <p>
                 Bowling Style: <br />
-                <span className="personal-detail-content">
+                <span className="personal-detail-content" id="bowlingStyle">
                   {this.props.location.state.player.bowling_style
                     ? this.props.location.state.player.bowling_style
                     : "NA"}
@@ -95,7 +96,7 @@ export class PlayerProfile extends Component {
             {/* End of personal Details -Rohan*/}
             {/* Player Stats section -Rohan*/}
             <div className="main">
-              <h2>Player Stats</h2>
+              <h2 id="playerStats">Player Stats</h2>
               <div>
                 <table className="players-stats-table">
                   <tr>
@@ -112,11 +113,13 @@ export class PlayerProfile extends Component {
                   {this.props.player.ODI
                     ? Object.keys(this.props.player).map((keyName, i) => (
                         <tr>
-                          <td>{keyName}</td>
+                          <td id={"keyName" + i}>{keyName}</td>
                           {Object.keys(this.props.player[keyName]).map(
                             (keys, i) => (
                               <>
-                                <td>{this.props.player[keyName][keys]}</td>
+                                <td id={"keyValue" + i}>
+                                  {this.props.player[keyName][keys]}
+                                </td>
                               </>
                             )
                           )}
@@ -128,6 +131,7 @@ export class PlayerProfile extends Component {
             </div>
           </div>
         </div>
+        <div id="playerStatsVisualizationSection"></div>
       </div>
     );
   }

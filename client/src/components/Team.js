@@ -5,6 +5,7 @@ import international from "./international.png";
 import ipl from "./ipl.png";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { Link } from "react-router-dom";
+import ReactCountryFlag from "react-country-flag";
 
 import {
   getTournament,
@@ -227,11 +228,17 @@ export class Team extends Component {
                           <div className="teamcomponent-card">
                             <div className="team-content">
                               {/* <p>Started</p> */}
-                              <img
-                                src={international}
+                              <ReactCountryFlag
+                                styleProps={{
+                                  width: "70px",
+                                  height: "70px"
+                                }}
+                                code={
+                                  teams.team_image ? teams.team_image : "ao"
+                                }
+                                svg
                                 className="internationalLogo"
-                                alt="International"
-                              />
+                              />{" "}
                               <p>{teams.team_name}</p>
                               {/* <p>India</p> */}
                               <div className="team-details">
