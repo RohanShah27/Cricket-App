@@ -35,7 +35,7 @@ export class Home extends Component {
                         {fixture.team1_name} VS {fixture.team2_name} -{" "}
                         {fixture.match_type}
                       </span>{" "}
-                      <span className="home-time">
+                      <span className="home-time" id={"matchTimings" + index}>
                         {fixture.match_date} at {fixture.match_time}
                       </span>
                       <hr className="home-hr" />
@@ -48,7 +48,7 @@ export class Home extends Component {
             <div className="news">
               <div className="col-center">
                 <h2 className="news-header" id="news-Section">
-                  India's Tour of WestIndies
+                  News
                 </h2>
                 <div col-content>
                   <figure>
@@ -63,13 +63,14 @@ export class Home extends Component {
                     />
                   </figure>
                   <figcaption>
-                    <span className="newsTitle">
+                    <span className="newsTitle" id="headlineTitle">
                       {this.props.headline[0]
                         ? this.props.headline[0].headlines
                         : "NA"}
                     </span>
                     <hr className="home-hr" />
                     <p
+                      id="headlineDescription"
                       className="home-p"
                       style={{ fontSize: "15px", paddingLeft: "5px" }}
                     >

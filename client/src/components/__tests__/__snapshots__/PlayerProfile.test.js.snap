@@ -109,8 +109,12 @@ exports[`Test suite for Player Profile Component Should Render the component and
         >
           <img
             className="profile-img"
-            id="playerImage"
-            src="virat-kohli.png"
+            src="stockPlayer.png"
+            style={
+              Object {
+                "borderRadius": "5em",
+              }
+            }
           />
         </div>
         <div
