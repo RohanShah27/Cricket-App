@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import virat from "../virat-kohli.png";
 import ipl from "./ipl.png";
+import stockPlayer from "../stockPlayer.png";
+import ReactCountryFlag from "react-country-flag";
 
 export class Navigation extends Component {
   constructor(props) {
@@ -125,14 +127,20 @@ export class Navigation extends Component {
                             >
                               {player.player_name}
                               <img
-                                src={virat}
+                                className="players-img "
+                                src={
+                                  player.player_image
+                                    ? "data:image/jpeg;base64," +
+                                      new Buffer(player.player_image)
+                                    : stockPlayer
+                                }
                                 style={{
                                   borderRadius: "8px",
                                   marginLeft: "5px",
                                   height: "30px",
                                   width: "30px"
                                 }}
-                              ></img>
+                              />
                             </p>
                           </Link>
                         </span>
@@ -162,15 +170,18 @@ export class Navigation extends Component {
                               }}
                             >
                               {teams.team_name}
-                              <img
-                                src={ipl}
+                              <ReactCountryFlag
                                 style={{
                                   borderRadius: "10px",
                                   marginLeft: "5px",
                                   height: "30px",
                                   width: "30px"
                                 }}
-                              ></img>
+                                code={
+                                  teams.team_image ? teams.team_image : "af"
+                                }
+                                svg
+                              />
                             </p>
                           </Link>
                         </span>

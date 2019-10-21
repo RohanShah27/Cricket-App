@@ -8,7 +8,7 @@ import {
   getMatchDetails,
   getManhattanGraphMatch
 } from "../actions/matchActions";
-import virat from "./rishabh.jpg";
+import virat from "../stockPlayer.png";
 export class MatchDetails extends Component {
   componentWillMount() {
     console.log("Props", this.props.location.state.match.match_id);
@@ -66,11 +66,11 @@ export class MatchDetails extends Component {
 
                 <div className="matchDetails-headercard">
                   <p>
-                    {match.teamOneScore}/{match.teamtwo_wicket} (
+                    {match.teamOneScore}/{match.teamone_wicket} (
                     {match.team_one_total_over} Overs)
                   </p>
                   <p>
-                    {match.teamTwoScore}/{match.teamone_wicket} (
+                    {match.teamTwoScore}/{match.teamtwo_wicket} (
                     {match.team_two_total_over} Overs)
                   </p>
                 </div>
@@ -92,7 +92,6 @@ export class MatchDetails extends Component {
             </div>
           </section>
         ))}
-
         {/* tabs for match details page Scoreboard, Stats, Summary */}
         <div className="matchDetails-pc-tab">
           <input

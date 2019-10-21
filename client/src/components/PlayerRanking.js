@@ -156,7 +156,6 @@ export class PlayerRanking extends Component {
               <table class="ranking-table">
                 <tr>
                   <th>Rank</th>
-                  <th>Player Image</th>
                   <th>Player</th>
                   <th>Team</th>
                   <th>Ratings</th>
@@ -164,9 +163,7 @@ export class PlayerRanking extends Component {
                 {playerBatting.map((player, index) => (
                   <tr>
                     <td id={"battingPosition" + index}>{player.position}</td>
-                    <td>
-                      <img src={playeruser} className="rankingplayerIcon" />
-                    </td>
+
                     <td id={"battingName" + index}>{player.player_name}</td>
                     <td id={"battingTeam" + index}>{player.player_team}</td>
                     <td id={"battingRating" + index}>{player.ratings}</td>
@@ -184,7 +181,6 @@ export class PlayerRanking extends Component {
               <table class="ranking-table">
                 <tr>
                   <th>Rank</th>
-                  <th>Player Image</th>
                   <th>Player</th>
                   <th>Team</th>
                   <th>Ratings</th>
@@ -192,9 +188,6 @@ export class PlayerRanking extends Component {
                 {playerBowling.map((player, index) => (
                   <tr>
                     <td id={"bowlingPosition" + index}>{player.position}</td>
-                    <td>
-                      <img src={playeruser} className="rankingplayerIcon" />
-                    </td>
                     <td id={"bowlingName" + index}>{player.player_name}</td>
                     <td id={"bowlingTeam" + index}>{player.player_team}</td>
                     <td id={"bowlingRating" + index}>{player.ratings}</td>
@@ -216,7 +209,6 @@ export class PlayerRanking extends Component {
               <table class="ranking-table">
                 <tr>
                   <th>Rank</th>
-                  <th>Player Image</th>
                   <th>Player</th>
                   <th>Team</th>
                   <th>Ratings</th>
@@ -224,9 +216,7 @@ export class PlayerRanking extends Component {
                 {playerallRounder.map((player, index) => (
                   <tr>
                     <td id={"allRounderPosition" + index}>{player.position}</td>
-                    <td>
-                      <img src={playeruser} className="rankingplayerIcon" />
-                    </td>
+
                     <td id={"allRounderName" + index}>{player.player_name}</td>
                     <td id={"allRounderTeam" + index}>{player.player_team}</td>
                     <td id={"allRounderRating" + index}>{player.ratings}</td>
@@ -244,7 +234,6 @@ export class PlayerRanking extends Component {
               <table class="ranking-table">
                 <tr>
                   <th>Rank</th>
-                  <th>Team Image</th>
                   <th>Team</th>
                   <th>Ratings</th>
                   <th>Points</th>
@@ -252,9 +241,7 @@ export class PlayerRanking extends Component {
                 {this.props.teams.map((team, index) => (
                   <tr>
                     <td id={"teamPosition" + index}>{team.position}</td>
-                    <td>
-                      <img src={playeruser} className="rankingplayerIcon" />
-                    </td>
+
                     <td id={"teamName" + index}>{team.team_name}</td>
                     <td id={"teamRating" + index}>{team.rating}</td>
                     <td id={"teamPoints" + index}>{team.points}</td>

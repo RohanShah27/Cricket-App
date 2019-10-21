@@ -186,12 +186,10 @@ figcaption {
   /* padding-right: 2px; */
 }
 
-.imgformatch {
+/* .imgformatch {
   height: 50px;
   width: 50px;
-  border: 0.1px solid black;
-  border-radius: 50%;
-}
+} */
 .testimonials .card p {
   padding: 0px 15px;
   font-size: 15px;

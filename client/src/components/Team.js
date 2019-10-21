@@ -191,39 +191,38 @@ export class Team extends Component {
                     return (
                       <div>
                         {teams ? (
-                          <div className="teamcomponent-card">
-                            <div className="team-content">
-                              {/* <p>Started</p> */}
-                              <ReactCountryFlag
-                                styleProps={{
-                                  width: "70px",
-                                  height: "70px"
-                                }}
-                                code={
-                                  teams.team_image ? teams.team_image : "ao"
-                                }
-                                svg
-                                className="internationalLogo"
-                              />{" "}
-                              <p>{teams.team_name}</p>
-                              {/* <p>India</p> */}
-                              <div className="team-details">
-                                <p>
-                                  <button
-                                    className="playerViewDetails"
-                                    onClick={() => {
-                                      this.props.history.push(
-                                        "/viewteam/" + teams.team_id,
-                                        { teams }
-                                      );
-                                    }}
-                                  >
-                                    {" "}
-                                    View Details
-                                  </button>
-                                </p>
-                              </div>
+                          <div
+                            className="teamcomponent-card"
+                            style={{ zIndex: "1" }}
+                          >
+                            <ReactCountryFlag
+                              styleProps={{
+                                width: "70px",
+                                height: "70px"
+                              }}
+                              code={teams.team_image ? teams.team_image : "ao"}
+                              svg
+                              className="internationalLogo"
+                            />{" "}
+                            <p>{teams.team_name}</p>
+                            {/* <p>India</p> */}
+                            <div className="team-details">
+                              <p>
+                                <button
+                                  className="playerViewDetails"
+                                  onClick={() => {
+                                    this.props.history.push(
+                                      "/viewteam/" + teams.team_id,
+                                      { teams }
+                                    );
+                                  }}
+                                >
+                                  {" "}
+                                  View Details
+                                </button>
+                              </p>
                             </div>
+                            {/* </div> */}
                           </div>
                         ) : (
                           <div></div>
