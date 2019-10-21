@@ -1,45 +1,36 @@
 import React from "react";
-import { shallow } from "enzyme";
+import { mount } from "enzyme";
 import { ViewTeam } from "../ViewTeam";
 import { Provider } from "react-redux";
 import store from "../../store";
 
-const viewteam = jest.fn();
-const wrapper = shallow(
-  <Provider store={store}>
-    <ViewTeam
-      viewteam={viewteam}
-      tournamentTeam={[]}
-      match={[]}
-      location={[]}
-    />
-  </Provider>
+let team_stats = [
+  {
+    test_played: 1,
+    tes_win: 1,
+    test_loss: 1,
+    test_draw: 1,
+    odi_played: 1,
+    odi_win: 1,
+    odi_loss: 1,
+    odi_draw: 1,
+    t20_played: 1,
+    t20_win: 1,
+    t20_loss: 1,
+    t20_draw: 1
+  }
+];
+const wrapper = mount(
+  <ViewTeam
+    tournamentTeam={[]}
+    match={[]}
+    location={[]}
+    team_stats={team_stats}
+  />
 );
 
 describe("Testing viewTeam component", () => {
-  it("should mount", () => {
+  it("should render the component", () => {
     expect(wrapper).toMatchSnapshot();
-  });
-
-  it("should have exactly 3 buttons", () => {
-    expect(wrapper.find("button").length).toBe(3);
-  });
-
-  it("no of div tags", () => {
-    expect(wrapper.find("div").length).toBe(5);
-  });
-
-  it("no of p tags", () => {
-    expect(wrapper.find("p").length).toBe(2);
-  });
-
-  it("test", () => {
-    expect(
-      wrapper
-        .find("button")
-        .at(0)
-        .simulate()
-        .click("ODI").props.state.match_type
-    ).toBe("ODI");
   });
 });

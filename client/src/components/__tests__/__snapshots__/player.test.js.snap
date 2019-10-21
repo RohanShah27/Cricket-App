@@ -1,3 +1,307 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Test player Component should render the component 1`] = `ReactWrapper {}`;
+exports[`Test player Component should render the component 1`] = `
+<Provider
+  store={
+    Object {
+      "dispatch": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+      Symbol(observable): [Function],
+    }
+  }
+>
+  <Connect(AdminPlayer)
+    history={
+      Array [
+        "/",
+      ]
+    }
+    player={[MockFunction]}
+  >
+    <AdminPlayer
+      adminplayers={Array []}
+      createPlayers={[Function]}
+      error=""
+      getPlayertype={[Function]}
+      history={
+        Array [
+          "/",
+        ]
+      }
+      player={[MockFunction]}
+    >
+      <div>
+        <form
+          id="playerform"
+        >
+          <fieldset>
+            <div
+              className="PlayerAdding"
+            >
+              <h1
+                className="playerheader"
+              >
+                Add Player
+              </h1>
+              <input
+                className="playerdetails"
+                name="player_name"
+                onChange={[Function]}
+                placeholder=" Player Name"
+                required={true}
+                type="text"
+              />
+              <div
+                className="playerflex-container"
+              >
+                <div
+                  className="division"
+                >
+                  <select
+                    className="genders"
+                    onChange={[Function]}
+                    required={true}
+                  >
+                    <option
+                      className="choice"
+                      name="choice"
+                    >
+                      Gender
+                    </option>
+                    <option
+                      name="male"
+                    >
+                       Male
+                    </option>
+                    <option
+                      name="female"
+                    >
+                      Female
+                    </option>
+                  </select>
+                </div>
+                <div
+                  className="division"
+                >
+                  <t
+                    allowSameDay={false}
+                    className="playerdate"
+                    dateFormat="dd-MM-yyyy"
+                    dateFormatCalendar="LLLL yyyy"
+                    disabled={false}
+                    disabledKeyboardNavigation={false}
+                    dropdownMode="scroll"
+                    inlineFocusSelectedMonth={false}
+                    monthsShown={1}
+                    nextMonthButtonLabel="Next Month"
+                    nextYearButtonLabel="Next Year"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onClickOutside={[Function]}
+                    onFocus={[Function]}
+                    onInputClick={[Function]}
+                    onInputError={[Function]}
+                    onKeyDown={[Function]}
+                    onMonthChange={[Function]}
+                    onSelect={[Function]}
+                    onYearChange={[Function]}
+                    placeholderText="DOB"
+                    popperModifiers={
+                      Object {
+                        "flip": Object {
+                          "behavior": Array [
+                            "bottom",
+                          ],
+                        },
+                        "hide": Object {
+                          "enabled": false,
+                        },
+                        "preventOverflow": Object {
+                          "enabled": false,
+                        },
+                      }
+                    }
+                    popperPlacement="bottom"
+                    preventOpenOnFocus={false}
+                    previousMonthButtonLabel="Previous Month"
+                    previousYearButtonLabel="Previous Year"
+                    readOnly={false}
+                    renderDayContents={[Function]}
+                    required={true}
+                    selected=""
+                    shouldCloseOnSelect={true}
+                    showMonthYearPicker={false}
+                    showQuarterYearPicker={false}
+                    showTimeInput={false}
+                    showTimeSelect={false}
+                    strictParsing={false}
+                    timeCaption="Time"
+                    timeInputLabel="Time"
+                    timeIntervals={30}
+                    withPortal={false}
+                  >
+                    <t
+                      hidePopper={true}
+                      popperComponent={null}
+                      popperModifiers={
+                        Object {
+                          "flip": Object {
+                            "behavior": Array [
+                              "bottom",
+                            ],
+                          },
+                          "hide": Object {
+                            "enabled": false,
+                          },
+                          "preventOverflow": Object {
+                            "enabled": false,
+                          },
+                        }
+                      }
+                      popperPlacement="bottom"
+                      popperProps={Object {}}
+                      targetComponent={
+                        <div
+                          className="react-datepicker__input-container"
+                        >
+                          <input
+                            className="playerdate"
+                            disabled={false}
+                            onBlur={[Function]}
+                            onChange={[Function]}
+                            onClick={[Function]}
+                            onFocus={[Function]}
+                            onKeyDown={[Function]}
+                            placeholder="DOB"
+                            readOnly={false}
+                            required={true}
+                            type="text"
+                            value=""
+                          />
+                        </div>
+                      }
+                    >
+                      <Manager>
+                        <Reference>
+                          <InnerReference
+                            setReferenceNode={[Function]}
+                          >
+                            <div
+                              className="react-datepicker-wrapper"
+                            >
+                              <div
+                                className="react-datepicker__input-container"
+                              >
+                                <input
+                                  className="playerdate"
+                                  disabled={false}
+                                  onBlur={[Function]}
+                                  onChange={[Function]}
+                                  onClick={[Function]}
+                                  onFocus={[Function]}
+                                  onKeyDown={[Function]}
+                                  placeholder="DOB"
+                                  readOnly={false}
+                                  required={true}
+                                  type="text"
+                                  value=""
+                                />
+                              </div>
+                            </div>
+                          </InnerReference>
+                        </Reference>
+                      </Manager>
+                    </t>
+                  </t>
+                </div>
+              </div>
+              <p>
+                <input
+                  className="playerdetails"
+                  name="nation"
+                  onChange={[Function]}
+                  placeholder="Nationality"
+                  required={true}
+                  type="text"
+                />
+                 
+              </p>
+              <p>
+                <select
+                  className="playerType"
+                  onChange={[Function]}
+                  required={true}
+                >
+                  <option
+                    name="choice"
+                  >
+                    player type
+                  </option>
+                  <option
+                    name="Batsman"
+                  >
+                    Batsman
+                  </option>
+                  <option
+                    name="Bowler"
+                  >
+                    Bowler
+                  </option>
+                  <option
+                    name="All Rounder"
+                  >
+                    All Rounder
+                  </option>
+                  <option
+                    name="batsman wk"
+                  >
+                    Batsman Wicket Keeper
+                  </option>
+                </select>
+              </p>
+              <p>
+                <input
+                  className="playerdetails"
+                  name="batting_style"
+                  onChange={[Function]}
+                  placeholder="Batting Style"
+                  required={true}
+                  type="text"
+                />
+              </p>
+              <p>
+                <input
+                  className="playerdetails"
+                  name="bowling_style"
+                  onChange={[Function]}
+                  placeholder="Bowling Style"
+                  required={true}
+                  type="text"
+                />
+              </p>
+            </div>
+            <div
+              className="teamnameerror"
+              style={
+                Object {
+                  "color": "red",
+                  "fontSize": 15,
+                }
+              }
+            />
+            <button
+              className="playerbutton"
+              onChange={[Function]}
+              onClick={[Function]}
+            >
+              Add Player
+            </button>
+          </fieldset>
+        </form>
+      </div>
+    </AdminPlayer>
+  </Connect(AdminPlayer)>
+</Provider>
+`;

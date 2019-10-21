@@ -18,9 +18,6 @@ export class PaginatePlayers extends Component {
     pagePlayers: []
   };
   componentDidMount() {
-    let globalgender = {
-      gender: this.props.gender
-    };
     this.props.getAllPlayers(this.props.gender);
   }
   componentWillReceiveProps(nextProps) {
@@ -157,7 +154,9 @@ export class PaginatePlayers extends Component {
                     <span style={{ color: "black" }} id={"playerTeam" + index}>
                       Team:
                     </span>{" "}
-                    {player.nation ? player.nation : "NA"}
+                    <span id={"playerTeamInfo" + index}>
+                      {player.nation ? player.nation : "NA"}
+                    </span>
                   </span>
                   <button
                     id={"playerButton" + index}

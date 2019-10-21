@@ -17,7 +17,6 @@ import {
 import india from "../assests/india.jpg";
 import pakistan from "../assests/pakistan.jpg";
 import Calendar from "react-calendar";
-import { deflateSync } from "zlib";
 
 export class ViewTeam extends Component {
   constructor(props) {
@@ -88,7 +87,6 @@ export class ViewTeam extends Component {
       this.props.location.state.teams.team_id,
       type
     );
-    // this.props.teamStatsGraphOdi(this.props.location.state.teams.team_id);
   }
 
   onodiclick = () => {
@@ -219,12 +217,6 @@ export class ViewTeam extends Component {
     console.log("from team nav", obj);
     this.props.getMatchesByTeam(obj);
   }
-
-  // callloader = () => {
-  //   <div className="loader-container">
-  //     <div className="user-loader"></div>
-  //   </div>;
-  // };
 
   render() {
     return (

@@ -1,8 +1,6 @@
-import React, { Component, useState, useEffect } from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
 import "../styles/match.css";
-import india from "../assests/india.jpg";
-import pakistan from "../assests/pakistan.jpg";
 import { getMatchesByType } from "../actions/matchActions";
 import InfiniteScroll from "react-infinite-scroll-component";
 import ReactCountryFlag from "react-country-flag";

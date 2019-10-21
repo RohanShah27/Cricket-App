@@ -30,6 +30,7 @@ export class Home extends Component {
               </h2>
               <div className="col-content">
                 <ul className="home-ul">
+
                   {this.props.fixtures.map((fixture, index) => (
                     <p class="home-p">
                       <span id={"matchName" + index}>{fixture.match}</span>{" "}
