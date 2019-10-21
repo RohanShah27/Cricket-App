@@ -71,11 +71,10 @@ router.post("/getbyteam", async (req, res) => {
     if (!result) {
       res.status(404).json({
         statusCode: 404,
-        message: "Cannot find match with the specified type",
+        message: "Cannot find match with the specified team",
         data: null
       });
     }
-    console.log("result", result);
     res.status(200).json({
       status: 200,
       data: result,
@@ -124,7 +123,6 @@ router.post("/getbyteamandtype", async (req, res) => {
         data: null
       });
     }
-    console.log("result", result);
     res.status(200).json({
       status: 200,
       data: result,
@@ -171,11 +169,10 @@ router.post("/getbydate", async (req, res) => {
     if (!result) {
       res.status(404).json({
         statusCode: 404,
-        message: "Cannot find match with the specified type",
+        message: "Cannot find match with the specified date",
         data: null
       });
     }
-    console.log("result", result);
     res.status(200).json({
       status: 200,
       data: result,

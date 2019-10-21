@@ -25,6 +25,13 @@ router.post("/tournament", async (req, res) => {
       t2 as (select match.innings_two_team, match.competition, team.team_name, team.team_id,team.team_image,team.team_background  from match 
       inner join team on match.innings_two_team = team.team_id) select distinct(team_name), team_id,team_image,team_background  from t2 where competition='${tournament}'`
   );
+  if (!result) {
+    res.status(404).json({
+      statusCode: 404,
+      message: "Cannot fetch the team details",
+      data: null
+    });
+  }
   res.status(200).json({
     status: 200,
     data: result,
@@ -38,6 +45,13 @@ router.post("/playerstatsforteams/:team_id", async (req, res) => {
   const result = await db.any(
     `Select distinct player_name, player_stats_value from teamplayer_stats where player_stats_name = 'total_runs' and team_id= ${team_id} and match_type = '${match_type}' order by player_stats_value desc fetch first 5 rows only`
   );
+  if (!result) {
+    res.status(404).json({
+      statusCode: 404,
+      message: "Cannot fetch the stats",
+      data: null
+    });
+  }
   res.status(200).json({
     status: 200,
     data: result,
@@ -51,6 +65,13 @@ router.post("/playerstatsforteamsbowler/:team_id", async (req, res) => {
   const result = await db.any(
     `Select distinct player_name, player_stats_value from teamplayer_stats where player_stats_name = 'total_wickets' and team_id= ${team_id} and match_type = '${match_type}' order by player_stats_value desc fetch first 5 rows only`
   );
+  if (!result) {
+    res.status(404).json({
+      statusCode: 404,
+      message: "Cannot fetch the stats",
+      data: null
+    });
+  }
   res.status(200).json({
     status: 200,
     data: result,
@@ -64,6 +85,13 @@ router.post("/teambyid", async (req, res) => {
   const result = await db.any(
     "select * from team where team_id = '" + team_id + "';"
   );
+  if (!result) {
+    res.status(404).json({
+      statusCode: 404,
+      message: "Cannot fetch the team",
+      data: null
+    });
+  }
   res.status(200).json({
     status: 200,
     data: result,
@@ -107,7 +135,8 @@ router.get("/matchtype/:team_id", async (req, res) => {
   }
 });
 
-router.get("/playerstats", async (req, res) => {
+router.get("/playerstats/:team_id", async (req, res) => {
+  const team_id = req.params.team_id;
   const result = await db.any(
     "Select player_stats.match_type, player_stats.player_stats_name,player_stats.player_stats_value from team where team_id = '" +
       team_id +
@@ -116,7 +145,7 @@ router.get("/playerstats", async (req, res) => {
   res.status(200).json({
     status: 200,
     data: result,
-    message: "Retrieved team successfully"
+    message: "Retrieved stats successfully"
   });
 });
 
@@ -125,7 +154,7 @@ router.post("/teamsearch", async (req, res) => {
     let team_name = req.body.team_name;
     let tournament = req.body.tournament;
     console.log(team_name);
-    const query = `select * from team where team_name ilike '${team_name}%'`;
+    const query = `select * from team where team_name ilike '${team_name}%' or team_name ilike '%${team_name}'`;
     console.log("query", query);
     const result = await db.any(
       query
