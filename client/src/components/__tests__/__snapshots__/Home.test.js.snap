@@ -1,5 +1,549 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Test MAtch Component should render the component 1`] = `
+<Home
+  fixtures={
+    Array [
+      Object {
+        "match": "India vs Pakistan",
+        "match_date": "29/11/1997",
+        "time": "12:00 IST",
+      },
+      Object {
+        "match": "India vs Srilanka",
+        "match_date": "5/12/1997",
+        "time": "12:00 IST",
+      },
+    ]
+  }
+  getFixtures={
+    [MockFunction] {
+      "calls": Array [
+        Array [],
+      ],
+      "results": Array [
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+      ],
+    }
+  }
+  getHeadline={
+    [MockFunction] {
+      "calls": Array [
+        Array [
+          1,
+        ],
+      ],
+      "results": Array [
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+      ],
+    }
+  }
+  getHeadlines={
+    [MockFunction] {
+      "calls": Array [
+        Array [],
+      ],
+      "results": Array [
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+      ],
+    }
+  }
+  getMatchesRecentMatches={
+    [MockFunction] {
+      "calls": Array [
+        Array [
+          undefined,
+        ],
+      ],
+      "results": Array [
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+      ],
+    }
+  }
+  headline={
+    Array [
+      Object {
+        "headline_description": "test Descrption",
+        "headlines": "Test headline",
+      },
+    ]
+  }
+  headlines={
+    Array [
+      Object {
+        "headline_id": 1,
+        "headlines": "Master Blaster Sachin baby",
+      },
+      Object {
+        "headline_id": 2,
+        "headlines": "BCCI President elections coming up",
+      },
+    ]
+  }
+  history={
+    Object {
+      "push": [MockFunction],
+    }
+  }
+  home={[MockFunction]}
+  match={
+    Array [
+      Object {
+        "match_competition": "Big bAsh leagues",
+        "match_id": 2,
+        "match_type": "ODI",
+        "team1": "India",
+        "team2": "Pakistan",
+      },
+      Object {
+        "match_competition": "Big bAsh leagues",
+        "match_id": 3,
+        "match_type": "T20",
+        "team1": "India",
+        "team2": "Srilanka",
+      },
+    ]
+  }
+>
+  <div
+    style={
+      Object {
+        "marginTop": "80px",
+      }
+    }
+  >
+    <div
+      className="home-flex-container"
+      id="test"
+    >
+      <div
+        className="site"
+      >
+        <div
+          className="fixtures "
+        >
+          <h2
+            className="fixtures-header"
+            id="fixtures-header"
+          >
+            Fixtures
+          </h2>
+          <div
+            className="col-content"
+          >
+            <ul
+              className="home-ul"
+            >
+              <p
+                class="home-p"
+              >
+                <span
+                  id="matchName0"
+                >
+                  India vs Pakistan
+                </span>
+                 
+                <span
+                  className="home-time"
+                >
+                  29/11/1997
+                   at 
+                  12:00 IST
+                </span>
+                <hr
+                  className="home-hr"
+                />
+              </p>
+              <p
+                class="home-p"
+              >
+                <span
+                  id="matchName1"
+                >
+                  India vs Srilanka
+                </span>
+                 
+                <span
+                  className="home-time"
+                >
+                  5/12/1997
+                   at 
+                  12:00 IST
+                </span>
+                <hr
+                  className="home-hr"
+                />
+              </p>
+            </ul>
+          </div>
+        </div>
+        <div
+          className="news"
+        >
+          <div
+            className="col-center"
+          >
+            <h2
+              className="news-header"
+              id="news-Section"
+            >
+              India's Tour of WestIndies
+            </h2>
+            <div
+              col-content={true}
+            >
+              <figure>
+                <img
+                  className="homeimg"
+                  src="data:image/jpeg;base64,undefined"
+                />
+              </figure>
+              <figcaption>
+                <span
+                  className="newsTitle"
+                >
+                  Test headline
+                </span>
+                <hr
+                  className="home-hr"
+                />
+                <p
+                  className="home-p"
+                  style={
+                    Object {
+                      "fontSize": "15px",
+                      "paddingLeft": "5px",
+                    }
+                  }
+                />
+              </figcaption>
+            </div>
+          </div>
+        </div>
+        <div
+          className="headlines"
+        >
+          <h2
+            className="fixtures-header"
+            id="headlines"
+          >
+            Headlines
+          </h2>
+          <div
+            className="col-content"
+          >
+            <ul
+              className="home-ul"
+            >
+              <a
+                id="getHeadlineData0"
+                onClick={[Function]}
+              >
+                 
+                <li
+                  className="home-li"
+                  id="singleheadline0"
+                  style={
+                    Object {
+                      "cursor": "pointer",
+                    }
+                  }
+                >
+                  Master Blaster Sachin baby
+                </li>
+              </a>
+              <hr
+                className="home-hr"
+              />
+              <a
+                id="getHeadlineData1"
+                onClick={[Function]}
+              >
+                 
+                <li
+                  className="home-li"
+                  id="singleheadline1"
+                  style={
+                    Object {
+                      "cursor": "pointer",
+                    }
+                  }
+                >
+                  BCCI President elections coming up
+                </li>
+              </a>
+              <hr
+                className="home-hr"
+              />
+            </ul>
+          </div>
+        </div>
+        <div
+          className="home-match-container"
+        >
+          <div
+            className="testimonials"
+            id="#recent-matches"
+          >
+            <div
+              className="card"
+            >
+              <span
+                className="tournament-home"
+                id="matchData0"
+              >
+                 
+                 
+                - 
+                ODI
+              </span>
+              <div
+                className="parent"
+              >
+                <div
+                  className="first"
+                >
+                  <ReactCountryFlag
+                    cdnUrl="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.3.0/flags/4x3/"
+                    className="imgformatch"
+                    code="ao"
+                    styleProps={
+                      Object {
+                        "height": "50px",
+                        "width": "50px",
+                      }
+                    }
+                    svg={true}
+                  >
+                    <span
+                      aria-label="ao"
+                      className="imgformatch"
+                      role="img"
+                      style={
+                        Object {
+                          "backgroundImage": "url(https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.3.0/flags/4x3/ao.svg)",
+                          "backgroundPosition": "50%",
+                          "backgroundRepeat": "no-repeat",
+                          "backgroundSize": "contain",
+                          "display": "inline-block",
+                          "fontSize": "1em",
+                          "height": "50px",
+                          "lineHeight": "1em",
+                          "position": "relative",
+                          "verticalAlign": "middle",
+                          "width": "50px",
+                        }
+                      }
+                      title="ao"
+                    />
+                  </ReactCountryFlag>
+                  <p
+                    id="matchTeamOne0"
+                    style={
+                      Object {
+                        "wordBreak": "break-word",
+                      }
+                    }
+                  >
+                    India
+                  </p>
+                </div>
+                <div
+                  className="second"
+                >
+                  <button
+                    className="buttonformatch"
+                    id="recent-match0"
+                    onClick={[Function]}
+                  >
+                    View
+                  </button>
+                </div>
+                <div
+                  className="third"
+                >
+                  <ReactCountryFlag
+                    cdnUrl="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.3.0/flags/4x3/"
+                    className="imgformatch"
+                    code="bm"
+                    styleProps={
+                      Object {
+                        "height": "50px",
+                        "width": "50px",
+                      }
+                    }
+                    svg={true}
+                  >
+                    <span
+                      aria-label="bm"
+                      className="imgformatch"
+                      role="img"
+                      style={
+                        Object {
+                          "backgroundImage": "url(https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.3.0/flags/4x3/bm.svg)",
+                          "backgroundPosition": "50%",
+                          "backgroundRepeat": "no-repeat",
+                          "backgroundSize": "contain",
+                          "display": "inline-block",
+                          "fontSize": "1em",
+                          "height": "50px",
+                          "lineHeight": "1em",
+                          "position": "relative",
+                          "verticalAlign": "middle",
+                          "width": "50px",
+                        }
+                      }
+                      title="bm"
+                    />
+                  </ReactCountryFlag>
+                  <p
+                    id="matchTeamTwo0"
+                  >
+                    Pakistan
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div
+              className="card"
+            >
+              <span
+                className="tournament-home"
+                id="matchData1"
+              >
+                 
+                 
+                - 
+                T20
+              </span>
+              <div
+                className="parent"
+              >
+                <div
+                  className="first"
+                >
+                  <ReactCountryFlag
+                    cdnUrl="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.3.0/flags/4x3/"
+                    className="imgformatch"
+                    code="ao"
+                    styleProps={
+                      Object {
+                        "height": "50px",
+                        "width": "50px",
+                      }
+                    }
+                    svg={true}
+                  >
+                    <span
+                      aria-label="ao"
+                      className="imgformatch"
+                      role="img"
+                      style={
+                        Object {
+                          "backgroundImage": "url(https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.3.0/flags/4x3/ao.svg)",
+                          "backgroundPosition": "50%",
+                          "backgroundRepeat": "no-repeat",
+                          "backgroundSize": "contain",
+                          "display": "inline-block",
+                          "fontSize": "1em",
+                          "height": "50px",
+                          "lineHeight": "1em",
+                          "position": "relative",
+                          "verticalAlign": "middle",
+                          "width": "50px",
+                        }
+                      }
+                      title="ao"
+                    />
+                  </ReactCountryFlag>
+                  <p
+                    id="matchTeamOne1"
+                    style={
+                      Object {
+                        "wordBreak": "break-word",
+                      }
+                    }
+                  >
+                    India
+                  </p>
+                </div>
+                <div
+                  className="second"
+                >
+                  <button
+                    className="buttonformatch"
+                    id="recent-match1"
+                    onClick={[Function]}
+                  >
+                    View
+                  </button>
+                </div>
+                <div
+                  className="third"
+                >
+                  <ReactCountryFlag
+                    cdnUrl="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.3.0/flags/4x3/"
+                    className="imgformatch"
+                    code="bm"
+                    styleProps={
+                      Object {
+                        "height": "50px",
+                        "width": "50px",
+                      }
+                    }
+                    svg={true}
+                  >
+                    <span
+                      aria-label="bm"
+                      className="imgformatch"
+                      role="img"
+                      style={
+                        Object {
+                          "backgroundImage": "url(https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.3.0/flags/4x3/bm.svg)",
+                          "backgroundPosition": "50%",
+                          "backgroundRepeat": "no-repeat",
+                          "backgroundSize": "contain",
+                          "display": "inline-block",
+                          "fontSize": "1em",
+                          "height": "50px",
+                          "lineHeight": "1em",
+                          "position": "relative",
+                          "verticalAlign": "middle",
+                          "width": "50px",
+                        }
+                      }
+                      title="bm"
+                    />
+                  </ReactCountryFlag>
+                  <p
+                    id="matchTeamTwo1"
+                  >
+                    Srilanka
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+     
+  </div>
+</Home>
+`;
+
 exports[`Test Team Component should render the component 1`] = `
 <Home
   fixtures={

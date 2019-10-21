@@ -1,0 +1,172 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test Match Component should render the component 1`] = `
+<Match
+  getMatchesByType={
+    [MockFunction] {
+      "calls": Array [
+        Array [
+          Object {
+            "gender": undefined,
+            "type": "ODI",
+          },
+        ],
+      ],
+      "results": Array [
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+      ],
+    }
+  }
+  match={[MockFunction]}
+  matches={
+    Array [
+      Object {
+        "match_competition": "Big bAsh leagues",
+        "match_id": 2,
+        "match_type": "ODI",
+        "team1": "India",
+        "team1_image": "in",
+        "team2": "Pakistan",
+        "team2_image": "pk",
+      },
+      Object {
+        "match_competition": "Big bAsh leagues",
+        "match_id": 3,
+        "match_type": "T20",
+        "team1": "India",
+        "team1_image": "in",
+        "team2": "Srilanka",
+        "team2_image": "lk",
+      },
+    ]
+  }
+>
+  <div>
+    <div
+      className="match-pc-tab"
+      id="matchtype-tab"
+    >
+      <input
+        defaultChecked="defaultChecked"
+        id="match-tab1"
+        name="pct"
+        onClick={[Function]}
+        type="radio"
+      />
+      <input
+        id="match-tab2"
+        name="pct"
+        onClick={[Function]}
+        type="radio"
+      />
+      <input
+        id="match-tab3"
+        name="pct"
+        onClick={[Function]}
+        type="radio"
+      />
+      <nav>
+        <ul>
+          <li
+            className="match-tab1"
+          >
+            <label
+              htmlFor="match-tab1"
+            >
+              <b>
+                ODI
+              </b>
+            </label>
+          </li>
+          <li
+            className="match-tab3"
+          >
+            <label
+              htmlFor="match-tab3"
+            >
+              <b>
+                T20
+              </b>
+            </label>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <div
+          className="match-tab1"
+        >
+          <InfiniteScroll
+            dataLength={0}
+            disableBrowserPullToRefresh={true}
+            endMessage={
+              <p
+                style={
+                  Object {
+                    "textAlign": "center",
+                  }
+                }
+              >
+                <b>
+                  Yay! You have seen all Teams
+                </b>
+              </p>
+            }
+            hasMore={true}
+            height={600}
+            loader={
+              <div
+                className="loader-container"
+              >
+                <div
+                  className="user-loader"
+                />
+              </div>
+            }
+            next={[Function]}
+            pullDownToRefreshContent={
+              <h3>
+                Pull down to refresh
+              </h3>
+            }
+            pullDownToRefreshThreshold={100}
+            releaseToRefreshContent={
+              <h3>
+                Release to refresh
+              </h3>
+            }
+          >
+            <div
+              style={Object {}}
+            >
+              <div
+                className="infinite-scroll-component "
+                style={
+                  Object {
+                    "WebkitOverflowScrolling": "touch",
+                    "height": 600,
+                    "overflow": "auto",
+                  }
+                }
+              >
+                <div
+                  className="match-testimonials"
+                />
+                <div
+                  className="loader-container"
+                >
+                  <div
+                    className="user-loader"
+                  />
+                </div>
+              </div>
+            </div>
+          </InfiniteScroll>
+        </div>
+      </section>
+    </div>
+  </div>
+</Match>
+`;

@@ -79,7 +79,7 @@ export class Match extends Component {
   render() {
     return (
       <div>
-        <div className="match-pc-tab">
+        <div className="match-pc-tab" id="matchtype-tab">
           <input
             defaultChecked="defaultChecked"
             id="match-tab1"
@@ -158,9 +158,10 @@ export class Match extends Component {
                 }
               >
                 <div className="match-testimonials">
-                  {this.state.pageMatches.map(match => (
+                  {this.state.pageMatches.map((match, index) => (
                     <div
                       className="match-card"
+                      id="matchCard"
                       onClick={() => {
                         this.props.history.push(
                           "/matchdetails/" + match.match_id,
@@ -178,7 +179,7 @@ export class Match extends Component {
                             code={match.team1_image ? match.team1_image : "ao"}
                             svg
                           />{" "}
-                          <p>{match.team1}</p>
+                          <p id={"matchTeamOne" + index}>{match.team1}</p>
                           <p className="match-p">250/5 (50.0)</p>
                         </div>
                         <div className="match-second">
@@ -190,7 +191,7 @@ export class Match extends Component {
                             code={match.team2_image ? match.team2_image : "ao"}
                             svg
                           />{" "}
-                          <p>{match.team2}</p>
+                          <p id={"matchTeamTwo" + index}>{match.team2}</p>
                           <p className="match-p">224/6 (50.0)</p>
                         </div>
 

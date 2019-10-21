@@ -16,21 +16,16 @@ body {
   height: 100%;
 }
 
-.imgforteam {
-  border-radius: 50%;
-  height: 100px;
-}
-
 .parentcoach {
   display: flex;
   flex-direction: row;
-  margin-left: 50px;
-  margin-top: 50px;
+  margin-left: 13px;
 }
 
 .child2 {
   margin-left: 20px;
-  margin-top: 25px;
+  margin-top: 0px;
+  font-size: 50px;
 }
 
 .child2p {
