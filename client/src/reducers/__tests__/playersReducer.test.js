@@ -73,6 +73,18 @@ describe("Testing search Reducers", () => {
     });
   });
 
+  it("should return state on wrong type", () => {
+    let action = {
+      type: "SOME_TYPE",
+      payload: []
+    };
+    const returnedState = playersReducer(undefined, action);
+    expect(returnedState).toEqual({
+      player: [],
+      players: [],
+      search_player: [[]]
+    });
+  });
   it("should return state object with player array equal to the payload in the action when the action type is PLAYER_SEARCH(when the state is not initial state)", () => {
     const initialState = {
       search_player: []
