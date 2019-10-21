@@ -5,14 +5,18 @@ exports[`Test Team Component should render the component 1`] = `
   fixtures={
     Array [
       Object {
-        "match": "India vs Pakistan",
         "match_date": "29/11/1997",
-        "time": "12:00 IST",
+        "match_time": "12:00 IST",
+        "match_type": "ODI",
+        "team1_name": "India",
+        "team2_name": "Pakistan",
       },
       Object {
-        "match": "India vs Srilanka",
-        "match_date": "5/12/1997",
-        "time": "12:00 IST",
+        "match_date": "29/11/1997",
+        "match_time": "12:00 IST",
+        "match_type": "ODI",
+        "team1_name": "India",
+        "team2_name": "Pakistan",
       },
     ]
   }
@@ -60,7 +64,9 @@ exports[`Test Team Component should render the component 1`] = `
   getMatchesRecentMatches={
     [MockFunction] {
       "calls": Array [
-        Array [],
+        Array [
+          undefined,
+        ],
       ],
       "results": Array [
         Object {
@@ -146,15 +152,26 @@ exports[`Test Team Component should render the component 1`] = `
             >
               <p
                 class="home-p"
+                style={
+                  Object {
+                    "cursor": "pointer",
+                  }
+                }
               >
                 <span
                   id="matchName0"
                 >
-                  India vs Pakistan
+                  India
+                   VS 
+                  Pakistan
+                   -
+                   
+                  ODI
                 </span>
                  
                 <span
                   className="home-time"
+                  id="matchTimings0"
                 >
                   29/11/1997
                    at 
@@ -166,17 +183,28 @@ exports[`Test Team Component should render the component 1`] = `
               </p>
               <p
                 class="home-p"
+                style={
+                  Object {
+                    "cursor": "pointer",
+                  }
+                }
               >
                 <span
                   id="matchName1"
                 >
-                  India vs Srilanka
+                  India
+                   VS 
+                  Pakistan
+                   -
+                   
+                  ODI
                 </span>
                  
                 <span
                   className="home-time"
+                  id="matchTimings1"
                 >
-                  5/12/1997
+                  29/11/1997
                    at 
                   12:00 IST
                 </span>
@@ -197,7 +225,7 @@ exports[`Test Team Component should render the component 1`] = `
               className="news-header"
               id="news-Section"
             >
-              India's Tour of WestIndies
+              News
             </h2>
             <div
               col-content={true}
@@ -205,12 +233,13 @@ exports[`Test Team Component should render the component 1`] = `
               <figure>
                 <img
                   className="homeimg"
-                  src="DHONI.png"
+                  src="data:image/jpeg;base64,undefined"
                 />
               </figure>
               <figcaption>
                 <span
                   className="newsTitle"
+                  id="headlineTitle"
                 >
                   Test headline
                 </span>
@@ -219,6 +248,7 @@ exports[`Test Team Component should render the component 1`] = `
                 />
                 <p
                   className="home-p"
+                  id="headlineDescription"
                   style={
                     Object {
                       "fontSize": "15px",
@@ -313,10 +343,40 @@ exports[`Test Team Component should render the component 1`] = `
                 <div
                   className="first"
                 >
-                  <img
+                  <ReactCountryFlag
+                    cdnUrl="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.3.0/flags/4x3/"
                     className="imgformatch"
-                    src="india.jpg"
-                  />
+                    code="ao"
+                    styleProps={
+                      Object {
+                        "height": "50px",
+                        "width": "50px",
+                      }
+                    }
+                    svg={true}
+                  >
+                    <span
+                      aria-label="ao"
+                      className="imgformatch"
+                      role="img"
+                      style={
+                        Object {
+                          "backgroundImage": "url(https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.3.0/flags/4x3/ao.svg)",
+                          "backgroundPosition": "50%",
+                          "backgroundRepeat": "no-repeat",
+                          "backgroundSize": "contain",
+                          "display": "inline-block",
+                          "fontSize": "1em",
+                          "height": "50px",
+                          "lineHeight": "1em",
+                          "position": "relative",
+                          "verticalAlign": "middle",
+                          "width": "50px",
+                        }
+                      }
+                      title="ao"
+                    />
+                  </ReactCountryFlag>
                   <p
                     id="matchTeamOne0"
                     style={
@@ -342,10 +402,40 @@ exports[`Test Team Component should render the component 1`] = `
                 <div
                   className="third"
                 >
-                  <img
+                  <ReactCountryFlag
+                    cdnUrl="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.3.0/flags/4x3/"
                     className="imgformatch"
-                    src="pakistan.jpg"
-                  />
+                    code="bm"
+                    styleProps={
+                      Object {
+                        "height": "50px",
+                        "width": "50px",
+                      }
+                    }
+                    svg={true}
+                  >
+                    <span
+                      aria-label="bm"
+                      className="imgformatch"
+                      role="img"
+                      style={
+                        Object {
+                          "backgroundImage": "url(https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.3.0/flags/4x3/bm.svg)",
+                          "backgroundPosition": "50%",
+                          "backgroundRepeat": "no-repeat",
+                          "backgroundSize": "contain",
+                          "display": "inline-block",
+                          "fontSize": "1em",
+                          "height": "50px",
+                          "lineHeight": "1em",
+                          "position": "relative",
+                          "verticalAlign": "middle",
+                          "width": "50px",
+                        }
+                      }
+                      title="bm"
+                    />
+                  </ReactCountryFlag>
                   <p
                     id="matchTeamTwo0"
                   >
@@ -372,10 +462,40 @@ exports[`Test Team Component should render the component 1`] = `
                 <div
                   className="first"
                 >
-                  <img
+                  <ReactCountryFlag
+                    cdnUrl="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.3.0/flags/4x3/"
                     className="imgformatch"
-                    src="india.jpg"
-                  />
+                    code="ao"
+                    styleProps={
+                      Object {
+                        "height": "50px",
+                        "width": "50px",
+                      }
+                    }
+                    svg={true}
+                  >
+                    <span
+                      aria-label="ao"
+                      className="imgformatch"
+                      role="img"
+                      style={
+                        Object {
+                          "backgroundImage": "url(https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.3.0/flags/4x3/ao.svg)",
+                          "backgroundPosition": "50%",
+                          "backgroundRepeat": "no-repeat",
+                          "backgroundSize": "contain",
+                          "display": "inline-block",
+                          "fontSize": "1em",
+                          "height": "50px",
+                          "lineHeight": "1em",
+                          "position": "relative",
+                          "verticalAlign": "middle",
+                          "width": "50px",
+                        }
+                      }
+                      title="ao"
+                    />
+                  </ReactCountryFlag>
                   <p
                     id="matchTeamOne1"
                     style={
@@ -401,10 +521,40 @@ exports[`Test Team Component should render the component 1`] = `
                 <div
                   className="third"
                 >
-                  <img
+                  <ReactCountryFlag
+                    cdnUrl="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.3.0/flags/4x3/"
                     className="imgformatch"
-                    src="pakistan.jpg"
-                  />
+                    code="bm"
+                    styleProps={
+                      Object {
+                        "height": "50px",
+                        "width": "50px",
+                      }
+                    }
+                    svg={true}
+                  >
+                    <span
+                      aria-label="bm"
+                      className="imgformatch"
+                      role="img"
+                      style={
+                        Object {
+                          "backgroundImage": "url(https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.3.0/flags/4x3/bm.svg)",
+                          "backgroundPosition": "50%",
+                          "backgroundRepeat": "no-repeat",
+                          "backgroundSize": "contain",
+                          "display": "inline-block",
+                          "fontSize": "1em",
+                          "height": "50px",
+                          "lineHeight": "1em",
+                          "position": "relative",
+                          "verticalAlign": "middle",
+                          "width": "50px",
+                        }
+                      }
+                      title="bm"
+                    />
+                  </ReactCountryFlag>
                   <p
                     id="matchTeamTwo1"
                   >

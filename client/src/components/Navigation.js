@@ -3,8 +3,6 @@ import { getGlobalSearchResult } from "../actions/Search";
 import "../styles/navbar.css";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import virat from "../virat-kohli.png";
-import ipl from "./ipl.png";
 import stockPlayer from "../stockPlayer.png";
 import ReactCountryFlag from "react-country-flag";
 
@@ -39,7 +37,7 @@ export class Navigation extends Component {
     return (
       <div className="nav-container">
         <div className="nav-header">
-          <a className="logo">
+          <a className="logo" id="Brand">
             <Link to="/">Crickstrait</Link>
           </a>
           {this.props.gender == "male" ? (
@@ -55,6 +53,7 @@ export class Navigation extends Component {
             </a>
           ) : (
             <a
+              id="menState"
               className="options"
               onClick={this.props.menState}
               style={{ marginRight: "5px" }}
@@ -64,13 +63,18 @@ export class Navigation extends Component {
           )}
           {this.props.gender == "female" ? (
             <a
+              id="femaleState"
               className="options"
               style={{ color: "#f39c12", background: "white" }}
             >
               Women
             </a>
           ) : (
-            <a className="options" onClick={this.props.femaleState}>
+            <a
+              id="femaleState"
+              className="options"
+              onClick={this.props.femaleState}
+            >
               Women
             </a>
           )}
@@ -81,27 +85,32 @@ export class Navigation extends Component {
           </label>
 
           <ul className="menu">
-            <li>
+            <li id="Rankings">
               <Link to="/rankings">Rankings</Link>
             </li>
-            <li>
+            <li id="matches">
               <Link to="/matches">Matches</Link>
             </li>
-            <li>
+            <li id="teams">
               <Link to="/teams">Teams</Link>
             </li>
-            <li>
+            <li id="players">
               <Link to="/Players">Players</Link>
             </li>
             <li style={{ textAlign: "center" }}>
               <input
+                id="globalSearchBar"
                 className="nav-search-bar"
                 type="text"
                 name="search_term"
                 value={this.state.search_term}
                 onChange={this.OnChange}
               />
-              <button className="nav-search-button" onClick={this.getResult}>
+              <button
+                id="searchButton"
+                className="nav-search-button"
+                onClick={this.getResult}
+              >
                 <i className="fa fa-search"></i>
               </button>
               {this.state.search_term == "" ? null : (
@@ -123,9 +132,11 @@ export class Navigation extends Component {
                                 display: "flex",
                                 justifyContent: "center"
                               }}
-                              id={"searchPlayer" + index}
                             >
-                              {player.player_name}
+                              <span id={"searchPlayer" + index}>
+                                {" "}
+                                {player.player_name}
+                              </span>
                               <img
                                 className="players-img "
                                 src={
@@ -152,7 +163,7 @@ export class Navigation extends Component {
                   <hr style={{ width: "100px", marginLeft: "50px" }} />
                   {this.props.search_result.length != 0 ? (
                     this.props.search_result.team.length != 0 ? (
-                      this.props.search_result.team.map(teams => (
+                      this.props.search_result.team.map((teams, index) => (
                         <span className="search_result_data">
                           <Link
                             to={{
@@ -169,7 +180,9 @@ export class Navigation extends Component {
                                 justifyContent: "center"
                               }}
                             >
-                              {teams.team_name}
+                              <span id={"teamName" + index}>
+                                {teams.team_name}
+                              </span>
                               <ReactCountryFlag
                                 style={{
                                   borderRadius: "10px",
