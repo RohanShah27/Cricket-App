@@ -6,7 +6,11 @@ import {
   getAllMatchDetails,
   getScorecard,
   getMatchDetails,
-  getManhattanGraphMatch
+  getManhattanGraphMatch,
+  getPieChartBatsman1,
+  getPieChartBatsman2,
+  getPieChartBowler1,
+  getPieChartBowler2
 } from "../actions/matchActions";
 import virat from "../stockPlayer.png";
 export class MatchDetails extends Component {
@@ -19,18 +23,22 @@ export class MatchDetails extends Component {
     this.props.getMatchDetails(id);
     this.props.getScorecard(id);
     this.props.getAllMatchDetails(id);
-    // this.props.getManhattanGraphMatch(id);
+    this.props.getManhattanGraphMatch(this.props.location.state.match.match_id);
+    this.props.getPieChartBatsman1(this.props.location.state.match.match_id, 1);
+    this.props.getPieChartBatsman2(this.props.location.state.match.match_id, 2);
+    this.props.getPieChartBowler1(this.props.location.state.match.match_id, 1);
+    this.props.getPieChartBowler2(this.props.location.state.match.match_id, 2);
   }
 
   render() {
     console.log(this.props);
     return (
       <div>
-        {this.props.summary.map(match => (
+        {this.props.summary.map((match, index) => (
           <section>
             <div className="matchDetails-flex-container">
               <div className="matchDetails-parent">
-                <p>
+                <p id={"matchHeader" + index}>
                   ODI {match.teamOne} VS {match.teamTwo}
                 </p>
                 <div class="matchDetails-headercard">
@@ -59,17 +67,17 @@ export class MatchDetails extends Component {
                     {match.teamTwo}
                   </p>
 
-                  <p className="matchDetails-result">
+                  <p className="matchDetails-result" id={"matchResult" + index}>
                     Result : {match.team_winner} {match.won_by}
                   </p>
                 </div>
 
                 <div className="matchDetails-headercard">
-                  <p>
+                  <p id={"matchteamOneScore" + index}>
                     {match.teamOneScore}/{match.teamone_wicket} (
                     {match.team_one_total_over} Overs)
                   </p>
-                  <p>
+                  <p id={"matchteamTwoScore" + index}>
                     {match.teamTwoScore}/{match.teamtwo_wicket} (
                     {match.team_two_total_over} Overs)
                   </p>
@@ -85,14 +93,13 @@ export class MatchDetails extends Component {
                     <p>
                       <img src={virat} className="matchDetails-pom-image" />{" "}
                     </p>
-                    <p>{match.player_of_the_match}</p>
+                    <p id={"pom" + index}>{match.player_of_the_match}</p>
                   </div>
                 </div>
               </div>
             </div>
           </section>
         ))}
-        {/* tabs for match details page Scoreboard, Stats, Summary */}
         <div className="matchDetails-pc-tab">
           <input
             defaultChecked="defaultChecked"
@@ -138,9 +145,11 @@ export class MatchDetails extends Component {
                               <th>SR</th>
                             </tr>
 
-                            {inning.scorecard.map(score => (
+                            {inning.scorecard.map((score, index) => (
                               <tr>
-                                <td>{score.striker_name}</td>
+                                <td id={"striker" + index}>
+                                  {score.striker_name}
+                                </td>
 
                                 {score.wicket_type ? (
                                   <td>
@@ -217,7 +226,44 @@ export class MatchDetails extends Component {
                 <div className="matchDetails-statistics-container">
                   <div className="manhattan-match">
                     <iframe
+                      id="manhattan"
                       src={this.props.manhattan}
+                      style={{ width: "100%", height: "300px", border: "none" }}
+                    />
+                  </div>
+                </div>
+                <div className="matchDetails-statistics-container">
+                  <div className="manhattan-match">
+                    <iframe
+                      id="piebats1"
+                      src={this.props.piebatsman1}
+                      style={{ width: "100%", height: "300px", border: "none" }}
+                    />
+                  </div>
+                </div>
+                <div className="matchDetails-statistics-container">
+                  <div className="manhattan-match">
+                    <iframe
+                      id="piebats2"
+                      src={this.props.piebatsman2}
+                      style={{ width: "100%", height: "300px", border: "none" }}
+                    />
+                  </div>
+                </div>
+                <div className="matchDetails-statistics-container">
+                  <div className="manhattan-match">
+                    <iframe
+                      id="piebowler1"
+                      src={this.props.piebolwer1}
+                      style={{ width: "100%", height: "300px", border: "none" }}
+                    />
+                  </div>
+                </div>
+                <div className="matchDetails-statistics-container">
+                  <div className="manhattan-match">
+                    <iframe
+                      id="piebowler2"
+                      src={this.props.piebolwer2}
                       style={{ width: "100%", height: "300px", border: "none" }}
                     />
                   </div>
@@ -476,10 +522,23 @@ const mapStateToProps = state => ({
   current_match: state.matchReducers.current_match,
   singlematch: state.matchReducers.singlematch,
   summary: state.matchReducers.summary,
-  manhattan: state.matchReducers.manhattan
+  manhattan: state.matchReducers.manhattan,
+  piebatsman1: state.matchReducers.piebatsman1,
+  piebatsman2: state.matchReducers.piebatsman2,
+  piebolwer1: state.matchReducers.piebolwer1,
+  piebolwer2: state.matchReducers.piebolwer2
 });
 
 export default connect(
   mapStateToProps,
-  { getAllMatchDetails, getScorecard, getMatchDetails, getManhattanGraphMatch }
+  {
+    getAllMatchDetails,
+    getScorecard,
+    getMatchDetails,
+    getManhattanGraphMatch,
+    getPieChartBatsman1,
+    getPieChartBatsman2,
+    getPieChartBowler1,
+    getPieChartBowler2
+  }
 )(MatchDetails);

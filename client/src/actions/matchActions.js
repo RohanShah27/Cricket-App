@@ -172,9 +172,74 @@ export const getMatchesByDate = teamname => dispatch => {
     });
 };
 
+// Manhattan Chart for each Match
 export const getManhattanGraphMatch = teamid => dispatch => {
   return axios
-    .get("http://127.0.0.1:5002/runperover/" + teamid.match_id)
+    .get("http://127.0.0.1:5002/runperover/" + teamid)
+    .then(res => {
+      dispatch({
+        type: MANHATTAN_GRAPH_MATCH,
+        payload: res.data
+      });
+      console.log(res.data);
+    })
+    .catch(err => {
+      console.log(err);
+    });
+};
+
+// Pie chart of Batsman Contribution for Innings1
+export const getPieChartBatsman1 = (teamid, innings) => dispatch => {
+  return axios
+    .get("http://127.0.0.1:5002/batsman_inning1/" + teamid + "/" + innings)
+    .then(res => {
+      dispatch({
+        type: MANHATTAN_GRAPH_MATCH,
+        payload: res.data
+      });
+      console.log(res.data);
+    })
+    .catch(err => {
+      console.log(err);
+    });
+};
+
+// Pie chart of Bowler Contribution for Innings1
+export const getPieChartBowler1 = (teamid, innings) => dispatch => {
+  return axios
+    .get("http://127.0.0.1:5002/bowler_inning1/" + teamid + "/" + innings)
+    .then(res => {
+      dispatch({
+        type: MANHATTAN_GRAPH_MATCH,
+        payload: res.data
+      });
+      console.log(res.data);
+    })
+    .catch(err => {
+      console.log(err);
+    });
+};
+
+// Pie chart of Batsman Contribution for Innings2
+export const getPieChartBatsman2 = (teamid, innings) => dispatch => {
+  return axios
+    .get("http://127.0.0.1:5002/batsman_inning2/" + teamid + "/" + innings)
+    .then(res => {
+      dispatch({
+        type: MANHATTAN_GRAPH_MATCH,
+        payload: res.data
+      });
+      console.log(res.data);
+    })
+    .catch(err => {
+      console.log(err);
+    });
+};
+
+// Pie chart of Bowler Contribution for Innings2
+export const getPieChartBowler2 = (teamid, innings) => dispatch => {
+  return axios
+    .get("http://127.0.0.1:5002/bowler_inning2/" + teamid + "/" + innings)
     .then(res => {
       dispatch({
         type: MANHATTAN_GRAPH_MATCH,

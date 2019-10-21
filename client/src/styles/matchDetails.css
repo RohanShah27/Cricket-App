@@ -104,11 +104,11 @@
   background-color: #f39c12;
 }
 
-.matchDetails-testimonials {
+/* .matchDetails-testimonials {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   grid-gap: 20px;
-}
+} */
 
 .matchDetails-testimonials .matchDetails-card {
   position: relative;
@@ -313,7 +313,7 @@ td {
 
 .matchDetails-statistics-container {
   display: grid;
-  grid-template-rows: auto auto;
+  grid-template-columns: auto auto;
   grid-gap: 10px;
   border: 1px solid #f39c12;
   padding: 10px;

@@ -1,0 +1,781 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test MAtch Component should render the component 1`] = `
+<MatchDetails
+  current_match={
+    Object {
+      "country": Array [
+        Object {},
+        Object {},
+      ],
+      "date": Array [
+        Object {},
+        Object {},
+      ],
+      "fours": Array [
+        Object {},
+      ],
+      "player1": Array [
+        Object {},
+        Object {},
+      ],
+      "player1_bowler": Array [
+        Object {},
+        Object {},
+      ],
+      "player2": Array [
+        Object {},
+        Object {},
+      ],
+      "player2_bowler": Array [
+        Object {},
+        Object {},
+      ],
+      "result": Array [
+        Object {},
+      ],
+      "runs": Array [
+        Object {},
+      ],
+      "toss": Array [
+        Object {},
+        Object {},
+      ],
+      "umpire": Array [
+        Object {},
+        Object {},
+      ],
+      "venue": Array [
+        Object {},
+      ],
+    }
+  }
+  getAllMatchDetails={
+    [MockFunction] {
+      "calls": Array [
+        Array [
+          Object {
+            "match_id": 111,
+          },
+        ],
+      ],
+      "results": Array [
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+      ],
+    }
+  }
+  getManhattanGraphMatch={
+    [MockFunction] {
+      "calls": Array [
+        Array [
+          111,
+        ],
+      ],
+      "results": Array [
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+      ],
+    }
+  }
+  getMatchDetails={
+    [MockFunction] {
+      "calls": Array [
+        Array [
+          Object {
+            "match_id": 111,
+          },
+        ],
+      ],
+      "results": Array [
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+      ],
+    }
+  }
+  getPieChartBatsman1={
+    [MockFunction] {
+      "calls": Array [
+        Array [
+          111,
+          1,
+        ],
+      ],
+      "results": Array [
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+      ],
+    }
+  }
+  getPieChartBatsman2={
+    [MockFunction] {
+      "calls": Array [
+        Array [
+          111,
+          2,
+        ],
+      ],
+      "results": Array [
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+      ],
+    }
+  }
+  getPieChartBowler1={
+    [MockFunction] {
+      "calls": Array [
+        Array [
+          111,
+          1,
+        ],
+      ],
+      "results": Array [
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+      ],
+    }
+  }
+  getPieChartBowler2={
+    [MockFunction] {
+      "calls": Array [
+        Array [
+          111,
+          2,
+        ],
+      ],
+      "results": Array [
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+      ],
+    }
+  }
+  getScorecard={
+    [MockFunction] {
+      "calls": Array [
+        Array [
+          Object {
+            "match_id": 111,
+          },
+        ],
+      ],
+      "results": Array [
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+      ],
+    }
+  }
+  history={
+    Object {
+      "location": Object {
+        "state": Object {
+          "match": Object {
+            "match_id": 111,
+          },
+        },
+      },
+    }
+  }
+  location={
+    Object {
+      "state": Object {
+        "match": Object {
+          "match_id": 111,
+        },
+      },
+    }
+  }
+  matchDetails={[MockFunction]}
+  player1={
+    Array [
+      Object {},
+      Object {},
+    ]
+  }
+  singlematch={Array []}
+  summary={
+    Array [
+      Object {
+        "match_id": 2,
+        "match_type": "ODI",
+        "player_of_the_match": Array [
+          "DA Warner",
+        ],
+        "team1_image": "au",
+        "team2_image": "pk",
+        "teamOne": "Australia",
+        "teamOneScore": "353",
+        "teamTwo": "Pakistan",
+        "teamTwoScore": "267",
+        "team_one_total_over": "49",
+        "team_two_total_over": "43",
+        "team_winner": "Australia",
+        "teamone_wicket": "6",
+        "teamtwo_wicket": "10",
+        "won_by": "won by 86 runs",
+      },
+    ]
+  }
+>
+  <div>
+    <section>
+      <div
+        className="matchDetails-flex-container"
+      >
+        <div
+          className="matchDetails-parent"
+        >
+          <p
+            id="matchHeader0"
+          >
+            ODI 
+            Australia
+             VS 
+            Pakistan
+          </p>
+          <div
+            class="matchDetails-headercard"
+          >
+            <p
+              className="matchDetails-country-name"
+            >
+              <ReactCountryFlag
+                cdnUrl="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.3.0/flags/4x3/"
+                code="au"
+                styleProps={
+                  Object {
+                    "height": "50px",
+                    "width": "50px",
+                  }
+                }
+                svg={true}
+              >
+                <span
+                  aria-label="au"
+                  role="img"
+                  style={
+                    Object {
+                      "backgroundImage": "url(https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.3.0/flags/4x3/au.svg)",
+                      "backgroundPosition": "50%",
+                      "backgroundRepeat": "no-repeat",
+                      "backgroundSize": "contain",
+                      "display": "inline-block",
+                      "fontSize": "1em",
+                      "height": "50px",
+                      "lineHeight": "1em",
+                      "position": "relative",
+                      "verticalAlign": "middle",
+                      "width": "50px",
+                    }
+                  }
+                  title="au"
+                />
+              </ReactCountryFlag>
+               
+              Australia
+            </p>
+            <p
+              className="matchDetails-country-name"
+            >
+              <ReactCountryFlag
+                cdnUrl="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.3.0/flags/4x3/"
+                code="pk"
+                styleProps={
+                  Object {
+                    "height": "50px",
+                    "width": "50px",
+                  }
+                }
+                svg={true}
+              >
+                <span
+                  aria-label="pk"
+                  role="img"
+                  style={
+                    Object {
+                      "backgroundImage": "url(https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.3.0/flags/4x3/pk.svg)",
+                      "backgroundPosition": "50%",
+                      "backgroundRepeat": "no-repeat",
+                      "backgroundSize": "contain",
+                      "display": "inline-block",
+                      "fontSize": "1em",
+                      "height": "50px",
+                      "lineHeight": "1em",
+                      "position": "relative",
+                      "verticalAlign": "middle",
+                      "width": "50px",
+                    }
+                  }
+                  title="pk"
+                />
+              </ReactCountryFlag>
+               
+              Pakistan
+            </p>
+            <p
+              className="matchDetails-result"
+              id="matchResult0"
+            >
+              Result : 
+              Australia
+               
+              won by 86 runs
+            </p>
+          </div>
+          <div
+            className="matchDetails-headercard"
+          >
+            <p
+              id="matchteamOneScore0"
+            >
+              353
+              /
+              6
+               (
+              49
+               Overs)
+            </p>
+            <p
+              id="matchteamTwoScore0"
+            >
+              267
+              /
+              10
+               (
+              43
+               Overs)
+            </p>
+          </div>
+        </div>
+        <div
+          className="matchDetails-parent"
+        >
+          <div
+            className="matchDetails-flex-container-inner"
+          >
+            <div />
+            <p>
+              Player of the Match
+            </p>
+            <div
+              className="POM-section"
+            >
+              <p>
+                <img
+                  className="matchDetails-pom-image"
+                  src="stockPlayer.png"
+                />
+                 
+              </p>
+              <p
+                id="pom0"
+              >
+                DA Warner
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div
+      className="matchDetails-pc-tab"
+    >
+      <input
+        defaultChecked="defaultChecked"
+        id="matchDetails-tab1"
+        name="pct"
+        type="radio"
+      />
+      <input
+        id="matchDetails-tab2"
+        name="pct"
+        type="radio"
+      />
+      <input
+        id="matchDetails-tab3"
+        name="pct"
+        type="radio"
+      />
+      <nav>
+        <ul>
+          <li
+            className="matchDetails-tab1"
+          >
+            <label
+              htmlFor="matchDetails-tab1"
+            >
+              Summary
+            </label>
+          </li>
+          <li
+            className="matchDetails-tab2"
+          >
+            <label
+              htmlFor="matchDetails-tab2"
+            >
+              Scoreboard
+            </label>
+          </li>
+          <li
+            className="matchDetails-tab3"
+          >
+            <label
+              htmlFor="matchDetails-tab3"
+            >
+              Statistics
+            </label>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <div
+          className="matchDetails-tab2"
+        >
+          <div
+            className="matchDetails-testimonials"
+          >
+            <div
+              className="matchDetails-details"
+            />
+          </div>
+        </div>
+        <div
+          className="matchDetails-tab3"
+        >
+          <div
+            className="matchDetails-testimonials"
+          >
+            <div
+              className="matchDetails-statistics-container"
+            >
+              <div
+                className="manhattan-match"
+              >
+                <iframe
+                  id="manhattan"
+                  style={
+                    Object {
+                      "border": "none",
+                      "height": "300px",
+                      "width": "100%",
+                    }
+                  }
+                />
+              </div>
+            </div>
+            <div
+              className="matchDetails-statistics-container"
+            >
+              <div
+                className="manhattan-match"
+              >
+                <iframe
+                  id="piebats1"
+                  style={
+                    Object {
+                      "border": "none",
+                      "height": "300px",
+                      "width": "100%",
+                    }
+                  }
+                />
+              </div>
+            </div>
+            <div
+              className="matchDetails-statistics-container"
+            >
+              <div
+                className="manhattan-match"
+              >
+                <iframe
+                  id="piebats2"
+                  style={
+                    Object {
+                      "border": "none",
+                      "height": "300px",
+                      "width": "100%",
+                    }
+                  }
+                />
+              </div>
+            </div>
+            <div
+              className="matchDetails-statistics-container"
+            >
+              <div
+                className="manhattan-match"
+              >
+                <iframe
+                  id="piebowler1"
+                  style={
+                    Object {
+                      "border": "none",
+                      "height": "300px",
+                      "width": "100%",
+                    }
+                  }
+                />
+              </div>
+            </div>
+            <div
+              className="matchDetails-statistics-container"
+            >
+              <div
+                className="manhattan-match"
+              >
+                <iframe
+                  id="piebowler2"
+                  style={
+                    Object {
+                      "border": "none",
+                      "height": "300px",
+                      "width": "100%",
+                    }
+                  }
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="matchDetails-tab1"
+        >
+          <div
+            className="matchDetails-testimonials"
+          >
+            <div
+              className="matchDetails-details"
+            >
+              <div
+                className="matchDetails-flex-container"
+              >
+                <div
+                  className="matchDetails-mainInfoTable"
+                >
+                  <h2
+                    className="matchDetails-info-header"
+                  >
+                    Top Players
+                  </h2>
+                  <div
+                    className="matchDetails-topbatsman"
+                  >
+                    <table
+                      className="matchDetails-top-player-table"
+                    >
+                      <th
+                        style={
+                          Object {
+                            "background": "none",
+                          }
+                        }
+                      >
+                        Australia
+                         
+                      </th>
+                      <tr>
+                        <td />
+                        <td>
+                           (
+                          )
+                        </td>
+                      </tr>
+                      <tr>
+                        <td />
+                        <td>
+                           (
+                          )
+                        </td>
+                      </tr>
+                      <tbody>
+                        <th
+                          style={
+                            Object {
+                              "background": "none",
+                            }
+                          }
+                        >
+                          Pakistan
+                        </th>
+                        <tr>
+                          <td />
+                          <td>
+                             
+                            (
+                            )
+                          </td>
+                        </tr>
+                        <tr>
+                          <td />
+                          <td>
+                             
+                            (
+                            )
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div
+                    className="matchDetails-topbatsman"
+                  >
+                    <table
+                      className="matchDetails-top-player-table"
+                    >
+                      <th
+                        style={
+                          Object {
+                            "background": "none",
+                            "color": "white",
+                          }
+                        }
+                      >
+                        Hello
+                      </th>
+                      <tr>
+                        <td />
+                        <td>
+                          /
+                        </td>
+                      </tr>
+                      <tr>
+                        <td />
+                        <td>
+                          /
+                        </td>
+                      </tr>
+                      <tbody>
+                        <th
+                          style={
+                            Object {
+                              "background": "none",
+                              "color": "white",
+                            }
+                          }
+                        >
+                          Hello
+                        </th>
+                        <tr>
+                          <td />
+                          <td>
+                            /
+                          </td>
+                        </tr>
+                        <tr>
+                          <td />
+                          <td>
+                            /
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <div>
+                  <h2
+                    className="matchDetails-info-header"
+                  >
+                    Match Info
+                  </h2>
+                  <div>
+                    <table
+                      className="matchDetails-info-table"
+                    >
+                      <tbody>
+                        <tr>
+                          <td>
+                            Series
+                          </td>
+                          <td />
+                        </tr>
+                        <tr>
+                          <td>
+                            Match Type
+                          </td>
+                          <td />
+                        </tr>
+                        <tr>
+                          <td>
+                            Match
+                          </td>
+                          <td>
+                             
+                            vs
+                             
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            Match Date
+                          </td>
+                           
+                          <td />
+                        </tr>
+                        <tr>
+                          <td>
+                            Venue
+                          </td>
+                           
+                          <td />
+                        </tr>
+                        <tr>
+                          <td>
+                            Umpires 
+                          </td>
+                          <td>
+                            ,
+                             
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            Toss
+                          </td>
+                          <td>
+                             , elected to
+                             
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            Result 
+                          </td>
+                          <td>
+                             
+                             
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            MoM
+                          </td>
+                          <td />
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</MatchDetails>
+`;
