@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "../styles/playerProfile.css";
 import { connect } from "react-redux";
-import { searchPlayer } from "../actions/Players";
+import { searchPlayer, playerStats } from "../actions/Players";
 import stockPlayer from "../stockPlayer.png";
 
 export class PlayerProfile extends Component {
@@ -11,6 +11,7 @@ export class PlayerProfile extends Component {
   componentWillMount() {
     console.log(this.props.match.params.player_id);
     this.props.searchPlayer(this.props.match.params.player_id);
+    this.props.playerStats(this.props.match.params.player_id);
   }
   componentWillReceiveProps(nextProps) {
     if (nextProps.player_id != this.props.match.params.player_id) {
@@ -18,6 +19,7 @@ export class PlayerProfile extends Component {
     }
   }
   render() {
+    console.log(this.props.playerstats);
     return (
       <div style={{ marginBottom: "80px" }}>
         {this.props.player ? (
@@ -145,7 +147,13 @@ export class PlayerProfile extends Component {
                 </div>
               </div>
             </div>
-            <div id="playerStatsVisualizationSection"></div>
+            <div id="playerStatsVisualizationSection">
+              <h1>Total Runs</h1>
+              <iframe
+                className="playerProfileStat"
+                src={this.props.playerstats}
+              />
+            </div>
           </>
         ) : (
           <div className="loader-container" style={{ marginTop: "20vw" }}>
@@ -158,9 +166,10 @@ export class PlayerProfile extends Component {
 }
 
 const mapStateToProps = state => ({
-  player: state.playersReducer.player
+  player: state.playersReducer.player,
+  playerstats: state.playersReducer.playerstats
 });
 export default connect(
   mapStateToProps,
-  { searchPlayer }
+  { searchPlayer, playerStats }
 )(PlayerProfile);

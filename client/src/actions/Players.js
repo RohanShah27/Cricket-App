@@ -5,7 +5,8 @@ import {
   PLAYER_SEARCH,
   ERROR_TYPE,
   ADD_PLAYERS,
-  GET_PLAYERS
+  GET_PLAYERS,
+  PLAYER_STATS
 } from "../actions/Types";
 
 const url = "http://localhost:5000/api/players/";
@@ -78,6 +79,20 @@ export const playerSearch = playerName => dispatch => {
       dispatch({
         type: PLAYER_SEARCH,
         payload: res.data.data
+      });
+    })
+    .catch(err => {
+      console.log(err);
+    });
+};
+
+export const playerStats = playerId => dispatch => {
+  return axios
+    .get("http://127.0.0.1:5002/playerstats/" + playerId)
+    .then(res => {
+      dispatch({
+        type: PLAYER_STATS,
+        payload: res.data
       });
     })
     .catch(err => {

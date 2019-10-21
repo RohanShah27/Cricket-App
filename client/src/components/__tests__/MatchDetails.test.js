@@ -13,6 +13,7 @@ const result = [{}];
 const toss = [{}, {}];
 const umpire = [{}, {}];
 const date = [{}, {}];
+const innings = jest.fn();
 const venue = [{}];
 const country = [{}, {}];
 const runs = [{}];
@@ -24,6 +25,16 @@ const getPieChartBatsman1 = jest.fn();
 const getPieChartBowler1 = jest.fn();
 const getPieChartBowler2 = jest.fn();
 let singlematch = [
+  {
+    scorecard: [
+      {
+        striker_name: "Umar Akmal",
+        striker_rate: "44.00",
+        wicket_type: "caught"
+      }
+    ]
+  }
+
   // (scorecard = {
   //   ball_faced: "25",
   //   batsman_run: "11",
@@ -93,6 +104,7 @@ const wrapper = mount(
     player1={player1}
     singlematch={singlematch}
     history={history}
+    innings={innings}
     getManhattanGraphMatch={getManhattanGraphMatch}
     getPieChartBatsman1={getPieChartBatsman1}
     getPieChartBatsman2={getPieChartBatsman2}
@@ -182,5 +194,8 @@ describe("Test MAtch Component", () => {
 
   it("should have a iframe fro piebowler2", () => {
     expect(wrapper.find("#piebowler2")).toBeTruthy();
+  });
+  it("should have a strikername", () => {
+    expect(wrapper.find("#striker0")).toBe("Umar Akmal");
   });
 });

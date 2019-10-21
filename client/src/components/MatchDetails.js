@@ -152,7 +152,7 @@ export class MatchDetails extends Component {
                                 </td>
 
                                 {score.wicket_type ? (
-                                  <td>
+                                  <td id={"wicketType" + index}>
                                     {score.wicket_type == "caught"
                                       ? "c"
                                       : score.wicket_type}{" "}
