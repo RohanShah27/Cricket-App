@@ -35,7 +35,8 @@ describe("Testing Headlines action", () => {
   });
   it("should return single headline on call of the url", () => {
     const responseofAPI = [{}];
-    moxios.stubRequest(url + "single_headline", {
+    let id = 1;
+    moxios.stubRequest(url + "single_headline/" + 1, {
       status: 200,
       response: { data: responseofAPI }
     });
