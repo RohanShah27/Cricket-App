@@ -8,7 +8,7 @@
 .profile-img {
   margin-left: 50px;
   margin-top: 20px;
-  border-radius: 8px;
+  border-radius: 5em;
   height: 200px;
   width: 200px;
 }
@@ -16,6 +16,13 @@
 .navigation {
   border-radius: 8px;
   grid-column: 1/ -1;
+}
+.flexGrowForPlayer {
+  flex-grow: 2;
+  align-items: center;
+}
+.flexGrowEight {
+  flex-grow: 8;
 }
 /* Class wrapper -Rohan */
 .wrapper {
@@ -147,8 +154,54 @@
 
 @media (max-width: 768px) {
   .profile-img {
-    margin-left: 0px;
+    border-radius: 0px;
+    margin-left: 20vw;
     margin-top: 50px;
+    align-items: center;
+    height: 250px;
+    width: 250px;
+  }
+  .player-flex-container {
+    flex-direction: column;
+    /* padding-bottom: ; */
+  }
+  /* .flexGrowForPlayer {
+    flex-grow: 5;
+  }*/
+  .profile {
+    display: none;
+  }
+  .flexGrowEight {
+    display: flex;
+    flex-direction: row;
+  }
+  .player-flex-container > div {
+    background-color: white;
+    width: 80px;
+    margin: 10px;
+    text-align: left;
+    line-height: 45px;
+    font-size: 20px;
+  }
+  .player-row {
+    flex-direction: column;
+  }
+  .side {
+    margin-bottom: 10px;
+    width: 480px;
+  }
+  .player-flex-container h5 {
+    padding-top: 70px;
+  }
+  .main {
+    width: 480px;
+    margin-left: 0px;
+  }
+  .main-section {
+    margin: 0px 10px;
+  }
+  .players-stats-table .th {
+    font-size: 10px;
   }
 }
 @media (max-width: 425px) {
@@ -160,5 +213,8 @@
     /* padding-left: 20px; */
     line-height: 25px;
     font-size: 15px;
+  }
+  .profile-image {
+    border-radius: 0px;
   }
 }
