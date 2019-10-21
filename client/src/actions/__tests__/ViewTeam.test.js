@@ -26,9 +26,7 @@ describe("Testing viewTeam Actions using API's", () => {
   });
   test("should return team data with respect to team id", () => {
     const responseOfApi = [{}, {}, {}];
-    let id = {
-      id: "7"
-    };
+    let id = "21";
     moxios.stubRequest("http://localhost:5000/api/team/teambyid", {
       status: 200,
       response: { data: responseOfApi }
@@ -47,7 +45,9 @@ describe("Testing viewTeam Actions using API's", () => {
 });
 
 test("should return team data with respect to search term", () => {
-  const responseOfApi = [];
+  const responseOfApi = [
+    { team_background: null, team_id: 13, team_image: "in", team_name: "India" }
+  ];
   let team = {
     team_name: "India"
   };
@@ -69,7 +69,7 @@ test("should return team data with respect to search term", () => {
 });
 
 test("should return team data with respect to tournament", () => {
-  const responseOfApi = [{}, {}, {}];
+  const responseOfApi = [];
   let tournament = {
     tournament: "ODI"
   };
@@ -115,7 +115,7 @@ test("should return player stats with respect to team_id and match_type", () => 
     match_type: "ODI"
   };
   moxios.stubRequest(
-    "http://localhost:5000/api/team/getPlayerStatsForTeams/" + team_id,
+    "http://localhost:5000/api/team/playerstatsforteams/" + team_id,
     {
       status: 200,
       response: { data: responseOfApi }
@@ -135,12 +135,14 @@ test("should return player stats with respect to team_id and match_type", () => 
 
 test("should return bowler stats with respect to team_id and match_type", () => {
   const responseOfApi = [];
-  let team_id = 21;
+  let team_id = {
+    team_id: 21
+  };
   let match_type = {
     match_type: "ODI"
   };
   moxios.stubRequest(
-    "http://localhost:5000/api/team/getPlayerStatsForTeamsBowler/" + team_id,
+    "http://localhost:5000/api/team/playerstatsforteamsbowler/" + team_id,
     {
       status: 200,
       response: { data: responseOfApi }
