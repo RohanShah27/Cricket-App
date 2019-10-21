@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "../styles/playerProfile.css";
 import { connect } from "react-redux";
 import { searchPlayer } from "../actions/Players";
-import virat from "../virat-kohli.png";
+import stockPlayer from "../stockPlayer.png";
 
 export class PlayerProfile extends Component {
   constructor(props) {
@@ -24,7 +24,16 @@ export class PlayerProfile extends Component {
           {/* Start of flex container for image and Player Name -Rohan*/}
           <div className="player-flex-container">
             <div style={{ flexGrow: 2, alignItems: "center" }}>
-              <img className="profile-img" src={virat} id="playerImage"></img>
+              <img
+                className="profile-img"
+                style={{ borderRadius: 5 + "em" }}
+                src={
+                  this.props.location.state.player.player_image
+                    ? "data:image/jpeg;base64," +
+                      new Buffer(this.props.location.state.player.player_image)
+                    : stockPlayer
+                }
+              />
             </div>
             <div style={{ flexGrow: 8 }}>
               <h1 id="playerName">

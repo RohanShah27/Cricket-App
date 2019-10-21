@@ -166,9 +166,7 @@ export class Team extends Component {
             <button
               className="team-search-button"
               id="searchTeamButton"
-              onClick={() => 
-                this.getTeam
-              }
+              onClick={() => this.getTeam}
             >
               <i class="fa fa-search"></i>
             </button>
@@ -238,6 +236,7 @@ export class Team extends Component {
                                 </p>
                               </div>
                             </div>
+                            {/* </div> */}
                           </div>
                         ) : (
                           <div></div>

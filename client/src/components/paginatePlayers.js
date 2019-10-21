@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "../styles/Players.css";
-import virat from "./rishabh.jpg";
+import virat from "./user.png";
 import { getAllPlayers, playerSearch } from "../actions/Players";
 import { connect } from "react-redux";
 import InfiniteScroll from "react-infinite-scroll-component";
@@ -146,7 +146,16 @@ export class PaginatePlayers extends Component {
             {this.state.pagePlayers.map((player, index) => {
               return (
                 <div className="players-card">
-                  <img src={virat} className="players-img "></img>
+                  {/* <img src={virat} className="players-img "></img> */}
+                  <img
+                    className="players-img "
+                    src={
+                      player.player_image
+                        ? "data:image/jpeg;base64," +
+                          new Buffer(player.player_image)
+                        : virat
+                    }
+                  />
                   <p className="player-name" id={"playerName" + index}>
                     {player.player_name}
                   </p>

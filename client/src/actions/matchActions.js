@@ -14,9 +14,10 @@ import {
 
 const url = "http://localhost:5000/api/matches";
 
-export const getMatchesRecentMatches = () => dispatch => {
+export const getMatchesRecentMatches = gender => dispatch => {
+  console.log(gender);
   return axios
-    .get(url + "/getrecent")
+    .get(url + "/getrecent/" + gender)
     .then(res => {
       dispatch({
         type: GET_RECENT_MATCHES,
