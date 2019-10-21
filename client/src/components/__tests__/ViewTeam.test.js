@@ -20,26 +20,4 @@ describe("Testing viewTeam component", () => {
   it("should mount", () => {
     expect(wrapper).toMatchSnapshot();
   });
-
-  it("should have exactly 3 buttons", () => {
-    expect(wrapper.find("button").length).toBe(3);
-  });
-
-  it("no of div tags", () => {
-    expect(wrapper.find("div").length).toBe(5);
-  });
-
-  it("no of p tags", () => {
-    expect(wrapper.find("p").length).toBe(2);
-  });
-
-  it("test", () => {
-    expect(
-      wrapper
-        .find("button")
-        .at(0)
-        .simulate()
-        .click("ODI").props.state.match_type
-    ).toBe("ODI");
-  });
 });

@@ -12,7 +12,7 @@ import {
   TEAM_STATS_GRAPH_T20
 } from "../../actions/Types";
 
-describe("Testing  ViewTeam Reducers", () => {
+describe("Testing ViewTeam Reducers", () => {
   it("should return state object with match array equal to the payload in the action when the action type is GET_TOURNAMENT(when the state is initial state)", () => {
     let action = {
       type: GET_TOURNAMENT,

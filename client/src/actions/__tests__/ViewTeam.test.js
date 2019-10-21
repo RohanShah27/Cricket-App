@@ -132,3 +132,87 @@ test("should return player stats with respect to team_id and match_type", () => 
     expect(store.getActions()).toEqual(expectedResponse);
   });
 });
+
+test("should return bowler stats with respect to team_id and match_type", () => {
+  const responseOfApi = [];
+  let team_id = 21;
+  let match_type = {
+    match_type: "ODI"
+  };
+  moxios.stubRequest(
+    "http://localhost:5000/api/team/getPlayerStatsForTeamsBowler/" + team_id,
+    {
+      status: 200,
+      response: { data: responseOfApi }
+    }
+  );
+  const store = mockStore({});
+  const expectedResponse = [
+    {
+      type: GET_PLAYER_STATS_FOR_TEAMS_BOWLER,
+      payload: responseOfApi
+    }
+  ];
+  return store
+    .dispatch(actions.getPlayerStatsForTeamsBowler(match_type))
+    .then(() => {
+      expect(store.getActions()).toEqual(expectedResponse);
+    });
+});
+
+test("should return team stats visualization with respect to team_id in odi", () => {
+  const responseOfApi = [];
+  let team_id = 21;
+  moxios.stubRequest("http://127.0.0.1:5000/odistats/" + team_id, {
+    status: 200,
+    response: { data: responseOfApi }
+  });
+  const store = mockStore({});
+  const expectedResponse = [
+    {
+      type: TEAM_STATS_GRAPH_ODI,
+      payload: responseOfApi
+    }
+  ];
+  return store.dispatch(actions.teamStatsGraphOdi()).then(() => {
+    expect(store.getActions()).toEqual(expectedResponse);
+  });
+});
+
+test("should return team stats visualization with respect to team_id in test", () => {
+  const responseOfApi = [];
+  let team_id = 21;
+  moxios.stubRequest("http://127.0.0.1:5000/teststats/" + team_id, {
+    status: 200,
+    response: { data: responseOfApi }
+  });
+  const store = mockStore({});
+  const expectedResponse = [
+    {
+      type: TEAM_STATS_GRAPH_TEST,
+      payload: responseOfApi
+    }
+  ];
+  return store.dispatch(actions.teamStatsGraphTest()).then(() => {
+    expect(store.getActions()).toEqual(expectedResponse);
+  });
+});
+
+test("should return team stats visualization with respect to team_id in t20", () => {
+  const responseOfApi = [];
+  let team_id = 21;
+  moxios.stubRequest("http://127.0.0.1:5000/t20stats/" + team_id, {
+    status: 200,
+    response: { data: responseOfApi }
+  });
+  const store = mockStore({});
+  const expectedResponse = [
+    {
+      type: TEAM_STATS_GRAPH_T20,
+      payload: responseOfApi
+    }
+  ];
+  return store.dispatch(actions.teamStatsGraphT20()).then(() => {
+    expect(store.getActions()).toEqual(expectedResponse);
+  });
+});
