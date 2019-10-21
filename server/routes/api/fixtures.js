@@ -8,7 +8,13 @@ const db = pg("postgres://postgres:123456@localhost:5432/crickstrait_db");
 // Get Fixtures for the Home section
 router.get("/all", async (req, res) => {
   try {
-    const result = await db.any("select * from fixtures where fixture_id<10;");
+    const result = await db.any("select * from new_fixtures;");
+    if (result.length == 0)
+      res.status(200).json({
+        status: 400,
+        data: null,
+        message: "Could not connect to the database"
+      });
     //   convert the response into a json format
     res.status(200).json({
       status: 200,
