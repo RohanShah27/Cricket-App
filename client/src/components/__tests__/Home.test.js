@@ -5,14 +5,18 @@ const history = { push: jest.fn() };
 
 let fixtures = [
   {
-    match: "India vs Pakistan",
+    team1_name: "India",
+    team2_name: "Pakistan",
     match_date: "29/11/1997",
-    time: "12:00 IST"
+    match_time: "12:00 IST",
+    match_type: "ODI"
   },
   {
-    match: "India vs Srilanka",
-    match_date: "5/12/1997",
-    time: "12:00 IST"
+    team1_name: "India",
+    team2_name: "Pakistan",
+    match_date: "29/11/1997",
+    match_time: "12:00 IST",
+    match_type: "ODI"
   }
 ];
 let headlines = [
@@ -78,26 +82,56 @@ describe("Test MAtch Component", () => {
     expect(wrapper.find("#fixtures-header").props().children).toBe("Fixtures");
   });
   it("should have a container with heading called news", () => {
-    expect(wrapper.find("#news-Section").props().children).toBe(
-      "India's Tour of WestIndies"
-    );
+    expect(wrapper.find("#news-Section").props().children).toBe("News");
   });
   it("should have a container with heading called HEadlines", () => {
     expect(wrapper.find("#headlines").props().children).toBe("Headlines");
   });
   it("should have a match name in fixture ", () => {
-    expect(wrapper.find("#matchName0").props().children).toBe(
-      fixtures[0].match
-    );
+    expect(wrapper.find("#matchName0").props().children).toStrictEqual([
+      fixtures[0].team1_name,
+      " VS ",
+      fixtures[0].team2_name,
+      " -",
+      " ",
+      fixtures[0].match_type
+    ]);
+  });
+  it("should have a match timings in fixture ", () => {
+    expect(wrapper.find("#matchTimings0").props().children).toStrictEqual([
+      fixtures[0].match_date,
+      " at ",
+      fixtures[0].match_time
+    ]);
   });
   it("should have a match name in fixture ", () => {
-    expect(wrapper.find("#matchName1").props().children).toBe(
-      fixtures[1].match
-    );
+    expect(wrapper.find("#matchName1").props().children).toStrictEqual([
+      fixtures[1].team1_name,
+      " VS ",
+      fixtures[1].team2_name,
+      " -",
+      " ",
+      fixtures[1].match_type
+    ]);
+  });
+  it("should have a match timings in fixture ", () => {
+    expect(wrapper.find("#matchTimings1").props().children).toStrictEqual([
+      fixtures[1].match_date,
+      " at ",
+      fixtures[1].match_time
+    ]);
   });
   it("should have a headline in headlines ", () => {
     expect(wrapper.find("#singleheadline0").props().children).toBe(
       headlines[0].headlines
+    );
+  });
+  it("should check for headline in news section", () => {
+    expect(wrapper.find("#headlineTitle").text()).toBe("");
+  });
+  it("should check for headline description in news section", () => {
+    expect(wrapper.find("#headlineDescription").text()).toBe(
+      headline[0].headlines
     );
   });
   it("should have a match team one in matches ", () => {

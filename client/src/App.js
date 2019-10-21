@@ -11,7 +11,6 @@ import Footer from "./components/Footer";
 import Match from "./components/Match";
 import Login from "./components/Login";
 
-import Players from "./components/Players";
 import PaginatePlayers from "./components/paginatePlayers";
 // Yash Bhatia
 import AdminPlayer from "./components/AdminPlayer";

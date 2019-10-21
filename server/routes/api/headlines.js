@@ -8,9 +8,7 @@ const db = pg("postgres://postgres:123456@localhost:5432/crickstrait_capstone");
 // Get Headlines for Home Section
 router.get("/all", async (req, res) => {
   try {
-    const result = await db.any(
-      "select * from headlines where headline_id>48;"
-    );
+    const result = await db.any("select * from headlines ");
     //   convert the response into a json format
     res.status(200).json({
       status: 200,

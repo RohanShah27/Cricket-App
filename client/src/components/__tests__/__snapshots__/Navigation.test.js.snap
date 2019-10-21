@@ -9,6 +9,7 @@ exports[`Testing Footer Component should mount the component 1`] = `
   >
     <a
       className="logo"
+      id="Brand"
     >
       <Link
         to="/"
@@ -18,6 +19,8 @@ exports[`Testing Footer Component should mount the component 1`] = `
     </a>
     <a
       className="options"
+      id="menState"
+      onClick={[MockFunction]}
       style={
         Object {
           "marginRight": "5px",
@@ -28,6 +31,8 @@ exports[`Testing Footer Component should mount the component 1`] = `
     </a>
     <a
       className="options"
+      id="femaleState"
+      onClick={[MockFunction]}
     >
       Women
     </a>
@@ -47,28 +52,36 @@ exports[`Testing Footer Component should mount the component 1`] = `
     <ul
       className="menu"
     >
-      <li>
+      <li
+        id="Rankings"
+      >
         <Link
           to="/rankings"
         >
           Rankings
         </Link>
       </li>
-      <li>
+      <li
+        id="matches"
+      >
         <Link
           to="/matches"
         >
           Matches
         </Link>
       </li>
-      <li>
+      <li
+        id="teams"
+      >
         <Link
           to="/teams"
         >
           Teams
         </Link>
       </li>
-      <li>
+      <li
+        id="players"
+      >
         <Link
           to="/Players"
         >
@@ -84,6 +97,7 @@ exports[`Testing Footer Component should mount the component 1`] = `
       >
         <input
           className="nav-search-bar"
+          id="globalSearchBar"
           name="search_term"
           onChange={[Function]}
           type="text"
@@ -91,6 +105,7 @@ exports[`Testing Footer Component should mount the component 1`] = `
         />
         <button
           className="nav-search-button"
+          id="searchButton"
           onClick={[Function]}
         >
           <i

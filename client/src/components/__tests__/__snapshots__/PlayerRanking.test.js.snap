@@ -284,9 +284,6 @@ exports[`Test Team Component should render the component 1`] = `
                 Rank
               </th>
               <th>
-                Player Image
-              </th>
-              <th>
                 Player
               </th>
               <th>
@@ -301,12 +298,6 @@ exports[`Test Team Component should render the component 1`] = `
                 id="battingPosition0"
               >
                 test position
-              </td>
-              <td>
-                <img
-                  className="rankingplayerIcon"
-                  src="player.jpg"
-                />
               </td>
               <td
                 id="battingName0"
@@ -330,12 +321,6 @@ exports[`Test Team Component should render the component 1`] = `
               >
                 test position
               </td>
-              <td>
-                <img
-                  className="rankingplayerIcon"
-                  src="player.jpg"
-                />
-              </td>
               <td
                 id="battingName1"
               >
@@ -357,12 +342,6 @@ exports[`Test Team Component should render the component 1`] = `
                 id="battingPosition2"
               >
                 test position
-              </td>
-              <td>
-                <img
-                  className="rankingplayerIcon"
-                  src="player.jpg"
-                />
               </td>
               <td
                 id="battingName2"
@@ -386,12 +365,6 @@ exports[`Test Team Component should render the component 1`] = `
               >
                 test position
               </td>
-              <td>
-                <img
-                  className="rankingplayerIcon"
-                  src="player.jpg"
-                />
-              </td>
               <td
                 id="battingName3"
               >
@@ -413,12 +386,6 @@ exports[`Test Team Component should render the component 1`] = `
                 id="battingPosition4"
               >
                 test position
-              </td>
-              <td>
-                <img
-                  className="rankingplayerIcon"
-                  src="player.jpg"
-                />
               </td>
               <td
                 id="battingName4"
@@ -442,12 +409,6 @@ exports[`Test Team Component should render the component 1`] = `
               >
                 test position
               </td>
-              <td>
-                <img
-                  className="rankingplayerIcon"
-                  src="player.jpg"
-                />
-              </td>
               <td
                 id="battingName5"
               >
@@ -469,12 +430,6 @@ exports[`Test Team Component should render the component 1`] = `
                 id="battingPosition6"
               >
                 test position
-              </td>
-              <td>
-                <img
-                  className="rankingplayerIcon"
-                  src="player.jpg"
-                />
               </td>
               <td
                 id="battingName6"
@@ -498,12 +453,6 @@ exports[`Test Team Component should render the component 1`] = `
               >
                 test position
               </td>
-              <td>
-                <img
-                  className="rankingplayerIcon"
-                  src="player.jpg"
-                />
-              </td>
               <td
                 id="battingName7"
               >
@@ -526,12 +475,6 @@ exports[`Test Team Component should render the component 1`] = `
               >
                 test position
               </td>
-              <td>
-                <img
-                  className="rankingplayerIcon"
-                  src="player.jpg"
-                />
-              </td>
               <td
                 id="battingName8"
               >
@@ -553,12 +496,6 @@ exports[`Test Team Component should render the component 1`] = `
                 id="battingPosition9"
               >
                 test position
-              </td>
-              <td>
-                <img
-                  className="rankingplayerIcon"
-                  src="player.jpg"
-                />
               </td>
               <td
                 id="battingName9"
@@ -593,9 +530,6 @@ exports[`Test Team Component should render the component 1`] = `
                 Rank
               </th>
               <th>
-                Player Image
-              </th>
-              <th>
                 Player
               </th>
               <th>
@@ -610,12 +544,6 @@ exports[`Test Team Component should render the component 1`] = `
                 id="bowlingPosition0"
               >
                 test position
-              </td>
-              <td>
-                <img
-                  className="rankingplayerIcon"
-                  src="player.jpg"
-                />
               </td>
               <td
                 id="bowlingName0"
@@ -639,12 +567,6 @@ exports[`Test Team Component should render the component 1`] = `
               >
                 test position
               </td>
-              <td>
-                <img
-                  className="rankingplayerIcon"
-                  src="player.jpg"
-                />
-              </td>
               <td
                 id="bowlingName1"
               >
@@ -666,12 +588,6 @@ exports[`Test Team Component should render the component 1`] = `
                 id="bowlingPosition2"
               >
                 test position
-              </td>
-              <td>
-                <img
-                  className="rankingplayerIcon"
-                  src="player.jpg"
-                />
               </td>
               <td
                 id="bowlingName2"
@@ -695,12 +611,6 @@ exports[`Test Team Component should render the component 1`] = `
               >
                 test position
               </td>
-              <td>
-                <img
-                  className="rankingplayerIcon"
-                  src="player.jpg"
-                />
-              </td>
               <td
                 id="bowlingName3"
               >
@@ -722,12 +632,6 @@ exports[`Test Team Component should render the component 1`] = `
                 id="bowlingPosition4"
               >
                 test position
-              </td>
-              <td>
-                <img
-                  className="rankingplayerIcon"
-                  src="player.jpg"
-                />
               </td>
               <td
                 id="bowlingName4"
@@ -751,12 +655,6 @@ exports[`Test Team Component should render the component 1`] = `
               >
                 test position
               </td>
-              <td>
-                <img
-                  className="rankingplayerIcon"
-                  src="player.jpg"
-                />
-              </td>
               <td
                 id="bowlingName5"
               >
@@ -778,12 +676,6 @@ exports[`Test Team Component should render the component 1`] = `
                 id="bowlingPosition6"
               >
                 test position
-              </td>
-              <td>
-                <img
-                  className="rankingplayerIcon"
-                  src="player.jpg"
-                />
               </td>
               <td
                 id="bowlingName6"
@@ -807,12 +699,6 @@ exports[`Test Team Component should render the component 1`] = `
               >
                 test position
               </td>
-              <td>
-                <img
-                  className="rankingplayerIcon"
-                  src="player.jpg"
-                />
-              </td>
               <td
                 id="bowlingName7"
               >
@@ -835,12 +721,6 @@ exports[`Test Team Component should render the component 1`] = `
               >
                 test position
               </td>
-              <td>
-                <img
-                  className="rankingplayerIcon"
-                  src="player.jpg"
-                />
-              </td>
               <td
                 id="bowlingName8"
               >
@@ -862,12 +742,6 @@ exports[`Test Team Component should render the component 1`] = `
                 id="bowlingPosition9"
               >
                 test position
-              </td>
-              <td>
-                <img
-                  className="rankingplayerIcon"
-                  src="player.jpg"
-                />
               </td>
               <td
                 id="bowlingName9"
@@ -906,9 +780,6 @@ exports[`Test Team Component should render the component 1`] = `
                 Rank
               </th>
               <th>
-                Player Image
-              </th>
-              <th>
                 Player
               </th>
               <th>
@@ -923,12 +794,6 @@ exports[`Test Team Component should render the component 1`] = `
                 id="allRounderPosition0"
               >
                 test position
-              </td>
-              <td>
-                <img
-                  className="rankingplayerIcon"
-                  src="player.jpg"
-                />
               </td>
               <td
                 id="allRounderName0"
@@ -952,12 +817,6 @@ exports[`Test Team Component should render the component 1`] = `
               >
                 test position
               </td>
-              <td>
-                <img
-                  className="rankingplayerIcon"
-                  src="player.jpg"
-                />
-              </td>
               <td
                 id="allRounderName1"
               >
@@ -979,12 +838,6 @@ exports[`Test Team Component should render the component 1`] = `
                 id="allRounderPosition2"
               >
                 test position
-              </td>
-              <td>
-                <img
-                  className="rankingplayerIcon"
-                  src="player.jpg"
-                />
               </td>
               <td
                 id="allRounderName2"
@@ -1008,12 +861,6 @@ exports[`Test Team Component should render the component 1`] = `
               >
                 test position
               </td>
-              <td>
-                <img
-                  className="rankingplayerIcon"
-                  src="player.jpg"
-                />
-              </td>
               <td
                 id="allRounderName3"
               >
@@ -1035,12 +882,6 @@ exports[`Test Team Component should render the component 1`] = `
                 id="allRounderPosition4"
               >
                 test position
-              </td>
-              <td>
-                <img
-                  className="rankingplayerIcon"
-                  src="player.jpg"
-                />
               </td>
               <td
                 id="allRounderName4"
@@ -1064,12 +905,6 @@ exports[`Test Team Component should render the component 1`] = `
               >
                 test position
               </td>
-              <td>
-                <img
-                  className="rankingplayerIcon"
-                  src="player.jpg"
-                />
-              </td>
               <td
                 id="allRounderName5"
               >
@@ -1091,12 +926,6 @@ exports[`Test Team Component should render the component 1`] = `
                 id="allRounderPosition6"
               >
                 test position
-              </td>
-              <td>
-                <img
-                  className="rankingplayerIcon"
-                  src="player.jpg"
-                />
               </td>
               <td
                 id="allRounderName6"
@@ -1120,12 +949,6 @@ exports[`Test Team Component should render the component 1`] = `
               >
                 test position
               </td>
-              <td>
-                <img
-                  className="rankingplayerIcon"
-                  src="player.jpg"
-                />
-              </td>
               <td
                 id="allRounderName7"
               >
@@ -1148,12 +971,6 @@ exports[`Test Team Component should render the component 1`] = `
               >
                 test position
               </td>
-              <td>
-                <img
-                  className="rankingplayerIcon"
-                  src="player.jpg"
-                />
-              </td>
               <td
                 id="allRounderName8"
               >
@@ -1175,12 +992,6 @@ exports[`Test Team Component should render the component 1`] = `
                 id="allRounderPosition9"
               >
                 test position
-              </td>
-              <td>
-                <img
-                  className="rankingplayerIcon"
-                  src="player.jpg"
-                />
               </td>
               <td
                 id="allRounderName9"
@@ -1215,9 +1026,6 @@ exports[`Test Team Component should render the component 1`] = `
                 Rank
               </th>
               <th>
-                Team Image
-              </th>
-              <th>
                 Team
               </th>
               <th>
@@ -1232,12 +1040,6 @@ exports[`Test Team Component should render the component 1`] = `
                 id="teamPosition0"
               >
                 test position
-              </td>
-              <td>
-                <img
-                  className="rankingplayerIcon"
-                  src="player.jpg"
-                />
               </td>
               <td
                 id="teamName0"
