@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import "../index.css";
 import dhoni from "../DHONI.png";
-import pakistan from "../assests/pakistan.jpg";
-import india from "../assests/india.jpg";
 import { getHeadlines, getHeadline } from "../actions/Headlines";
 import { getMatchesRecentMatches } from "../actions/matchActions";
 import { getFixtures } from "../actions/Fixtures";
@@ -20,7 +18,7 @@ export class Home extends Component {
     this.props.getFixtures();
   }
   render() {
-    console.log("check props home", this.props);
+    console.log("check props home", this.props.fixtures);
     return (
       <div style={{ marginTop: "80px" }}>
         <div className="home-flex-container" id="test">
@@ -31,12 +29,14 @@ export class Home extends Component {
               </h2>
               <div className="col-content">
                 <ul className="home-ul">
-
                   {this.props.fixtures.map((fixture, index) => (
-                    <p class="home-p">
-                      <span id={"matchName" + index}>{fixture.match}</span>{" "}
+                    <p class="home-p" style={{ cursor: "pointer" }}>
+                      <span id={"matchName" + index}>
+                        {fixture.team1_name} VS {fixture.team2_name} -{" "}
+                        {fixture.match_type}
+                      </span>{" "}
                       <span className="home-time">
-                        {fixture.match_date} at {fixture.time}
+                        {fixture.match_date} at {fixture.match_time}
                       </span>
                       <hr className="home-hr" />
                     </p>

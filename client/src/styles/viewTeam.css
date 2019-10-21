@@ -365,6 +365,16 @@ body {
   z-index: 1;
 }
 
+.viewTeam-onlyt20-button{
+  border-radius: 8px;
+  background-color: white;
+  color: #f39c12;
+  width: 80px;
+  height: 50px;
+  margin-left: 5px;
+  border: 1px solid #f39c12;
+}
+
 .viewTeam-calendardisable {
   display: none;
 }
