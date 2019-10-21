@@ -218,3 +218,15 @@
     border-radius: 0px;
   }
 }
+
+.playerProfileStat {
+  height: 600px;
+  width: 800px;
+  margin: auto;
+  border: 0px solid white;
+}
+
+#playerStatsVisualizationSection {
+  margin-top: 30px;
+  text-align: center;
+}

@@ -65,7 +65,7 @@ const wrapper = mount(
   />
 );
 
-describe("Test Team Component", () => {
+describe("Test MAtch Component", () => {
   it("should render the component", () => {
     expect(wrapper).toMatchSnapshot();
   });

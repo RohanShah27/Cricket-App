@@ -8,7 +8,11 @@ import {
   GET_MATCHES_BY_TEAM,
   GET_MATCHES_BY_TEAM_AND_TYPE,
   GET_MATCHES_BY_DATE,
-  MANHATTAN_GRAPH_MATCH
+  MANHATTAN_GRAPH_MATCH,
+  PIECHART_BATSMAN_INNINGS1,
+  PIECHART_BATSMAN_INNINGS2,
+  PIECHART_BOWLER_INNINGS1,
+  PIECHART_BOWLER_INNINGS2
 } from "../actions/Types";
 
 const initialState = {
@@ -16,6 +20,10 @@ const initialState = {
   singlematch: [],
   viewmatch: [],
   manhattan: [],
+  piebatsman1: [],
+  piebatsman2: [],
+  piebolwer1: [],
+  piebolwer2: [],
   current_match: {
     player1: [{}, {}],
     toss: [{}, {}],
@@ -80,6 +88,15 @@ export default function(state = initialState, action) {
         ...state,
         manhattan: action.payload
       };
+
+    case PIECHART_BATSMAN_INNINGS1:
+      return { ...state, piebatsman1: action.payload };
+    case PIECHART_BATSMAN_INNINGS2:
+      return { ...state, piebatsman2: action.payload };
+    case PIECHART_BOWLER_INNINGS1:
+      return { ...state, piebolwer1: action.payload };
+    case PIECHART_BOWLER_INNINGS2:
+      return { ...state, piebolwer2: action.payload };
     default:
       return state;
   }

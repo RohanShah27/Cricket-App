@@ -1,8 +1,14 @@
-import { SEARCH_PLAYER, ALL_PLAYERS, PLAYER_SEARCH } from "../actions/Types";
+import {
+  SEARCH_PLAYER,
+  ALL_PLAYERS,
+  PLAYER_SEARCH,
+  PLAYER_STATS
+} from "../actions/Types";
 const initialState = {
   player: [],
   players: [],
-  search_player: [[]]
+  search_player: [[]],
+  playerstats: []
 };
 export default function(state = initialState, action) {
   switch (action.type) {
@@ -15,6 +21,8 @@ export default function(state = initialState, action) {
     // Search particular player on the players page
     case PLAYER_SEARCH:
       return { ...state, search_player: action.payload };
+    case PLAYER_STATS:
+      return { ...state, playerstats: action.payload };
     default:
       return state;
   }

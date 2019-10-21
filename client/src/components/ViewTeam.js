@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import "../styles/viewTeam.css";
 import India from "../assests/india.jpg";
+import ReactCountryFlag from "react-country-flag";
 import {
   getTeamById,
   getTeamStats,
@@ -222,19 +223,26 @@ export class ViewTeam extends Component {
   }
 
   render() {
-    console.log(
-      this.props.teamstats["0"] ? this.props.teamstats["0"].test_played : "NAs"
-    );
+    console.log(this.props.match);
     return (
       <div>
         <div className="viewTeam-container">
           <div className="parentcoach">
-            <div className="child1">
-              <img src={India} className="imgforteam" />
-            </div>
             {this.props.tournamentTeam.map(teams => (
-              <div className="child2">
-                <p className="child2p">{teams.team_name}</p>
+              <div className="parentcoach">
+                <div className="child1">
+                  <ReactCountryFlag
+                    styleProps={{
+                      width: "80px",
+                      height: "80px"
+                    }}
+                    code={teams.team_image ? teams.team_image : "ao"}
+                    svg
+                  />
+                </div>
+                <div className="child2">
+                  <p className="child2p">{teams.team_name}</p>
+                </div>
               </div>
             ))}
           </div>
@@ -475,16 +483,31 @@ export class ViewTeam extends Component {
                       >
                         <div className="viewTeamMatches-parent">
                           <div className="viewTeamMatches-first">
-                            <img className="viewTeamMatches-img" src={india} />
+                            <ReactCountryFlag
+                              styleProps={{
+                                width: "80px",
+                                height: "80px"
+                              }}
+                              code={
+                                match.team1_image ? match.team1_image : "ao"
+                              }
+                              svg
+                            />
                             <p>
                               {match.team1}
                               {/* India */}
                             </p>
                           </div>
                           <div className="viewTeamMatches-second">
-                            <img
-                              className="viewTeamMatches-img"
-                              src={pakistan}
+                            <ReactCountryFlag
+                              styleProps={{
+                                width: "80px",
+                                height: "80px"
+                              }}
+                              code={
+                                match.team2_image ? match.team2_image : "ao"
+                              }
+                              svg
                             />
 
                             <p>
