@@ -11,7 +11,6 @@ import Footer from "./components/Footer";
 import Match from "./components/Match";
 import Login from "./components/Login";
 
-import Players from "./components/Players";
 import PaginatePlayers from "./components/paginatePlayers";
 // Yash Bhatia
 import AdminPlayer from "./components/AdminPlayer";
@@ -79,7 +78,7 @@ export default class App extends React.Component {
           <Route exact path="/viewteam/:team_id" component={ViewTeam}></Route>
           <Route
             exact
-            path="/paginatePlayers"
+            path="/Players"
             component={props => (
               <PaginatePlayers {...props} gender={this.state.gender} />
             )}
