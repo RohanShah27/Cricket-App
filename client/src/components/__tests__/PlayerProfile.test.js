@@ -1,5 +1,5 @@
 import React from "react";
-import { shallow, mount } from "enzyme";
+import { mount } from "enzyme";
 import { PlayerProfile } from "../PlayerProfile";
 let playerProfile = jest.fn();
 let match = { params: { player_id: 1 }, isExact: true, path: "", url: "" };
@@ -76,10 +76,10 @@ describe("Test suite for Player Profile Component", () => {
     );
   });
   it("should display player Nation", () => {
-    expect(wrapper.find("#playerNation").props().children).toStrictEqual(
-      ["Team:", "test nation"]
-      //   "Team: " + location.state.player.nation
-    );
+    expect(wrapper.find("#playerNation").props().children).toStrictEqual([
+      "Team:",
+      "test nation"
+    ]);
   });
   it("should display player DOB", () => {
     expect(wrapper.find("#playerDOB").props().children).toStrictEqual([

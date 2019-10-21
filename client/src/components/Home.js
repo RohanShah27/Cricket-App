@@ -2,24 +2,23 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import "../index.css";
 import dhoni from "../DHONI.png";
-import pakistan from "../assests/pakistan.jpg";
-import india from "../assests/india.jpg";
 import { getHeadlines, getHeadline } from "../actions/Headlines";
 import { getMatchesRecentMatches } from "../actions/matchActions";
 import { getFixtures } from "../actions/Fixtures";
+import ReactCountryFlag from "react-country-flag";
 
 export class Home extends Component {
   constructor(props) {
     super(props);
   }
   componentWillMount() {
-    this.props.getMatchesRecentMatches();
+    this.props.getMatchesRecentMatches(this.props.gender);
     this.props.getHeadline(1);
     this.props.getHeadlines();
     this.props.getFixtures();
   }
   render() {
-    console.log("check props home", this.props);
+    console.log("check props home", this.props.fixtures);
     return (
       <div style={{ marginTop: "80px" }}>
         <div className="home-flex-container" id="test">
@@ -31,10 +30,13 @@ export class Home extends Component {
               <div className="col-content">
                 <ul className="home-ul">
                   {this.props.fixtures.map((fixture, index) => (
-                    <p class="home-p">
-                      <span id={"matchName" + index}>{fixture.match}</span>{" "}
+                    <p class="home-p" style={{ cursor: "pointer" }}>
+                      <span id={"matchName" + index}>
+                        {fixture.team1_name} VS {fixture.team2_name} -{" "}
+                        {fixture.match_type}
+                      </span>{" "}
                       <span className="home-time">
-                        {fixture.match_date} at {fixture.time}
+                        {fixture.match_date} at {fixture.match_time}
                       </span>
                       <hr className="home-hr" />
                     </p>
@@ -50,11 +52,21 @@ export class Home extends Component {
                 </h2>
                 <div col-content>
                   <figure>
-                    <img src={dhoni} className="homeimg" />
+                    <img
+                      src={
+                        this.props.headline[0]
+                          ? "data:image/jpeg;base64," +
+                            this.props.headline[0].headlines_image
+                          : dhoni
+                      }
+                      className="homeimg"
+                    />
                   </figure>
                   <figcaption>
                     <span className="newsTitle">
-                      {this.props.headline[0].headlines}
+                      {this.props.headline[0]
+                        ? this.props.headline[0].headlines
+                        : "NA"}
                     </span>
                     <hr className="home-hr" />
                     <p
@@ -62,7 +74,9 @@ export class Home extends Component {
                       style={{ fontSize: "15px", paddingLeft: "5px" }}
                     >
                       {/* Single Headline */}
-                      {this.props.headline[0].headlines_description}
+                      {this.props.headline[0]
+                        ? this.props.headline[0].headlines_description
+                        : "NA"}
                     </p>
                   </figcaption>
                 </div>
@@ -111,7 +125,15 @@ export class Home extends Component {
 
                     <div className="parent">
                       <div className="first">
-                        <img className="imgformatch" src={india} />
+                        <ReactCountryFlag
+                          styleProps={{
+                            width: "50px",
+                            height: "50px"
+                          }}
+                          code={match.team1_image ? match.team1_image : "ao"}
+                          svg
+                          className="imgformatch"
+                        />
                         <p
                           style={{ wordBreak: "break-word" }}
                           id={"matchTeamOne" + index}
@@ -134,7 +156,15 @@ export class Home extends Component {
                         </button>
                       </div>
                       <div className="third">
-                        <img className="imgformatch" src={pakistan} />
+                        <ReactCountryFlag
+                          styleProps={{
+                            width: "50px",
+                            height: "50px"
+                          }}
+                          code={match.team2_image ? match.team2_image : "bm"}
+                          svg
+                          className="imgformatch"
+                        />
 
                         <p id={"matchTeamTwo" + index}>{match.team2}</p>
                       </div>

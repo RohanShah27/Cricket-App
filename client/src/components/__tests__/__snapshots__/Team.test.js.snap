@@ -1,3 +1,381 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Test Team Component should render the component 1`] = `ShallowWrapper {}`;
+exports[`Test Team Component should render the component 1`] = `
+<Team
+  getTeam={[MockFunction]}
+  getTournament={
+    [MockFunction] {
+      "calls": Array [
+        Array [
+          Object {
+            "tournament": "others",
+          },
+        ],
+      ],
+      "results": Array [
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+      ],
+    }
+  }
+  history={
+    Object {
+      "push": [MockFunction],
+    }
+  }
+  searchTeamForViewTeamPage={[MockFunction]}
+  teams={
+    Array [
+      Object {
+        "team_id": 0,
+        "team_name": "test name",
+      },
+      Object {
+        "team_id": 1,
+        "team_name": "test name",
+      },
+      Object {
+        "team_id": 2,
+        "team_name": "test name",
+      },
+      Object {
+        "team_id": 3,
+        "team_name": "test name",
+      },
+      Object {
+        "team_id": 4,
+        "team_name": "test name",
+      },
+      Object {
+        "team_id": 5,
+        "team_name": "test name",
+      },
+      Object {
+        "team_id": 6,
+        "team_name": "test name",
+      },
+      Object {
+        "team_id": 7,
+        "team_name": "test name",
+      },
+      Object {
+        "team_id": 8,
+        "team_name": "test name",
+      },
+      Object {
+        "team_id": 9,
+        "team_name": "test name",
+      },
+      Object {
+        "team_id": 10,
+        "team_name": "test name",
+      },
+      Object {
+        "team_id": 11,
+        "team_name": "test name",
+      },
+      Object {
+        "team_id": 12,
+        "team_name": "test name",
+      },
+      Object {
+        "team_id": 13,
+        "team_name": "test name",
+      },
+      Object {
+        "team_id": 14,
+        "team_name": "test name",
+      },
+      Object {
+        "team_id": 15,
+        "team_name": "test name",
+      },
+      Object {
+        "team_id": 16,
+        "team_name": "test name",
+      },
+      Object {
+        "team_id": 17,
+        "team_name": "test name",
+      },
+      Object {
+        "team_id": 18,
+        "team_name": "test name",
+      },
+      Object {
+        "team_id": 19,
+        "team_name": "test name",
+      },
+      Object {
+        "team_id": 20,
+        "team_name": "test name",
+      },
+    ]
+  }
+  tournamentTeam={
+    Array [
+      Object {
+        "team_id": 0,
+        "team_name": "test name",
+      },
+      Object {
+        "team_id": 1,
+        "team_name": "test name",
+      },
+      Object {
+        "team_id": 2,
+        "team_name": "test name",
+      },
+      Object {
+        "team_id": 3,
+        "team_name": "test name",
+      },
+      Object {
+        "team_id": 4,
+        "team_name": "test name",
+      },
+      Object {
+        "team_id": 5,
+        "team_name": "test name",
+      },
+      Object {
+        "team_id": 6,
+        "team_name": "test name",
+      },
+      Object {
+        "team_id": 7,
+        "team_name": "test name",
+      },
+      Object {
+        "team_id": 8,
+        "team_name": "test name",
+      },
+      Object {
+        "team_id": 9,
+        "team_name": "test name",
+      },
+      Object {
+        "team_id": 10,
+        "team_name": "test name",
+      },
+      Object {
+        "team_id": 11,
+        "team_name": "test name",
+      },
+      Object {
+        "team_id": 12,
+        "team_name": "test name",
+      },
+      Object {
+        "team_id": 13,
+        "team_name": "test name",
+      },
+      Object {
+        "team_id": 14,
+        "team_name": "test name",
+      },
+      Object {
+        "team_id": 15,
+        "team_name": "test name",
+      },
+      Object {
+        "team_id": 16,
+        "team_name": "test name",
+      },
+      Object {
+        "team_id": 17,
+        "team_name": "test name",
+      },
+      Object {
+        "team_id": 18,
+        "team_name": "test name",
+      },
+      Object {
+        "team_id": 19,
+        "team_name": "test name",
+      },
+      Object {
+        "team_id": 20,
+        "team_name": "test name",
+      },
+    ]
+  }
+>
+  <div
+    className="team-body"
+  >
+    <div
+      className="pc-playerTab"
+    >
+      <input
+        className="inputforbuttons"
+        defaultChecked="defaultChecked"
+        id="playerTab1"
+        name="pct"
+        type="radio"
+      />
+      <input
+        className="inputforbuttons"
+        id="playerTab2"
+        name="pct"
+        type="radio"
+      />
+      <input
+        className="inputforbuttons"
+        id="playerTab3"
+        name="pct"
+        type="radio"
+      />
+      <input
+        className="inputforbuttons"
+        id="playerTab4"
+        name="pct"
+        type="radio"
+      />
+      <nav>
+        <ul>
+          <li
+            className="playerTab1"
+          >
+            <label
+              htmlFor="playerTab1"
+              id="othersTab"
+              onClick={[Function]}
+            >
+              International
+            </label>
+          </li>
+          <li
+            className="playerTab2"
+          >
+            <label
+              htmlFor="playerTab2"
+              id="iplTab"
+              onClick={[Function]}
+            >
+              IPL
+            </label>
+          </li>
+          <li
+            className="playerTab3"
+          >
+            <label
+              htmlFor="playerTab3"
+              id="BBLTab"
+              onClick={[Function]}
+            >
+              Big Bash League
+            </label>
+          </li>
+          <li
+            className="playerTab4"
+          >
+            <label
+              htmlFor="playerTab4"
+              id="PSLTab"
+              onClick={[Function]}
+            >
+              Pakistan Super League
+            </label>
+          </li>
+        </ul>
+      </nav>
+      <div
+        className="team-search-box"
+      >
+        <button
+          className="team-search-button"
+          id="searchTeamButton"
+          onClick={[Function]}
+        >
+          <i
+            class="fa fa-search"
+          />
+        </button>
+        <input
+          className="team-search-input"
+          id="searchTeamTextBox"
+          name="team_name"
+          onChange={[Function]}
+          placeholder="Enter Team Name"
+          type="text"
+        />
+      </div>
+      <section>
+        <div
+          className="playerTab1"
+        >
+          <InfiniteScroll
+            dataLength={0}
+            disableBrowserPullToRefresh={true}
+            endMessage={
+              <p
+                style={
+                  Object {
+                    "textAlign": "center",
+                  }
+                }
+              >
+                <b>
+                  Yay! You have seen all Teams
+                </b>
+              </p>
+            }
+            hasMore={true}
+            height={600}
+            loader={
+              <div
+                className="loader-container"
+              >
+                <div
+                  className="user-loader"
+                />
+              </div>
+            }
+            next={[Function]}
+            pullDownToRefreshContent={
+              <h3>
+                Pull down to refresh
+              </h3>
+            }
+            pullDownToRefreshThreshold={100}
+            releaseToRefreshContent={
+              <h3>
+                Release to refresh
+              </h3>
+            }
+          >
+            <div
+              style={Object {}}
+            >
+              <div
+                className="infinite-scroll-component "
+                style={
+                  Object {
+                    "WebkitOverflowScrolling": "touch",
+                    "height": 600,
+                    "overflow": "auto",
+                  }
+                }
+              >
+                <div
+                  className="team-teamTestimonials"
+                />
+                <div
+                  className="loader-container"
+                >
+                  <div
+                    className="user-loader"
+                  />
+                </div>
+              </div>
+            </div>
+          </InfiniteScroll>
+        </div>
+      </section>
+    </div>
+  </div>
+</Team>
+`;

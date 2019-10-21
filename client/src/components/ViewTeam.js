@@ -90,7 +90,6 @@ export class ViewTeam extends Component {
       this.props.location.state.teams.team_id,
       type
     );
-    // this.props.teamStatsGraphOdi(this.props.location.state.teams.team_id);
   }
 
   onodiclick = () => {
@@ -221,12 +220,6 @@ export class ViewTeam extends Component {
     console.log("from team nav", obj);
     this.props.getMatchesByTeam(obj);
   }
-
-  // callloader = () => {
-  //   <div className="loader-container">
-  //     <div className="user-loader"></div>
-  //   </div>;
-  // };
 
   render() {
     console.log(

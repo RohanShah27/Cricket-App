@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import "../styles/Team.css";
-import international from "./international.png";
-import ipl from "./ipl.png";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { Link } from "react-router-dom";
 import ReactCountryFlag from "react-country-flag";
@@ -30,12 +28,15 @@ export class Team extends Component {
   componentDidMount() {
     let team = { tournament: "others" };
     this.props.getTournament(team);
-    // this.loadMoreItems();
   }
 
+  componentWillReceiveProps(nextProps) {
+    nextProps.tournamentTeam.length > 0
+      ? this.displayTeams(nextProps.tournamentTeam)
+      : console.log(0, " teams");
+  }
   OnChange = event => {
     this.setState({ [event.target.name]: event.target.value });
-    event.preventDefault();
 
     let team_name = {
       team_name: this.state.team_name
@@ -60,12 +61,6 @@ export class Team extends Component {
       tournament: this.state.tournament
     };
     this.props.getTournament(tournament);
-  }
-
-  componentWillReceiveProps(nextProps) {
-    nextProps.tournamentTeam.length > 0
-      ? this.displayTeams(nextProps.tournamentTeam)
-      : console.log(0, " teams");
   }
 
   displayTeams = teams => {
@@ -124,32 +119,44 @@ export class Team extends Component {
             <ul>
               <li className="playerTab1">
                 <label
+                  id="othersTab"
                   htmlFor="playerTab1"
-                  onClick={() => this.sendTeam("others")}
+                  onClick={() => {
+                    this.sendTeam("others");
+                  }}
                 >
                   International
                 </label>
               </li>
               <li className="playerTab2">
                 <label
+                  id="iplTab"
                   htmlFor="playerTab2"
-                  onClick={() => this.sendTeam("IPL")}
+                  onClick={() => {
+                    this.sendTeam("IPL");
+                  }}
                 >
                   IPL
                 </label>
               </li>
               <li className="playerTab3">
                 <label
+                  id="BBLTab"
                   htmlFor="playerTab3"
-                  onClick={() => this.sendTeam("Big Bash League")}
+                  onClick={() => {
+                    this.sendTeam("Big Bash League");
+                  }}
                 >
                   Big Bash League
                 </label>
               </li>
               <li className="playerTab4">
                 <label
+                  id="PSLTab"
                   htmlFor="playerTab4"
-                  onClick={() => this.sendTeam("Pakistan Super League")}
+                  onClick={() => {
+                    this.sendTeam("Pakistan Super League");
+                  }}
                 >
                   Pakistan Super League
                 </label>
@@ -157,10 +164,15 @@ export class Team extends Component {
             </ul>
           </nav>
           <div className="team-search-box">
-            <button className="team-search-button" onClick={this.getTeam}>
+            <button
+              className="team-search-button"
+              id="searchTeamButton"
+              onClick={() => this.getTeam}
+            >
               <i class="fa fa-search"></i>
             </button>
             <input
+              id="searchTeamTextBox"
               className="team-search-input"
               type="text"
               placeholder="Enter Team Name"
@@ -220,8 +232,7 @@ export class Team extends Component {
                 }
               >
                 <div className="team-teamTestimonials">
-                  {/* {this.props.tournamentTeam.map(teams => ( */}
-                  {this.state.pageTeams.map(teams => {
+                  {this.state.pageTeams.map((teams, index) => {
                     return (
                       <div>
                         {teams ? (
@@ -239,11 +250,12 @@ export class Team extends Component {
                                 svg
                                 className="internationalLogo"
                               />{" "}
-                              <p>{teams.team_name}</p>
+                              <p id={"teamName" + index}>{teams.team_name}</p>
                               {/* <p>India</p> */}
                               <div className="team-details">
                                 <p>
                                   <button
+                                    id={"teamDetailsButton" + index}
                                     className="playerViewDetails"
                                     onClick={() => {
                                       this.props.history.push(
@@ -258,6 +270,7 @@ export class Team extends Component {
                                 </p>
                               </div>
                             </div>
+                            {/* </div> */}
                           </div>
                         ) : (
                           <div></div>

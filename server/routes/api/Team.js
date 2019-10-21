@@ -20,10 +20,10 @@ router.post("/tournament", async (req, res) => {
   const tournament = req.body.tournament;
   console.log(tournament);
   const result = await db.any(
-    `with ss as(select match.innings_one_team, match.innings_two_team, match.competition, team.team_name, team.team_id ,team.team_image from match 
+    `with ss as(select match.innings_one_team, match.innings_two_team, match.competition, team.team_name, team.team_id ,team.team_image,team.team_background from match 
       inner join team on match.innings_one_team = team.team_id), 
-      t2 as (select match.innings_two_team, match.competition, team.team_name, team.team_id,team.team_image from match 
-      inner join team on match.innings_two_team = team.team_id) select distinct(team_name), team_id,team_image from t2 where competition='${tournament}'`
+      t2 as (select match.innings_two_team, match.competition, team.team_name, team.team_id,team.team_image,team.team_background  from match 
+      inner join team on match.innings_two_team = team.team_id) select distinct(team_name), team_id,team_image,team_background  from t2 where competition='${tournament}'`
   );
   if (!result) {
     res.status(404).json({
