@@ -134,4 +134,8 @@ describe("Test Team Component", () => {
       team_name: "test name"
     });
   });
+  it("should check for loadMoreItems as a function", () => {
+    let loadMoreItems = jest.spyOn(wrapper.instance, "loadMoreItems");
+    expect(loadMoreItems).toBeTruthy();
+  });
 });

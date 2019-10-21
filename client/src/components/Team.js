@@ -82,7 +82,6 @@ export class Team extends Component {
         items: this.state.items + 8
       });
 
-      console.log("Teams", this.props.tournamentTeam);
       this.displayTeams(this.props.tournamentTeam);
     }, 1000);
   };

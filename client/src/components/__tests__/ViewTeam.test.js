@@ -1,8 +1,6 @@
 import React from "react";
 import { mount } from "enzyme";
 import { ViewTeam } from "../ViewTeam";
-import { Provider } from "react-redux";
-import store from "../../store";
 
 let team_stats = [
   {
