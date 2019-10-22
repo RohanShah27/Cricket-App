@@ -78,7 +78,13 @@ export class PlayerProfile extends Component {
                     <span className="personal-detail-content" id="playerDOB">
                       {" "}
                       {this.props.location.state.player.player_dob
-                        ? this.props.location.state.player.player_dob
+                        ? new Date(
+                            this.props.location.state.player.player_dob
+                          ).toLocaleDateString("en-IN", {
+                            month: "short",
+                            day: "2-digit",
+                            year: "numeric"
+                          })
                         : "NA"}
                     </span>
                   </p>
@@ -151,7 +157,7 @@ export class PlayerProfile extends Component {
               </div>
             </div>
             <div id="playerStatsVisualizationSection">
-              <h1>Total Runs</h1>
+              <h1>Bar graph for Total Runs</h1>
               <iframe
                 id="visualization"
                 className="playerProfileStat"

@@ -225,7 +225,9 @@ export class MatchDetails extends Component {
             <div className="matchDetails-tab3">
               <div className="matchDetails-testimonials">
                 <div className="matchDetails-statistics-container">
+                  <h2>Runs Per Over graph</h2>
                   <div className="manhattan-match">
+                    
                     <iframe
                       id="manhattan"
                       src={this.props.manhattan}
@@ -233,7 +235,9 @@ export class MatchDetails extends Component {
                     />
                   </div>
                 </div>
+                
                 <div className="matchDetails-statistics-container">
+                  <h2>Innings1 Batsman Contribution</h2>
                   <div className="manhattan-match">
                     <iframe
                       id="piebats1"
@@ -243,6 +247,7 @@ export class MatchDetails extends Component {
                   </div>
                 </div>
                 <div className="matchDetails-statistics-container">
+                  <h2>Innings2 Batsman Contribution</h2>
                   <div className="manhattan-match">
                     <iframe
                       id="piebats2"
@@ -252,6 +257,7 @@ export class MatchDetails extends Component {
                   </div>
                 </div>
                 <div className="matchDetails-statistics-container">
+                  <h2>Innings1 Bowler Contribution</h2>
                   <div className="manhattan-match">
                     <iframe
                       id="piebowler1"
@@ -261,6 +267,7 @@ export class MatchDetails extends Component {
                   </div>
                 </div>
                 <div className="matchDetails-statistics-container">
+                  <h2>Innings2 Bowler Contribution</h2>
                   <div className="manhattan-match">
                     <iframe
                       id="piebowler2"
@@ -458,7 +465,13 @@ export class MatchDetails extends Component {
                             <tr>
                               <td>Match Date</td>{" "}
                               <td>
-                                {this.props.current_match.date[0].match_date}
+                                {new Date(
+                            this.props.current_match.date[0].match_date
+                          ).toLocaleDateString("en-IN", {
+                            month: "short",
+                            day: "2-digit",
+                            year: "numeric"
+                          })}
                               </td>
                             </tr>
                             <tr>
