@@ -15,8 +15,6 @@ import {
   getMatchesByTeamAndType,
   getMatchesByDate
 } from "../actions/matchActions";
-import india from "../assests/india.jpg";
-import pakistan from "../assests/pakistan.jpg";
 import Calendar from "react-calendar";
 
 export class ViewTeam extends Component {
@@ -60,17 +58,8 @@ export class ViewTeam extends Component {
       calendarIsOpen: true
     });
   };
-  closecalendar = () => {
-    this.setState({
-      calendarIsOpen: false
-    });
-    {
-      console.log(this.setState.calendarIsOpen);
-    }
-  };
 
   componentDidMount() {
-    console.log(this.props.gender);
     let team_id = {
       team_id: this.props.location.state.teams.team_id
     };
@@ -80,8 +69,6 @@ export class ViewTeam extends Component {
     let type = {
       match_type: "Test"
     };
-    console.log(teams);
-    console.log(team_id);
     this.props.getTeamById(team_id);
     this.props.getTeamStats(this.props.location.state.teams.team_id);
     this.props.getPlayerStatsForTeams(
@@ -239,12 +226,11 @@ export class ViewTeam extends Component {
   }
 
   render() {
-    console.log(this.props.match);
     return (
       <div>
         <div className="viewTeam-container">
           <div className="parentcoach">
-            {this.props.tournamentTeam.map(teams => (
+            {this.props.tournamentTeam.map((teams, index) => (
               <div className="parentcoach">
                 <div className="child1">
                   <ReactCountryFlag
@@ -257,7 +243,9 @@ export class ViewTeam extends Component {
                   />
                 </div>
                 <div className="child2">
-                  <p className="child2p">{teams.team_name}</p>
+                  <p className="child2p" id={"teamName" + index}>
+                    {teams.team_name}
+                  </p>
                 </div>
               </div>
             ))}
@@ -277,9 +265,10 @@ export class ViewTeam extends Component {
                     <b>Stats</b>
                   </label>
                 </li>
-                {this.props.tournamentTeam.map(teams => (
+                {this.props.tournamentTeam.map((teams, index) => (
                   <li
                     className="viewTeam-tab2"
+                    id={"teamNameStats" + index}
                     onClick={() => {
                       this.ontestclickmatch(teams.team_name);
                     }}
@@ -295,7 +284,7 @@ export class ViewTeam extends Component {
               <div className="viewTeam-tab1">
                 <div className="viewTeam-testimonials">
                   <div className="viewTeam-table1">
-                    {this.props.teamstats.map(teamstats => (
+                    {this.props.teamstats.map((teamstats, index) => (
                       <table className="stats">
                         <tr>
                           <th style={{ borderTopLeftRadius: "8px" }}>Format</th>
@@ -306,24 +295,30 @@ export class ViewTeam extends Component {
                         </tr>
                         <tr>
                           <td>TEST</td>
-                          <td>{teamstats.test_played}</td>
-                          <td>{teamstats.test_win}</td>
-                          <td>{teamstats.test_loss}</td>
-                          <td>{teamstats.test_draw}</td>
+                          <td id={"testPlayed" + index}>
+                            {teamstats.test_played}
+                          </td>
+                          <td id={"testWon" + index}>{teamstats.test_win}</td>
+                          <td id={"testLoss" + index}>{teamstats.test_loss}</td>
+                          <td id={"testDraw" + index}>{teamstats.test_draw}</td>
                         </tr>
                         <tr>
                           <td>ODI</td>
-                          <td>{teamstats.odi_played}</td>
-                          <td>{teamstats.odi_win}</td>
-                          <td>{teamstats.odi_loss}</td>
-                          <td>{teamstats.odi_draw}</td>
+                          <td id={"odiPlayed" + index}>
+                            {teamstats.odi_played}
+                          </td>
+                          <td id={"odiWon" + index}>{teamstats.odi_win}</td>
+                          <td id={"odiLoss" + index}>{teamstats.odi_loss}</td>
+                          <td id={"odiDraw" + index}>{teamstats.odi_draw}</td>
                         </tr>
                         <tr>
                           <td>T20</td>
-                          <td>{teamstats.t20_played}</td>
-                          <td>{teamstats.t20_win}</td>
-                          <td>{teamstats.t20_loss}</td>
-                          <td>{teamstats.t20_draw}</td>
+                          <td id={"t20Played" + index}>
+                            {teamstats.t20_played}
+                          </td>
+                          <td id={"t20Won" + index}>{teamstats.t20_win}</td>
+                          <td id={"t20Loss" + index}>{teamstats.t20_loss}</td>
+                          <td id={"t20Draw" + index}>{teamstats.t20_draw}</td>
                         </tr>
                       </table>
                     ))}
@@ -388,8 +383,6 @@ export class ViewTeam extends Component {
                             <tr>
                               <td>{playerstatsforteams.player_name}</td>
                               <td>{playerstatsforteams.player_stats_value}</td>
-                              {/* <td>{playerstatsforteams.player_stats_value}</td>
-                            <td>{playerstatsforteams.player_stats_value}</td> */}
                             </tr>
                           )
                         )}
