@@ -134,16 +134,12 @@ figcaption {
   box-shadow: 0px 4px 6px 0px #c2c2c2;
   grid-column: 4 / 5;
   grid-row: 1 / 6;
-  overflow-x: hidden;
-  overflow-x: auto;
+  overflow-y: auto;
 }
 .headlines::-webkit-scrollbar {
   display: none;
 }
 
-/* Recent Match Container */
-.home-match-container-title {
-}
 .home-match-container {
   grid-column: 1/5;
   grid-row: 4;
@@ -273,6 +269,7 @@ figcaption {
   .news {
     grid-column: 1/-1;
     grid-row: 4/5;
+    height: 600px;
   }
 
   .home-match-container {
@@ -296,7 +293,7 @@ figcaption {
     height: 200px;
   }
   .news {
-    height: 380px;
+    height: 400px;
     grid-row: 4;
   }
 }

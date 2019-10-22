@@ -6,6 +6,7 @@ import { getHeadlines, getHeadline } from "../actions/Headlines";
 import { getMatchesRecentMatches } from "../actions/matchActions";
 import { getFixtures } from "../actions/Fixtures";
 import ReactCountryFlag from "react-country-flag";
+import { Link } from "react-router-dom";
 
 export class Home extends Component {
   constructor(props) {
@@ -159,18 +160,25 @@ export class Home extends Component {
                             </p>
                           </div>
                           <div className="second">
-                            <button
-                              id={"recent-match" + index}
-                              className="buttonformatch"
-                              onClick={() => {
-                                this.props.history.push(
-                                  "/matchdetails/" + match.match_id,
-                                  match
-                                );
+                            <Link
+                              to={{
+                                pathname: "/matchdetails/" + match.match_id,
+                                state: { match: match }
                               }}
                             >
-                              View
-                            </button>
+                              <button
+                                id={"recent-match" + index}
+                                className="buttonformatch"
+                                // onClick={() => {
+                                //   this.props.history.push(
+                                //     "/matchdetails/" + match.match_id,
+                                //     match
+                                //   );
+                                // }}
+                              >
+                                View
+                              </button>
+                            </Link>
                           </div>
                           <div className="third">
                             <ReactCountryFlag

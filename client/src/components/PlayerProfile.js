@@ -27,10 +27,10 @@ export class PlayerProfile extends Component {
             <div className="main-section">
               {/* Start of flex container for image and Player Name -Rohan*/}
               <div className="player-flex-container">
-                <div style={{ flexGrow: 2, alignItems: "center" }}>
+                <div className="flexGrowForPlayer">
                   <img
                     className="profile-img"
-                    style={{ borderRadius: 5 + "em" }}
+                    // style={{ borderRadius: 5 + "em" }}
                     src={
                       this.props.location.state.player.player_image
                         ? "data:image/jpeg;base64," +
@@ -41,7 +41,7 @@ export class PlayerProfile extends Component {
                     }
                   />
                 </div>
-                <div style={{ flexGrow: 8 }}>
+                <div className="flexGrowEight">
                   <h1 id="playerName">
                     {this.props.history.location.state.player.player_name
                       ? this.props.history.location.state.player.player_name

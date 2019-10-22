@@ -24,6 +24,7 @@
 .player-search-result {
   border: 1px solid #c2c2c2;
   height: auto;
+  max-height: 200px;
   width: 200px;
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
@@ -31,6 +32,9 @@
   /* margin-left: auto; */
   z-index: 1;
   right: 0;
+  overflow: hidden;
+  overflow-x: hidden;
+  overflow-x: auto;
   margin-right: 110px;
   /* text-align: right; */
   position: absolute;
@@ -107,12 +111,14 @@
 @media (max-width: 768px) {
   .players-card-container {
     grid-template-columns: repeat(2, 1fr);
-    margin: 0 0px;
+    margin-left: 15px;
+    grid-gap: 10px;
+    margin-top: 20px;
   }
   .players-card {
     width: 200px;
     margin-top: 30px;
-    margin-left: 10px;
+    margin-left: 15px;
   }
   .side p {
     padding-right: 10px;
