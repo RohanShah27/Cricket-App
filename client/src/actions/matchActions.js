@@ -108,26 +108,10 @@ export const getAllMatchDetails = id => dispatch => {
     });
 };
 
-// export const getMatchesByType = matches => dispatch => {
-//   console.log(matches);
-//   return axios
-//     .post(url + "/getbytype", matches)
-//     .then(res => {
-//       dispatch({
-//         type: GET_MATCHESBYTYPE,
-//         payload: res.data.data
-//       });
-//       console.log(res.data);
-//     })
-//     .catch(err => {
-//       console.log(err);
-//     });
-// };
-
-export const getMatchesByTeam = teamname => dispatch => {
+export const getMatchesByTeam = (teamname, gender) => dispatch => {
   console.log(teamname);
   return axios
-    .post(url + "/getbyteam", teamname)
+    .post(url + "/getbyteam", teamname, gender)
     .then(res => {
       dispatch({
         type: GET_MATCHES_BY_TEAM,

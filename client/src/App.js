@@ -75,7 +75,13 @@ export default class App extends React.Component {
           <Route exact path="/addnewadmin" component={AddNewAdmin} />
           <Route exact path="/addnewteam" component={AddNewTeam} />
           <Route exact path="/resetpassword" component={ResetPassword} />
-          <Route exact path="/viewteam/:team_id" component={ViewTeam}></Route>
+          <Route
+            exact
+            path="/viewteam/:team_id"
+            component={props => (
+              <ViewTeam {...props} gender={this.state.gender} />
+            )}
+          ></Route>
           <Route
             exact
             path="/Players"

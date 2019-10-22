@@ -47,7 +47,8 @@ export class ViewTeam extends Component {
     let obj = {
       team_name: this.state.team_name,
       match_type: this.state.match_type,
-      match_date: this.state.date.toJSON().slice(0, 10)
+      match_date: this.state.date.toJSON().slice(0, 10),
+      gender: this.props.gender
     };
     console.log(obj);
     this.props.getMatchesByDate(obj);
@@ -69,7 +70,7 @@ export class ViewTeam extends Component {
   };
 
   componentDidMount() {
-    console.log(this.props);
+    console.log(this.props.gender);
     let team_id = {
       team_id: this.props.location.state.teams.team_id
     };
@@ -85,12 +86,17 @@ export class ViewTeam extends Component {
     this.props.getTeamStats(this.props.location.state.teams.team_id);
     this.props.getPlayerStatsForTeams(
       this.props.location.state.teams.team_id,
-      type
+      type,
+      this.props.gender
     );
     this.props.getPlayerStatsForTeamsBowler(
       this.props.location.state.teams.team_id,
       type
     );
+  }
+  componentWillReceiveProps(nextProps) {
+    if (this.props.gender != nextProps.gender)
+      this.props.getPlayerStatsForTeams(nextProps.gender);
   }
 
   onodiclick = () => {
@@ -101,16 +107,19 @@ export class ViewTeam extends Component {
       t20click: false
     });
     let type = {
-      match_type: this.state.match_type
+      match_type: this.state.match_type,
+      gender: this.props.gender
     };
     console.log(type);
     this.props.getPlayerStatsForTeams(
       this.props.location.state.teams.team_id,
-      type
+      type,
+      this.props.gender
     );
     this.props.getPlayerStatsForTeamsBowler(
       this.props.location.state.teams.team_id,
-      type
+      type,
+      this.props.gender
     );
   };
 
@@ -127,11 +136,13 @@ export class ViewTeam extends Component {
     console.log(type);
     this.props.getPlayerStatsForTeams(
       this.props.location.state.teams.team_id,
-      type
+      type,
+      this.props.gender
     );
     this.props.getPlayerStatsForTeamsBowler(
       this.props.location.state.teams.team_id,
-      type
+      type,
+      this.props.gender
     );
   };
 
@@ -148,11 +159,13 @@ export class ViewTeam extends Component {
     console.log(type);
     this.props.getPlayerStatsForTeams(
       this.props.location.state.teams.team_id,
-      type
+      type,
+      this.props.gender
     );
     this.props.getPlayerStatsForTeamsBowler(
       this.props.location.state.teams.team_id,
-      type
+      type,
+      this.props.gender
     );
   };
 
@@ -166,7 +179,8 @@ export class ViewTeam extends Component {
     });
     let type = {
       match_type: this.state.match_type,
-      team_name: this.state.team_name
+      team_name: this.state.team_name,
+      gender: this.props.gender
     };
     console.log(type);
     this.props.getMatchesByTeamAndType(type);
@@ -189,7 +203,8 @@ export class ViewTeam extends Component {
     });
     let type = {
       match_type: this.state.match_type,
-      team_name: this.state.team_name
+      team_name: this.state.team_name,
+      gender: this.props.gender
     };
     console.log(type);
     this.props.getMatchesByTeamAndType(type);
@@ -205,7 +220,8 @@ export class ViewTeam extends Component {
     });
     let type = {
       match_type: this.state.match_type,
-      team_name: this.state.team_name
+      team_name: this.state.team_name,
+      gender: this.props.gender
     };
     console.log(type);
     this.props.getMatchesByTeamAndType(type);

@@ -3,13 +3,9 @@ const router = express.Router();
 const pg = require("pg-promise")();
 // Conneccting to the hosted database fixtures
 const db = pg("postgres://postgres:123456@localhost:5432/crickstrait_capstone");
-// const db = pg("postgres://postgres:123456@192.168.0.63:5432/crickstrait");
 
 router.get("/getrecent/:gender", async (req, res) => {
   try {
-    // let result = await db.any(
-    //   "with s as(select count(*) as total from match) select * from match where match_id<=(select total from s) order by match_id desc limit 8;"
-    // );
     const gender = req.params.gender;
     let result = await db.any(`with ss as (with s as ( select m.match_id, m.innings_one_team, m.innings_two_team, m.outcome as won_by,m.competition, winner, m.match_type, m.player_of_the_match, t.team_name as team1,t.team_image as team1_image
       , d.match_date, v.venue_name,v.venue_city from match as m
@@ -46,14 +42,10 @@ router.get("/getrecent/:gender", async (req, res) => {
 
 router.post("/getbyteam", async (req, res) => {
   const team_name = req.body.team_name;
+  const gender = req.body.gender;
   console.log(team_name);
   try {
     const result = await db.any(
-      // "SELECT * FROM match where team_name1 = '" +
-      //   team +
-      //   "' or team_name2 = '" +
-      //   team +
-      //   "'; "
       `with ss as (with s as ( select m.match_id, m.innings_one_team, m.innings_two_team, m.outcome as won_by,m.competition, winner, m.match_type, m.player_of_the_match, t.team_name
         as team1, t.team_image as team1_image,d.match_date, v.venue_name,v.venue_city from match as m
          inner join team as t on t.team_id = m.innings_one_team
@@ -65,7 +57,7 @@ router.post("/getbyteam", async (req, res) => {
          inner join s on s.innings_two_team = ps.team_id),
          pss as (select team_id, team_name as match_winner from team where team_id in (select winner from ss))
          select match_id, team1, team2, match_winner, won_by, match_type, player_of_the_match, match_date ,venue_name,venue_city,competition,team1_image,team2_image
-         from pss inner join ss on ss.winner = pss.team_id where team1='${team_name}' or team2='${team_name}';
+         from pss inner join ss on ss.winner = pss.team_id where team1='${team_name}' or team2='${team_name}' and gender='${gender}';
        `
     );
     if (!result) {
@@ -93,27 +85,23 @@ router.post("/getbyteam", async (req, res) => {
 router.post("/getbyteamandtype", async (req, res) => {
   const team_name = req.body.team_name;
   const match_type = req.body.match_type;
+  const gender = req.body.gender;
   console.log(team_name);
   console.log(match_type);
   try {
     const result = await db.any(
-      // "SELECT * FROM match where team_name1 = '" +
-      //   team +
-      //   "' or team_name2 = '" +
-      //   team +
-      //   "'; "
-      `with ss as (with s as ( select m.match_id, m.innings_one_team, m.innings_two_team, m.outcome as won_by,m.competition, winner, m.match_type, m.player_of_the_match, t.team_name
-        as team1, t.team_image as team1_image,d.match_date, v.venue_name,v.venue_city from match as m
+      `with ss as (with s as ( select m.match_id, m.innings_one_team, m.innings_two_team, m.outcome as won_by,m.competition, winner, m.match_type, m.player_of_the_match, t.team_name as team1,t.team_image as team1_image
+        , d.match_date, v.venue_name,m.gender,v.venue_city from match as m
          inner join team as t on t.team_id = m.innings_one_team
          inner join venue as v on m.venue_id = v.venue_id
-         inner join match_date d on m.match_id = d.match_id where match_type='${match_type}'),
+         inner join match_date d on m.match_id = d.match_id where match_type='${match_type}' and gender='${gender}'),
          ps as (select team_id, team_name as team2,team_image as team2_image from team
          where team_id in (select innings_two_team from s))
-         select match_id, innings_one_team, team1, innings_two_team, team2, winner, won_by, match_type, player_of_the_match, match_date,venue_name,venue_city,competition,team1_image,team2_image from ps
+         select match_id, innings_one_team, team1, innings_two_team, team2, winner, won_by, match_type, player_of_the_match, match_date,venue_name,venue_city,competition, team1_image,team2_image,gender from ps
          inner join s on s.innings_two_team = ps.team_id),
          pss as (select team_id, team_name as match_winner from team where team_id in (select winner from ss))
-         select match_id, team1, team2, match_winner, won_by, match_type, player_of_the_match, match_date ,venue_name,venue_city,competition,team1_image,team2_image
-         from pss inner join ss on ss.winner = pss.team_id where team1='${team_name}' or team2='${team_name}';
+         select match_id, team1, team2, match_winner, won_by, match_type, player_of_the_match, match_date ,venue_name,venue_city,competition, team1_image,team2_image,gender
+         from pss inner join ss on ss.winner = pss.team_id where team1='${team_name}' or team2='${team_name}' ;
        `
     );
     if (!result) {
@@ -142,27 +130,20 @@ router.post("/getbydate", async (req, res) => {
   const team_name = req.body.team_name;
   const match_type = req.body.match_type;
   const match_date = req.body.match_date;
-  console.log(team_name);
-  console.log(match_type);
-  console.log(match_date);
+  const gender = req.body.gender;
   try {
     const result = await db.any(
-      // "SELECT * FROM match where team_name1 = '" +
-      //   team +
-      //   "' or team_name2 = '" +
-      //   team +
-      //   "'; "
       `with ss as (with s as ( select m.match_id, m.innings_one_team, m.innings_two_team, m.outcome as won_by,m.competition, winner, m.match_type, m.player_of_the_match, t.team_name
-        as team1, d.match_date, v.venue_name,v.venue_city from match as m
+        as team1, d.match_date, v.venue_name,m.gender,v.venue_city from match as m
          inner join team as t on t.team_id = m.innings_one_team
          inner join venue as v on m.venue_id = v.venue_id
-         inner join match_date d on m.match_id = d.match_id where match_type='${match_type}' and match_date='${match_date}'),
+         inner join match_date d on m.match_id = d.match_id where match_type='${match_type}' and match_date='${match_date}' and gender='${gender}'),
          ps as (select team_id, team_name as team2 from team
          where team_id in (select innings_two_team from s))
-         select match_id, innings_one_team, team1, innings_two_team, team2, winner, won_by, match_type, player_of_the_match, match_date,venue_name,venue_city,competition from ps
+         select match_id, innings_one_team, team1, innings_two_team, team2, winner, won_by, match_type, player_of_the_match, match_date,venue_name,venue_city,competition,gender from ps
          inner join s on s.innings_two_team = ps.team_id),
          pss as (select team_id, team_name as match_winner from team where team_id in (select winner from ss))
-         select match_id, team1, team2, match_winner, won_by, match_type, player_of_the_match, match_date ,venue_name,venue_city,competition
+         select match_id, team1, team2, match_winner, won_by, match_type, player_of_the_match, match_date ,venue_name,venue_city,competition,gender
          from pss inner join ss on ss.winner = pss.team_id where team1='${team_name}' or team2='${team_name}';
        `
     );

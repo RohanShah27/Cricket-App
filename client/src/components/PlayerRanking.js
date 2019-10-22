@@ -18,6 +18,12 @@ export class PlayerRanking extends Component {
     this.props.getTeamRanking(ranking);
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (this.props.gender != nextProps.gender)
+      this.props.getPlayerRanking(nextProps.gender);
+    this.props.getTeamRanking(nextProps.gender);
+  }
+
   state = {
     type: "",
     format: "",

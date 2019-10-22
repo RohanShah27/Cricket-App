@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const pg = require("pg-promise")();
-const db = pg("postgres://postgres:postgres@localhost/crickstrait_capstone");
+const db = pg("postgres://postgres:123456@localhost/crickstrait_capstone");
 
 // router.post("/tournament", async (req, res) => {
 //   const tournament = req.body.tournament;
@@ -39,12 +39,15 @@ router.post("/tournament", async (req, res) => {
   });
 });
 
-router.post("/playerstatsforteams/:team_id", async (req, res) => {
+router.post("/playerstatsforteams/:team_id/:gender", async (req, res) => {
+  const gender = req.params.gender;
+  console.log(gender);
   const match_type = req.body.match_type;
   const team_id = req.params.team_id;
   const result = await db.any(
-    `Select distinct player_name, player_stats_value from teamplayer_stats where player_stats_name = 'total_runs' and team_id= ${team_id} and match_type = '${match_type}' order by player_stats_value desc fetch first 5 rows only`
+    `Select distinct player_name, player_stats_value from teamplayer_stats where player_stats_name = 'total_runs' and team_id= ${team_id} and match_type = '${match_type}' and gender='${gender}' order by player_stats_value desc fetch first 5 rows only`
   );
+  console.log(result);
   if (!result) {
     res.status(404).json({
       statusCode: 404,
@@ -59,11 +62,12 @@ router.post("/playerstatsforteams/:team_id", async (req, res) => {
   });
 });
 
-router.post("/playerstatsforteamsbowler/:team_id", async (req, res) => {
+router.post("/playerstatsforteamsbowler/:team_id/:gender", async (req, res) => {
   const match_type = req.body.match_type;
+  const gender = req.params.gender;
   const team_id = req.params.team_id;
   const result = await db.any(
-    `Select distinct player_name, player_stats_value from teamplayer_stats where player_stats_name = 'total_wickets' and team_id= ${team_id} and match_type = '${match_type}' order by player_stats_value desc fetch first 5 rows only`
+    `Select distinct player_name, player_stats_value from teamplayer_stats where player_stats_name = 'total_wickets' and team_id= ${team_id} and match_type = '${match_type}' and gender = '${gender}'order by player_stats_value desc fetch first 5 rows only`
   );
   if (!result) {
     res.status(404).json({
