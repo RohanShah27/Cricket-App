@@ -4,6 +4,7 @@ import "../styles/navbar.css";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import stockPlayer from "../stockPlayer.png";
+import playerFemale from "../stockPlayerFemale.jpg";
 import ReactCountryFlag from "react-country-flag";
 
 export class Navigation extends Component {
@@ -143,7 +144,9 @@ export class Navigation extends Component {
                                   player.player_image
                                     ? "data:image/jpeg;base64," +
                                       new Buffer(player.player_image)
-                                    : stockPlayer
+                                    : player.gender == "male"
+                                    ? stockPlayer
+                                    : playerFemale
                                 }
                                 style={{
                                   borderRadius: "8px",

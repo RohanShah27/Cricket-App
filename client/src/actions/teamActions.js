@@ -12,6 +12,7 @@ import {
 import axios from "axios";
 const url = "http://localhost:5000/api/team";
 
+// Actions to fretch teams based on tournament
 export const getTournament = tournament => dispatch => {
   console.log(tournament);
   return axios.post(url + "/tournament", tournament).then(res => {
@@ -23,6 +24,7 @@ export const getTournament = tournament => dispatch => {
   });
 };
 
+// Action sto search for team on team page
 export const searchTeamForViewTeamPage = team => dispatch => {
   console.log(team);
   return axios
@@ -39,6 +41,7 @@ export const searchTeamForViewTeamPage = team => dispatch => {
     });
 };
 
+// Actions to get details of particular team
 export const getTeamById = team_id => dispatch => {
   return axios
     .post(url + "/teambyid", team_id)
@@ -54,6 +57,7 @@ export const getTeamById = team_id => dispatch => {
     });
 };
 
+// Actions to get team stats
 export const getTeamStats = team_id => dispatch => {
   console.log(team_id);
   return axios
@@ -70,6 +74,7 @@ export const getTeamStats = team_id => dispatch => {
     });
 };
 
+// Get Batsman Stats of a particular team
 export const getPlayerStatsForTeams = (
   team_id,
   match_type,
@@ -96,6 +101,7 @@ export const getPlayerStatsForTeams = (
     });
 };
 
+// Get Bowler Stats of a particular team
 export const getPlayerStatsForTeamsBowler = (
   team_id,
   match_type,
@@ -121,6 +127,7 @@ export const getPlayerStatsForTeamsBowler = (
     });
 };
 
+// Graph For mapping team stats for match_type = "ODI"
 export const teamStatsGraphOdi = id => dispatch => {
   return axios
     .get("http://127.0.0.1:5000/odistats/" + id)
@@ -135,6 +142,8 @@ export const teamStatsGraphOdi = id => dispatch => {
       console.log(err);
     });
 };
+
+// Graph For mapping team stats for match_type = "test"
 export const teamStatsGraphTest = id => dispatch => {
   return axios
     .get("http://127.0.0.1:5000/teststats/" + id)
@@ -149,6 +158,8 @@ export const teamStatsGraphTest = id => dispatch => {
       console.log(err);
     });
 };
+
+// Graph For mapping team stats for match_type = "T20"
 export const teamStatsGraphT20 = id => dispatch => {
   return axios
     .get("http://127.0.0.1:5000/t20stats/" + id)

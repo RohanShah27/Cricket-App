@@ -3,6 +3,7 @@ import { GET_FIXTURES } from "./Types";
 
 const url = "http://localhost:5000/api/fixtures/";
 
+// Get all Fixtures
 export const getFixtures = () => dispatch => {
   return axios
     .get(url + "all")

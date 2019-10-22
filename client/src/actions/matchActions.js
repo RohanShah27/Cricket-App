@@ -14,6 +14,7 @@ import {
 
 const url = "http://localhost:5000/api/matches";
 
+// et Recent Matches
 export const getMatchesRecentMatches = gender => dispatch => {
   console.log(gender);
   return axios
@@ -30,6 +31,7 @@ export const getMatchesRecentMatches = gender => dispatch => {
     });
 };
 
+// Get Matches by match type
 export const getMatchesByType = matches => dispatch => {
   console.log("Actions", matches);
   return axios
@@ -46,6 +48,7 @@ export const getMatchesByType = matches => dispatch => {
     });
 };
 
+// To get Scorecard of a particular match
 export const getScorecard = id => dispatch => {
   return axios
     .get(url + "/getscorecard/" + id.match_id)
@@ -61,6 +64,7 @@ export const getScorecard = id => dispatch => {
     });
 };
 
+// Get Matchdetails of a match
 export const getMatchDetails = id => dispatch => {
   console.log(" id actions " + id.match_id);
   return axios
@@ -92,6 +96,8 @@ export const searchTeam = team_name => dispatch => {
       console.log(err);
     });
 };
+
+// Get Summary of a match
 export const getAllMatchDetails = id => dispatch => {
   console.log(id);
   return axios
@@ -108,6 +114,7 @@ export const getAllMatchDetails = id => dispatch => {
     });
 };
 
+// Get All Matches of a team
 export const getMatchesByTeam = (teamname, gender) => dispatch => {
   console.log(teamname);
   return axios
@@ -124,6 +131,7 @@ export const getMatchesByTeam = (teamname, gender) => dispatch => {
     });
 };
 
+// Get all matches of a team and match_type
 export const getMatchesByTeamAndType = teamname => dispatch => {
   console.log(teamname);
   return axios
@@ -140,6 +148,7 @@ export const getMatchesByTeamAndType = teamname => dispatch => {
     });
 };
 
+// Get Matches of team based on match type,date and gender
 export const getMatchesByDate = teamname => dispatch => {
   console.log(teamname);
   return axios
