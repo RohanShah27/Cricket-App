@@ -17,10 +17,3 @@ try {
   console.log(err);
 }
 
-// Image: <br />
-// <img
-//   src={
-//     "data:image/jpeg;base64," +
-//     new Buffer(this.props.location.state.player.player_image)
-//   }
-// />
