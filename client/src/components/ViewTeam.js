@@ -8,7 +8,9 @@ import {
   getTeamStats,
   getPlayerStatsForTeams,
   getPlayerStatsForTeamsBowler,
-  teamStatsGraphOdi
+  teamStatsGraphOdi,
+  teamStatsGraphT20,
+  teamStatsGraphTest
 } from "../actions/teamActions";
 import {
   getMatchesByTeam,
@@ -81,6 +83,9 @@ export class ViewTeam extends Component {
       type,
       this.props.gender
     );
+    this.props.teamStatsGraphOdi(type);
+    this.props.teamStatsGraphTest(type);
+    this.props.teamStatsGraphT20(type);
   }
   componentWillReceiveProps(nextProps) {
     if (this.props.gender != nextProps.gender)
@@ -635,6 +640,8 @@ export default connect(
     getPlayerStatsForTeamsBowler,
     teamStatsGraphOdi,
     getMatchesByTeamAndType,
-    getMatchesByDate
+    getMatchesByDate,
+    teamStatsGraphT20,
+    teamStatsGraphTest
   }
 )(ViewTeam);
