@@ -69,4 +69,22 @@ describe("Testing Players action", () => {
       expect(store.getActions()).toEqual(expectedResponse);
     });
   });
+  it("should return player stats on call of the url", () => {
+    const responseOfApi = [{}];
+    let playerId = 1;
+    moxios.stubRequest(url + "playerstats/" + playerId, {
+      status: 200,
+      response: { data: responseOfApi }
+    });
+    const store = mockStore({});
+    const expectedResponse = [
+      {
+        type: PLAYER_STATS,
+        payload: responseofApi
+      }
+    ];
+    return store.dispatch(action.playerStats()).then(() => {
+      expect(store.getActions()).toEqual(expectedResponse);
+    });
+  });
 });
