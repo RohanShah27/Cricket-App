@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const pg = require("pg-promise")();
-const db = pg("postgres://postgres:123456@localhost/crickstrait_capstone");
+const db = pg("postgres://postgres:123456@localhost/cricket_capstone");
 
 // router.post("/tournament", async (req, res) => {
 //   const tournament = req.body.tournament;

@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const pg = require("pg-promise")();
-const db = pg("postgres://postgres:123456@localhost/crickstrait_capstone");
+const db = pg("postgres://postgres:123456@localhost/cricket_capstone");
 
 // Global Search
 router.post("/search", async (req, res, next) => {

@@ -3,7 +3,7 @@ const express = require("express");
 const router = express.Router();
 const pg = require("pg-promise")();
 // Conneccting to the hosted database fixtures
-const db = pg("postgres://postgres:123456@localhost:5432/crickstrait_capstone");
+const db = pg("postgres://postgres:123456@localhost:5432/cricket_capstone");
 
 // Get stats of a player
 router.post("/player_search/:playerId", async (req, res) => {
