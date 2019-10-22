@@ -70,6 +70,21 @@ exports[`Test suite for Player Profile Component Should Render the component and
     }
   }
   playerProfile={[MockFunction]}
+  playerStats={
+    [MockFunction] {
+      "calls": Array [
+        Array [
+          1,
+        ],
+      ],
+      "results": Array [
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+      ],
+    }
+  }
   searchPlayer={
     [MockFunction] {
       "calls": Array [
@@ -100,29 +115,15 @@ exports[`Test suite for Player Profile Component Should Render the component and
         className="player-flex-container"
       >
         <div
-          style={
-            Object {
-              "alignItems": "center",
-              "flexGrow": 2,
-            }
-          }
+          className="flexGrowForPlayer"
         >
           <img
             className="profile-img"
             src="stockPlayer.png"
-            style={
-              Object {
-                "borderRadius": "5em",
-              }
-            }
           />
         </div>
         <div
-          style={
-            Object {
-              "flexGrow": 8,
-            }
-          }
+          className="flexGrowEight"
         >
           <h1
             id="playerName"
@@ -375,7 +376,15 @@ exports[`Test suite for Player Profile Component Should Render the component and
     </div>
     <div
       id="playerStatsVisualizationSection"
-    />
+    >
+      <h1>
+        Total Runs
+      </h1>
+      <iframe
+        className="playerProfileStat"
+        id="visualization"
+      />
+    </div>
   </div>
 </PlayerProfile>
 `;

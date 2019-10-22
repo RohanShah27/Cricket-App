@@ -495,12 +495,11 @@ exports[`Testing viewTeam component should render the component 1`] = `
                 maxDetail="month"
                 minDetail="century"
                 onChange={[Function]}
-                onClickOutside={[Function]}
                 open={false}
                 returnValue="start"
                 showNavigation={true}
                 showNeighboringMonth={true}
-                value={2019-10-22T04:42:02.742Z}
+                value={2019-10-22T04:53:31.837Z}
                 view="month"
               >
                 <div
@@ -597,7 +596,7 @@ exports[`Testing viewTeam component should render the component 1`] = `
                       onMouseLeave={[Function]}
                       onMouseOver={null}
                       showNeighboringMonth={true}
-                      value={2019-10-22T04:42:02.742Z}
+                      value={2019-10-22T04:53:31.837Z}
                       valueType="day"
                     >
                       <div
@@ -785,7 +784,7 @@ exports[`Testing viewTeam component should render the component 1`] = `
                               onMouseLeave={[Function]}
                               onMouseOver={null}
                               showNeighboringMonth={true}
-                              value={2019-10-22T04:42:02.742Z}
+                              value={2019-10-22T04:53:31.837Z}
                               valueType="day"
                             >
                               <TileGroup
@@ -804,7 +803,7 @@ exports[`Testing viewTeam component should render the component 1`] = `
                                 start={0}
                                 step={1}
                                 tile={[Function]}
-                                value={2019-10-22T04:42:02.742Z}
+                                value={2019-10-22T04:53:31.837Z}
                                 valueType="day"
                               >
                                 <Flex
