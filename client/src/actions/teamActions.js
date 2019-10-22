@@ -70,10 +70,18 @@ export const getTeamStats = team_id => dispatch => {
     });
 };
 
-export const getPlayerStatsForTeams = (team_id, match_type) => dispatch => {
+export const getPlayerStatsForTeams = (
+  team_id,
+  match_type,
+  gender
+) => dispatch => {
+  console.log(gender);
   return axios
     .post(
-      "http://localhost:5000/api/team/playerstatsforteams/" + team_id,
+      "http://localhost:5000/api/team/playerstatsforteams/" +
+        team_id +
+        "/" +
+        gender,
       match_type
     )
     .then(res => {
@@ -90,11 +98,15 @@ export const getPlayerStatsForTeams = (team_id, match_type) => dispatch => {
 
 export const getPlayerStatsForTeamsBowler = (
   team_id,
-  match_type
+  match_type,
+  gender
 ) => dispatch => {
   return axios
     .post(
-      "http://localhost:5000/api/team/playerstatsforteamsbowler/" + team_id,
+      "http://localhost:5000/api/team/playerstatsforteamsbowler/" +
+        team_id +
+        "/" +
+        gender,
       match_type
     )
     .then(res => {
