@@ -34,7 +34,8 @@ export class MatchDetails extends Component {
     console.log(this.props);
     return (
       <div>
-        {this.props.summary.map((match, index) => (
+        {this.props.summary ? this.props.summary.map((match, index) => (
+          <div>
           <section>
             <div className="matchDetails-flex-container">
               <div className="matchDetails-parent">
@@ -99,7 +100,7 @@ export class MatchDetails extends Component {
               </div>
             </div>
           </section>
-        ))}
+        
         <div className="matchDetails-pc-tab">
           <input
             defaultChecked="defaultChecked"
@@ -512,7 +513,9 @@ export class MatchDetails extends Component {
               </div>
             </div>
           </section>
-        </div>
+        </div> </div>)) : <div className="loader-container" style={{top:"0px"}}>
+              <div className="user-loader"></div>
+            </div>}
       </div>
     );
   }

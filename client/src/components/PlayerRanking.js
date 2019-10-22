@@ -2,7 +2,9 @@ import React, { Component } from "react";
 import { getPlayerRanking, getTeamRanking } from "../actions/Rankings";
 import { connect } from "react-redux";
 import "../styles/PlayerRanking.css";
-import playeruser from "./player.jpg";
+import playermale from "../stockPlayer.png";
+import teamIcon from "../teamStock.jpg";
+import playerFemale from "../stockPlayerFemale.jpg";
 export class PlayerRanking extends Component {
   constructor(props) {
     super(props);
@@ -21,7 +23,6 @@ export class PlayerRanking extends Component {
   componentWillReceiveProps(nextProps) {
     if (this.props.gender != nextProps.gender)
       this.props.getPlayerRanking(nextProps.gender);
-    this.props.getTeamRanking(nextProps.gender);
   }
 
   state = {
@@ -162,6 +163,7 @@ export class PlayerRanking extends Component {
               <table class="ranking-table">
                 <tr>
                   <th>Rank</th>
+                  <th></th>
                   <th>Player</th>
                   <th>Team</th>
                   <th>Ratings</th>
@@ -169,7 +171,16 @@ export class PlayerRanking extends Component {
                 {playerBatting.map((player, index) => (
                   <tr>
                     <td id={"battingPosition" + index}>{player.position}</td>
-
+                    <td>
+                      <img
+                        className="rankingplayerIcon"
+                        src={
+                          this.props.gender == "male"
+                            ? playermale
+                            : playerFemale
+                        }
+                      />
+                    </td>
                     <td id={"battingName" + index}>{player.player_name}</td>
                     <td id={"battingTeam" + index}>{player.player_team}</td>
                     <td id={"battingRating" + index}>{player.ratings}</td>
@@ -187,6 +198,7 @@ export class PlayerRanking extends Component {
               <table class="ranking-table">
                 <tr>
                   <th>Rank</th>
+                  <th></th>
                   <th>Player</th>
                   <th>Team</th>
                   <th>Ratings</th>
@@ -194,6 +206,16 @@ export class PlayerRanking extends Component {
                 {playerBowling.map((player, index) => (
                   <tr>
                     <td id={"bowlingPosition" + index}>{player.position}</td>
+                    <td>
+                      <img
+                        className="rankingplayerIcon"
+                        src={
+                          this.props.gender == "male"
+                            ? playermale
+                            : playerFemale
+                        }
+                      />
+                    </td>
                     <td id={"bowlingName" + index}>{player.player_name}</td>
                     <td id={"bowlingTeam" + index}>{player.player_team}</td>
                     <td id={"bowlingRating" + index}>{player.ratings}</td>
@@ -215,6 +237,7 @@ export class PlayerRanking extends Component {
               <table class="ranking-table">
                 <tr>
                   <th>Rank</th>
+                  <th></th>
                   <th>Player</th>
                   <th>Team</th>
                   <th>Ratings</th>
@@ -222,7 +245,16 @@ export class PlayerRanking extends Component {
                 {playerallRounder.map((player, index) => (
                   <tr>
                     <td id={"allRounderPosition" + index}>{player.position}</td>
-
+                    <td>
+                      <img
+                        className="rankingplayerIcon"
+                        src={
+                          this.props.gender == "male"
+                            ? playermale
+                            : playerFemale
+                        }
+                      />
+                    </td>
                     <td id={"allRounderName" + index}>{player.player_name}</td>
                     <td id={"allRounderTeam" + index}>{player.player_team}</td>
                     <td id={"allRounderRating" + index}>{player.ratings}</td>
@@ -247,7 +279,9 @@ export class PlayerRanking extends Component {
                 {this.props.teams.map((team, index) => (
                   <tr>
                     <td id={"teamPosition" + index}>{team.position}</td>
-
+                    <td>
+                      <img className="rankingplayerIcon" src={teamIcon} />
+                    </td>
                     <td id={"teamName" + index}>{team.team_name}</td>
                     <td id={"teamRating" + index}>{team.rating}</td>
                     <td id={"teamPoints" + index}>{team.points}</td>

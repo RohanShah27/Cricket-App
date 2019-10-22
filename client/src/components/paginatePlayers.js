@@ -4,6 +4,7 @@ import virat from "./user.png";
 import { getAllPlayers, playerSearch } from "../actions/Players";
 import { connect } from "react-redux";
 import InfiniteScroll from "react-infinite-scroll-component";
+import playerFemale from "../female.jpg";
 import { Link } from "react-router-dom";
 
 export class PaginatePlayers extends Component {
@@ -153,7 +154,9 @@ export class PaginatePlayers extends Component {
                       player.player_image
                         ? "data:image/jpeg;base64," +
                           new Buffer(player.player_image)
-                        : virat
+                        : this.props.gender == "male"
+                        ? virat
+                        : playerFemale
                     }
                   />
                   <p className="player-name" id={"playerName" + index}>

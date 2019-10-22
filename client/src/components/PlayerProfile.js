@@ -3,6 +3,7 @@ import "../styles/playerProfile.css";
 import { connect } from "react-redux";
 import { searchPlayer, playerStats } from "../actions/Players";
 import stockPlayer from "../stockPlayer.png";
+import playerfemale from "../stockPlayerFemale.jpg";
 
 export class PlayerProfile extends Component {
   constructor(props) {
@@ -37,7 +38,9 @@ export class PlayerProfile extends Component {
                           new Buffer(
                             this.props.location.state.player.player_image
                           )
-                        : stockPlayer
+                        : this.props.location.state.player.gender == "male"
+                        ? stockPlayer
+                        : playerfemale
                     }
                   />
                 </div>

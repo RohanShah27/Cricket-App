@@ -4,13 +4,13 @@ const postdb = pgp(
 );
 var fs = require("fs");
 var imageAsBase64 = fs.readFileSync(
-  process.cwd() + "\\players\\chahal.jpg",
+  process.cwd() + "\\players\\aitken.jpg",
   "base64"
 );
 
 try {
   postdb.any(
-    `update player set player_image='${imageAsBase64}' where player_id=995`
+    `update player set player_image='${imageAsBase64}' where player_id=924`
   );
   console.log("Inserted");
 } catch (err) {

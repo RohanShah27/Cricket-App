@@ -1,6 +1,7 @@
 import { GET_PLAYER_RANKING, GET_TEAM_RANKING } from "./Types";
 import axios from "axios";
 
+// Get Player Ranking based on match type and gender
 export const getPlayerRanking = ranking => dispatch => {
   console.log(ranking);
   return axios
@@ -10,13 +11,13 @@ export const getPlayerRanking = ranking => dispatch => {
         type: GET_PLAYER_RANKING,
         payload: res.data.data
       });
-      console.log(res.data);
     })
     .catch(err => {
       console.log(err);
     });
 };
 
+// Get Team Ranking based on match type and gender
 export const getTeamRanking = type => dispatch => {
   console.log(type);
   return axios
@@ -26,7 +27,6 @@ export const getTeamRanking = type => dispatch => {
         type: GET_TEAM_RANKING,
         payload: res.data.data
       });
-      console.log(res.data);
     })
     .catch(err => {
       console.log(err);
