@@ -2,6 +2,7 @@ import React from "react";
 import { mount } from "enzyme";
 import { PlayerProfile } from "../PlayerProfile";
 let playerProfile = jest.fn();
+let playerStats = jest.fn();
 let match = { params: { player_id: 1 }, isExact: true, path: "", url: "" };
 let history = {
   location: {
@@ -64,6 +65,7 @@ const wrapper = mount(
     history={history}
     location={location}
     searchPlayer={searchPlayer}
+    playerStats={playerStats}
   />
 );
 describe("Test suite for Player Profile Component", () => {
@@ -126,6 +128,7 @@ describe("Test suite for Player Profile Component", () => {
     wrapper.instance().componentWillMount();
     expect(componentWillMount).toHaveBeenCalled();
     expect(searchPlayer).toBeCalledWith(match.params.player_id);
+    expect(playerStats).toBeCalledWith(match.params.player_id);
   });
   it("should check for component will recieve as a function", () => {
     const componentWillReceiveProps = jest.spyOn(
@@ -141,5 +144,9 @@ describe("Test suite for Player Profile Component", () => {
   });
   it("should test for player image present or not", () => {
     expect(wrapper.find("#playerImage")).toBeTruthy();
+  });
+  it("should test if visualization exists or not", () => {
+    expect(wrapper.find("#visualization")).toBeTruthy();
+    expect(wrapper.find("#visualization").props().src).toBe("www.test.com");
   });
 });

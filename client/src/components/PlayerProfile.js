@@ -150,6 +150,7 @@ export class PlayerProfile extends Component {
             <div id="playerStatsVisualizationSection">
               <h1>Total Runs</h1>
               <iframe
+                id="visualization"
                 className="playerProfileStat"
                 src={this.props.playerstats}
               />
