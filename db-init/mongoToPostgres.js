@@ -429,7 +429,7 @@ async function player_stats() {
 }
 async function teamplayer_stats(){
 			
-				const teamPlayerStats= await postdb.any(`insert into teamsplayer_stats with parent as(with ss as(select player_stats_id,ps.player_id,player_stats_name,player_stats_value,match_type,player_name,team_id,gender from player_stats ps 
+				const teamPlayerStats= await postdb.any(`insert into teamplayer_stats with parent as(with ss as(select player_stats_id,ps.player_id,player_stats_name,player_stats_value,match_type,player_name,team_id,gender from player_stats ps 
 					  inner join player p on ps.player_id = p.player_id
 					  inner join match_team_player mtp on ps.player_id = mtp.player_id 
 					  group by mtp.team_id,player_stats_id,ps.player_id,player_stats_name,player_stats_value,match_type,player_name,gender)
@@ -447,7 +447,11 @@ async function csvToSql(){
 			const playerRanking =await postdb.any(`copy player_ranking(position,match_format,match_type,player_name,ratings,player_team,gender) FROM 'playerRanking.csv' DELIMITER ',' CSV HEADER;`);
 			console.log("PlayerRanking csv to SQL conversion Success");
 
-			
+			const team_ranking= await postdb.any(`copy team_ranking(position,match_format,team_name,rating,points,gender) FROM 'teamRanking.csv' DELIMITER ',' CSV HEADER;`)
+			console.log("TEamRanking csv to SQL conversion Successs");
+
+			const headlines =await postdb.any(`cop headlines(headlines,headlines_desription) FROM 'headlines.csv' DELIMITER ',' CSV HEADER;`)
+			console.log("Fixtures csv to SQL conversion success")
 }
 async function headlinesImageInsertion(){
 	for (var i = 1; i < 20; i++) {

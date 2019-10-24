@@ -1,0 +1,150 @@
+1,Test,Batting,Steve Smith,937,Australia,male
+2,Test,Batting,Virat Kohli,903,India,male
+3,Test,Batting,Kane Willianson,878,New Zealand,male
+4,Test,Batting,Cheteshwar Pujara,825,India,male
+5,Test,Batting,Hnery Nicholls,749,New Zealand,male
+6,Test,Batting,Joe Root,731,England,male
+7,Test,Batting,Ajinkya Rahane,729,India,male
+8,Test,Batting,Tom Latham,724,New Zealand,male
+9,Test,Batting,Dimuth Karunaratane,723,Srilanka,male
+10,Test,Batting,Aiden Markram,719,South Africa,male
+1,ODI,Batting,Virat Kohli,895,India,male
+2,ODI,Batting,Rohit Sharma,863,India,male
+3,ODI,Batting,Babar Azam,827,Pakistan,male
+4,ODI,Batting,Faf Du Plessis,820,South Africa,male
+5,ODI,Batting,Ross Taylor,817,New Zealand,male
+6,ODI,Batting,Kane Willianson,796,New Zealand,male
+7,ODI,Batting,David Warner,794,Australia,male
+8,ODI,Batting,Joe Root,787,England,male
+9,ODI,Batting,Quinton de Kock,781,South Africa,male
+10,ODI,Batting,Jason Roy,774,England,male
+1,T20,Batting,Babar Azam,896,Pakistan,male
+2,T20,Batting,Glenn Maxwell,815,Australia,male
+3,T20,Batting,Colin Munro,796,New Zealand,male
+4,T20,Batting,Aaron Finch,782,Australia,male
+5,T20,Batting,Hazratullah Zazai,727,Afganistan,male
+6,T20,Batting,D Arcy Short,715,Australia,male
+7,T20,Batting,Fakhar Zaman,681,Pakistan,male
+8,T20,Batting,Alex Hales,664,England,male
+9,T20,Batting,Rohit Sharma,664,India,male
+10,T20,Batting,Lokesh Rahul,662,India,male
+1,Test,Bowling,Pat Cummins,908,Australia,male
+2,Test,Bowling,Kagiso Rabada,851,South Africa,male
+3,Test,Bowling,Jasprit Bumrah,835,India,male
+4,Test,Bowling,Jason Holder,814,West Indies,male
+5,Test,Bowling,Vernon Philander,813,South Africa,male
+6,Test,Bowling,James Anderson,796,England,male
+7,Test,Bowling,Trent Boult,795,New Zealand,male
+8,Test,Bowling,Neil Wagner,785,New Zealand,male
+9,Test,Bowling,Kemar Roach,780,West Indies,male
+10,Test,Bowling,Mohammad Abbas,770,Pakistan,male
+1,ODI,Bowling,Jasprit Bumrah,797,India,male
+2,ODI,Bowling,Trent Boult,740,New Zealand,male
+3,ODI,Bowling,Kagiso Rabada,694,South Africa,male
+4,ODI,Bowling,Pat Cummins,693,Australia,male
+5,ODI,Bowling,Imran Tahir,683,South Africa,male
+6,ODI,Bowling,Mujeeb Ur Rahman,681,Afganistan,male
+7,ODI,Bowling,Chris Woakes,676,England,male
+8,ODI,Bowling,Mitchell Starc,663,Australia,male
+9,ODI,Bowling,Rashid Khan,656,Afganistan,male
+10,ODI,Bowling,Matt Henry,656,New Zealand,male
+1,T20,Bowling,Rashid Khan,757,Afganistan,male
+2,T20,Bowling,Imad Wasim,710,Pakistan,male
+3,T20,Bowling,Shadab Khan,706,Pakistan,male
+4,T20,Bowling,Adil Rashid,702,England,male
+5,T20,Bowling,Mitchell Santner,673,New Zealand,male
+6,T20,Bowling,Adam Zampa,672,Australia,male
+7,T20,Bowling,Andile Phehlulwayo,668,South Africa,male
+8,T20,Bowling,Shakib Al Hasan,663,Bangladesh,male
+9,T20,Bowling,Mujeeb Ur Rahman,652,Afganistan,male
+10,T20,Bowling,Faheem Ashraf,641,Pakistan,male
+1,Test,All-rounder,Jason Holder,472,West Indies,male
+2,Test,All-rounder,Shakib Al Hasan,397,Bangladesh,male
+3,Test,All-rounder,Ravindra Jadeja,389,India,male
+4,Test,All-rounder,Ben Stokes,387,England,male
+5,Test,All-rounder,Vernon Philander,326,South Africa,male
+6,Test,All-rounder,Ravichandran Ashwin,308,India,male
+7,Test,All-rounder,Pat Cummins,286,Australia,male
+8,Test,All-rounder,Mitchell Starc,267,Australia,male
+9,Test,All-rounder,Moeen Ali,234,England,male
+10,Test,All-rounder,Chris Woakes,229,England,male
+1,ODI,All-rounder,Shakib Al Hasan,394,Bangladesh,male
+2,ODI,All-rounder,Ben Stokes,349,England,male
+3,ODI,All-rounder,Mohammad Nabi,310,Afganistan,male
+4,ODI,All-rounder,Imad Wasim,299,Pakistan,male
+5,ODI,All-rounder,Rashid Khan,288,Afganistan,male
+6,ODI,All-rounder,Chris Woakes,267,England,male
+7,ODI,All-rounder,Mitchell Santner,260,Australia,male
+8,ODI,All-rounder,Andile Phehlulwayo,257,South Africa,male
+9,ODI,All-rounder,Jason Holder,253,West Indies,male
+10,ODI,All-rounder,Mohammad Hafeez,253,Pakistan,male
+1,T20,All-rounder,Glenn Maxwell,390,Australia,male
+2,T20,All-rounder,Shakib Al Hasan,355,Bangladesh,male
+3,T20,All-rounder,Mohammad Nabi,339,Afganistan,male
+4,T20,All-rounder,Richie Berrigton,253,Scotland,male
+5,T20,All-rounder,Mahmudullah,234,Bangladesh,male
+6,T20,All-rounder,Sean Williams,214,Zimbabwe,male
+7,T20,All-rounder,Kevin O Brien,188,Ireland,male
+8,T20,All-rounder,Paul Stirling,187,Ireland,male
+9,T20,All-rounder,Thisara Perera,185,Srilanka,male
+10,T20,All-rounder,Jean-Paul Duminy,171,South Africa,male
+1,ODI,Batting,Smriti Mandhana,802,India,female
+2,ODI,Batting,Ellyse Perry,766,Australia,female
+3,ODI,Batting,Amy Satterthwaite,759,New Zealand,female
+4,ODI,Batting,Alyssa Healy,734,Australia,female
+5,ODI,Batting,Tammy Beaumont,722,England,female
+6,ODI,Batting,Mithali Raj,717,India,female
+7,ODI,Batting,Meg Lanning,713,Australia,female
+8,ODI,Batting,Sophie Devine,683,New Zealand,female
+9,ODI,Batting,Suzie Bates,683,New Zealand,female
+10,ODI,Batting,Stafanie Taylor,676,West Indies,female
+1,T20,Batting,Suzie Bates,766,New Zealand,female
+2,T20,Batting,Meg Lanning,753,Australia,female
+3,T20,Batting,Alyssa Healy,731,West Indies,female
+4,T20,Batting,Stafanie Taylor,716,India,female
+5,T20,Batting,Beth Mooney,714,India,female
+6,T20,Batting,Smriti Mandhana,690,New Zealand,female
+7,T20,Batting,Sophie Devine,676,Australia,female
+8,T20,Batting,Harmanpreet Kaur,668,India,female
+9,T20,Batting,Jemimah Rodrigues,658,India,female
+10,T20,Batting,Lizelle Lee,649,West Indies,female
+1,ODI,Bowling,Megan Schutt,766,Australia,female
+2,ODI,Bowling,Jess Jonassen,753,Australia,female
+3,ODI,Bowling,Jhulan Goswami,731,India,female
+4,ODI,Bowling,Ellyse Perry,716,Australia,female
+5,ODI,Bowling,Sana Mir,714,Pakistan,female
+6,ODI,Bowling,Shikha Pandey,690,India,female
+7,ODI,Bowling,Marizanne Kapp,676,South Africa,female
+8,ODI,Bowling,Shabnim Ismail,668,South Africa,female
+9,ODI,Bowling,Poonam Yadav,658,India,female
+10,ODI,Bowling,Katherine Brunt,649,England,female
+1,T20,Bowling,Megan Schutt,773,Australia,female
+2,T20,Bowling,Shabnim Ismail,753,South Africa,female
+3,T20,Bowling,Poonam Yadav,718,India,female
+4,T20,Bowling,Deepti Sharma,703,India,female
+5,T20,Bowling,Aly Fetcher,703,West Indies,female
+6,T20,Bowling,Leigh Kasperek,696,New Zealand,female
+7,T20,Bowling,Radha Yadav,694,India,female
+8,T20,Bowling,Sophie Ecclestone,688,England,female
+9,T20,Bowling,Ellyse Perry,679,Australia,female
+10,T20,Bowling,Jess Jonassen,678,Australia,female
+1,ODI,All-rounder,Ellyse Perry,548,Australia,female
+2,ODI,All-rounder,Deepti Sharma,394,India,female
+3,ODI,All-rounder,Stafanie Taylor,356,West Indies,female
+4,ODI,All-rounder,Dan van Niekerk,345,South Africa,female
+5,ODI,All-rounder,Jess Jonassen,308,Australia,female
+6,ODI,All-rounder,Sophie Devine,300,New Zealand,female
+7,ODI,All-rounder,Sana Mir,289,Pakistan,female
+8,ODI,All-rounder,Marizanne Kapp,285,South Africa,female
+9,ODI,All-rounder,Natalie Sciver,275,England,female
+10,ODI,All-rounder,Ashleigh Gardner,241,Australia,female
+1,T20,All-rounder,Ellyse Perry,388,Australia,female
+2,T20,All-rounder,Sophie Devine,383,New Zealand,female
+3,T20,All-rounder,Stafanie Taylor,363,West Indies,female
+4,T20,All-rounder,Deandra Dottin,322,West Indies,female
+5,T20,All-rounder,Hayley Matthews,318,West Indies,female
+6,T20,All-rounder,Natalie Sciver,313,England,female
+7,T20,All-rounder,Nida Dar,302,Pakistan,female
+8,T20,All-rounder,Salma Khatun,297,Bangladesh,female
+9,T20,All-rounder,Dan van Niekerk,271,South Africa,female
+10,T20,All-rounder,Chamari Athapaththu,269,Srilanka,female
