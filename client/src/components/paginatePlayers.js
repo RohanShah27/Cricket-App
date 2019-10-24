@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "../styles/Players.css";
-import virat from "./user.png";
+import playerMale from "./user.png";
 import { getAllPlayers, playerSearch } from "../actions/Players";
 import { connect } from "react-redux";
 import InfiniteScroll from "react-infinite-scroll-component";
@@ -19,13 +19,16 @@ export class PaginatePlayers extends Component {
     pagePlayers: []
   };
   componentDidMount() {
+    // Get allplayers from the database -Rohan
     this.props.getAllPlayers(this.props.gender);
   }
   componentWillReceiveProps(nextProps) {
     nextProps.players.length > 0
-      ? this.displayPlayers(nextProps.players)
+      ? // display more players when scroll limit is reached-Rohan
+        this.displayPlayers(nextProps.players)
       : console.log(0, " players");
   }
+  // Takes parameter all players and slices them with 10 players at one time -Rohan
   displayPlayers = players => {
     const { items } = this.state;
 
@@ -34,27 +37,11 @@ export class PaginatePlayers extends Component {
     for (let i = 0; i < items; i++) {
       pagePlayers.push(players[i]);
     }
+    // Returning the batch of players to the state -Rohan
     this.setState({ pagePlayers });
   };
-  // genMarkup = player => (
-  //   <div className="players-card">
-  //     <img src={virat} className="players-img "></img>
-  //     <p className="player-name">{player.player_name}</p>
-  //     <span className="team-name">
-  //       <span style={{ color: "black" }}>Team:</span>{" "}
-  //       {player.nation ? player.nation : "NA"}
-  //     </span>
-  //     <button
-  //       onClick={() =>
-  //         this.props.history.push("/playerprofile/" + player.player_id, {
-  //           player
-  //         })
-  //       }
-  //     >
-  //       View
-  //     </button>
-  //   </div>
-  // );
+
+  // Function that calls display palayers function aftera timeout of 1s when scroll limit is reached -Rohan
   loadMoreItems = () => {
     setTimeout(() => {
       this.setState({
@@ -63,6 +50,7 @@ export class PaginatePlayers extends Component {
       this.displayPlayers(this.props.players);
     }, 1000);
   };
+  // Local search for a player -Rohan
   searchForPlayer = () => {
     let playerName = {
       playerName: this.state.playerName
@@ -74,12 +62,13 @@ export class PaginatePlayers extends Component {
     let playerName = {
       playerName: this.state.playerName
     };
+    // Live search on change of state value of playerName -Rohan
     this.props.playerSearch(playerName);
   };
   render() {
-    console.log("Paginate props", this.props.players);
     return (
       <div style={{ marginTop: "80px" }}>
+        {/* Player search Secction -Rohan */}
         <div className="players-search-section">
           <input
             id="searchPlayer"
@@ -93,12 +82,15 @@ export class PaginatePlayers extends Component {
             {" "}
             <i class="fa fa-search"></i>
           </button>
+          {/* End of playerSearch Section -Rohan */}
           {this.state.playerName == "" ? null : (
             <div className="player-search-result">
               <span className="search_result_data">
                 <p>
+                  {/* If search_result has data then map player names as search result  -Rohan */}
                   {this.props.search_result
                     ? this.props.search_result.map((player, index) => (
+                        // Redirect user to players profile on click of player name -Rohan
                         <Link
                           style={{
                             textDecoration: "none"
@@ -127,8 +119,9 @@ export class PaginatePlayers extends Component {
             </div>
           )}
         </div>
+        {/* Start of infinite scroll component -Rohan */}
         <InfiniteScroll
-          dataLength={this.state.pagePlayers.length} //This is important field to render the next data
+          dataLength={this.state.pagePlayers.length} //This is important field to render the next data -Rohan
           next={this.loadMoreItems}
           hasMore={true}
           height={600}
@@ -144,19 +137,21 @@ export class PaginatePlayers extends Component {
           }
         >
           <div className="players-card-container">
+            {/* Mapping the batches of players items 10 -Rohan */}
             {this.state.pagePlayers.map((player, index) => {
               return (
+                // Player Card --Rohan
                 <div className="players-card">
-                  {/* <img src={virat} className="players-img "></img> */}
                   <img
                     className="players-img "
                     src={
+                      // Converting the byte array image into .img format using Buffer -Rohan
                       player.player_image
                         ? "data:image/jpeg;base64," +
                           new Buffer(player.player_image)
                         : this.props.gender == "male"
-                        ? virat
-                        : playerFemale
+                        ? playerMale //stock image for male player
+                        : playerFemale //stock image for female player
                     }
                   />
                   <p className="player-name" id={"playerName" + index}>
@@ -170,6 +165,7 @@ export class PaginatePlayers extends Component {
                       {player.nation ? player.nation : "NA"}
                     </span>
                   </span>
+                  {/* Redirect user to player profile component when user click view button -Rohan */}
                   <button
                     id={"playerButton" + index}
                     onClick={() =>
@@ -188,6 +184,7 @@ export class PaginatePlayers extends Component {
             })}
           </div>
         </InfiniteScroll>
+        {/* End of infinite scroll component -Rohan */}
       </div>
     );
   }

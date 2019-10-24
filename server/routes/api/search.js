@@ -3,7 +3,7 @@ const router = express.Router();
 const pg = require("pg-promise")();
 const db = pg("postgres://postgres:123456@localhost/cricket_capstone");
 
-// Global Search
+// Global Search -Rohan
 router.post("/search", async (req, res, next) => {
   try {
     user_request = req.body.search_term;
@@ -13,6 +13,7 @@ router.post("/search", async (req, res, next) => {
     const team_result = await db.any(
       `select * from team where team_name ilike '${user_request}%' or team_name ilike '%${user_request}' limit 2;`
     );
+    // Data object to nest player and team results
     let data = {};
     data.player = player_result;
     data.team = team_result;

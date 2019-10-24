@@ -17,7 +17,7 @@ export const getHeadlines = () => dispatch => {
       console.log(err);
     });
 };
-// Get a single headline from the database -Rohan
+// Get a single headline with description  from the database -Rohan
 export const getHeadline = id => dispatch => {
   return axios
     .post(url + "single_headline/" + id)
