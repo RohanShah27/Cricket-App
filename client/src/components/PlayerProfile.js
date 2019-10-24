@@ -10,17 +10,19 @@ export class PlayerProfile extends Component {
     super(props);
   }
   componentWillMount() {
-    console.log(this.props.match.params.player_id);
+    // Getting details of the player + Playing Stats -Rohan
     this.props.searchPlayer(this.props.match.params.player_id);
+    // Call to action to fetch the graph for player Statiticis -Rohan
     this.props.playerStats(this.props.match.params.player_id);
   }
   componentWillReceiveProps(nextProps) {
+    // If the user searches for a different player on global search then call to the function to get new details and new stats
     if (nextProps.player_id != this.props.match.params.player_id) {
       this.props.searchPlayer(this.props.match.params.player_id);
+      this.props.playerStats(this.props.match.params.player_id);
     }
   }
   render() {
-    console.log(this.props.playerstats);
     return (
       <div style={{ marginBottom: "80px" }}>
         {this.props.player ? (
@@ -31,19 +33,20 @@ export class PlayerProfile extends Component {
                 <div className="flexGrowForPlayer">
                   <img
                     className="profile-img"
-                    // style={{ borderRadius: 5 + "em" }}
                     src={
+                      // Converting the byte array image format to image format using Buffer -Rohan
                       this.props.location.state.player.player_image
                         ? "data:image/jpeg;base64," +
                           new Buffer(
                             this.props.location.state.player.player_image
                           )
                         : this.props.location.state.player.gender == "male"
-                        ? stockPlayer
-                        : playerfemale
+                        ? stockPlayer //Stock image for male players -Rohan
+                        : playerfemale //Stock image for female player -Rohan
                     }
                   />
                 </div>
+                {/* Player name  -Rohan*/}
                 <div className="flexGrowEight">
                   <h1 id="playerName">
                     {this.props.history.location.state.player.player_name
@@ -51,19 +54,27 @@ export class PlayerProfile extends Component {
                       : "NA"}
                   </h1>
                   <h5 id="playerNation">
-                    Team:
+                    Team: {/*Display Team name from database -Rohan*/}
                     {this.props.location.state.player.nation
                       ? this.props.location.state.player.nation
                       : "NA"}
                   </h5>
+                  {/* Dummy data for players info -Rohan */}
+
                   <div className="profile">
-                    Passionate. No word describes Virat Kohli better. His
-                    passion for cricket has made him one of the best batsmen in
-                    the world across formats, and has also helped him grow into
-                    a ruthless captain. It's also passion that defines Kohli's
-                    emotional, effervescent and at times firecracker character.
-                    Virat Kohli does not hold back and that remains his
-                    strength.
+                    {this.props.location.state.player.info ? (
+                      this.props.location.state.player.info
+                    ) : (
+                      <>
+                        Passionate. No word describes Virat Kohli better. His
+                        passion for cricket has made him one of the best batsmen
+                        in the world across formats, and has also helped him
+                        grow into a ruthless captain. It's also passion that
+                        defines Kohli's emotional, effervescent and at times
+                        firecracker character. Virat Kohli does not hold back
+                        and that remains his strength.
+                      </>
+                    )}
                   </div>
                 </div>
               </div>
@@ -77,6 +88,7 @@ export class PlayerProfile extends Component {
                     <br />
                     <span className="personal-detail-content" id="playerDOB">
                       {" "}
+                      {/* Convert the date from GMT to 27-Nov-1997 format -Rohan */}
                       {this.props.location.state.player.player_dob
                         ? new Date(
                             this.props.location.state.player.player_dob
@@ -136,7 +148,8 @@ export class PlayerProfile extends Component {
                       </tr>
                       {/* Mapping the values receieved from the server -Rohan */}
                       {this.props.player.ODI
-                        ? Object.keys(this.props.player).map((keyName, i) => (
+                        ? // Objecct maping -Rohan
+                          Object.keys(this.props.player).map((keyName, i) => (
                             <tr>
                               <td id={"keyName" + i}>{keyName}</td>
                               {Object.keys(this.props.player[keyName]).map(
@@ -150,12 +163,13 @@ export class PlayerProfile extends Component {
                               )}
                             </tr>
                           ))
-                        : console.log("no player found")}
+                        : null}
                     </table>
                   </div>
                 </div>
               </div>
             </div>
+            {/* Visualization section for player stats in bar graph format -Rohan */}
             <div id="playerStatsVisualizationSection">
               <h1>Bar graph for Total Runs</h1>
               <iframe

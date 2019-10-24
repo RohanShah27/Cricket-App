@@ -1,6 +1,7 @@
 import { GET_SEARCH } from "./Types";
 import axios from "axios";
 
+// Action for navbar global search result -Rohan
 export const getGlobalSearchResult = search_term => dispatch => {
   return axios
     .post("http://localhost:5000/api/searchfeature/search", search_term)

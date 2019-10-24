@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import "../index.css";
-import dhoni from "../DHONI.png";
 import { getHeadlines, getHeadline } from "../actions/Headlines";
 import { getMatchesRecentMatches } from "../actions/matchActions";
 import { getFixtures } from "../actions/Fixtures";
@@ -19,6 +18,7 @@ export class Home extends Component {
     this.props.getFixtures();
   }
   componentWillReceiveProps(nextProps) {
+    // Will check if the user changes the male or female option
     if (this.props.gender != nextProps.gender)
       this.props.getMatchesRecentMatches(nextProps.gender);
   }
@@ -30,6 +30,7 @@ export class Home extends Component {
           this.props.headline[0].headlines_image ? (
             <div className="home-flex-container" id="test">
               <div className="site">
+                {/* Start of Fixtures section -Rohan */}
                 <div className="fixtures ">
                   <h2 className="fixtures-header" id="fixtures-header">
                     Fixtures
@@ -54,7 +55,8 @@ export class Home extends Component {
                     </ul>
                   </div>
                 </div>
-                {/* News Section */}
+                {/* End of Fixtures Section -Rohan */}
+                {/* Start News Section -Rohan */}
                 <div className="news">
                   <div className="col-center">
                     <h2 className="news-header" id="news-Section">
@@ -67,7 +69,7 @@ export class Home extends Component {
                             this.props.headline[0]
                               ? "data:image/jpeg;base64," +
                                 this.props.headline[0].headlines_image
-                              : dhoni
+                              : null
                           }
                           className="homeimg"
                         />
@@ -93,6 +95,7 @@ export class Home extends Component {
                     </div>
                   </div>
                 </div>
+                {/* End of News Section -Rohan */}
                 <div className="headlines">
                   <h2 className="fixtures-header" id="headlines">
                     Headlines
@@ -124,6 +127,8 @@ export class Home extends Component {
                     </ul>
                   </div>
                 </div>
+                {/* End of Headlines Section -Rohan */}
+                {/* Displaying Recent matches according to Date for male or female gender according to user selection -Rohan */}
                 <div className="home-match-container">
                   <div className="testimonials" id="#recent-matches">
                     {this.props.match.map((match, index) => (
@@ -160,6 +165,7 @@ export class Home extends Component {
                             </p>
                           </div>
                           <div className="second">
+                            {/* redirect user to details of match  -Rohan*/}
                             <Link
                               to={{
                                 pathname: "/matchdetails/" + match.match_id,
@@ -169,12 +175,6 @@ export class Home extends Component {
                               <button
                                 id={"recent-match" + index}
                                 className="buttonformatch"
-                                // onClick={() => {
-                                //   this.props.history.push(
-                                //     "/matchdetails/" + match.match_id,
-                                //     match
-                                //   );
-                                // }}
                               >
                                 View
                               </button>
@@ -201,8 +201,10 @@ export class Home extends Component {
                   </div>
                 </div>
               </div>
+              {/* End of Recent matches section -Rohan */}
             </div>
           ) : (
+            // Display Loader when data is still not on the client side
             <div className="loader-container" style={{ marginTop: "20vw" }}>
               <div className="user-loader"></div>
             </div>
@@ -213,6 +215,7 @@ export class Home extends Component {
   }
 }
 const mapStateToProps = state => ({
+  // Reducers recuired for data on client side -Rohan
   headlines: state.headlinesReducer.headlines,
   headline: state.headlinesReducer.headline,
   fixtures: state.fixturesReducer.fixtures,

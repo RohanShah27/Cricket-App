@@ -1,11 +1,11 @@
 const express = require("express");
-//Route to the provided route
+//Route to the provided route -Rohan
 const router = express.Router();
 const pg = require("pg-promise")();
-// Conneccting to the hosted database fixtures
+// Conneccting to the hosted database -Rohan
 const db = pg("postgres://postgres:123456@localhost:5432/cricket_capstone");
 
-// Get stats of a player
+// Get stats of a player -Rohan
 router.post("/player_search/:playerId", async (req, res) => {
   try {
     let playerId = req.params.playerId;
@@ -19,7 +19,7 @@ router.post("/player_search/:playerId", async (req, res) => {
       `select ps.player_stats_value,ps.match_type,ps.player_stats_name from player_stats ps left join player p on ps.player_id=p.player_id where ps.player_id=p.player_id group by p.player_id,p.player_name,ps.player_stats_value,ps.match_type,player_stats_name having p.player_id=${playerId} and ps.match_type='T20' order by ps.match_type;`
     );
     let data = { ODI: {}, T20: {}, Test: {} };
-    // Data for Odi
+    // Data for Odi -Rohan
     data.ODI.doubleCenturies = "--";
     data.ODI.centuries = "--";
     data.ODI.runs = "--";
@@ -27,7 +27,7 @@ router.post("/player_search/:playerId", async (req, res) => {
     data.ODI.fours = "--";
     data.ODI.wickets = "--";
     data.ODI.fifty = "--";
-    // Data for T20
+    // Data for T20 -Rohan
     data.T20.doubleCenturies = "--";
     data.T20.centuries = "--";
     data.T20.runs = "--";
@@ -35,7 +35,7 @@ router.post("/player_search/:playerId", async (req, res) => {
     data.T20.fours = "--";
     data.T20.wickets = "--";
     data.T20.fifty = "--";
-    // Data for Test
+    // Data for Test -Rohan
     data.Test.doubleCenturies = "--";
     data.Test.centuries = "--";
     data.Test.runs = "--";
@@ -172,7 +172,7 @@ router.get("/all/:gender", async (req, res) => {
   }
 });
 // Service for search bar on players page for live search for a player from the database -Rohan
-// filter search
+// filter search -Rohan
 router.post("/searchPlayer", async (req, res) => {
   try {
     let playerName = req.body.playerName;
@@ -192,7 +192,7 @@ router.post("/searchPlayer", async (req, res) => {
     });
   }
 });
-//To add a new player
+//To add a new player -Yash Bhatia
 router.post("/newplayers", async (req, res, next) => {
   try {
     player = {
@@ -204,20 +204,15 @@ router.post("/newplayers", async (req, res, next) => {
       batting_style: req.body.batting_style,
       bowling_style: req.body.bowling_style
     };
-    //To check if player already exists or not
+    //To check if player already exists or not -Yash Bhatia
     const result = await db.any(
       `select * from player where player_name='${req.body.player_name}'`
     );
     if (result.length == 0) {
       console.log(result);
       return res.status(400).send({ message: "player already exists" });
-    }
-    // else if (result.length == 1) {
-    //   console.log(result);
-    //   return res.status(500).send({ message: "Field Empty" });
-    // }
-    else {
-      //Insert a new player
+    } else {
+      //Insert a new player -Yash Bhatia
       const result = await db.any(`insert into player(player_name,player_role,nation,gender,player_dob,batting_style,bowling_style)values('${player.player_name}','${player.player_role}','${player.nation}','${player.gender}','${player.player_dob}','${player.batting_style}','${player.bowling_style}')
               returning player_id`);
       console.log(result);
@@ -227,13 +222,13 @@ router.post("/newplayers", async (req, res, next) => {
         message: "Inserted Player Successfully"
       });
     }
-    //if any error send a server error
+    //if any error send a server error -Yash Bhatia
   } catch (err) {
     res.status(400).json({
       status: 400,
       message: "Server error"
     });
-    //To check what the error exactly is
+    //To check what the error exactly is -Yash Bhatia
     console.log(err);
   }
 });
