@@ -1,0 +1,50 @@
+1,Test,India,115,4027,male
+2,Test,New Zealand,109,2829,male
+3,Test,South Africa,108,2917,male
+4,Test,England,104,4366,male
+5,Test,Australia,99,3270,male
+6,Test,Srilanka,95,3795,male
+7,Test,Pakistan,84,2263,male
+8,Test,West Indies,80,2570,male
+9,Test,Bangladesh,61,1413,male
+10,Test,Afghanistan,55,165,male
+1,ODI,England,125,6745,male
+2,ODI,India,122,7071,male
+3,ODI,New Zealand,112,4837,male
+4,ODI,Australia,111,5543,male
+5,ODI,South Africa,110,5193,male
+6,ODI,Pakistan,97,4756,male
+7,ODI,Bangladesh,85,3963,male
+8,ODI,Srilanka,82,4425,male
+9,ODI,West Indies,76,3740,male
+10,ODI,Afghanistan,59,2359,male
+1,T20,Pakistan,283,7365,male
+2,T20,England,266,4253,male
+3,T20,South Africa,262,4720,male
+4,T20,India,261,8620,male
+5,T20,Australia,261,5471,male
+6,T20,New Zealand,252,4784,male
+7,T20,Afghanistan,235,4694,male
+8,T20,Srilanka,229,4808,male
+9,T20,West Indies,224,5378,male
+10,T20,Bangladesh,223,4468,male
+1,ODI,Australia Women,151,3784,female
+2,ODI,India Women,127,3295,female
+3,ODI,England Women,122,3303,female
+4,ODI,New Zealand Women,110,2533,female
+5,ODI,South Africa Women,96,3077,female
+6,ODI,West Indies Women,79,1664,female
+7,ODI,Pakistan Women,77,1613,female
+8,ODI,Srilanka Women,55,1163,female
+9,ODI,Bangladesh Women,48,387,female
+10,ODI,Ireland Women,10,110,female
+1,T20,Australia Women,293,7331,female
+2,T20,England Women,279,6141,female
+3,T20,New Zealand Women,276,4963,female
+4,T20,West Indies Women,258,5682,female
+5,T20,India Women,252,7046,female
+6,T20,South Africa Women,241,5776,female
+7,T20,Pakistan Women,228,5688,female
+8,T20,Srilanka Women,201,4420,female
+9,T20,Bangladesh Women,196,4698,female
+10,T20,Ireland Women,165,3622,female

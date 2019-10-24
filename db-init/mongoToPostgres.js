@@ -446,7 +446,11 @@ async function csvToSql(){
 			const playerRanking =await postdb.any(`copy player_ranking(position,match_format,match_type,player_name,ratings,player_team,gender) FROM 'playerRanking.csv' DELIMITER ',' CSV HEADER;`);
 			console.log("PlayerRanking csv to SQL conversion Success");
 
-			
+			const team_ranking= await postdb.any(`copy team_ranking(position,match_format,team_name,rating,points,gender) FROM 'teamRanking.csv' DELIMITER ',' CSV HEADER;`)
+			console.log("TEamRanking csv to SQL conversion Successs");
+
+			const headlines =await postdb.any(`cop headlines(headlines,headlines_desription) FROM 'headlines.csv' DELIMITER ',' CSV HEADER;`)
+			console.log("Fixtures csv to SQL conversion success")
 }
 async function headlinesImageInsertion(){
 	for (var i = 1; i < 20; i++) {
