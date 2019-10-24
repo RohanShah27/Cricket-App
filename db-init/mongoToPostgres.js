@@ -11,7 +11,6 @@ MongoClient.connect(url, {
 	useNewUrlParser: true
 }).then(async db => {
 	dbo = db.db("crickstrait_capstone");
-	// async function which will be defined below
 
 	console.time("Computing match type");
 	await match_type();
@@ -20,16 +19,19 @@ MongoClient.connect(url, {
 
 	console.time("Computing match table");
 	await match();
-	console.timeEnd("match table");
+	console.timeEnd("match table updated");
 
 	await player_stats();
-	console.log("Promise satisfied");
+	console.log("Player Stats inserted successfully");
 
 	await teamplayer_stats();
 	console.log("Inserted into teamplayer_stats successfully")
 
 	await csvToSql();
 	console.log("Inserted All CSV To SQL");
+
+	await headlinesImageInsertion();
+	console.log("Insert Images into table complete!")
 });
 
 async function match() {
@@ -425,7 +427,7 @@ async function player_stats() {
 
 
 }
-		async function teamplayer_stats(){
+async function teamplayer_stats(){
 			
 				const teamPlayerStats= await postdb.any(`insert into teamsplayer_stats with parent as(with ss as(select player_stats_id,ps.player_id,player_stats_name,player_stats_value,match_type,player_name,team_id,gender from player_stats ps 
 					  inner join player p on ps.player_id = p.player_id
@@ -436,8 +438,8 @@ async function player_stats() {
 					  `);
 				console.log("Inserted into teamplayer_stats");
 				
-		}
-		async function csvToSql(){
+}
+async function csvToSql(){
 			const fixtures = await postdb.any(`copy fixtures( match_date,match_time,team1_id,team2_id,match_type_id,team1_name,team2_name,match_type) FROM 'fixtures.csv' DELIMITER ',' CSV HEADER;`);
 			console.log("Fixtures csv to SQL conversion Success");
 
@@ -445,4 +447,21 @@ async function player_stats() {
 			console.log("PlayerRanking csv to SQL conversion Success");
 
 			
+}
+async function headlinesImageInsertion(){
+	for (var i = 1; i < 20; i++) {
+		var imageAsBase64 = fs.readFileSync(
+		  process.cwd() + `\\headlines\\h${i}.jpg`,
+		  "base64"
+		);
+	  
+		try {
+		  postdb.any(
+			`update headlines set headlines_image='${imageAsBase64}' where headline_id=${i}`
+		  );
+		  console.log(`Inserted headline image with  headline_id ${i}`);
+		} catch (err) {
+		  console.log(err);
 		}
+	  }
+}
