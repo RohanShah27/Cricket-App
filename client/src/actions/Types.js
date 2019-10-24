@@ -1,4 +1,6 @@
+// type for Player Ranking-Bhavana
 export const GET_PLAYER_RANKING = "GET_PLAYER_RANKING";
+// Type for Team_ranking-Bhavana
 export const GET_TEAM_RANKING = "GET_TEAM_RANKING";
 
 export const GET_VENUES = "GET_VENUES";
@@ -50,10 +52,12 @@ export const GET_PLAYER_STATS_FOR_TEAMS_BOWLER =
   "GET_PLAYER_STATS_FOR_TEAMS_BOWLER";
 export const GET_MATCHES_BY_DATE = "GET_MATCHES_BY_DATE";
 
-// Type for Graphs
+// Type for TeamStats Graph
 export const TEAM_STATS_GRAPH_ODI = "TEAM_STATS_GRAPH_ODI";
 export const TEAM_STATS_GRAPH_TEST = "TEAM_STATS_GRAPH_TEST";
 export const TEAM_STATS_GRAPH_T20 = "TEAM_STATS_GRAPH_T20";
+
+// Type for Match Stats
 export const MANHATTAN_GRAPH_MATCH = "MANHATTAN_GRAPH_MATCH";
 export const PIECHART_BATSMAN_INNINGS1 = "PIECHART_BATSMAN";
 export const PIECHART_BOWLER_INNINGS1 = "PIECHART_BOWLER";

@@ -86,6 +86,7 @@ export const playerSearch = playerName => dispatch => {
     });
 };
 
+// Action to fetch playerStats graph -Rohan
 export const playerStats = playerId => dispatch => {
   return axios
     .get("http://127.0.0.1:5002/playerstats/" + playerId)

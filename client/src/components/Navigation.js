@@ -4,6 +4,7 @@ import "../styles/navbar.css";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import stockPlayer from "../stockPlayer.png";
+import playerFemale from "../stockPlayerFemale.jpg";
 import ReactCountryFlag from "react-country-flag";
 
 export class Navigation extends Component {
@@ -11,12 +12,15 @@ export class Navigation extends Component {
     super(props);
   }
   state = {
+    // Declaring a property for search bar section -Rohan
     search_term: ""
   };
+  // Function to remove token and render page if user chooses to logOut -Rohan
   removeToken = () => {
     localStorage.removeItem("token");
     this.forceUpdate();
   };
+  // Get search result on Click of search Button -Rohan
   getResult = () => {
     let search_term = {
       search_term: this.state.search_term
@@ -29,17 +33,20 @@ export class Navigation extends Component {
     let search_term = {
       search_term: this.state.search_term
     };
+    // Call to the get globalsearch result as soon as user starts typing (Live Search)-Rohan
     this.props.getGlobalSearchResult(search_term);
   };
 
   render() {
-    console.log(this.props);
     return (
+      // Start of navbar-Rohan
       <div className="nav-container">
         <div className="nav-header">
+          {/* Brand name */}
           <a className="logo" id="Brand">
             <Link to="/">Crickstrait</Link>
           </a>
+          {/* Male Female Options */}
           {this.props.gender == "male" ? (
             <a
               className="options"
@@ -55,6 +62,7 @@ export class Navigation extends Component {
             <a
               id="menState"
               className="options"
+              // Change the state to mens state in the App.js class component state -Rohan
               onClick={this.props.menState}
               style={{ marginRight: "5px" }}
             >
@@ -73,6 +81,8 @@ export class Navigation extends Component {
             <a
               id="femaleState"
               className="options"
+              // Change the state to Female state in the App.js class component state -Rohan
+
               onClick={this.props.femaleState}
             >
               Women
@@ -86,39 +96,47 @@ export class Navigation extends Component {
 
           <ul className="menu">
             <li id="Rankings">
+              {/* Link to Rankings component -Rohan */}
               <Link to="/rankings">Rankings</Link>
             </li>
             <li id="matches">
+              {/* Link to Matches component -Rohan */}
               <Link to="/matches">Matches</Link>
             </li>
             <li id="teams">
+              {/* Link to Teams Component -Rohan */}
               <Link to="/teams">Teams</Link>
             </li>
             <li id="players">
+              {/* Link to Players Comonent -Rohan */}
               <Link to="/Players">Players</Link>
             </li>
+            {/* Start of Search Section-Rohan  */}
             <li style={{ textAlign: "center" }}>
               <input
                 id="globalSearchBar"
                 className="nav-search-bar"
                 type="text"
-                name="search_term"
+                name="search_term" //Same as that in state -Rohan
                 value={this.state.search_term}
                 onChange={this.OnChange}
               />
               <button
                 id="searchButton"
                 className="nav-search-button"
-                onClick={this.getResult}
+                onClick={this.getResult} //Call to function to get the search result -Rohan
               >
                 <i className="fa fa-search"></i>
               </button>
+              {/* End of Search Section -Rohan */}
+              {/* Mapping search results if there is data in the result else not displaying the component -Rohan */}
               {this.state.search_term == "" ? null : (
                 <div className="search-result">
                   {this.props.search_result.length != 0 ? (
                     this.props.search_result.player.length != 0 ? (
                       this.props.search_result.player.map((player, index) => (
                         <span className="search_result_data">
+                          {/* Link to redirect the user to details of player on click -Rohan */}
                           <Link
                             to={{
                               pathname: "/playerprofile/" + player.player_id,
@@ -143,7 +161,9 @@ export class Navigation extends Component {
                                   player.player_image
                                     ? "data:image/jpeg;base64," +
                                       new Buffer(player.player_image)
-                                    : stockPlayer
+                                    : player.gender == "male"
+                                    ? stockPlayer
+                                    : playerFemale
                                 }
                                 style={{
                                   borderRadius: "8px",
@@ -165,13 +185,14 @@ export class Navigation extends Component {
                     this.props.search_result.team.length != 0 ? (
                       this.props.search_result.team.map((teams, index) => (
                         <span className="search_result_data">
+                          {/* Link to redirect the user to details of team on click -Rohan */}
+
                           <Link
                             to={{
                               pathname: "/viewteam/" + teams.team_id,
                               state: { teams }
                             }}
                           >
-                            {/* <Link to={"/viewteam/" + team.team_id}> */}
                             <p
                               style={{
                                 fontSize: "18px",
@@ -206,10 +227,12 @@ export class Navigation extends Component {
                 </div>
               )}
             </li>
+            {/* if there is a token present only then dsplay admin option and logout else dont -Rohan */}
             {localStorage.getItem("token") ? (
               <>
                 <li>
                   <a>
+                    {/* Drop down for admin options for a user -Rohan */}
                     <div className="drop-down">
                       Admin
                       <div className="drop-down-content">
@@ -230,12 +253,14 @@ export class Navigation extends Component {
                   </a>
                 </li>
                 <li>
+                  {/* Call to the removeToken Fncion -Rohan */}
                   <Link to="/" onClick={this.removeToken}>
                     Logout
                   </Link>
                 </li>
               </>
             ) : (
+              // If no token found then display Login option to redirect user to Login component-Rohan
               <li>
                 <Link to="/login">Login</Link>
               </li>

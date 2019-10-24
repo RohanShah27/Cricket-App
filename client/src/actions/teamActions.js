@@ -74,7 +74,7 @@ export const getTeamStats = team_id => dispatch => {
     });
 };
 
-// getting top 5 batsmen for that team
+// getting top 5 batsmen and their stats for that team
 export const getPlayerStatsForTeams = (
   team_id,
   match_type,
@@ -101,7 +101,7 @@ export const getPlayerStatsForTeams = (
     });
 };
 
-// getting top 5 bowlers for that team
+// getting top 5 bowlers and their stats for that team
 export const getPlayerStatsForTeamsBowler = (
   team_id,
   match_type,
@@ -127,7 +127,7 @@ export const getPlayerStatsForTeamsBowler = (
     });
 };
 
-// getting team stats for odi match type
+// Graph For mapping team stats for match_type = "ODI"
 export const teamStatsGraphOdi = id => dispatch => {
   return axios
     .get("http://127.0.0.1:5000/odistats/" + id)
@@ -143,7 +143,7 @@ export const teamStatsGraphOdi = id => dispatch => {
     });
 };
 
-// getting team stats for test match type
+// Graph For mapping team stats for match_type = "test"
 export const teamStatsGraphTest = id => dispatch => {
   return axios
     .get("http://127.0.0.1:5000/teststats/" + id)
@@ -159,7 +159,7 @@ export const teamStatsGraphTest = id => dispatch => {
     });
 };
 
-// getting team stats for t20 match type
+// Graph For mapping team stats for match_type = "T20"
 export const teamStatsGraphT20 = id => dispatch => {
   return axios
     .get("http://127.0.0.1:5000/t20stats/" + id)

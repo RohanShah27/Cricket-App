@@ -19,7 +19,6 @@ export class MatchDetails extends Component {
     let id = {
       match_id: this.props.location.state.match.match_id
     };
-    console.log(id);
     this.props.getMatchDetails(id);
     this.props.getScorecard(id);
     this.props.getAllMatchDetails(id);
@@ -31,42 +30,51 @@ export class MatchDetails extends Component {
   }
 
   render() {
-    console.log(this.props);
     return (
       <div>
-        {this.props.summary.map((match, index) => (
+        {this.props.summary ? this.props.summary.map((match, index) => (
+          // Main Div Container
+          <div>
           <section>
+            {/* Mapping The Header of the Match Component whoch contains the contenders,result and pom */}
             <div className="matchDetails-flex-container">
               <div className="matchDetails-parent">
                 <p id={"matchHeader" + index}>
+                  {/* Mapping name of team one and team two */}
                   ODI {match.teamOne} VS {match.teamTwo}
                 </p>
                 <div class="matchDetails-headercard">
+                  {/* Mapping flag of team one */}
                   <p className="matchDetails-country-name">
                     <ReactCountryFlag
                       styleProps={{
                         width: "50px",
                         height: "50px"
                       }}
+                      // Checks if the image is present , if there is no image returned by db db then display a stock image
                       code={match.team1_image ? match.team1_image : "ao"}
                       svg
                     />{" "}
+                    {/* Mapping team one name */}
                     {match.teamOne}
                   </p>
-                  {console.log(match.team1_image)}
 
                   <p className="matchDetails-country-name">
+                    {/* Team two flag */}
                     <ReactCountryFlag
                       styleProps={{
                         width: "50px",
                         height: "50px"
                       }}
+                      // Checks if the image is present , if there is no image returned by db db then display a stock image
                       code={match.team2_image ? match.team2_image : "in"}
                       svg
                     />{" "}
+                    {/* Name of team two */}
                     {match.teamTwo}
                   </p>
 
+                      {/* Mapping the Result of the match */}
                   <p className="matchDetails-result" id={"matchResult" + index}>
                     Result : {match.team_winner} {match.won_by}
                   </p>
@@ -74,10 +82,12 @@ export class MatchDetails extends Component {
 
                 <div className="matchDetails-headercard">
                   <p id={"matchteamOneScore" + index}>
+                    {/* Mapping statistics of team1 */}
                     {match.teamOneScore}/{match.teamone_wicket} (
                     {match.team_one_total_over} Overs)
                   </p>
                   <p id={"matchteamTwoScore" + index}>
+                    {/* Statistics of team2 */}
                     {match.teamTwoScore}/{match.teamtwo_wicket} (
                     {match.team_two_total_over} Overs)
                   </p>
@@ -88,8 +98,10 @@ export class MatchDetails extends Component {
                   <div>
                     {/* <img className="matchDetails-imgforplayer" src={dhoni} /> */}
                   </div>
+                  {/* Mapping Player of the Match */}
                   <p>Player of the Match</p>
                   <div className="POM-section">
+                    {/* Image for player of the match */}
                     <p>
                       <img src={virat} className="matchDetails-pom-image" />{" "}
                     </p>
@@ -99,7 +111,8 @@ export class MatchDetails extends Component {
               </div>
             </div>
           </section>
-        ))}
+        
+        {/* Start of Tab Container */}
         <div className="matchDetails-pc-tab">
           <input
             defaultChecked="defaultChecked"
@@ -111,27 +124,33 @@ export class MatchDetails extends Component {
           <input id="matchDetails-tab3" type="radio" name="pct" />
           <nav>
             <ul>
+            {/* Tab for Summary */}
               <li className="matchDetails-tab1">
                 <label htmlFor="matchDetails-tab1">Summary</label>
               </li>
+              {/* Tab for Scoreboard */}
               <li className="matchDetails-tab2">
                 <label htmlFor="matchDetails-tab2">Scoreboard</label>
               </li>
+              {/* Tab for Statictics */}
               <li className="matchDetails-tab3">
                 <label htmlFor="matchDetails-tab3">Statistics</label>
               </li>
             </ul>
           </nav>
-          {/* tab bodies */}
+          {/* Content mapping for each Taba */}
           <section>
+            {/* Start of Tab2 */}
             <div className="matchDetails-tab2">
               <div className="matchDetails-testimonials">
                 <div className="matchDetails-details">
+                  {/* Mapping of scoreboard basec on each innings */}
                   {this.props.singlematch.map(inning => (
                     <div className="innings-container">
                       <h2 className="matchDetails-scoreboard-header">
                         Innings {inning.inning}
                       </h2>
+                      {/* Start of Container of Batsman Innings Container */}
                       <div className="matchDetails-flex-container">
                         <div>
                           <table className="matchDetails-scoreboard-table">
@@ -145,14 +164,17 @@ export class MatchDetails extends Component {
                               <th>SR</th>
                             </tr>
 
+                            {/* Mapping the inningwise batsman stats */}
                             {inning.scorecard.map((score, index) => (
+                              // Batsman Name
                               <tr>
                                 <td id={"striker" + index}>
                                   {score.striker_name}
                                 </td>
-
+                                {/* How the batsman was out */}
                                 {score.wicket_type ? (
                                   <td id={"wicketType" + index}>
+                                    {/* If the batsman was out then display the type of wicket , otherwise diaply not out */}
                                     {score.wicket_type == "caught"
                                       ? "c"
                                       : score.wicket_type}{" "}
@@ -163,17 +185,25 @@ export class MatchDetails extends Component {
                                   <td>Not Out</td>
                                 )}
 
+                                  {/* Runs scored by Batsman */}
                                 <td>{score.batsman_run}</td>
+                                {/* Balls Faced by Batsman */}
                                 <td>{score.ball_faced}</td>
+                                {/* NO of fours  */}
                                 <td>{score.fours}</td>
+                                {/* No of Sixes */}
                                 <td>{score.sixes}</td>
+                                {/* Strike Rate */}
                                 <td>{score.striker_rate}</td>
                               </tr>
                             ))}
+
+                            {/* Mapping total of each inning */}
                             {inning.total.map(total => (
                               <div>
                                 <tr>
                                   <b>
+                                    {/* Total rund made in each innings */}
                                     <td>Total : </td>
                                   </b>
                                   <td>
@@ -183,6 +213,7 @@ export class MatchDetails extends Component {
                                 </tr>
                                 <tr style={{ background: "none" }}>
                                   <b>
+                                    {/* Total extras in an innings */}
                                     <td>Extras : </td>
                                   </b>
                                   <td>{total.extras}</td>
@@ -192,7 +223,9 @@ export class MatchDetails extends Component {
                           </table>
                         </div>
                       </div>
+                      {/* End of Batsman Innings Container */}
 
+                      {/* Start of Bowler Conatiner */}
                       <div>
                         <table className="matchDetails-scoreboard-table">
                           <tr>
@@ -205,26 +238,38 @@ export class MatchDetails extends Component {
                           </tr>
                           {inning.bowler.map(bowler => (
                             <tr>
+                              {/* Name of Bowler */}
                               <td>{bowler.player_name}</td>
+                              {/* Overs bowled by bowler */}
                               <td>{bowler.overs}</td>
+                              {/* Runs conceeded by Bolwer */}
                               <td>{bowler.runs_conceeded}</td>
+                              {/* WIckets taken */}
                               <td>{bowler.wickets}</td>
+                              {/* Economy Rate (Rounding upto single decimal)*/}
                               <td>{Number(bowler.economy).toFixed(1)}</td>
+                              {/* Extras */}
                               <td>{bowler.extras}</td>
                             </tr>
                           ))}
                         </table>
                       </div>
-                    </div>
+                    </div> 
                   ))}
+                  {/* End of Bowler Container */}
                 </div>
               </div>
             </div>
-
+            {/* End of Tab2 */}
+           
+        {/* Start of Tab3 */}
             <div className="matchDetails-tab3">
               <div className="matchDetails-testimonials">
+                {/* Mapping Runs per over Manhattan Graph */}
                 <div className="matchDetails-statistics-container">
+                  <h2>Runs Per Over graph</h2>
                   <div className="manhattan-match">
+                    
                     <iframe
                       id="manhattan"
                       src={this.props.manhattan}
@@ -232,7 +277,10 @@ export class MatchDetails extends Component {
                     />
                   </div>
                 </div>
+                
+                {/* Mapping Batman Contribution of each innings */}
                 <div className="matchDetails-statistics-container">
+                  <h2>Innings1 Batsman Contribution</h2>
                   <div className="manhattan-match">
                     <iframe
                       id="piebats1"
@@ -241,7 +289,9 @@ export class MatchDetails extends Component {
                     />
                   </div>
                 </div>
+                {/* Mapping Batman Contribution of each innings */}
                 <div className="matchDetails-statistics-container">
+                  <h2>Innings2 Batsman Contribution</h2>
                   <div className="manhattan-match">
                     <iframe
                       id="piebats2"
@@ -250,7 +300,9 @@ export class MatchDetails extends Component {
                     />
                   </div>
                 </div>
+                {/* Mapping Bowler Contribution of each innings */}
                 <div className="matchDetails-statistics-container">
+                  <h2>Innings1 Bowler Contribution</h2>
                   <div className="manhattan-match">
                     <iframe
                       id="piebowler1"
@@ -259,7 +311,9 @@ export class MatchDetails extends Component {
                     />
                   </div>
                 </div>
+                {/* Mapping Bowler Contribution of each innings */}
                 <div className="matchDetails-statistics-container">
+                  <h2>Innings2 Bowler Contribution</h2>
                   <div className="manhattan-match">
                     <iframe
                       id="piebowler2"
@@ -270,7 +324,9 @@ export class MatchDetails extends Component {
                 </div>
               </div>
             </div>
+            {/* End of Tab3 */}
 
+            {/* Start of tab1 */}
             <div className="matchDetails-tab1">
               <div className="matchDetails-testimonials">
                 <div className="matchDetails-details">
@@ -288,6 +344,7 @@ export class MatchDetails extends Component {
                           </th>
                           <tr>
                             <td>
+                              {/* Mapping top two batsman of 1st innings */}
                               {this.props.current_match.player1[0].player_name}
                             </td>
                             <td>
@@ -313,6 +370,7 @@ export class MatchDetails extends Component {
                                 : "NA"}
                             </th>
                             <tr>
+                              {/* Mapping top two batsman of 2nd innings */}
                               <td>
                                 {
                                   this.props.current_match.player2[0]
@@ -348,9 +406,9 @@ export class MatchDetails extends Component {
                       <div className="matchDetails-topbatsman">
                         <table className="matchDetails-top-player-table">
                           <th style={{ background: "none", color: "white" }}>
-                            Hello
                           </th>
                           <tr>
+                            {/* Mapping top two bowler of 1st innings */}
                             <td>
                               {
                                 this.props.current_match.player1_bowler[0]
@@ -387,6 +445,7 @@ export class MatchDetails extends Component {
                               Hello
                             </th>
                             <tr>
+                              {/* Mapping top two batsman of 2nd innings */}
                               <td>
                                 {
                                   this.props.current_match.player2_bowler[0]
@@ -437,16 +496,19 @@ export class MatchDetails extends Component {
                             <tr>
                               <td>Series</td>
                               <td>
+                                {/* Mapping Series Name */}
                                 {this.props.current_match.result[0].competition}
                               </td>
                             </tr>
                             <tr>
+                              {/* Match Type */}
                               <td>Match Type</td>
                               <td>
                                 {this.props.current_match.result[0].match_type}
                               </td>
                             </tr>
                             <tr>
+                              {/* Match Played */}
                               <td>Match</td>
                               <td>
                                 {this.props.current_match.country[0].team_name}{" "}
@@ -455,12 +517,20 @@ export class MatchDetails extends Component {
                               </td>
                             </tr>
                             <tr>
+                              {/* Match Date */}
                               <td>Match Date</td>{" "}
                               <td>
-                                {this.props.current_match.date[0].match_date}
+                                {new Date(
+                            this.props.current_match.date[0].match_date
+                          ).toLocaleDateString("en-IN", {
+                            month: "short",
+                            day: "2-digit",
+                            year: "numeric"
+                          })}
                               </td>
                             </tr>
                             <tr>
+                              {/* Venue of Match */}
                               <td>Venue</td>{" "}
                               <td>
                                 {this.props.current_match.venue[0].venue_name}
@@ -468,6 +538,7 @@ export class MatchDetails extends Component {
                             </tr>
 
                             <tr>
+                              {/* Umpires of the mathc */}
                               <td>Umpires </td>
                               <td>
                                 {this.props.current_match.umpire[0].umpire_name}
@@ -476,6 +547,7 @@ export class MatchDetails extends Component {
                               </td>
                             </tr>
                             <tr>
+                              {/* Toss Winner ad Toss Decision */}
                               <td>Toss</td>
                               <td>
                                 {this.props.current_match.toss[0].toss_winner} ,
@@ -487,6 +559,7 @@ export class MatchDetails extends Component {
                               </td>
                             </tr>
                             <tr>
+                              {/* Result of the match */}
                               <td>Result </td>
                               <td>
                                 {" "}
@@ -495,6 +568,7 @@ export class MatchDetails extends Component {
                               </td>
                             </tr>
                             <tr>
+                              {/* Player of the match */}
                               <td>MoM</td>
                               <td>
                                 {
@@ -512,7 +586,9 @@ export class MatchDetails extends Component {
               </div>
             </div>
           </section>
-        </div>
+        </div> </div>)) : <div className="loader-container" style={{top:"0px"}}>
+              <div className="user-loader"></div>
+            </div>}
       </div>
     );
   }
