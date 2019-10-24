@@ -116,6 +116,17 @@ create table match
         gender varchar(255)
     );
 
+    create table team_ranking
+    (
+        team_ranking_id serial,
+        position int,
+        match_format varchar(255),
+        team_name varchar(255),
+        rating int,
+        points int,
+        gender varchar(255)
+    )
+
     create table player_stats
     (
         player_stats_id serial,
