@@ -247,6 +247,7 @@ export class ViewTeam extends Component {
         {this.props.teamstats ? (
           <div className="viewTeam-container">
             <div className="parentcoach">
+              {/* mapping team details */}
               {this.props.tournamentTeam.map((teams, index) => (
                 <div className="parentcoach">
                   <div className="child1">
@@ -275,6 +276,7 @@ export class ViewTeam extends Component {
                 name="pct"
               />
               <input id="viewTeam-tab2" type="radio" name="pct" />
+              {/* two tabs for stats and matches */}
               <nav>
                 <ul>
                   <li className="viewTeam-tab1">
@@ -301,6 +303,7 @@ export class ViewTeam extends Component {
                 <div className="viewTeam-tab1">
                   <div className="viewTeam-testimonials">
                     <div className="viewTeam-table1">
+                      {/* mapping team stats which include total matches, win, loss, draw */}
                       {this.props.teamstats.map((teamstats, index) => (
                         <table className="stats">
                           <tr>
@@ -405,6 +408,7 @@ export class ViewTeam extends Component {
                               Total Runs
                             </th>
                           </tr>
+                          {/* mapping top 5 batsmen as per tem, match type and gender */}
                           {this.props.playerstatsforteams.map(
                             playerstatsforteams => (
                               <tr>
@@ -426,6 +430,7 @@ export class ViewTeam extends Component {
                                 Total Wickets
                               </th>
                             </tr>
+                            {/* mapping top 5 batsmen as per tem, match type and gender */}
                             {this.props.playerstatsforteamsbowler.map(
                               playerstatsforteamsbowler => (
                                 <tr>
@@ -446,6 +451,7 @@ export class ViewTeam extends Component {
                     </div>
                     {/* ))} */}
                     <div className="viewTeam-table2">
+                      {/* mapping visualizations for team stats as per match type */}
                       <h2 style={{ textAlign: "center", marginTop: "20px" }}>
                         ODI Stats
                       </h2>
@@ -528,7 +534,7 @@ export class ViewTeam extends Component {
                       >
                         T20
                       </button>
-                      {/* <div className="viewTeam-calendar"> */}
+                      {/* React calendar for mapping matches as per date */}
                       <Calendar
                         className={
                           this.state.calendarIsOpen
@@ -540,7 +546,6 @@ export class ViewTeam extends Component {
                         open={this.state.calendarIsOpen}
                         onClickOutside={this.closecalendar}
                       />
-                      {/* {console.log(this.state.date.toJSON().slice(0, 10))} */}
                       <button
                         className="viewTeam-calendarbutton"
                         onClick={this.opencalendar}
@@ -555,6 +560,7 @@ export class ViewTeam extends Component {
                     {this.props.match.length === 0 ? (
                       <h2 style={{ textAlign: "center" }}>No Matches Played</h2>
                     ) : (
+                      //mapping matches as per date, match type and gender
                       this.props.match.map(match => (
                         <div
                           className="viewTeamMatches-card"
