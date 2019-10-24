@@ -74,7 +74,9 @@ create table match
     create table headlines
     (
         headline_id serial,
-        headlines varchar(8000)
+        headlines varchar(8000),
+        headlines_description varchar(8000),
+        headlines_image varchar(8000)
         
     );
     create table fixtures

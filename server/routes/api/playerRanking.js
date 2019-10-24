@@ -10,7 +10,7 @@ router.post("/ranking", async (req, res) => {
   try {
     // Storing result of the query
     const result = await db.any(
-      `select * from player_ranking where format='${format}' and gender='${gender}'`
+      `select * from player_ranking where match_format='${format}' and gender='${gender}'`
     );
     // If the query doesn't return any result , throw an 400 error,
     if (!result)
@@ -42,7 +42,7 @@ router.post("/teamranking", async (req, res) => {
   try {
     // Storing the resut of the query
     const result = await db.any(
-      `SELECT * FROM team_ranking where format = '${format}' and gender='${gender}'`
+      `SELECT * FROM team_ranking where match_format = '${format}' and gender='${gender}'`
     );
     // If the query doesn't return any result , then throw a 400 error
     if (!result)
