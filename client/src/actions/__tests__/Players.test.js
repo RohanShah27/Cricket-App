@@ -1,5 +1,5 @@
 import * as action from "../Players";
-import { SEARCH_PLAYER, ALL_PLAYERS } from "../Types";
+import { SEARCH_PLAYER, ALL_PLAYERS, PLAYER_STATS } from "../Types";
 import moxios from "moxios";
 import configureMockStore from "redux-mock-store";
 import thunk from "redux-thunk";

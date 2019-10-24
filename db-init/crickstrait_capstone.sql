@@ -104,6 +104,18 @@ create table match
         player_role varchar(255)
     );
 
+    create table player_ranking 
+    (
+        player_ranking_id serial,
+        position int,
+        match_format varchar(255),
+        match_type varchar(255),
+        player_name varchar(255),
+        ratings int,
+        player_team varchar(255),
+        gender varchar(255)
+    );
+
     create table player_stats
     (
         player_stats_id serial,

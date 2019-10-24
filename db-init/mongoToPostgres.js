@@ -27,6 +27,9 @@ MongoClient.connect(url, {
 
 	await teamplayer_stats();
 	console.log("Inserted into teamplayer_stats successfully")
+
+	await csvToSql();
+	console.log("Inserted All CSV To SQL");
 });
 
 async function match() {
@@ -423,5 +426,23 @@ async function player_stats() {
 
 }
 		async function teamplayer_stats(){
+			
+				const teamPlayerStats= await postdb.any(`insert into teamsplayer_stats with parent as(with ss as(select player_stats_id,ps.player_id,player_stats_name,player_stats_value,match_type,player_name,team_id,gender from player_stats ps 
+					  inner join player p on ps.player_id = p.player_id
+					  inner join match_team_player mtp on ps.player_id = mtp.player_id 
+					  group by mtp.team_id,player_stats_id,ps.player_id,player_stats_name,player_stats_value,match_type,player_name,gender)
+					  select player_stats_id,player_id,player_stats_name,player_stats_value,match_type,player_name,ss.team_id,team_name,gender from team t inner join ss on ss.team_id = t.team_id)
+					  select player_stats_id,player_id,player_stats_name,player_stats_value,match_type,team_id,team_name,player_name,gender from parent
+					  `);
+				console.log("Inserted into teamplayer_stats");
+				
+		}
+		async function csvToSql(){
+			const fixtures = await postdb.any(`copy fixtures( match_date,match_time,team1_id,team2_id,match_type_id,team1_name,team2_name,match_type) FROM 'fixtures.csv' DELIMITER ',' CSV HEADER;`);
+			console.log("Fixtures csv to SQL conversion Success");
+
+			const playerRanking =await postdb.any(`copy player_ranking(position,match_format,match_type,player_name,ratings,player_team,gender) FROM 'playerRanking.csv' DELIMITER ',' CSV HEADER;`);
+			console.log("PlayerRanking csv to SQL conversion Success");
+
 			
 		}

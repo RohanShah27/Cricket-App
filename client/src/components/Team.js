@@ -16,6 +16,7 @@ export class Team extends Component {
     this.sendTeam = this.sendTeam.bind(this);
   }
 
+  //tournament and team_name for getting team details and items,height, pageTeams for infinite scrolling
   state = {
     tournament: "",
     team_name: "",
@@ -30,6 +31,7 @@ export class Team extends Component {
     this.props.getTournament(team);
   }
 
+  //passing gender value through props
   componentWillReceiveProps(nextProps) {
     nextProps.tournamentTeam.length > 0
       ? this.displayTeams(nextProps.tournamentTeam)
@@ -44,6 +46,7 @@ export class Team extends Component {
     this.props.searchTeamForViewTeamPage(team_name);
   };
 
+  //passing team_name in searchTeamForViewTeamPage for team search
   getTeam = () => {
     let team = {
       team_name: this.state.team_name,
@@ -53,6 +56,7 @@ export class Team extends Component {
     this.props.searchTeamForViewTeamPage(team);
   };
 
+  //getting teams with respect to tournament through getTournament
   sendTeam(team) {
     this.setState({
       tournament: team
@@ -63,6 +67,7 @@ export class Team extends Component {
     this.props.getTournament(tournament);
   }
 
+  //Infinte scrolling for teams, getting data frm reducer tournamentTeam in pageTeams array
   displayTeams = teams => {
     console.log(teams);
     const { items } = this.state;
@@ -114,6 +119,7 @@ export class Team extends Component {
             type="radio"
             name="pct"
           />
+          {/* //tabs for different tournaments */}
           <nav>
             <ul>
               <li className="playerTab1">
@@ -162,6 +168,7 @@ export class Team extends Component {
               </li>
             </ul>
           </nav>
+          {/* search box for teams page */}
           <div className="team-search-box">
             <button
               className="team-search-button"
@@ -179,6 +186,7 @@ export class Team extends Component {
               onChange={this.OnChange}
             />
             {this.state.team_name == "" ? null : (
+              //mapping team search results on team search input
               <div className="team-search-result">
                 <span className="search_result_data">
                   <p>
@@ -214,6 +222,7 @@ export class Team extends Component {
           </div>
           <section>
             <div className="playerTab1">
+              {/* Infinite scrolling */}
               <InfiniteScroll
                 dataLength={this.state.pageTeams.length} //This is important field to render the next data
                 next={this.loadMoreItems}
@@ -231,13 +240,14 @@ export class Team extends Component {
                 }
               >
                 <div className="team-teamTestimonials">
+                  {/* teams mapping with respect to tournament */}
                   {this.state.pageTeams.map((teams, index) => {
                     return (
                       <div>
                         {teams ? (
+                          //team card showing team_name with its flag using ReactCountryFlag
                           <div className="teamcomponent-card">
                             <div className="team-content">
-                              {/* <p>Started</p> */}
                               <ReactCountryFlag
                                 styleProps={{
                                   width: "70px",
@@ -250,8 +260,8 @@ export class Team extends Component {
                                 className="internationalLogo"
                               />{" "}
                               <p id={"teamName" + index}>{teams.team_name}</p>
-                              {/* <p>India</p> */}
                               <div className="team-details">
+                                {/* button in team card for getting into team deatils page */}
                                 <p>
                                   <button
                                     id={"teamDetailsButton" + index}

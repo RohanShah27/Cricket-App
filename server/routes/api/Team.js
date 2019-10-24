@@ -15,7 +15,7 @@ const db = pg("postgres://postgres:123456@localhost/cricket_capstone");
 //     message: "Retrieved all tournaments  successfully"
 //   });
 // });
-
+//retrieving teams with respect to tournaments such as International, IPL
 router.post("/tournament", async (req, res) => {
   const tournament = req.body.tournament;
   console.log(tournament);
@@ -39,6 +39,7 @@ router.post("/tournament", async (req, res) => {
   });
 });
 
+//Retrieving top 5 batsmen with respect to team and match type and gender
 router.post("/playerstatsforteams/:team_id/:gender", async (req, res) => {
   const gender = req.params.gender;
   console.log(gender);
@@ -62,6 +63,7 @@ router.post("/playerstatsforteams/:team_id/:gender", async (req, res) => {
   });
 });
 
+//Retrieving top 5 bowlers with respect to team and match type and gender
 router.post("/playerstatsforteamsbowler/:team_id/:gender", async (req, res) => {
   const match_type = req.body.match_type;
   const gender = req.params.gender;
@@ -83,6 +85,7 @@ router.post("/playerstatsforteamsbowler/:team_id/:gender", async (req, res) => {
   });
 });
 
+//Retrieving team with respect to id
 router.post("/teambyid", async (req, res) => {
   const team_id = req.body.team_id;
   console.log(team_id);
@@ -103,6 +106,7 @@ router.post("/teambyid", async (req, res) => {
   });
 });
 
+//Retrieving team stats(matches played, wins, loss, draw) with respect to team id and match type
 router.get("/matchtype/:team_id", async (req, res) => {
   try {
     const team_id = req.params.team_id;
@@ -153,6 +157,7 @@ router.get("/playerstats/:team_id", async (req, res) => {
   });
 });
 
+//Retrieving team with respect to search query
 router.post("/teamsearch", async (req, res) => {
   try {
     let team_name = req.body.team_name;

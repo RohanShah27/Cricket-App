@@ -12,7 +12,7 @@ import {
 import axios from "axios";
 const url = "http://localhost:5000/api/team";
 
-// Actions to fretch teams based on tournament
+// getting teams with respect to tournament
 export const getTournament = tournament => dispatch => {
   console.log(tournament);
   return axios.post(url + "/tournament", tournament).then(res => {
@@ -24,7 +24,7 @@ export const getTournament = tournament => dispatch => {
   });
 };
 
-// Action sto search for team on team page
+// getting team searched with team name passed
 export const searchTeamForViewTeamPage = team => dispatch => {
   console.log(team);
   return axios
@@ -41,7 +41,7 @@ export const searchTeamForViewTeamPage = team => dispatch => {
     });
 };
 
-// Actions to get details of particular team
+// getting team details with id passed
 export const getTeamById = team_id => dispatch => {
   return axios
     .post(url + "/teambyid", team_id)
@@ -57,7 +57,7 @@ export const getTeamById = team_id => dispatch => {
     });
 };
 
-// Actions to get team stats
+// getting team stats matches played, win, loss, draw with team_id passed
 export const getTeamStats = team_id => dispatch => {
   console.log(team_id);
   return axios
@@ -74,7 +74,7 @@ export const getTeamStats = team_id => dispatch => {
     });
 };
 
-// Get Batsman Stats of a particular team
+// getting top 5 batsmen and their stats for that team
 export const getPlayerStatsForTeams = (
   team_id,
   match_type,
@@ -101,7 +101,7 @@ export const getPlayerStatsForTeams = (
     });
 };
 
-// Get Bowler Stats of a particular team
+// getting top 5 bowlers and their stats for that team
 export const getPlayerStatsForTeamsBowler = (
   team_id,
   match_type,
