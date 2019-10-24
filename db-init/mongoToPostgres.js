@@ -443,6 +443,7 @@ async function csvToSql(){
 			const fixtures = await postdb.any(`copy fixtures( match_date,match_time,team1_id,team2_id,match_type_id,team1_name,team2_name,match_type) FROM 'fixtures.csv' DELIMITER ',' CSV HEADER;`);
 			console.log("Fixtures csv to SQL conversion Success");
 
+			
 			const playerRanking =await postdb.any(`copy player_ranking(position,match_format,match_type,player_name,ratings,player_team,gender) FROM 'playerRanking.csv' DELIMITER ',' CSV HEADER;`);
 			console.log("PlayerRanking csv to SQL conversion Success");
 
