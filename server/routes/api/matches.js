@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const pg = require("pg-promise")();
 // Conneccting to the hosted database fixtures
-const db = pg("postgres://postgres:123456@localhost:5432/cricket_capstone");
+const db = pg("postgres://postgres:123456@localhost:5432/crickstrait_capstone");
 
 router.get("/getrecent/:gender", async (req, res) => {
   try {
@@ -209,12 +209,11 @@ router.post("/getbytype", async (req, res) => {
   }
 });
 
+// Fetching summary of the match - Chhaya
 router.get("/summary/:match_id", async (req, res, next) => {
   try {
     var data = new Array();
-
     let match_id = req.params.match_id;
-
     const match_detail = await db.any(`with ss as (with s as (select m.match_id, m.innings_one_team, m.innings_two_team, 
       m.outcome as won_by,winner, m.match_type, m.player_of_the_match,t.team_name as team_one_name ,t.team_image as team1_image
       from match as m 
@@ -229,11 +228,6 @@ router.get("/summary/:match_id", async (req, res, next) => {
       select match_id, innings_one_team, team_one_name, innings_two_team,team_two_name, team1_image,team2_image,
       winner,match_winner,won_by, match_type, player_of_the_match 
       from pss inner join ss on cast(ss.winner as int)=pss.team_id`);
-
-    console.log(match_detail);
-
-    //total(score, wicket, over) all inning wise
-
     const match_total_of_score = await db.any(`with ss as (with s as (select inning as inning_one, 
                 sum(total_runs) as total_score 
                 from delivery where match_id=${match_id} group by inning),
@@ -279,6 +273,7 @@ router.get("/summary/:match_id", async (req, res, next) => {
   }
 });
 
+// Get the Match info-Chhaya
 router.get("/getmatchdetails/:match_id", async (req, res) => {
   const matchid = req.params.match_id;
   try {
@@ -360,17 +355,21 @@ select player_name, wickets, overs from ps inner join s on s.bowler_name = ps.pl
   }
 });
 
+// COmputing scorecard for a particular match
 router.get("/getscorecard/:matchid", async (req, res) => {
+  // Fetching the match_id from params using req.params
   const matchid = req.params.matchid;
-  console.log("match id", matchid);
   var data = new Array();
   try {
     const innings = await db.any(
       `select distinct(inning) from delivery where match_id='${matchid}' order by inning`
     );
+
+    // Start of For Loop for innings
     for (inning of innings) {
       console.log(inning.inning);
 
+      // Computing the batsman of innings
       const scorecard = await db.any(`with b as(with aaaa as (with aaa as (with aa as (with a as(with ssss as (select striker,(sum(cast(batsman_run as int))) as batsman_run,
 (count(overs)) as ball_faced, round(cast((sum(cast(batsman_run as float))/(count(overs))*100) as numeric),2) as striker_rate ,
 sum(cast(batsman_run=4 as int)) as fours, sum(cast(batsman_run=6 as int))as sixes
@@ -401,6 +400,7 @@ select striker_name, batsman_run, ball_faced, fours, sixes, striker_rate, wicket
 full outer join b on b.bowler=d.player_id
 `);
 
+      // COmputing wickets nad runs of bowler in aprticular innings
       const bowler = await db.any(
         `with s as (select bowler as bowler_name, (sum(cast(wicket_id > 0 as int))) as wickets,
       (sum(cast(extra_id > 0 as int))) as extras,
@@ -416,6 +416,7 @@ select player_name, wickets, extras, overs, runs_conceeded, economy from ps inne
    `
       );
 
+      // Computing total score for each and every inning
       const total = await db.any(`select (sum(cast(total_runs as int))) as Runs ,(sum(cast(wicket_id > 0 as int))) as wickets,
       (sum(cast(extra_id > 0 as int))) as extras,
       (count(overs) / 6) as overs
@@ -429,27 +430,29 @@ select player_name, wickets, extras, overs, runs_conceeded, economy from ps inne
         total: total
       });
     }
-    console.log(data);
-    if (!data) {
-      res.status(404).json({
-        statusCode: 404,
-        message: "Cannot fetch the match details",
+    // End of for loop for innings
+
+    // If the query cannot find any match with id specified , throw an 400 error
+    if (data == []) {
+      res.status(400).json({
+        statusCode: 400,
+        message: "Cannot fetch the match details with the id specified",
         data: null
       });
-      console.log(result);
     }
+    // Show the meaasge specified and status 200 if the query returns an successfull result
     res.status(200).json({
       status: 200,
       data: data,
       message: "Retrieved selected match successfully"
     });
   } catch (err) {
-    res.status(400).json({
-      status: 400,
-      message: "Server Error",
-      data: null
-    });
-    console.log("Error ", err);
+    console.log(err);
+    res
+      .status(err.statusCode ? err.statusCode : 500)
+      .send(
+        err.customMessage ? err.customMessage : "Please contact System Admin"
+      );
   }
 });
 
@@ -458,8 +461,6 @@ router.post("/match_search", async (req, res) => {
     let teamName = req.body.team_name;
     console.log(teamName);
     const result = await db.any(
-      // "select * from match where innings_one_team ilike'" + teamName% + " ' or innings_two_team ilike '" + teamName% + " ' ;"
-      // `select * from match where '${teamName}' in (team_name1, team_name2);`
       `with  s as ( select team_id from team where team_name ilike '${teamName}%' or team_name ilike '${teamName}%') select * from match where innings_one_team in (select team_id from s)`
     );
 

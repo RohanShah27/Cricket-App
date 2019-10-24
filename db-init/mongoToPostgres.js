@@ -24,6 +24,9 @@ MongoClient.connect(url, {
 
 	await player_stats();
 	console.log("Promise satisfied");
+
+	await teamplayer_stats();
+	console.log("Inserted into teamplayer_stats successfully")
 });
 
 async function match() {
@@ -39,8 +42,6 @@ async function match() {
 		let umpires_id = [];
 		let toss_winner_id;
 		let inning_team_id = [];
-		let inning_one_team_id;
-		let inning_two_team_id;
 		let winner_id;
 		try {
 			let currentId = ids[id];
@@ -201,7 +202,6 @@ async function match() {
 						for (const [key, val] of Object.entries(
 							deliveries[delivery]
 						)) {
-							// console.log(key);
 							let wicket_id = 0;
 							let extras_id = 0;
 							let fielder_one = 0;
@@ -419,4 +419,9 @@ async function player_stats() {
 			const player_stat = await postdb.any(query);
 		})
 	});
+
+
 }
+		async function teamplayer_stats(){
+			
+		}
