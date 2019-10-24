@@ -19,6 +19,7 @@ import india from "../assests/india.jpg";
 import pakistan from "../assests/pakistan.jpg";
 import Calendar from "react-calendar";
 
+//date accepts input date and calendarIsOpen for managing the calendar operation
 export class ViewTeam extends Component {
   constructor(props) {
     super(props);
@@ -38,6 +39,8 @@ export class ViewTeam extends Component {
     this.opencalendar = this.opencalendar.bind(this);
   }
 
+  //getMatchesByDate with team_name, match_type and match_date passed for getting matches as per type and team_name
+  //calendarIsOpEN false for closing calendar after selecting a date from the calendar
   handleChange(date) {
     console.log("handleChange", date);
     this.setState({ date: date });
@@ -55,20 +58,16 @@ export class ViewTeam extends Component {
     // console.log("State date", this.state.date);
   }
 
+  // setting calendarIsOpen true for opening the calendar
   opencalendar = () => {
     this.setState({
       calendarIsOpen: true
     });
   };
-  closecalendar = () => {
-    this.setState({
-      calendarIsOpen: false
-    });
-    {
-      console.log(this.setState.calendarIsOpen);
-    }
-  };
 
+  //getTeamStats for getting team stats with team_id passed
+  //getPlayerStatsForTeams for getting top 5 batsmen for that team
+  //getPlayerStatsForTeamsBowler for getting top 5 bowler for that team
   componentDidMount() {
     console.log(this.props.gender);
     let team_id = {
@@ -99,6 +98,7 @@ export class ViewTeam extends Component {
       this.props.getPlayerStatsForTeams(nextProps.gender);
   }
 
+  //getting players stats as per match_type, team_name and gender
   onodiclick = () => {
     this.setState({
       match_type: "ODI",
@@ -169,6 +169,7 @@ export class ViewTeam extends Component {
     );
   };
 
+  //getting matches as per match_type, team_name and gender
   onodiclickmatch(team) {
     this.setState({
       match_type: "ODI",
@@ -227,6 +228,7 @@ export class ViewTeam extends Component {
     this.props.getMatchesByTeamAndType(type);
   }
 
+  // getMatches for that team
   getMatches(team) {
     this.setState({
       team_name: team
@@ -244,6 +246,7 @@ export class ViewTeam extends Component {
       <div>
         <div className="viewTeam-container">
           <div className="parentcoach">
+            {/* mapping team details */}
             {this.props.tournamentTeam.map(teams => (
               <div className="parentcoach">
                 <div className="child1">
@@ -270,6 +273,7 @@ export class ViewTeam extends Component {
               name="pct"
             />
             <input id="viewTeam-tab2" type="radio" name="pct" />
+            {/* two tabs for stats and matches */}
             <nav>
               <ul>
                 <li className="viewTeam-tab1">
@@ -295,6 +299,7 @@ export class ViewTeam extends Component {
               <div className="viewTeam-tab1">
                 <div className="viewTeam-testimonials">
                   <div className="viewTeam-table1">
+                    {/* mapping team stats which include matches played, wins, loss and draw for that team */}
                     {this.props.teamstats.map(teamstats => (
                       <table className="stats">
                         <tr>
@@ -369,6 +374,7 @@ export class ViewTeam extends Component {
                         </div>
                       )
                     )}
+                    {/* mapping top 5 batsmen  */}
                     <div className="viewTeam-scrollable">
                       <table className="playerstats">
                         <tr>
@@ -394,6 +400,7 @@ export class ViewTeam extends Component {
                           )
                         )}
                       </table>
+                      {/* mapping top 5 bowlers for that team */}
                       <table className="bowlerstats">
                         <tr>
                           <th style={{ borderTopLeftRadius: "8px" }}>Player</th>
@@ -460,7 +467,7 @@ export class ViewTeam extends Component {
                     >
                       T20
                     </button>
-                    {/* <div className="viewTeam-calendar"> */}
+                    {/* react calendar for getting matches as per date */}
                     <Calendar
                       className={
                         this.state.calendarIsOpen
@@ -483,6 +490,7 @@ export class ViewTeam extends Component {
                   </div>
                 ))}
 
+                {/* mapping matches for that team */}
                 <div className="viewTeamMatches-testimonials">
                   {this.props.match.length === 0 ? (
                     <h2 style={{ textAlign: "center" }}>No Matches Played</h2>
@@ -498,6 +506,7 @@ export class ViewTeam extends Component {
                         }}
                       >
                         <div className="viewTeamMatches-parent">
+                          {/* mapping country flag as per team */}
                           <div className="viewTeamMatches-first">
                             <ReactCountryFlag
                               styleProps={{
@@ -509,10 +518,7 @@ export class ViewTeam extends Component {
                               }
                               svg
                             />
-                            <p>
-                              {match.team1}
-                              {/* India */}
-                            </p>
+                            <p>{match.team1}</p>
                           </div>
                           <div className="viewTeamMatches-second">
                             <ReactCountryFlag
@@ -525,22 +531,14 @@ export class ViewTeam extends Component {
                               }
                               svg
                             />
-
-                            <p>
-                              {match.team2}
-                              {/* Pakistan */}
-                            </p>
+                            <p>{match.team2}</p>
                           </div>
 
                           <div className="viewTeamMatches-third">
                             {match.match_winner}
                             <p>{match.won_by}</p>
-                            {/* India win by 10 runs */}
 
-                            <p>
-                              MoM: {match.player_of_the_match}
-                              {/* <b>MoM: Rohit Sharma */}
-                            </p>
+                            <p>MoM: {match.player_of_the_match}</p>
                           </div>
                         </div>
                       </div>

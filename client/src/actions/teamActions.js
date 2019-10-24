@@ -12,6 +12,7 @@ import {
 import axios from "axios";
 const url = "http://localhost:5000/api/team";
 
+// getting teams with respect to tournament
 export const getTournament = tournament => dispatch => {
   console.log(tournament);
   return axios.post(url + "/tournament", tournament).then(res => {
@@ -23,6 +24,7 @@ export const getTournament = tournament => dispatch => {
   });
 };
 
+// getting team searched with team name passed
 export const searchTeamForViewTeamPage = team => dispatch => {
   console.log(team);
   return axios
@@ -39,6 +41,7 @@ export const searchTeamForViewTeamPage = team => dispatch => {
     });
 };
 
+// getting team details with id passed
 export const getTeamById = team_id => dispatch => {
   return axios
     .post(url + "/teambyid", team_id)
@@ -54,6 +57,7 @@ export const getTeamById = team_id => dispatch => {
     });
 };
 
+// getting team stats matches played, win, loss, draw with team_id passed
 export const getTeamStats = team_id => dispatch => {
   console.log(team_id);
   return axios
@@ -70,6 +74,7 @@ export const getTeamStats = team_id => dispatch => {
     });
 };
 
+// getting top 5 batsmen for that team
 export const getPlayerStatsForTeams = (
   team_id,
   match_type,
@@ -96,6 +101,7 @@ export const getPlayerStatsForTeams = (
     });
 };
 
+// getting top 5 bowlers for that team
 export const getPlayerStatsForTeamsBowler = (
   team_id,
   match_type,
@@ -121,6 +127,7 @@ export const getPlayerStatsForTeamsBowler = (
     });
 };
 
+// getting team stats for odi match type
 export const teamStatsGraphOdi = id => dispatch => {
   return axios
     .get("http://127.0.0.1:5000/odistats/" + id)
@@ -135,6 +142,8 @@ export const teamStatsGraphOdi = id => dispatch => {
       console.log(err);
     });
 };
+
+// getting team stats for test match type
 export const teamStatsGraphTest = id => dispatch => {
   return axios
     .get("http://127.0.0.1:5000/teststats/" + id)
@@ -149,6 +158,8 @@ export const teamStatsGraphTest = id => dispatch => {
       console.log(err);
     });
 };
+
+// getting team stats for t20 match type
 export const teamStatsGraphT20 = id => dispatch => {
   return axios
     .get("http://127.0.0.1:5000/t20stats/" + id)

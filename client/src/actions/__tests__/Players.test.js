@@ -1,5 +1,5 @@
 import * as action from "../Players";
-import { SEARCH_PLAYER, ALL_PLAYERS } from "../Types";
+import { SEARCH_PLAYER, ALL_PLAYERS, PLAYER_STATS } from "../Types";
 import moxios from "moxios";
 import configureMockStore from "redux-mock-store";
 import thunk from "redux-thunk";
@@ -66,6 +66,24 @@ describe("Testing Players action", () => {
       }
     ];
     return store.dispatch(action.searchPlayer()).then(() => {
+      expect(store.getActions()).toEqual(expectedResponse);
+    });
+  });
+  it("should return player stats on call of the url", () => {
+    const responseOfApi = [{}];
+    let playerId = 1;
+    moxios.stubRequest(url + "playerstats/" + playerId, {
+      status: 200,
+      response: { data: responseOfApi }
+    });
+    const store = mockStore({});
+    const expectedResponse = [
+      {
+        type: PLAYER_STATS,
+        payload: responseofApi
+      }
+    ];
+    return store.dispatch(action.playerStats()).then(() => {
       expect(store.getActions()).toEqual(expectedResponse);
     });
   });
