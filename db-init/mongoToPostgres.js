@@ -429,7 +429,7 @@ async function player_stats() {
 }
 async function teamplayer_stats(){
 			
-				const teamPlayerStats= await postdb.any(`insert into teamsplayer_stats with parent as(with ss as(select player_stats_id,ps.player_id,player_stats_name,player_stats_value,match_type,player_name,team_id,gender from player_stats ps 
+				const teamPlayerStats= await postdb.any(`insert into teamplayer_stats with parent as(with ss as(select player_stats_id,ps.player_id,player_stats_name,player_stats_value,match_type,player_name,team_id,gender from player_stats ps 
 					  inner join player p on ps.player_id = p.player_id
 					  inner join match_team_player mtp on ps.player_id = mtp.player_id 
 					  group by mtp.team_id,player_stats_id,ps.player_id,player_stats_name,player_stats_value,match_type,player_name,gender)

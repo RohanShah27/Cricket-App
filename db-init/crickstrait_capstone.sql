@@ -71,6 +71,19 @@ create table match
         umpire_id int
     );
 
+    create table teamplayer_stats
+    (
+        player_stats_id int,
+        player_id int,
+        player_stats_name varchar(255),
+        player_stats_value varchar(255),
+        match_type varchar(255),
+        team_id int,
+        team_name varchar(255),
+        player_name varchar(255),
+        gender varchar(255)
+    )
+
     create table headlines
     (
         headline_id serial,
